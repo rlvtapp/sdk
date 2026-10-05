@@ -1,0 +1,22 @@
+{
+  "name": "relevate-sdks",
+  "private": true,
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "check": "node scripts/check.mjs",
+    "spec:import": "node scripts/import-spec.mjs",
+    "build:typescript": "tsc -p packages/typescript/tsconfig.json",
+    "check:typescript": "node scripts/check-typescript.mjs",
+    "mock": "kaji mock serve specs/openapi.json --port 4010",
+    "check:mocks": "node scripts/check-mocks.mjs"
+  },
+  "devDependencies": {
+    "@relevate/kaji": "0.4.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "packages/typescript"
+  ]
+}

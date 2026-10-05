@@ -1,0 +1,5 @@
+export { listContacts } from './listContacts.js'
+export { createContact } from './createContact.js'
+export { queryContacts } from './queryContacts.js'
+export { getContact } from './getContact.js'
+export { updateContact } from './updateContact.js'

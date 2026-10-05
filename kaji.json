@@ -1,0 +1,142 @@
+{
+  "$schema": "https://raw.githubusercontent.com/rlvtapp/kaji/main/schemas/v1/kaji.schema.json",
+  "openapi": {
+    "input": "./specs/openapi.json",
+    "name": "Relevate",
+    "version": "0.1.0"
+  },
+  "output": {
+    "path": "./packages"
+  },
+  "defaults": {
+    "client_style": "namespaced"
+  },
+  "packages": [
+    {
+      "language": "typescript",
+      "path": "typescript",
+      "name": "@relevate/sdk",
+      "plugins": [
+        {
+          "name": "sdk",
+          "transport": "fetch",
+          "client_name": "Relevate"
+        },
+        {
+          "name": "tanstack-react-query",
+          "output": "react-query",
+          "clients_import": "../clients",
+          "group_by_tag": true
+        },
+        {
+          "name": "tanstack-vue-query",
+          "output": "vue-query",
+          "clients_import": "../clients",
+          "group_by_tag": true
+        },
+        {
+          "name": "faker",
+          "output": "fixtures"
+        },
+        {
+          "name": "msw",
+          "output": "mocks"
+        },
+        {
+          "name": "cypress",
+          "output": "cypress"
+        }
+      ]
+    },
+    {
+      "language": "python",
+      "path": "python",
+      "name": "relevate-sdk",
+      "plugins": [
+        {
+          "name": "sdk"
+        }
+      ]
+    },
+    {
+      "language": "go",
+      "path": "go",
+      "name": "github.com/rlvtapp/sdk/packages/go",
+      "plugins": [
+        {
+          "name": "sdk"
+        }
+      ]
+    },
+    {
+      "language": "rust",
+      "path": "rust",
+      "name": "relevate-sdk",
+      "plugins": [
+        {
+          "name": "sdk"
+        }
+      ]
+    },
+    {
+      "language": "java",
+      "path": "java",
+      "name": "app.relevate.sdk",
+      "plugins": [
+        {
+          "name": "sdk"
+        }
+      ]
+    },
+    {
+      "language": "dotnet",
+      "path": "dotnet",
+      "name": "Relevate.Sdk",
+      "plugins": [
+        {
+          "name": "sdk"
+        }
+      ]
+    },
+    {
+      "language": "php",
+      "path": "php",
+      "name": "relevate/sdk",
+      "plugins": [
+        {
+          "name": "sdk"
+        }
+      ]
+    },
+    {
+      "language": "elixir",
+      "path": "elixir",
+      "name": "relevate_sdk",
+      "plugins": [
+        {
+          "name": "sdk"
+        }
+      ]
+    },
+    {
+      "language": "ruby",
+      "path": "ruby",
+      "name": "relevate_sdk",
+      "plugins": [
+        {
+          "name": "sdk"
+        }
+      ]
+    },
+    {
+      "language": "mock",
+      "path": "mock-server",
+      "plugins": [
+        {
+          "name": "server",
+          "port": 4010
+        }
+      ]
+    }
+  ]
+}

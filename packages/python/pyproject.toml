@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "relevate-sdk"
+version = "0.1.0"
+description = "Generated Python client for relevate-sdk"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Typing :: Typed",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/relevate_sdk"]

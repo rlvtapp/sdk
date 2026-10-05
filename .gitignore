@@ -1,0 +1,11 @@
+node_modules/
+**/target/
+**/__pycache__/
+**/.build/
+**/bin/
+**/obj/
+**/vendor/
+**/dist/
+**/_build/
+**/deps/
+**/.kaji/
