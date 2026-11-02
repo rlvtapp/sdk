@@ -22,6 +22,7 @@ try {
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
   const overlay = JSON.parse(readFileSync(path.join(root, 'scripts/typescript-package.json'), 'utf8'));
   Object.assign(manifest, overlay);
+  delete manifest.devDependencies; // Tooling belongs to the repository, not the published package.
   // New Poolster emits provider-aware imports and native fixtures; no source rewrites.
   writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
   for (const entry of ['react-query', 'vue-query']) {

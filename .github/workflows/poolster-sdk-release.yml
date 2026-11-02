@@ -43,6 +43,7 @@ jobs:
       - run: npm run build:typescript
       - run: npm run check:typescript
       - run: npm run check:mocks
+      - run: npm run check:package
       - name: Verify deterministic sources
         run: |
           git diff --exit-code

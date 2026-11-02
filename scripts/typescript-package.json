@@ -1,15 +1,4 @@
 {
-  "devDependencies": {
-    "@faker-js/faker": "10.6.0",
-    "@tanstack/react-query": "5.104.1",
-    "@tanstack/vue-query": "5.104.1",
-    "@types/react": "19.3.0",
-    "cypress": "15.21.1",
-    "msw": "3.0.2",
-    "react": "19.3.0",
-    "typescript": "5.9.3",
-    "vue": "3.5.43"
-  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -45,9 +34,7 @@
   "peerDependencies": {
     "@tanstack/react-query": "^5.0.0",
     "@tanstack/vue-query": "^5.0.0",
-    "react": "^18.0.0 || ^19.0.0",
-    "vue": "^3.0.0",
-    "msw": "^2.0.0",
+    "msw": "^2.0.0 || ^3.0.0",
     "@faker-js/faker": "^10.6.0"
   },
   "peerDependenciesMeta": {
@@ -55,12 +42,6 @@
       "optional": true
     },
     "@tanstack/vue-query": {
-      "optional": true
-    },
-    "react": {
-      "optional": true
-    },
-    "vue": {
       "optional": true
     },
     "msw": {
