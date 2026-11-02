@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>app.relevate.sdk</groupId>
   <artifactId>relevate-sdk</artifactId>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
   <properties>
     <maven.compiler.release>17</maven.compiler.release>
     <maven.compiler.source>17</maven.compiler.source>

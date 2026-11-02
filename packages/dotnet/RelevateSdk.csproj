@@ -6,7 +6,7 @@
     <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>Relevate.Sdk</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.2.1</Version>
     <Description>Generated .NET client for Relevate</Description>
   </PropertyGroup>
 </Project>

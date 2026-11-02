@@ -2,7 +2,7 @@
   "schema_version": 1,
   "language": "typescript",
   "name": "@relevate/sdk",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "build": [
     {
       "program": "npm",

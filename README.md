@@ -4,8 +4,8 @@ Official [Relevate](https://relevate.app) SDKs: one package per language
 containing both CRM and Email, generated with
 [Poolster](https://github.com/rlvtapp/poolster) from the shared Rust API contract.
 
-The TypeScript SDK is published to npm as `@relevate/sdk@0.2.0`. The other
-ecosystem packages remain development outputs at version 0.2.0.
+The TypeScript SDK is published to npm as `@relevate/sdk@0.2.1`. The other
+ecosystem packages remain development outputs at version 0.2.1.
 
 ```sh
 npm install @relevate/sdk
@@ -13,7 +13,7 @@ npm install @relevate/sdk
 
 ## Published templates
 
-SDK 0.2.0 includes the live template API. Create and publish a template in the
+SDK 0.2.1 includes the live template API. Create and publish a template in the
 platform, then send it by ID or alias with nested variables:
 
 ```ts
