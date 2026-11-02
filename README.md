@@ -4,8 +4,12 @@ Official [Relevate](https://relevate.app) SDKs: one package per language
 containing both CRM and Email, generated with
 [Poolster](https://github.com/rlvtapp/poolster) from the shared Rust API contract.
 
-The nine initial development packages are version 0.1.0. No registry releases
-have been published by this setup.
+The TypeScript SDK is published to npm as `@relevate/sdk@0.1.0`. The other
+ecosystem packages remain development outputs at version 0.1.0.
+
+```sh
+npm install @relevate/sdk
+```
 
 ## Generate
 
@@ -21,7 +25,7 @@ npm run check:typescript
 
 `poolster.json` generates all nine languages from `specs/openapi.json`, with no
 product filters. Every SDK contains all 66 CRM and Email operations. Poolster
-0.5.0-alpha.4 is pinned in the root lockfile; TypeScript 5.9.3 is pinned in its workspace.
+0.5.0-alpha.4 is pinned in the root lockfile; TypeScript 5.9.3 is pinned in the repository development dependencies.
 
 ## Packages
 
