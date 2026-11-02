@@ -29,12 +29,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String objectId
     ) {}
 
-    /** Invokes GET /v1/crm/lists. */
+    /** Invokes GET /crm/lists. */
     public CrmListsPage listCrmLists(ListCrmListsRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists";
+        var path = "/crm/lists";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         query.add(new QueryParameter("limit", input.limit()));
@@ -52,12 +52,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             CrmCreateList body
     ) {}
 
-    /** Invokes POST /v1/crm/lists. */
+    /** Invokes POST /crm/lists. */
     public CrmListResponse createCrmList(CreateCrmListRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists";
+        var path = "/crm/lists";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         var response = requestWithRetry("POST", path, query, headers, input.body(), null);
@@ -72,12 +72,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String list
     ) {}
 
-    /** Invokes DELETE /v1/crm/lists/{list}. */
+    /** Invokes DELETE /crm/lists/{list}. */
     public CrmListDeletionResponse deleteCrmList(DeleteCrmListRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}";
+        var path = "/crm/lists/{list}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -93,12 +93,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String list
     ) {}
 
-    /** Invokes GET /v1/crm/lists/{list}. */
+    /** Invokes GET /crm/lists/{list}. */
     public CrmListResponse getCrmList(GetCrmListRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}";
+        var path = "/crm/lists/{list}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -115,12 +115,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             CrmUpdateList body
     ) {}
 
-    /** Invokes PATCH /v1/crm/lists/{list}. */
+    /** Invokes PATCH /crm/lists/{list}. */
     public CrmListResponse updateCrmList(UpdateCrmListRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}";
+        var path = "/crm/lists/{list}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -136,12 +136,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String list
     ) {}
 
-    /** Invokes GET /v1/crm/lists/{list}/attributes. */
+    /** Invokes GET /crm/lists/{list}/attributes. */
     public CrmMetadataAttributesResponse listCrmListAttributes(ListCrmListAttributesRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}/attributes";
+        var path = "/crm/lists/{list}/attributes";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -158,12 +158,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             CrmAttributeCreate body
     ) {}
 
-    /** Invokes POST /v1/crm/lists/{list}/attributes. */
+    /** Invokes POST /crm/lists/{list}/attributes. */
     public CrmMetadataAttributeResponse createCrmListAttribute(CreateCrmListAttributeRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}/attributes";
+        var path = "/crm/lists/{list}/attributes";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -180,12 +180,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String attribute
     ) {}
 
-    /** Invokes DELETE /v1/crm/lists/{list}/attributes/{attribute}. */
+    /** Invokes DELETE /crm/lists/{list}/attributes/{attribute}. */
     public CrmMetadataDeleted deleteCrmListAttribute(DeleteCrmListAttributeRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}/attributes/{attribute}";
+        var path = "/crm/lists/{list}/attributes/{attribute}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -204,12 +204,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             CrmAttributePatch body
     ) {}
 
-    /** Invokes PATCH /v1/crm/lists/{list}/attributes/{attribute}. */
+    /** Invokes PATCH /crm/lists/{list}/attributes/{attribute}. */
     public CrmMetadataAttributeResponse updateCrmListAttribute(UpdateCrmListAttributeRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}/attributes/{attribute}";
+        var path = "/crm/lists/{list}/attributes/{attribute}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -228,12 +228,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String after
     ) {}
 
-    /** Invokes GET /v1/crm/lists/{list}/entries. */
+    /** Invokes GET /crm/lists/{list}/entries. */
     public CrmListEntriesPage listCrmListEntries(ListCrmListEntriesRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}/entries";
+        var path = "/crm/lists/{list}/entries";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -252,12 +252,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             CrmCreateListEntry body
     ) {}
 
-    /** Invokes POST /v1/crm/lists/{list}/entries. */
+    /** Invokes POST /crm/lists/{list}/entries. */
     public CrmListEntryResponse createCrmListEntry(CreateCrmListEntryRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}/entries";
+        var path = "/crm/lists/{list}/entries";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -274,12 +274,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String entry
     ) {}
 
-    /** Invokes DELETE /v1/crm/lists/{list}/entries/{entry}. */
+    /** Invokes DELETE /crm/lists/{list}/entries/{entry}. */
     public CrmListDeletionResponse deleteCrmListEntry(DeleteCrmListEntryRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}/entries/{entry}";
+        var path = "/crm/lists/{list}/entries/{entry}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -297,12 +297,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String entry
     ) {}
 
-    /** Invokes GET /v1/crm/lists/{list}/entries/{entry}. */
+    /** Invokes GET /crm/lists/{list}/entries/{entry}. */
     public CrmListEntryResponse getCrmListEntry(GetCrmListEntryRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}/entries/{entry}";
+        var path = "/crm/lists/{list}/entries/{entry}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -321,12 +321,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             CrmUpdateListEntry body
     ) {}
 
-    /** Invokes PATCH /v1/crm/lists/{list}/entries/{entry}. */
+    /** Invokes PATCH /crm/lists/{list}/entries/{entry}. */
     public CrmListEntryResponse updateCrmListEntry(UpdateCrmListEntryRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/lists/{list}/entries/{entry}";
+        var path = "/crm/lists/{list}/entries/{entry}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.list() != null) path = path.replace("{list}", pathValue(input.list()));
@@ -343,12 +343,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String noteId
     ) {}
 
-    /** Invokes DELETE /v1/crm/notes/{note_id}. */
+    /** Invokes DELETE /crm/notes/{note_id}. */
     public JsonNode deleteCrmNote(DeleteCrmNoteRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/notes/{note_id}";
+        var path = "/crm/notes/{note_id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.noteId() != null) path = path.replace("{note_id}", pathValue(input.noteId()));
@@ -364,12 +364,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String noteId
     ) {}
 
-    /** Invokes GET /v1/crm/notes/{note_id}. */
+    /** Invokes GET /crm/notes/{note_id}. */
     public JsonNode getCrmNote(GetCrmNoteRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/notes/{note_id}";
+        var path = "/crm/notes/{note_id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.noteId() != null) path = path.replace("{note_id}", pathValue(input.noteId()));
@@ -386,12 +386,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             CrmNoteWrite body
     ) {}
 
-    /** Invokes PATCH /v1/crm/notes/{note_id}. */
+    /** Invokes PATCH /crm/notes/{note_id}. */
     public JsonNode updateCrmNote(UpdateCrmNoteRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/notes/{note_id}";
+        var path = "/crm/notes/{note_id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.noteId() != null) path = path.replace("{note_id}", pathValue(input.noteId()));
@@ -409,12 +409,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             Boolean includeDisabled
     ) {}
 
-    /** Invokes GET /v1/crm/objects. */
+    /** Invokes GET /crm/objects. */
     public JsonNode listCrmObjects(ListCrmObjectsRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects";
+        var path = "/crm/objects";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         query.add(new QueryParameter("limit", input.limit()));
@@ -432,12 +432,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             CrmObjectCreate body
     ) {}
 
-    /** Invokes POST /v1/crm/objects. */
+    /** Invokes POST /crm/objects. */
     public CrmMetadataObjectResponse createCrmObject(CreateCrmObjectRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects";
+        var path = "/crm/objects";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         var response = requestWithRetry("POST", path, query, headers, input.body(), null);
@@ -453,12 +453,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             CrmObjectDelete body
     ) {}
 
-    /** Invokes DELETE /v1/crm/objects/{object}. */
+    /** Invokes DELETE /crm/objects/{object}. */
     public CrmMetadataDeleted deleteCrmObject(DeleteCrmObjectRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}";
+        var path = "/crm/objects/{object}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));
@@ -474,12 +474,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String object
     ) {}
 
-    /** Invokes GET /v1/crm/objects/{object}. */
+    /** Invokes GET /crm/objects/{object}. */
     public JsonNode getCrmObject(GetCrmObjectRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}";
+        var path = "/crm/objects/{object}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));
@@ -496,12 +496,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             CrmObjectPatch body
     ) {}
 
-    /** Invokes PATCH /v1/crm/objects/{object}. */
+    /** Invokes PATCH /crm/objects/{object}. */
     public CrmMetadataObjectResponse updateCrmObject(UpdateCrmObjectRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}";
+        var path = "/crm/objects/{object}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));
@@ -517,12 +517,12 @@ public class Operations000 extends app.relevate.sdk.ClientBase {
             String object
     ) {}
 
-    /** Invokes GET /v1/crm/objects/{object}/attributes. */
+    /** Invokes GET /crm/objects/{object}/attributes. */
     public CrmMetadataAttributesResponse listCrmObjectAttributes(ListCrmObjectAttributesRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}/attributes";
+        var path = "/crm/objects/{object}/attributes";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));

@@ -149,12 +149,12 @@ func decodeGetCrmObjectQualityError(requestError error) error {
 	}
 }
 
-// GetCrmObjectQuality invokes GET /v1/crm/objects/{object}/quality.
+// GetCrmObjectQuality invokes GET /crm/objects/{object}/quality.
 func (client *Client) GetCrmObjectQuality(ctx context.Context, input *GetCrmObjectQualityRequest) (*CrmQualityResponse, error) {
 	if input == nil {
 		input = &GetCrmObjectQualityRequest{}
 	}
-	path := "/v1/crm/objects/{object}/quality"
+	path := "/crm/objects/{object}/quality"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{object}", url.PathEscape(fmt.Sprint(input.Object)))

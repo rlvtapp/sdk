@@ -5,8 +5,12 @@ defmodule RelevateSdk.Resources.Sends do
 
 
   alias RelevateSdk.Resources.Sends.Chunk0000
-  def create(client, options \\ []), do: Chunk0000.create(client, options)
-  def query(client, options \\ []), do: Chunk0000.query(client, options)
-  def cancel(client, options \\ []), do: Chunk0000.cancel(client, options)
-  def get(client, options \\ []), do: Chunk0000.get(client, options)
+  def send_email(client, options \\ []), do: Chunk0000.send_email(client, options)
+  def send_email_batch(client, options \\ []), do: Chunk0000.send_email_batch(client, options)
+  def query_emails(client, options \\ []), do: Chunk0000.query_emails(client, options)
+  def cancel_email(client, options \\ []), do: Chunk0000.cancel_email(client, options)
+  def get_email(client, options \\ []), do: Chunk0000.get_email(client, options)
+  def reschedule_email(client, options \\ []), do: Chunk0000.reschedule_email(client, options)
+  def list_email_events(client, options \\ []), do: Chunk0000.list_email_events(client, options)
+  def list_email_recipient_events(client, options \\ []), do: Chunk0000.list_email_recipient_events(client, options)
 end

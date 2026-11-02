@@ -90,52 +90,232 @@ defmodule RelevateSdk.API do
 
   def update_crm_task(client, options \\ []), do: Operations0001.update_crm_task(client, options)
 
-  def auth_check(client, options \\ []), do: Operations0001.auth_check(client, options)
+  def list_email_api_keys(client, options \\ []), do: Operations0001.list_email_api_keys(client, options)
 
-  def list_contacts(client, options \\ []), do: Operations0001.list_contacts(client, options)
+  def create_email_api_key(client, options \\ []), do: Operations0001.create_email_api_key(client, options)
 
-  def create_contact(client, options \\ []), do: Operations0001.create_contact(client, options)
+  def revoke_email_api_key(client, options \\ []), do: Operations0001.revoke_email_api_key(client, options)
 
-  def query_contacts(client, options \\ []), do: Operations0001.query_contacts(client, options)
+  def get_email_attachment(client, options \\ []), do: Operations0001.get_email_attachment(client, options)
 
-  def get_contact(client, options \\ []), do: Operations0001.get_contact(client, options)
+  def check_email_auth(client, options \\ []), do: Operations0001.check_email_auth(client, options)
 
-  def update_contact(client, options \\ []), do: Operations0001.update_contact(client, options)
+  def list_email_contacts(client, options \\ []), do: Operations0001.list_email_contacts(client, options)
 
-  def list_domains(client, options \\ []), do: Operations0001.list_domains(client, options)
+  def create_email_contact(client, options \\ []), do: Operations0001.create_email_contact(client, options)
 
-  def get_domain(client, options \\ []), do: Operations0001.get_domain(client, options)
+  def query_email_contacts(client, options \\ []), do: Operations0001.query_email_contacts(client, options)
   alias RelevateSdk.API.Operations0002
 
-  def track(client, options \\ []), do: Operations0002.track(client, options)
+  def delete_email_contact(client, options \\ []), do: Operations0002.delete_email_contact(client, options)
 
-  def list_inbound(client, options \\ []), do: Operations0002.list_inbound(client, options)
+  def get_email_contact(client, options \\ []), do: Operations0002.get_email_contact(client, options)
 
-  def get_inbound(client, options \\ []), do: Operations0002.get_inbound(client, options)
+  def update_email_contact(client, options \\ []), do: Operations0002.update_email_contact(client, options)
 
-  def list_segments(client, options \\ []), do: Operations0002.list_segments(client, options)
+  def list_email_domains(client, options \\ []), do: Operations0002.list_email_domains(client, options)
 
-  def get_segment(client, options \\ []), do: Operations0002.get_segment(client, options)
+  def create_email_domain(client, options \\ []), do: Operations0002.create_email_domain(client, options)
 
-  def list_sender_identities(client, options \\ []), do: Operations0002.list_sender_identities(client, options)
+  def delete_email_domain(client, options \\ []), do: Operations0002.delete_email_domain(client, options)
 
-  def get_sender_identity(client, options \\ []), do: Operations0002.get_sender_identity(client, options)
+  def get_email_domain(client, options \\ []), do: Operations0002.get_email_domain(client, options)
 
-  def create(client, options \\ []), do: Operations0002.create(client, options)
+  def verify_email_domain(client, options \\ []), do: Operations0002.verify_email_domain(client, options)
 
-  def query(client, options \\ []), do: Operations0002.query(client, options)
+  def send_email(client, options \\ []), do: Operations0002.send_email(client, options)
 
-  def cancel(client, options \\ []), do: Operations0002.cancel(client, options)
+  def send_email_batch(client, options \\ []), do: Operations0002.send_email_batch(client, options)
 
-  def get(client, options \\ []), do: Operations0002.get(client, options)
+  def query_emails(client, options \\ []), do: Operations0002.query_emails(client, options)
 
-  def list_webhooks(client, options \\ []), do: Operations0002.list_webhooks(client, options)
+  def cancel_email(client, options \\ []), do: Operations0002.cancel_email(client, options)
 
-  def create_webhook(client, options \\ []), do: Operations0002.create_webhook(client, options)
+  def get_email(client, options \\ []), do: Operations0002.get_email(client, options)
 
-  def delete_webhook(client, options \\ []), do: Operations0002.delete_webhook(client, options)
+  def reschedule_email(client, options \\ []), do: Operations0002.reschedule_email(client, options)
 
-  def update_webhook(client, options \\ []), do: Operations0002.update_webhook(client, options)
+  def list_email_events(client, options \\ []), do: Operations0002.list_email_events(client, options)
 
-  def list_deliveries(client, options \\ []), do: Operations0002.list_deliveries(client, options)
+  def list_email_recipient_events(client, options \\ []), do: Operations0002.list_email_recipient_events(client, options)
+
+  def track_email_event(client, options \\ []), do: Operations0002.track_email_event(client, options)
+
+  def list_email_inbound(client, options \\ []), do: Operations0002.list_email_inbound(client, options)
+
+  def get_email_inbound(client, options \\ []), do: Operations0002.get_email_inbound(client, options)
+
+  def forward_email_inbound(client, options \\ []), do: Operations0002.forward_email_inbound(client, options)
+
+  def reply_to_email_inbound(client, options \\ []), do: Operations0002.reply_to_email_inbound(client, options)
+
+  def list_email_inboxes(client, options \\ []), do: Operations0002.list_email_inboxes(client, options)
+
+  def create_email_inbox(client, options \\ []), do: Operations0002.create_email_inbox(client, options)
+
+  def list_provided_email_domains(client, options \\ []), do: Operations0002.list_provided_email_domains(client, options)
+
+  def disable_email_inbox(client, options \\ []), do: Operations0002.disable_email_inbox(client, options)
+  alias RelevateSdk.API.Operations0003
+
+  def get_email_inbox(client, options \\ []), do: Operations0003.get_email_inbox(client, options)
+
+  def send_email_inbox_message(client, options \\ []), do: Operations0003.send_email_inbox_message(client, options)
+
+  def list_email_threads(client, options \\ []), do: Operations0003.list_email_threads(client, options)
+
+  def list_email_labels(client, options \\ []), do: Operations0003.list_email_labels(client, options)
+
+  def create_email_label(client, options \\ []), do: Operations0003.create_email_label(client, options)
+
+  def delete_email_label(client, options \\ []), do: Operations0003.delete_email_label(client, options)
+
+  def list_email_segments(client, options \\ []), do: Operations0003.list_email_segments(client, options)
+
+  def get_email_segment(client, options \\ []), do: Operations0003.get_email_segment(client, options)
+
+  def list_email_sender_identities(client, options \\ []), do: Operations0003.list_email_sender_identities(client, options)
+
+  def get_email_sender_identity(client, options \\ []), do: Operations0003.get_email_sender_identity(client, options)
+
+  def list_email_suppressions(client, options \\ []), do: Operations0003.list_email_suppressions(client, options)
+
+  def create_email_suppression(client, options \\ []), do: Operations0003.create_email_suppression(client, options)
+
+  def create_email_suppression_batch(client, options \\ []), do: Operations0003.create_email_suppression_batch(client, options)
+
+  def delete_email_suppression(client, options \\ []), do: Operations0003.delete_email_suppression(client, options)
+
+  def get_email_suppression(client, options \\ []), do: Operations0003.get_email_suppression(client, options)
+
+  def list_email_templates(client, options \\ []), do: Operations0003.list_email_templates(client, options)
+
+  def create_email_template(client, options \\ []), do: Operations0003.create_email_template(client, options)
+
+  def delete_email_template(client, options \\ []), do: Operations0003.delete_email_template(client, options)
+
+  def get_email_template(client, options \\ []), do: Operations0003.get_email_template(client, options)
+
+  def update_email_template(client, options \\ []), do: Operations0003.update_email_template(client, options)
+
+  def duplicate_email_template(client, options \\ []), do: Operations0003.duplicate_email_template(client, options)
+
+  def publish_email_template(client, options \\ []), do: Operations0003.publish_email_template(client, options)
+
+  def render_email_template(client, options \\ []), do: Operations0003.render_email_template(client, options)
+
+  def get_email_thread(client, options \\ []), do: Operations0003.get_email_thread(client, options)
+
+  def update_email_thread(client, options \\ []), do: Operations0003.update_email_thread(client, options)
+  alias RelevateSdk.API.Operations0004
+
+  def add_email_thread_note(client, options \\ []), do: Operations0004.add_email_thread_note(client, options)
+
+  def mark_email_thread_read(client, options \\ []), do: Operations0004.mark_email_thread_read(client, options)
+
+  def get_email_usage(client, options \\ []), do: Operations0004.get_email_usage(client, options)
+
+  def list_email_webhooks(client, options \\ []), do: Operations0004.list_email_webhooks(client, options)
+
+  def create_email_webhook(client, options \\ []), do: Operations0004.create_email_webhook(client, options)
+
+  def delete_email_webhook(client, options \\ []), do: Operations0004.delete_email_webhook(client, options)
+
+  def update_email_webhook(client, options \\ []), do: Operations0004.update_email_webhook(client, options)
+
+  def list_email_webhook_deliveries(client, options \\ []), do: Operations0004.list_email_webhook_deliveries(client, options)
+
+  def replay_email_webhook_delivery(client, options \\ []), do: Operations0004.replay_email_webhook_delivery(client, options)
+
+  def replay_email_webhook_range(client, options \\ []), do: Operations0004.replay_email_webhook_range(client, options)
+
+  def rotate_email_webhook_secret(client, options \\ []), do: Operations0004.rotate_email_webhook_secret(client, options)
+
+  def get_schedule_booking_page(client, options \\ []), do: Operations0004.get_schedule_booking_page(client, options)
+
+  def list_schedule_bookings(client, options \\ []), do: Operations0004.list_schedule_bookings(client, options)
+
+  def create_schedule_booking(client, options \\ []), do: Operations0004.create_schedule_booking(client, options)
+
+  def get_schedule_booking(client, options \\ []), do: Operations0004.get_schedule_booking(client, options)
+
+  def mark_schedule_booking_attendance(client, options \\ []), do: Operations0004.mark_schedule_booking_attendance(client, options)
+
+  def cancel_schedule_booking(client, options \\ []), do: Operations0004.cancel_schedule_booking(client, options)
+
+  def get_schedule_booking_feedback(client, options \\ []), do: Operations0004.get_schedule_booking_feedback(client, options)
+
+  def rate_schedule_booking(client, options \\ []), do: Operations0004.rate_schedule_booking(client, options)
+
+  def create_schedule_booking_management_link(client, options \\ []), do: Operations0004.create_schedule_booking_management_link(client, options)
+
+  def reschedule_schedule_booking(client, options \\ []), do: Operations0004.reschedule_schedule_booking(client, options)
+
+  def list_schedule_booking_slots(client, options \\ []), do: Operations0004.list_schedule_booking_slots(client, options)
+
+  def get_schedule_booking_status(client, options \\ []), do: Operations0004.get_schedule_booking_status(client, options)
+
+  def list_schedule_event_types(client, options \\ []), do: Operations0004.list_schedule_event_types(client, options)
+
+  def create_schedule_event_type(client, options \\ []), do: Operations0004.create_schedule_event_type(client, options)
+  alias RelevateSdk.API.Operations0005
+
+  def get_schedule_event_type(client, options \\ []), do: Operations0005.get_schedule_event_type(client, options)
+
+  def replace_schedule_event_type(client, options \\ []), do: Operations0005.replace_schedule_event_type(client, options)
+
+  def list_schedule_private_links(client, options \\ []), do: Operations0005.list_schedule_private_links(client, options)
+
+  def issue_schedule_private_link(client, options \\ []), do: Operations0005.issue_schedule_private_link(client, options)
+
+  def revoke_schedule_private_link(client, options \\ []), do: Operations0005.revoke_schedule_private_link(client, options)
+
+  def get_schedule_host(client, options \\ []), do: Operations0005.get_schedule_host(client, options)
+
+  def get_schedule_host_booking_limits(client, options \\ []), do: Operations0005.get_schedule_host_booking_limits(client, options)
+
+  def update_schedule_host_booking_limits(client, options \\ []), do: Operations0005.update_schedule_host_booking_limits(client, options)
+
+  def get_schedule_host_insights(client, options \\ []), do: Operations0005.get_schedule_host_insights(client, options)
+
+  def export_schedule_host_insights_csv(client, options \\ []), do: Operations0005.export_schedule_host_insights_csv(client, options)
+
+  def list_schedule_notification_history(client, options \\ []), do: Operations0005.list_schedule_notification_history(client, options)
+
+  def list_schedule_notification_senders(client, options \\ []), do: Operations0005.list_schedule_notification_senders(client, options)
+
+  def get_schedule_notification_settings(client, options \\ []), do: Operations0005.get_schedule_notification_settings(client, options)
+
+  def save_schedule_notification_settings(client, options \\ []), do: Operations0005.save_schedule_notification_settings(client, options)
+
+  def list_schedule_schedules(client, options \\ []), do: Operations0005.list_schedule_schedules(client, options)
+
+  def create_schedule_availability(client, options \\ []), do: Operations0005.create_schedule_availability(client, options)
+
+  def delete_schedule_availability(client, options \\ []), do: Operations0005.delete_schedule_availability(client, options)
+
+  def get_schedule_availability(client, options \\ []), do: Operations0005.get_schedule_availability(client, options)
+
+  def replace_schedule_availability(client, options \\ []), do: Operations0005.replace_schedule_availability(client, options)
+
+  def list_schedule_slots(client, options \\ []), do: Operations0005.list_schedule_slots(client, options)
+
+  def diagnose_schedule_slot(client, options \\ []), do: Operations0005.diagnose_schedule_slot(client, options)
+
+  def list_schedule_webhooks(client, options \\ []), do: Operations0005.list_schedule_webhooks(client, options)
+
+  def create_schedule_webhook(client, options \\ []), do: Operations0005.create_schedule_webhook(client, options)
+
+  def update_schedule_webhook(client, options \\ []), do: Operations0005.update_schedule_webhook(client, options)
+
+  def list_schedule_webhook_deliveries(client, options \\ []), do: Operations0005.list_schedule_webhook_deliveries(client, options)
+  alias RelevateSdk.API.Operations0006
+
+  def rotate_schedule_webhook_secret(client, options \\ []), do: Operations0006.rotate_schedule_webhook_secret(client, options)
+
+  def list_schedule_workflows(client, options \\ []), do: Operations0006.list_schedule_workflows(client, options)
+
+  def get_schedule_workflow(client, options \\ []), do: Operations0006.get_schedule_workflow(client, options)
+
+  def change_schedule_workflow_state(client, options \\ []), do: Operations0006.change_schedule_workflow_state(client, options)
 end

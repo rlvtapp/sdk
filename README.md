@@ -4,12 +4,43 @@ Official [Relevate](https://relevate.app) SDKs: one package per language
 containing both CRM and Email, generated with
 [Poolster](https://github.com/rlvtapp/poolster) from the shared Rust API contract.
 
-The TypeScript SDK is published to npm as `@relevate/sdk@0.1.0`. The other
-ecosystem packages remain development outputs at version 0.1.0.
+The TypeScript SDK is published to npm as `@relevate/sdk@0.2.0`. The other
+ecosystem packages remain development outputs at version 0.2.0.
 
 ```sh
 npm install @relevate/sdk
 ```
+
+## Published templates
+
+SDK 0.2.0 includes the live template API. Create and publish a template in the
+platform, then send it by ID or alias with nested variables:
+
+```ts
+await sdk.sends.sendEmail({
+  headers: { 'Idempotency-Key': 'order-A-1' },
+  body: {
+    to: 'customer@example.com',
+    template: {
+      id: 'order-shipped', // Published template ID or alias from the platform.
+      // version: 1,       // Optional: pin a published revision.
+      variables: { order: { number: 'A-1', total: 42 } },
+    },
+  },
+})
+```
+
+The platform template can use `{{order.number}}` and `{{order.total}}`. The
+backend validates declared variables and uses template defaults. Pass `from`
+when the template has no sender. Omit inline `subject`, `html` and `text` for a
+template send. Relevate currently takes the template's subject rather than
+supporting Resend's subject override behavior.
+
+This refresh follows the current unversioned API paths (for example,
+`/email/emails`) and descriptive operation IDs (`sends.sendEmail`, replacing
+`sends.create`). Set `Relevate-Version` in client headers to pin an API date.
+The shared contract also exposes template listing, creation, updating, rendering,
+publishing, duplication and deletion, plus the current Schedule API.
 
 ## Generate
 
@@ -24,7 +55,7 @@ npm run check:typescript
 ```
 
 `poolster.json` generates all nine languages from `specs/openapi.json`, with no
-product filters. Every SDK contains all 66 CRM and Email operations. Poolster
+product filters. Every SDK contains all 154 CRM, Email and Schedule operations. Poolster
 0.5.0-alpha.4 is pinned in the root lockfile; TypeScript 5.9.3 is pinned in the repository development dependencies.
 
 ## Packages
@@ -58,7 +89,7 @@ operation being called.
 To refresh the snapshot, download the public API contract and import it:
 
 ```sh
-curl --fail --silent --show-error "$RELEVATE_API_URL/v1/openapi.json" \
+curl --fail --silent --show-error "$RELEVATE_API_URL/openapi.json" \
   --output /tmp/relevate-openapi.json
 npm run spec:import -- /tmp/relevate-openapi.json
 npm run generate

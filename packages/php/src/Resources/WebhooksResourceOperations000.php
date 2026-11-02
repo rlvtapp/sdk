@@ -9,6 +9,7 @@ use Relevate\Sdk\Models\CreateWebhookResponse;
 use Relevate\Sdk\Models\ErrorResponse;
 use Relevate\Sdk\Models\HookCreate;
 use Relevate\Sdk\Models\HookUpdate;
+use Relevate\Sdk\Models\ReplayRange;
 use Relevate\Sdk\Models\WebhookDeliveryListResponse;
 use Relevate\Sdk\Models\WebhookListResponse;
 use Relevate\Sdk\Models\WebhookResponse;
@@ -18,29 +19,44 @@ use Relevate\Sdk\Models\WebhookResponse;
 /** Bounded resource facade slice; composed into WebhooksResource. */
 trait WebhooksResourceOperations000
 {
-    public function listOperation(): WebhookListResponse
+    public function listEmail(): WebhookListResponse
     {
-        return $this->client->listWebhooks();
+        return $this->client->listEmailWebhooks();
     }
 
-    public function create(HookCreate $body): CreateWebhookResponse
+    public function createEmail(HookCreate $body): CreateWebhookResponse
     {
-        return $this->client->createWebhook($body);
+        return $this->client->createEmailWebhook($body);
     }
 
-    public function delete(string $webhookId): void
+    public function deleteEmail(string $webhookId): void
     {
-        $this->client->deleteWebhook($webhookId);
+        $this->client->deleteEmailWebhook($webhookId);
     }
 
-    public function update(string $webhookId, HookUpdate $body): WebhookResponse
+    public function updateEmail(string $webhookId, HookUpdate $body): WebhookResponse
     {
-        return $this->client->updateWebhook($webhookId, $body);
+        return $this->client->updateEmailWebhook($webhookId, $body);
     }
 
-    public function listDeliveries(string $webhookId, ?int $limit = null): WebhookDeliveryListResponse
+    public function listEmailWebhookDeliveries(string $webhookId, ?int $limit = null): WebhookDeliveryListResponse
     {
-        return $this->client->listDeliveries($webhookId, $limit);
+        return $this->client->listEmailWebhookDeliveries($webhookId, $limit);
+    }
+
+    public function replayEmailWebhookDelivery(string $webhookId, string $deliveryId): void
+    {
+        $this->client->replayEmailWebhookDelivery($webhookId, $deliveryId);
+    }
+
+    public function replayEmailWebhookRange(string $webhookId, ReplayRange $body): void
+    {
+        $this->client->replayEmailWebhookRange($webhookId, $body);
+    }
+
+    public function rotateEmailWebhookSecret(string $webhookId): void
+    {
+        $this->client->rotateEmailWebhookSecret($webhookId);
     }
 
 }

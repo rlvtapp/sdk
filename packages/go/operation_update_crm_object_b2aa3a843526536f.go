@@ -147,12 +147,12 @@ func decodeUpdateCrmObjectError(requestError error) error {
 	}
 }
 
-// UpdateCrmObject invokes PATCH /v1/crm/objects/{object}.
+// UpdateCrmObject invokes PATCH /crm/objects/{object}.
 func (client *Client) UpdateCrmObject(ctx context.Context, input *UpdateCrmObjectRequest) (*CrmMetadataObjectResponse, error) {
 	if input == nil {
 		input = &UpdateCrmObjectRequest{}
 	}
-	path := "/v1/crm/objects/{object}"
+	path := "/crm/objects/{object}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{object}", url.PathEscape(fmt.Sprint(input.Object)))

@@ -147,12 +147,12 @@ func decodeUpdateCrmRecordError(requestError error) error {
 	}
 }
 
-// UpdateCrmRecord invokes PATCH /v1/crm/records/{record_id}.
+// UpdateCrmRecord invokes PATCH /crm/records/{record_id}.
 func (client *Client) UpdateCrmRecord(ctx context.Context, input *UpdateCrmRecordRequest) (*CrmRecordResponse, error) {
 	if input == nil {
 		input = &UpdateCrmRecordRequest{}
 	}
-	path := "/v1/crm/records/{record_id}"
+	path := "/crm/records/{record_id}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{record_id}", url.PathEscape(fmt.Sprint(input.RecordID)))

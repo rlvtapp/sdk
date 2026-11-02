@@ -13,11 +13,15 @@ final class InboundMessage implements JsonSerializable
     private ?array $poolsterPresentFields = null;
 
     public function __construct(
+        public readonly array $attachments,
         public readonly mixed $authentication,
+        public readonly bool $bodyWithheld,
         public readonly string $createdAt,
         public readonly string $deliveryId,
         public readonly string $disposition,
         public readonly string $envelopeTo,
+        public readonly array $headerCc,
+        public readonly array $headerReplyTo,
         public readonly array $headerTo,
         public readonly string $id,
         public readonly string $malwareVerdict,
@@ -42,13 +46,17 @@ final class InboundMessage implements JsonSerializable
     public static function fromArray(array $data): self
     {
         $instance = new self(
+            attachments: array_map(static fn (mixed $item): mixed => AttachmentSummary::fromArray($item), $data['attachments']),
             authentication: $data['authentication'],
+            bodyWithheld: (bool) $data['body_withheld'],
             createdAt: (string) $data['created_at'],
             deliveryId: (string) $data['delivery_id'],
             disposition: (string) $data['disposition'],
             envelopeFrom: array_key_exists('envelope_from', $data) && $data['envelope_from'] !== null ? ($data['envelope_from'] === null ? null : (string) $data['envelope_from']) : null,
             envelopeTo: (string) $data['envelope_to'],
+            headerCc: array_map(static fn (mixed $item): mixed => (string) $item, $data['header_cc']),
             headerFrom: array_key_exists('header_from', $data) && $data['header_from'] !== null ? ($data['header_from'] === null ? null : (string) $data['header_from']) : null,
+            headerReplyTo: array_map(static fn (mixed $item): mixed => (string) $item, $data['header_reply_to']),
             headerTo: array_map(static fn (mixed $item): mixed => (string) $item, $data['header_to']),
             htmlBody: array_key_exists('html_body', $data) && $data['html_body'] !== null ? ($data['html_body'] === null ? null : (string) $data['html_body']) : null,
             id: (string) $data['id'],
@@ -63,7 +71,7 @@ final class InboundMessage implements JsonSerializable
             spamVerdict: (string) $data['spam_verdict'],
             subject: (string) $data['subject'],
             textBody: array_key_exists('text_body', $data) && $data['text_body'] !== null ? ($data['text_body'] === null ? null : (string) $data['text_body']) : null,
-            additionalProperties: array_diff_key($data, array_fill_keys(['authentication', 'created_at', 'delivery_id', 'disposition', 'envelope_from', 'envelope_to', 'header_from', 'header_to', 'html_body', 'id', 'in_reply_to', 'malware_verdict', 'message_id', 'received_at', 'references', 'release_reason', 'released_at', 'route_id', 'spam_verdict', 'subject', 'text_body'], true)),
+            additionalProperties: array_diff_key($data, array_fill_keys(['attachments', 'authentication', 'body_withheld', 'created_at', 'delivery_id', 'disposition', 'envelope_from', 'envelope_to', 'header_cc', 'header_from', 'header_reply_to', 'header_to', 'html_body', 'id', 'in_reply_to', 'malware_verdict', 'message_id', 'received_at', 'references', 'release_reason', 'released_at', 'route_id', 'spam_verdict', 'subject', 'text_body'], true)),
         );
         $instance->poolsterPresentFields = array_keys($data);
         return $instance;
@@ -73,7 +81,7 @@ final class InboundMessage implements JsonSerializable
     public function withPresentFields(array $fields): self
     {
         foreach ($fields as $field) {
-            if (!is_string($field) || !in_array($field, ['authentication', 'created_at', 'delivery_id', 'disposition', 'envelope_from', 'envelope_to', 'header_from', 'header_to', 'html_body', 'id', 'in_reply_to', 'malware_verdict', 'message_id', 'received_at', 'references', 'release_reason', 'released_at', 'route_id', 'spam_verdict', 'subject', 'text_body'], true)) throw new \InvalidArgumentException('unknown model wire field');
+            if (!is_string($field) || !in_array($field, ['attachments', 'authentication', 'body_withheld', 'created_at', 'delivery_id', 'disposition', 'envelope_from', 'envelope_to', 'header_cc', 'header_from', 'header_reply_to', 'header_to', 'html_body', 'id', 'in_reply_to', 'malware_verdict', 'message_id', 'received_at', 'references', 'release_reason', 'released_at', 'route_id', 'spam_verdict', 'subject', 'text_body'], true)) throw new \InvalidArgumentException('unknown model wire field');
         }
         $copy = clone $this;
         $copy->poolsterPresentFields = array_values(array_unique(array_merge($this->poolsterPresentFields ?? [], $fields)));
@@ -83,14 +91,18 @@ final class InboundMessage implements JsonSerializable
     public function jsonSerialize(): object
     {
         $value = [];
-        $value = array_diff_key($this->additionalProperties, array_fill_keys(['authentication', 'created_at', 'delivery_id', 'disposition', 'envelope_from', 'envelope_to', 'header_from', 'header_to', 'html_body', 'id', 'in_reply_to', 'malware_verdict', 'message_id', 'received_at', 'references', 'release_reason', 'released_at', 'route_id', 'spam_verdict', 'subject', 'text_body'], true));
+        $value = array_diff_key($this->additionalProperties, array_fill_keys(['attachments', 'authentication', 'body_withheld', 'created_at', 'delivery_id', 'disposition', 'envelope_from', 'envelope_to', 'header_cc', 'header_from', 'header_reply_to', 'header_to', 'html_body', 'id', 'in_reply_to', 'malware_verdict', 'message_id', 'received_at', 'references', 'release_reason', 'released_at', 'route_id', 'spam_verdict', 'subject', 'text_body'], true));
+        $value['attachments'] = $this->attachments;
         $value['authentication'] = $this->authentication;
+        $value['body_withheld'] = $this->bodyWithheld;
         $value['created_at'] = $this->createdAt;
         $value['delivery_id'] = $this->deliveryId;
         $value['disposition'] = $this->disposition;
         if ($this->envelopeFrom !== null || in_array('envelope_from', $this->poolsterPresentFields ?? [], true)) { $value['envelope_from'] = $this->envelopeFrom; }
         $value['envelope_to'] = $this->envelopeTo;
+        $value['header_cc'] = $this->headerCc;
         if ($this->headerFrom !== null || in_array('header_from', $this->poolsterPresentFields ?? [], true)) { $value['header_from'] = $this->headerFrom; }
+        $value['header_reply_to'] = $this->headerReplyTo;
         $value['header_to'] = $this->headerTo;
         if ($this->htmlBody !== null || in_array('html_body', $this->poolsterPresentFields ?? [], true)) { $value['html_body'] = $this->htmlBody; }
         $value['id'] = $this->id;

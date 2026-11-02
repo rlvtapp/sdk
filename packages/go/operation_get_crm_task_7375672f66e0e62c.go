@@ -146,12 +146,12 @@ func decodeGetCrmTaskError(requestError error) error {
 	}
 }
 
-// GetCrmTask invokes GET /v1/crm/tasks/{task_id}.
+// GetCrmTask invokes GET /crm/tasks/{task_id}.
 func (client *Client) GetCrmTask(ctx context.Context, input *GetCrmTaskRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &GetCrmTaskRequest{}
 	}
-	path := "/v1/crm/tasks/{task_id}"
+	path := "/crm/tasks/{task_id}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{task_id}", url.PathEscape(fmt.Sprint(input.TaskID)))

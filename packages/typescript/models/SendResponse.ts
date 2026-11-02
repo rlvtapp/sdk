@@ -5,14 +5,19 @@
  */
 
 import type { RecipientResponse } from './RecipientResponse.js'
+import type { SendTag } from './SendTag.js'
 
 export type SendResponse = {
   accepted_at: string
   api_version: string
+  id: string
   reason_code: string
   recipients: RecipientResponse[]
   replayed?: boolean | null
-  send_id: string
+  scheduled_at?: string | null
   state: string
+  tags: SendTag[]
+  thread_id?: string | null
+  topic_id?: string | null
   [key: string]: unknown
 }

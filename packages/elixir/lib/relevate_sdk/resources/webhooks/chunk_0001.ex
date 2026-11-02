@@ -5,18 +5,27 @@ defmodule RelevateSdk.Resources.Webhooks.Chunk0000 do
 
   alias RelevateSdk.{API, Client}
 
-  @spec list_webhooks(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def list_webhooks(client, options \\ []), do: API.list_webhooks(client, options)
+  @spec list_email_webhooks(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def list_email_webhooks(client, options \\ []), do: API.list_email_webhooks(client, options)
 
-  @spec create_webhook(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def create_webhook(client, options \\ []), do: API.create_webhook(client, options)
+  @spec create_email_webhook(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def create_email_webhook(client, options \\ []), do: API.create_email_webhook(client, options)
 
-  @spec delete_webhook(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def delete_webhook(client, options \\ []), do: API.delete_webhook(client, options)
+  @spec delete_email_webhook(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def delete_email_webhook(client, options \\ []), do: API.delete_email_webhook(client, options)
 
-  @spec update_webhook(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def update_webhook(client, options \\ []), do: API.update_webhook(client, options)
+  @spec update_email_webhook(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def update_email_webhook(client, options \\ []), do: API.update_email_webhook(client, options)
 
-  @spec list_deliveries(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def list_deliveries(client, options \\ []), do: API.list_deliveries(client, options)
+  @spec list_email_webhook_deliveries(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def list_email_webhook_deliveries(client, options \\ []), do: API.list_email_webhook_deliveries(client, options)
+
+  @spec replay_email_webhook_delivery(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def replay_email_webhook_delivery(client, options \\ []), do: API.replay_email_webhook_delivery(client, options)
+
+  @spec replay_email_webhook_range(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def replay_email_webhook_range(client, options \\ []), do: API.replay_email_webhook_range(client, options)
+
+  @spec rotate_email_webhook_secret(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def rotate_email_webhook_secret(client, options \\ []), do: API.rotate_email_webhook_secret(client, options)
 end

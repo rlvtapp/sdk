@@ -147,12 +147,12 @@ func decodeDeleteCrmListAttributeError(requestError error) error {
 	}
 }
 
-// DeleteCrmListAttribute invokes DELETE /v1/crm/lists/{list}/attributes/{attribute}.
+// DeleteCrmListAttribute invokes DELETE /crm/lists/{list}/attributes/{attribute}.
 func (client *Client) DeleteCrmListAttribute(ctx context.Context, input *DeleteCrmListAttributeRequest) (*CrmMetadataDeleted, error) {
 	if input == nil {
 		input = &DeleteCrmListAttributeRequest{}
 	}
-	path := "/v1/crm/lists/{list}/attributes/{attribute}"
+	path := "/crm/lists/{list}/attributes/{attribute}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{list}", url.PathEscape(fmt.Sprint(input.List)))

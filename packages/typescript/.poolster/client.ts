@@ -1,5 +1,7 @@
 export interface SecurityCredentials {
   "bearerAuth"?: string
+  "bookingCapability"?: string
+  "managementCapability"?: string
   "xApiKey"?: string
 }
 export type SecurityDescriptor = { id: string; type: 'apiKey' | 'http' | 'oauth2'; name?: string; in?: 'header' | 'query' | 'cookie'; scheme?: string; scopes?: string[] }

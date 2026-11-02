@@ -6,7 +6,10 @@
 
 export type RecipientResponse = {
   address: string
+  copy?: string | null
   eligible_for_processing?: boolean | null
+  provider?: string | null
+  provider_message_id?: string | null
   reason_code: string
   recipient_send_id: string
   state: string

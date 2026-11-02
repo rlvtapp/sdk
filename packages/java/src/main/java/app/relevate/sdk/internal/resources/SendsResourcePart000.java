@@ -20,24 +20,44 @@ public class SendsResourcePart000 {
 
     protected SendsResourcePart000(Client client) { this.client = client; }
 
-    public SendResponse create(Client.CreateRequest input) {
+    public SendResponse sendEmail(Client.SendEmailRequest input) {
   
-        return client.create(input);
+        return client.sendEmail(input);
     }
 
-    public void query(Client.QueryRequest input) {
+    public BatchSendResponse sendEmailBatch(Client.SendEmailBatchRequest input) {
   
-        client.query(input);
+        return client.sendEmailBatch(input);
     }
 
-    public SendResponse cancel(Client.CancelRequest input) {
+    public void queryEmails(Client.QueryEmailsRequest input) {
   
-        return client.cancel(input);
+        client.queryEmails(input);
     }
 
-    public SendResponse get(Client.GetRequest input) {
+    public SendResponse cancelEmail(Client.CancelEmailRequest input) {
   
-        return client.get(input);
+        return client.cancelEmail(input);
+    }
+
+    public SendResponse getEmail(Client.GetEmailRequest input) {
+  
+        return client.getEmail(input);
+    }
+
+    public SendResponse rescheduleEmail(Client.RescheduleEmailRequest input) {
+  
+        return client.rescheduleEmail(input);
+    }
+
+    public SendEventsResponse listEmailEvents(Client.ListEmailEventsRequest input) {
+  
+        return client.listEmailEvents(input);
+    }
+
+    public SendEventsResponse listEmailRecipientEvents(Client.ListEmailRecipientEventsRequest input) {
+  
+        return client.listEmailRecipientEvents(input);
     }
 
 }

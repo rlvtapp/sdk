@@ -6,7 +6,7 @@ import type { CreateCrmListOptions, CreateCrmListResponses } from '../../models/
 import { client, resolveResponse } from '../../.poolster/client.js'
 
 /**
- * {@link /v1/crm/lists}
+ * {@link /crm/lists}
  */
 export function createCrmList<ThrowOnError extends boolean = true>(
   options: Options<CreateCrmListOptions, ThrowOnError>,
@@ -17,7 +17,7 @@ export function createCrmList<ThrowOnError extends boolean = true>(
   return resolveResponse(
     request({
       method: 'POST',
-      url: '/v1/crm/lists',
+      url: '/crm/lists',
       security: [[{ id: 'bearerAuth', type: 'http', scheme: 'bearer' }], [{ id: 'xApiKey', type: 'apiKey', name: 'x-api-key', in: 'header' }]],
       jsonPlan: { lossless: false, refs: poolsterJsonRefs, requests: {"application/json":{"nullable":false,"ref":"CrmCreateList"}}, responses: {"201":{"application/json":{"nullable":false,"ref":"CrmListResponse"}},"400":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"401":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"403":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"404":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"409":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"413":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"415":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"503":{"application/json":{"nullable":false,"ref":"CrmApiError"}}} },
       ...config,

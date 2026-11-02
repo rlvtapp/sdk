@@ -380,9 +380,9 @@ pub struct ArchiveCrmRecordRequest {
 }
 
 impl Client {
-    /// Invokes PATCH /v1/crm/notes/{note_id}.
+    /// Invokes PATCH /crm/notes/{note_id}.
     pub async fn update_crm_note(&self, input: crate::client::operations::UpdateCrmNoteRequest, body: &crate::models::CrmNoteWrite) -> Result<serde_json::Value, UpdateCrmNoteError> {
-        let mut path = "/v1/crm/notes/{note_id}".to_owned();
+        let mut path = "/crm/notes/{note_id}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{note_id}", &poolster_path_segment(&poolster_query_value(&input.note_id)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -451,9 +451,9 @@ impl Client {
         }
     }
 
-    /// Invokes GET /v1/crm/objects.
+    /// Invokes GET /crm/objects.
     pub async fn list_crm_objects(&self, input: crate::client::operations::ListCrmObjectsRequest) -> Result<serde_json::Value, ListCrmObjectsError> {
-        let path = "/v1/crm/objects".to_owned();
+        let path = "/crm/objects".to_owned();
         let mut query: Vec<(String, String)> = Vec::new();
         if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
         if let Some(value) = input.after.as_ref() { query.extend(poolster_query_pairs("after", value, "form", true)); }
@@ -523,9 +523,9 @@ impl Client {
         }
     }
 
-    /// Invokes POST /v1/crm/objects.
+    /// Invokes POST /crm/objects.
     pub async fn create_crm_object(&self, body: &crate::models::CrmObjectCreate) -> Result<crate::models::CrmMetadataObjectResponse, CreateCrmObjectError> {
-        let path = "/v1/crm/objects".to_owned();
+        let path = "/crm/objects".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         let request_url = format!("{}{}", self.base_url, path);
         let request_info = RequestInfo { method: reqwest::Method::POST, url: request_url.clone() };
@@ -593,9 +593,9 @@ impl Client {
         }
     }
 
-    /// Invokes DELETE /v1/crm/objects/{object}.
+    /// Invokes DELETE /crm/objects/{object}.
     pub async fn delete_crm_object(&self, input: crate::client::operations::DeleteCrmObjectRequest, body: &crate::models::CrmObjectDelete) -> Result<crate::models::CrmMetadataDeleted, DeleteCrmObjectError> {
-        let mut path = "/v1/crm/objects/{object}".to_owned();
+        let mut path = "/crm/objects/{object}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -664,9 +664,9 @@ impl Client {
         }
     }
 
-    /// Invokes GET /v1/crm/objects/{object}.
+    /// Invokes GET /crm/objects/{object}.
     pub async fn get_crm_object(&self, input: crate::client::operations::GetCrmObjectRequest) -> Result<serde_json::Value, GetCrmObjectError> {
-        let mut path = "/v1/crm/objects/{object}".to_owned();
+        let mut path = "/crm/objects/{object}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -734,9 +734,9 @@ impl Client {
         }
     }
 
-    /// Invokes PATCH /v1/crm/objects/{object}.
+    /// Invokes PATCH /crm/objects/{object}.
     pub async fn update_crm_object(&self, input: crate::client::operations::UpdateCrmObjectRequest, body: &crate::models::CrmObjectPatch) -> Result<crate::models::CrmMetadataObjectResponse, UpdateCrmObjectError> {
-        let mut path = "/v1/crm/objects/{object}".to_owned();
+        let mut path = "/crm/objects/{object}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -805,9 +805,9 @@ impl Client {
         }
     }
 
-    /// Invokes GET /v1/crm/objects/{object}/attributes.
+    /// Invokes GET /crm/objects/{object}/attributes.
     pub async fn list_crm_object_attributes(&self, input: crate::client::operations::ListCrmObjectAttributesRequest) -> Result<crate::models::CrmMetadataAttributesResponse, ListCrmObjectAttributesError> {
-        let mut path = "/v1/crm/objects/{object}/attributes".to_owned();
+        let mut path = "/crm/objects/{object}/attributes".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -875,9 +875,9 @@ impl Client {
         }
     }
 
-    /// Invokes POST /v1/crm/objects/{object}/attributes.
+    /// Invokes POST /crm/objects/{object}/attributes.
     pub async fn create_crm_object_attribute(&self, input: crate::client::operations::CreateCrmObjectAttributeRequest, body: &crate::models::CrmAttributeCreate) -> Result<crate::models::CrmMetadataAttributeResponse, CreateCrmObjectAttributeError> {
-        let mut path = "/v1/crm/objects/{object}/attributes".to_owned();
+        let mut path = "/crm/objects/{object}/attributes".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -946,9 +946,9 @@ impl Client {
         }
     }
 
-    /// Invokes DELETE /v1/crm/objects/{object}/attributes/{attribute}.
+    /// Invokes DELETE /crm/objects/{object}/attributes/{attribute}.
     pub async fn delete_crm_object_attribute(&self, input: crate::client::operations::DeleteCrmObjectAttributeRequest) -> Result<crate::models::CrmMetadataDeleted, DeleteCrmObjectAttributeError> {
-        let mut path = "/v1/crm/objects/{object}/attributes/{attribute}".to_owned();
+        let mut path = "/crm/objects/{object}/attributes/{attribute}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         path = path.replace("{attribute}", &poolster_path_segment(&poolster_query_value(&input.attribute)));
@@ -1017,9 +1017,9 @@ impl Client {
         }
     }
 
-    /// Invokes PATCH /v1/crm/objects/{object}/attributes/{attribute}.
+    /// Invokes PATCH /crm/objects/{object}/attributes/{attribute}.
     pub async fn update_crm_object_attribute(&self, input: crate::client::operations::UpdateCrmObjectAttributeRequest, body: &crate::models::CrmAttributePatch) -> Result<crate::models::CrmMetadataAttributeResponse, UpdateCrmObjectAttributeError> {
-        let mut path = "/v1/crm/objects/{object}/attributes/{attribute}".to_owned();
+        let mut path = "/crm/objects/{object}/attributes/{attribute}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         path = path.replace("{attribute}", &poolster_path_segment(&poolster_query_value(&input.attribute)));
@@ -1089,9 +1089,9 @@ impl Client {
         }
     }
 
-    /// Invokes GET /v1/crm/objects/{object}/deletion-preview.
+    /// Invokes GET /crm/objects/{object}/deletion-preview.
     pub async fn preview_crm_object_deletion(&self, input: crate::client::operations::PreviewCrmObjectDeletionRequest) -> Result<crate::models::CrmObjectDeletionPreview, PreviewCrmObjectDeletionError> {
-        let mut path = "/v1/crm/objects/{object}/deletion-preview".to_owned();
+        let mut path = "/crm/objects/{object}/deletion-preview".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -1159,9 +1159,9 @@ impl Client {
         }
     }
 
-    /// Invokes GET /v1/crm/objects/{object}/quality.
+    /// Invokes GET /crm/objects/{object}/quality.
     pub async fn get_crm_object_quality(&self, input: crate::client::operations::GetCrmObjectQualityRequest) -> Result<crate::models::CrmQualityResponse, GetCrmObjectQualityError> {
-        let mut path = "/v1/crm/objects/{object}/quality".to_owned();
+        let mut path = "/crm/objects/{object}/quality".to_owned();
         let mut query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
@@ -1232,9 +1232,9 @@ impl Client {
         }
     }
 
-    /// Invokes GET /v1/crm/objects/{object}/records.
+    /// Invokes GET /crm/objects/{object}/records.
     pub async fn list_crm_records(&self, input: crate::client::operations::ListCrmRecordsRequest) -> Result<serde_json::Value, ListCrmRecordsError> {
-        let mut path = "/v1/crm/objects/{object}/records".to_owned();
+        let mut path = "/crm/objects/{object}/records".to_owned();
         let mut query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
@@ -1306,9 +1306,9 @@ impl Client {
         }
     }
 
-    /// Invokes POST /v1/crm/objects/{object}/records.
+    /// Invokes POST /crm/objects/{object}/records.
     pub async fn create_crm_record(&self, input: crate::client::operations::CreateCrmRecordRequest, body: &crate::models::CrmRecordCreate) -> Result<crate::models::CrmRecordResponse, CreateCrmRecordError> {
-        let mut path = "/v1/crm/objects/{object}/records".to_owned();
+        let mut path = "/crm/objects/{object}/records".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -1377,9 +1377,9 @@ impl Client {
         }
     }
 
-    /// Invokes POST /v1/crm/objects/{object}/records/upsert.
+    /// Invokes POST /crm/objects/{object}/records/upsert.
     pub async fn upsert_crm_record(&self, input: crate::client::operations::UpsertCrmRecordRequest, body: &crate::models::CrmUpsert) -> Result<crate::models::CrmRecordResponse, UpsertCrmRecordError> {
-        let mut path = "/v1/crm/objects/{object}/records/upsert".to_owned();
+        let mut path = "/crm/objects/{object}/records/upsert".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{object}", &poolster_path_segment(&poolster_query_value(&input.object)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -1448,9 +1448,9 @@ impl Client {
         }
     }
 
-    /// Invokes DELETE /v1/crm/records/{record_id}.
+    /// Invokes DELETE /crm/records/{record_id}.
     pub async fn archive_crm_record(&self, input: crate::client::operations::ArchiveCrmRecordRequest) -> Result<crate::models::CrmRecordResponse, ArchiveCrmRecordError> {
-        let mut path = "/v1/crm/records/{record_id}".to_owned();
+        let mut path = "/crm/records/{record_id}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{record_id}", &poolster_path_segment(&poolster_query_value(&input.record_id)));
         let request_url = format!("{}{}", self.base_url, path);

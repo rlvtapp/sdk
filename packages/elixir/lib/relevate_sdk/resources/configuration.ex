@@ -5,9 +5,12 @@ defmodule RelevateSdk.Resources.Configuration do
 
 
   alias RelevateSdk.Resources.Configuration.Chunk0000
-  def auth_check(client, options \\ []), do: Chunk0000.auth_check(client, options)
-  def list_domains(client, options \\ []), do: Chunk0000.list_domains(client, options)
-  def get_domain(client, options \\ []), do: Chunk0000.get_domain(client, options)
-  def list_sender_identities(client, options \\ []), do: Chunk0000.list_sender_identities(client, options)
-  def get_sender_identity(client, options \\ []), do: Chunk0000.get_sender_identity(client, options)
+  def check_email_auth(client, options \\ []), do: Chunk0000.check_email_auth(client, options)
+  def list_email_domains(client, options \\ []), do: Chunk0000.list_email_domains(client, options)
+  def create_email_domain(client, options \\ []), do: Chunk0000.create_email_domain(client, options)
+  def delete_email_domain(client, options \\ []), do: Chunk0000.delete_email_domain(client, options)
+  def get_email_domain(client, options \\ []), do: Chunk0000.get_email_domain(client, options)
+  def verify_email_domain(client, options \\ []), do: Chunk0000.verify_email_domain(client, options)
+  def list_email_sender_identities(client, options \\ []), do: Chunk0000.list_email_sender_identities(client, options)
+  def get_email_sender_identity(client, options \\ []), do: Chunk0000.get_email_sender_identity(client, options)
 end

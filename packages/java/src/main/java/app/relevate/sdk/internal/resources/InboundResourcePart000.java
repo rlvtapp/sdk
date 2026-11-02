@@ -20,14 +20,14 @@ public class InboundResourcePart000 {
 
     protected InboundResourcePart000(Client client) { this.client = client; }
 
-    public InboundListResponse list(Client.ListInboundRequest input) {
+    public InboundListResponse listEmail(Client.ListEmailInboundRequest input) {
   
-        return client.listInbound(input);
+        return client.listEmailInbound(input);
     }
 
-    public InboundResponse get(Client.GetInboundRequest input) {
+    public InboundResponse getEmail(Client.GetEmailInboundRequest input) {
   
-        return client.getInbound(input);
+        return client.getEmailInbound(input);
     }
 
 }

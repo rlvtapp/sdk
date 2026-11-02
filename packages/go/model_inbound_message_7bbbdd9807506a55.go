@@ -7,13 +7,17 @@ import (
 )
 
 type InboundMessage struct {
+	Attachments []AttachmentSummary `json:"attachments"`
 	Authentication any `json:"authentication"`
+	BodyWithheld bool `json:"body_withheld"`
 	CreatedAt string `json:"created_at"`
 	DeliveryID string `json:"delivery_id"`
 	Disposition string `json:"disposition"`
 	EnvelopeFrom *string `json:"envelope_from,omitempty"`
 	EnvelopeTo string `json:"envelope_to"`
+	HeaderCc []string `json:"header_cc"`
 	HeaderFrom *string `json:"header_from,omitempty"`
+	HeaderReplyTo []string `json:"header_reply_to"`
 	HeaderTo []string `json:"header_to"`
 	HtmlBody *string `json:"html_body,omitempty"`
 	ID string `json:"id"`
@@ -44,13 +48,17 @@ if raw,ok:=fields["release_reason"];ok && string(raw)=="null" {model.poolsterNul
 if raw,ok:=fields["released_at"];ok && string(raw)=="null" {model.poolsterNullFields["released_at"]=true}
 if raw,ok:=fields["text_body"];ok && string(raw)=="null" {model.poolsterNullFields["text_body"]=true}
 model.AdditionalProperties=map[string]json.RawMessage{}
+delete(fields,"attachments")
 delete(fields,"authentication")
+delete(fields,"body_withheld")
 delete(fields,"created_at")
 delete(fields,"delivery_id")
 delete(fields,"disposition")
 delete(fields,"envelope_from")
 delete(fields,"envelope_to")
+delete(fields,"header_cc")
 delete(fields,"header_from")
+delete(fields,"header_reply_to")
 delete(fields,"header_to")
 delete(fields,"html_body")
 delete(fields,"id")

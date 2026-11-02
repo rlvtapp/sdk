@@ -4,17 +4,21 @@ defmodule RelevateSdk.Models.InboundMessage do
   @moduledoc "Generated model for InboundMessage."
   alias RelevateSdk.JSON
 
-  @enforce_keys [:authentication, :created_at, :delivery_id, :disposition, :envelope_to, :header_to, :id, :malware_verdict, :received_at, :references, :route_id, :spam_verdict, :subject]
-  defstruct [:authentication, :created_at, :delivery_id, :disposition, :envelope_from, :envelope_to, :header_from, :header_to, :html_body, :id, :in_reply_to, :malware_verdict, :message_id, :received_at, :references, :release_reason, :released_at, :route_id, :spam_verdict, :subject, :text_body, poolster_present_fields: nil, additional_properties: %{}]
+  @enforce_keys [:attachments, :authentication, :body_withheld, :created_at, :delivery_id, :disposition, :envelope_to, :header_cc, :header_reply_to, :header_to, :id, :malware_verdict, :received_at, :references, :route_id, :spam_verdict, :subject]
+  defstruct [:attachments, :authentication, :body_withheld, :created_at, :delivery_id, :disposition, :envelope_from, :envelope_to, :header_cc, :header_from, :header_reply_to, :header_to, :html_body, :id, :in_reply_to, :malware_verdict, :message_id, :received_at, :references, :release_reason, :released_at, :route_id, :spam_verdict, :subject, :text_body, poolster_present_fields: nil, additional_properties: %{}]
 
   @type t :: %__MODULE__{
+    attachments: [RelevateSdk.Models.AttachmentSummary.t()],
     authentication: term(),
+    body_withheld: boolean(),
     created_at: String.t(),
     delivery_id: String.t(),
     disposition: String.t(),
     envelope_from: String.t() | nil | nil,
     envelope_to: String.t(),
+    header_cc: [String.t()],
     header_from: String.t() | nil | nil,
+    header_reply_to: [String.t()],
     header_to: [String.t()],
     html_body: String.t() | nil | nil,
     id: String.t(),
@@ -36,13 +40,17 @@ defmodule RelevateSdk.Models.InboundMessage do
   @spec to_map(t()) :: map()
   def to_map(model) do
     [
+      {"attachments", model.attachments},
       {"authentication", model.authentication},
+      {"body_withheld", model.body_withheld},
       {"created_at", model.created_at},
       {"delivery_id", model.delivery_id},
       {"disposition", model.disposition},
       {"envelope_from", model.envelope_from},
       {"envelope_to", model.envelope_to},
+      {"header_cc", model.header_cc},
       {"header_from", model.header_from},
+      {"header_reply_to", model.header_reply_to},
       {"header_to", model.header_to},
       {"html_body", model.html_body},
       {"id", model.id},
@@ -58,29 +66,33 @@ defmodule RelevateSdk.Models.InboundMessage do
       {"subject", model.subject},
       {"text_body", model.text_body},
     ]
-    |> Enum.reject(fn {key, value} -> is_nil(value) and key not in ["authentication", "created_at", "delivery_id", "disposition", "envelope_to", "header_to", "id", "malware_verdict", "received_at", "references", "route_id", "spam_verdict", "subject"] and key not in (model.poolster_present_fields || []) end)
+    |> Enum.reject(fn {key, value} -> is_nil(value) and key not in ["attachments", "authentication", "body_withheld", "created_at", "delivery_id", "disposition", "envelope_to", "header_cc", "header_reply_to", "header_to", "id", "malware_verdict", "received_at", "references", "route_id", "spam_verdict", "subject"] and key not in (model.poolster_present_fields || []) end)
     |> Map.new(fn {key, value} -> {key, JSON.to_wire(value)} end)
-    |> then(fn known -> Map.merge(Map.drop(JSON.to_wire(model.additional_properties), ["authentication", "created_at", "delivery_id", "disposition", "envelope_from", "envelope_to", "header_from", "header_to", "html_body", "id", "in_reply_to", "malware_verdict", "message_id", "received_at", "references", "release_reason", "released_at", "route_id", "spam_verdict", "subject", "text_body"]), known) end)
+    |> then(fn known -> Map.merge(Map.drop(JSON.to_wire(model.additional_properties), ["attachments", "authentication", "body_withheld", "created_at", "delivery_id", "disposition", "envelope_from", "envelope_to", "header_cc", "header_from", "header_reply_to", "header_to", "html_body", "id", "in_reply_to", "malware_verdict", "message_id", "received_at", "references", "release_reason", "released_at", "route_id", "spam_verdict", "subject", "text_body"]), known) end)
   end
 
   @doc "Return a copy with explicit nulls present at the given wire keys."
   @spec with_present_fields(t(), [String.t() | atom()]) :: t()
   def with_present_fields(model, fields) when is_list(fields) do
     keys = Enum.map(fields, &to_string/1)
-    if Enum.any?(keys, &(&1 not in ["authentication", "created_at", "delivery_id", "disposition", "envelope_from", "envelope_to", "header_from", "header_to", "html_body", "id", "in_reply_to", "malware_verdict", "message_id", "received_at", "references", "release_reason", "released_at", "route_id", "spam_verdict", "subject", "text_body"])), do: raise(ArgumentError, "unknown model wire field")
+    if Enum.any?(keys, &(&1 not in ["attachments", "authentication", "body_withheld", "created_at", "delivery_id", "disposition", "envelope_from", "envelope_to", "header_cc", "header_from", "header_reply_to", "header_to", "html_body", "id", "in_reply_to", "malware_verdict", "message_id", "received_at", "references", "release_reason", "released_at", "route_id", "spam_verdict", "subject", "text_body"])), do: raise(ArgumentError, "unknown model wire field")
     %{model | poolster_present_fields: Enum.uniq((model.poolster_present_fields || []) ++ keys)}
   end
 
   @spec from_map(map()) :: t()
   def from_map(map) when is_map(map) do
     %__MODULE__{
+      attachments: case Map.get(map, "attachments") do nil -> nil; items when is_list(items) -> Enum.map(items, fn item -> case item do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.AttachmentSummary.from_map(map); other -> other end end); other -> other end,
       authentication: Map.get(map, "authentication"),
+      body_withheld: Map.get(map, "body_withheld"),
       created_at: Map.get(map, "created_at"),
       delivery_id: Map.get(map, "delivery_id"),
       disposition: Map.get(map, "disposition"),
       envelope_from: Map.get(map, "envelope_from"),
       envelope_to: Map.get(map, "envelope_to"),
+      header_cc: case Map.get(map, "header_cc") do nil -> nil; items when is_list(items) -> Enum.map(items, fn item -> item end); other -> other end,
       header_from: Map.get(map, "header_from"),
+      header_reply_to: case Map.get(map, "header_reply_to") do nil -> nil; items when is_list(items) -> Enum.map(items, fn item -> item end); other -> other end,
       header_to: case Map.get(map, "header_to") do nil -> nil; items when is_list(items) -> Enum.map(items, fn item -> item end); other -> other end,
       html_body: Map.get(map, "html_body"),
       id: Map.get(map, "id"),
@@ -96,7 +108,7 @@ defmodule RelevateSdk.Models.InboundMessage do
       subject: Map.get(map, "subject"),
       text_body: Map.get(map, "text_body"),
       poolster_present_fields: Map.keys(map),
-      additional_properties: Map.drop(map, ["authentication", "created_at", "delivery_id", "disposition", "envelope_from", "envelope_to", "header_from", "header_to", "html_body", "id", "in_reply_to", "malware_verdict", "message_id", "received_at", "references", "release_reason", "released_at", "route_id", "spam_verdict", "subject", "text_body"]),
+      additional_properties: Map.drop(map, ["attachments", "authentication", "body_withheld", "created_at", "delivery_id", "disposition", "envelope_from", "envelope_to", "header_cc", "header_from", "header_reply_to", "header_to", "html_body", "id", "in_reply_to", "malware_verdict", "message_id", "received_at", "references", "release_reason", "released_at", "route_id", "spam_verdict", "subject", "text_body"]),
     }
   end
   def from_map(value), do: value

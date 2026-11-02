@@ -1,1 +1,1 @@
-export type * from './Track.js'
+export type * from './TrackEmailEvent.js'

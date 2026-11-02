@@ -21,7 +21,7 @@ Use resource properties to make a larger API easier to navigate. Poolster uses t
 using Poolster.RelevateSdk;
 
 var client = new PoolsterClient(httpClient, options);
-await client.CRM.ListCrmListsAsync(/* typed arguments */);
+await client.APIKeys.ListCrmListsAsync(/* typed arguments */);
 ```
 
 ## Pagination

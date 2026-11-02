@@ -146,12 +146,12 @@ func decodeListCrmObjectAttributesError(requestError error) error {
 	}
 }
 
-// ListCrmObjectAttributes invokes GET /v1/crm/objects/{object}/attributes.
+// ListCrmObjectAttributes invokes GET /crm/objects/{object}/attributes.
 func (client *Client) ListCrmObjectAttributes(ctx context.Context, input *ListCrmObjectAttributesRequest) (*CrmMetadataAttributesResponse, error) {
 	if input == nil {
 		input = &ListCrmObjectAttributesRequest{}
 	}
-	path := "/v1/crm/objects/{object}/attributes"
+	path := "/crm/objects/{object}/attributes"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{object}", url.PathEscape(fmt.Sprint(input.Object)))

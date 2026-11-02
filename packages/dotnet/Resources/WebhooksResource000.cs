@@ -15,19 +15,28 @@ public sealed partial class WebhooksResource
 
     internal WebhooksResource(PoolsterClient client) => _client = client;
 
-    /// <summary>Invokes GET /v1/email/webhooks.</summary>
-    public Task<WebhookListResponse> ListWebhooksAsync(CancellationToken cancellationToken = default) => _client.ListWebhooksAsync(cancellationToken);
+    /// <summary>Invokes GET /email/webhooks.</summary>
+    public Task<WebhookListResponse> ListEmailWebhooksAsync(CancellationToken cancellationToken = default) => _client.ListEmailWebhooksAsync(cancellationToken);
 
-    /// <summary>Invokes POST /v1/email/webhooks.</summary>
-    public Task<CreateWebhookResponse> CreateWebhookAsync(HookCreate body, CancellationToken cancellationToken = default) => _client.CreateWebhookAsync(body, cancellationToken);
+    /// <summary>Invokes POST /email/webhooks.</summary>
+    public Task<CreateWebhookResponse> CreateEmailWebhookAsync(HookCreate body, CancellationToken cancellationToken = default) => _client.CreateEmailWebhookAsync(body, cancellationToken);
 
-    /// <summary>Invokes DELETE /v1/email/webhooks/{webhook_id}.</summary>
-    public Task DeleteWebhookAsync(string webhookId, CancellationToken cancellationToken = default) => _client.DeleteWebhookAsync(webhookId, cancellationToken);
+    /// <summary>Invokes DELETE /email/webhooks/{webhook_id}.</summary>
+    public Task DeleteEmailWebhookAsync(string webhookId, CancellationToken cancellationToken = default) => _client.DeleteEmailWebhookAsync(webhookId, cancellationToken);
 
-    /// <summary>Invokes PATCH /v1/email/webhooks/{webhook_id}.</summary>
-    public Task<WebhookResponse> UpdateWebhookAsync(string webhookId, HookUpdate body, CancellationToken cancellationToken = default) => _client.UpdateWebhookAsync(webhookId, body, cancellationToken);
+    /// <summary>Invokes PATCH /email/webhooks/{webhook_id}.</summary>
+    public Task<WebhookResponse> UpdateEmailWebhookAsync(string webhookId, HookUpdate body, CancellationToken cancellationToken = default) => _client.UpdateEmailWebhookAsync(webhookId, body, cancellationToken);
 
-    /// <summary>Invokes GET /v1/email/webhooks/{webhook_id}/deliveries.</summary>
-    public Task<WebhookDeliveryListResponse> ListDeliveriesAsync(string webhookId, long? limit = default, CancellationToken cancellationToken = default) => _client.ListDeliveriesAsync(webhookId, limit, cancellationToken);
+    /// <summary>Invokes GET /email/webhooks/{webhook_id}/deliveries.</summary>
+    public Task<WebhookDeliveryListResponse> ListEmailWebhookDeliveriesAsync(string webhookId, long? limit = default, CancellationToken cancellationToken = default) => _client.ListEmailWebhookDeliveriesAsync(webhookId, limit, cancellationToken);
+
+    /// <summary>Invokes POST /email/webhooks/{webhook_id}/deliveries/{delivery_id}/replay.</summary>
+    public Task ReplayEmailWebhookDeliveryAsync(string webhookId, string deliveryId, CancellationToken cancellationToken = default) => _client.ReplayEmailWebhookDeliveryAsync(webhookId, deliveryId, cancellationToken);
+
+    /// <summary>Invokes POST /email/webhooks/{webhook_id}/replay.</summary>
+    public Task ReplayEmailWebhookRangeAsync(string webhookId, ReplayRange body, CancellationToken cancellationToken = default) => _client.ReplayEmailWebhookRangeAsync(webhookId, body, cancellationToken);
+
+    /// <summary>Invokes POST /email/webhooks/{webhook_id}/rotate-secret.</summary>
+    public Task RotateEmailWebhookSecretAsync(string webhookId, CancellationToken cancellationToken = default) => _client.RotateEmailWebhookSecretAsync(webhookId, cancellationToken);
 
 }

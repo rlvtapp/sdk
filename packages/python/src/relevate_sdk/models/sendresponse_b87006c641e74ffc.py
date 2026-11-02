@@ -10,16 +10,21 @@ if TYPE_CHECKING:
 
 if TYPE_CHECKING:
     from . import RecipientResponse
+    from . import SendTag
 
 @dataclass
 class SendResponse:
     accepted_at: str
     api_version: str
+    id: str
     reason_code: str
     recipients: list[RecipientResponse]
-    send_id: str
     state: str
+    tags: list[SendTag]
     replayed: bool | None | None = None
+    scheduled_at: str | None | None = None
+    thread_id: str | None | None = None
+    topic_id: str | None | None = None
     additional_properties: dict[str, Any] = _poolster_field(default_factory=dict, metadata={"additional_properties": True})
     _poolster_present_fields: frozenset[str] | None = _poolster_field(default=None, init=False, repr=False, compare=False, metadata={"internal": True, "present_fields": True})
 
@@ -28,12 +33,16 @@ class SendResponse:
         instance = cls(
             accepted_at=value["accepted_at"],
             api_version=value["api_version"],
+            id=value["id"],
             reason_code=value["reason_code"],
             recipients=decode_model_value(value["recipients"], ("array", ("ref", "RecipientResponse"))),
             replayed=value.get("replayed"),
-            send_id=value["send_id"],
+            scheduled_at=value.get("scheduled_at"),
             state=value["state"],
-            additional_properties={key: item for key, item in value.items() if key not in ["accepted_at", "api_version", "reason_code", "recipients", "replayed", "send_id", "state"]},
+            tags=decode_model_value(value["tags"], ("array", ("ref", "SendTag"))),
+            thread_id=value.get("thread_id"),
+            topic_id=value.get("topic_id"),
+            additional_properties={key: item for key, item in value.items() if key not in ["accepted_at", "api_version", "id", "reason_code", "recipients", "replayed", "scheduled_at", "state", "tags", "thread_id", "topic_id"]},
         )
         instance._poolster_present_fields = frozenset(value)
         return instance

@@ -1,2 +1,2 @@
-export type * from './ListInbound.js'
-export type * from './GetInbound.js'
+export type * from './ListEmailInbound.js'
+export type * from './GetEmailInbound.js'

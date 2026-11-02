@@ -378,9 +378,9 @@ pub struct GetCrmNoteRequest {
 }
 
 impl Client {
-    /// Invokes GET /v1/crm/lists.
+    /// Invokes GET /crm/lists.
     pub async fn list_crm_lists(&self, input: crate::client::operations::ListCrmListsRequest) -> Result<crate::models::CrmListsPage, ListCrmListsError> {
-        let path = "/v1/crm/lists".to_owned();
+        let path = "/crm/lists".to_owned();
         let mut query: Vec<(String, String)> = Vec::new();
         if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
         if let Some(value) = input.after.as_ref() { query.extend(poolster_query_pairs("after", value, "form", true)); }
@@ -450,9 +450,9 @@ impl Client {
         }
     }
 
-    /// Invokes POST /v1/crm/lists.
+    /// Invokes POST /crm/lists.
     pub async fn create_crm_list(&self, body: &crate::models::CrmCreateList) -> Result<crate::models::CrmListResponse, CreateCrmListError> {
-        let path = "/v1/crm/lists".to_owned();
+        let path = "/crm/lists".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         let request_url = format!("{}{}", self.base_url, path);
         let request_info = RequestInfo { method: reqwest::Method::POST, url: request_url.clone() };
@@ -520,9 +520,9 @@ impl Client {
         }
     }
 
-    /// Invokes DELETE /v1/crm/lists/{list}.
+    /// Invokes DELETE /crm/lists/{list}.
     pub async fn delete_crm_list(&self, input: crate::client::operations::DeleteCrmListRequest) -> Result<crate::models::CrmListDeletionResponse, DeleteCrmListError> {
-        let mut path = "/v1/crm/lists/{list}".to_owned();
+        let mut path = "/crm/lists/{list}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -590,9 +590,9 @@ impl Client {
         }
     }
 
-    /// Invokes GET /v1/crm/lists/{list}.
+    /// Invokes GET /crm/lists/{list}.
     pub async fn get_crm_list(&self, input: crate::client::operations::GetCrmListRequest) -> Result<crate::models::CrmListResponse, GetCrmListError> {
-        let mut path = "/v1/crm/lists/{list}".to_owned();
+        let mut path = "/crm/lists/{list}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -660,9 +660,9 @@ impl Client {
         }
     }
 
-    /// Invokes PATCH /v1/crm/lists/{list}.
+    /// Invokes PATCH /crm/lists/{list}.
     pub async fn update_crm_list(&self, input: crate::client::operations::UpdateCrmListRequest, body: &crate::models::CrmUpdateList) -> Result<crate::models::CrmListResponse, UpdateCrmListError> {
-        let mut path = "/v1/crm/lists/{list}".to_owned();
+        let mut path = "/crm/lists/{list}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -731,9 +731,9 @@ impl Client {
         }
     }
 
-    /// Invokes GET /v1/crm/lists/{list}/attributes.
+    /// Invokes GET /crm/lists/{list}/attributes.
     pub async fn list_crm_list_attributes(&self, input: crate::client::operations::ListCrmListAttributesRequest) -> Result<crate::models::CrmMetadataAttributesResponse, ListCrmListAttributesError> {
-        let mut path = "/v1/crm/lists/{list}/attributes".to_owned();
+        let mut path = "/crm/lists/{list}/attributes".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -801,9 +801,9 @@ impl Client {
         }
     }
 
-    /// Invokes POST /v1/crm/lists/{list}/attributes.
+    /// Invokes POST /crm/lists/{list}/attributes.
     pub async fn create_crm_list_attribute(&self, input: crate::client::operations::CreateCrmListAttributeRequest, body: &crate::models::CrmAttributeCreate) -> Result<crate::models::CrmMetadataAttributeResponse, CreateCrmListAttributeError> {
-        let mut path = "/v1/crm/lists/{list}/attributes".to_owned();
+        let mut path = "/crm/lists/{list}/attributes".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -872,9 +872,9 @@ impl Client {
         }
     }
 
-    /// Invokes DELETE /v1/crm/lists/{list}/attributes/{attribute}.
+    /// Invokes DELETE /crm/lists/{list}/attributes/{attribute}.
     pub async fn delete_crm_list_attribute(&self, input: crate::client::operations::DeleteCrmListAttributeRequest) -> Result<crate::models::CrmMetadataDeleted, DeleteCrmListAttributeError> {
-        let mut path = "/v1/crm/lists/{list}/attributes/{attribute}".to_owned();
+        let mut path = "/crm/lists/{list}/attributes/{attribute}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         path = path.replace("{attribute}", &poolster_path_segment(&poolster_query_value(&input.attribute)));
@@ -943,9 +943,9 @@ impl Client {
         }
     }
 
-    /// Invokes PATCH /v1/crm/lists/{list}/attributes/{attribute}.
+    /// Invokes PATCH /crm/lists/{list}/attributes/{attribute}.
     pub async fn update_crm_list_attribute(&self, input: crate::client::operations::UpdateCrmListAttributeRequest, body: &crate::models::CrmAttributePatch) -> Result<crate::models::CrmMetadataAttributeResponse, UpdateCrmListAttributeError> {
-        let mut path = "/v1/crm/lists/{list}/attributes/{attribute}".to_owned();
+        let mut path = "/crm/lists/{list}/attributes/{attribute}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         path = path.replace("{attribute}", &poolster_path_segment(&poolster_query_value(&input.attribute)));
@@ -1015,9 +1015,9 @@ impl Client {
         }
     }
 
-    /// Invokes GET /v1/crm/lists/{list}/entries.
+    /// Invokes GET /crm/lists/{list}/entries.
     pub async fn list_crm_list_entries(&self, input: crate::client::operations::ListCrmListEntriesRequest) -> Result<crate::models::CrmListEntriesPage, ListCrmListEntriesError> {
-        let mut path = "/v1/crm/lists/{list}/entries".to_owned();
+        let mut path = "/crm/lists/{list}/entries".to_owned();
         let mut query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
@@ -1087,9 +1087,9 @@ impl Client {
         }
     }
 
-    /// Invokes POST /v1/crm/lists/{list}/entries.
+    /// Invokes POST /crm/lists/{list}/entries.
     pub async fn create_crm_list_entry(&self, input: crate::client::operations::CreateCrmListEntryRequest, body: &crate::models::CrmCreateListEntry) -> Result<crate::models::CrmListEntryResponse, CreateCrmListEntryError> {
-        let mut path = "/v1/crm/lists/{list}/entries".to_owned();
+        let mut path = "/crm/lists/{list}/entries".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -1158,9 +1158,9 @@ impl Client {
         }
     }
 
-    /// Invokes DELETE /v1/crm/lists/{list}/entries/{entry}.
+    /// Invokes DELETE /crm/lists/{list}/entries/{entry}.
     pub async fn delete_crm_list_entry(&self, input: crate::client::operations::DeleteCrmListEntryRequest) -> Result<crate::models::CrmListDeletionResponse, DeleteCrmListEntryError> {
-        let mut path = "/v1/crm/lists/{list}/entries/{entry}".to_owned();
+        let mut path = "/crm/lists/{list}/entries/{entry}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         path = path.replace("{entry}", &poolster_path_segment(&poolster_query_value(&input.entry)));
@@ -1229,9 +1229,9 @@ impl Client {
         }
     }
 
-    /// Invokes GET /v1/crm/lists/{list}/entries/{entry}.
+    /// Invokes GET /crm/lists/{list}/entries/{entry}.
     pub async fn get_crm_list_entry(&self, input: crate::client::operations::GetCrmListEntryRequest) -> Result<crate::models::CrmListEntryResponse, GetCrmListEntryError> {
-        let mut path = "/v1/crm/lists/{list}/entries/{entry}".to_owned();
+        let mut path = "/crm/lists/{list}/entries/{entry}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         path = path.replace("{entry}", &poolster_path_segment(&poolster_query_value(&input.entry)));
@@ -1300,9 +1300,9 @@ impl Client {
         }
     }
 
-    /// Invokes PATCH /v1/crm/lists/{list}/entries/{entry}.
+    /// Invokes PATCH /crm/lists/{list}/entries/{entry}.
     pub async fn update_crm_list_entry(&self, input: crate::client::operations::UpdateCrmListEntryRequest, body: &crate::models::CrmUpdateListEntry) -> Result<crate::models::CrmListEntryResponse, UpdateCrmListEntryError> {
-        let mut path = "/v1/crm/lists/{list}/entries/{entry}".to_owned();
+        let mut path = "/crm/lists/{list}/entries/{entry}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{list}", &poolster_path_segment(&poolster_query_value(&input.list)));
         path = path.replace("{entry}", &poolster_path_segment(&poolster_query_value(&input.entry)));
@@ -1372,9 +1372,9 @@ impl Client {
         }
     }
 
-    /// Invokes DELETE /v1/crm/notes/{note_id}.
+    /// Invokes DELETE /crm/notes/{note_id}.
     pub async fn delete_crm_note(&self, input: crate::client::operations::DeleteCrmNoteRequest) -> Result<serde_json::Value, DeleteCrmNoteError> {
-        let mut path = "/v1/crm/notes/{note_id}".to_owned();
+        let mut path = "/crm/notes/{note_id}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{note_id}", &poolster_path_segment(&poolster_query_value(&input.note_id)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -1442,9 +1442,9 @@ impl Client {
         }
     }
 
-    /// Invokes GET /v1/crm/notes/{note_id}.
+    /// Invokes GET /crm/notes/{note_id}.
     pub async fn get_crm_note(&self, input: crate::client::operations::GetCrmNoteRequest) -> Result<serde_json::Value, GetCrmNoteError> {
-        let mut path = "/v1/crm/notes/{note_id}".to_owned();
+        let mut path = "/crm/notes/{note_id}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{note_id}", &poolster_path_segment(&poolster_query_value(&input.note_id)));
         let request_url = format!("{}{}", self.base_url, path);

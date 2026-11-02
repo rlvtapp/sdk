@@ -11,9 +11,9 @@ class InboundResourcePart000:
 
     def __init__(self, client: Any) -> None:
         self._client = client
-    def list(self, *, limit: int | None = None) -> InboundListResponse:
-        return self._client.list_inbound(limit=limit)
+    def list_email(self, *, limit: int | None = None) -> InboundListResponse:
+        return self._client.list_email_inbound(limit=limit)
 
-    def get(self, *, message_id: str) -> InboundResponse:
-        return self._client.get_inbound(message_id=message_id)
+    def get_email(self, *, message_id: str) -> InboundResponse:
+        return self._client.get_email_inbound(message_id=message_id)
 

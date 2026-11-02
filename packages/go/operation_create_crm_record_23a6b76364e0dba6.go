@@ -147,12 +147,12 @@ func decodeCreateCrmRecordError(requestError error) error {
 	}
 }
 
-// CreateCrmRecord invokes POST /v1/crm/objects/{object}/records.
+// CreateCrmRecord invokes POST /crm/objects/{object}/records.
 func (client *Client) CreateCrmRecord(ctx context.Context, input *CreateCrmRecordRequest) (*CrmRecordResponse, error) {
 	if input == nil {
 		input = &CreateCrmRecordRequest{}
 	}
-	path := "/v1/crm/objects/{object}/records"
+	path := "/crm/objects/{object}/records"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{object}", url.PathEscape(fmt.Sprint(input.Object)))

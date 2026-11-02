@@ -5,18 +5,27 @@ defmodule RelevateSdk.Resources.Configuration.Chunk0000 do
 
   alias RelevateSdk.{API, Client}
 
-  @spec auth_check(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def auth_check(client, options \\ []), do: API.auth_check(client, options)
+  @spec check_email_auth(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def check_email_auth(client, options \\ []), do: API.check_email_auth(client, options)
 
-  @spec list_domains(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def list_domains(client, options \\ []), do: API.list_domains(client, options)
+  @spec list_email_domains(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def list_email_domains(client, options \\ []), do: API.list_email_domains(client, options)
 
-  @spec get_domain(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def get_domain(client, options \\ []), do: API.get_domain(client, options)
+  @spec create_email_domain(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def create_email_domain(client, options \\ []), do: API.create_email_domain(client, options)
 
-  @spec list_sender_identities(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def list_sender_identities(client, options \\ []), do: API.list_sender_identities(client, options)
+  @spec delete_email_domain(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def delete_email_domain(client, options \\ []), do: API.delete_email_domain(client, options)
 
-  @spec get_sender_identity(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def get_sender_identity(client, options \\ []), do: API.get_sender_identity(client, options)
+  @spec get_email_domain(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def get_email_domain(client, options \\ []), do: API.get_email_domain(client, options)
+
+  @spec verify_email_domain(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def verify_email_domain(client, options \\ []), do: API.verify_email_domain(client, options)
+
+  @spec list_email_sender_identities(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def list_email_sender_identities(client, options \\ []), do: API.list_email_sender_identities(client, options)
+
+  @spec get_email_sender_identity(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def get_email_sender_identity(client, options \\ []), do: API.get_email_sender_identity(client, options)
 end

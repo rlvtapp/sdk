@@ -3,268 +3,620 @@
 import { http, HttpResponse, delay } from 'msw';
 
 export const handlers = [
-  http.all("*/v1/crm/lists", async ({ request, params }) => {
+  http.all("*/crm/lists", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":[],\"page\":{\"limit\":0,\"next_cursor\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists", async ({ request, params }) => {
+  http.all("*/crm/lists", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"created_at\":\"2024-01-02T03:04:05Z\",\"description\":\"sample\",\"id\":\"sample\",\"name\":\"sample\",\"object_id\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\"}}", { status: 201, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list", async ({ request, params }) => {
+  http.all("*/crm/lists/:list", async ({ request, params }) => {
     if (request.method !== "DELETE") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"deleted\":true,\"id\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list", async ({ request, params }) => {
+  http.all("*/crm/lists/:list", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"created_at\":\"2024-01-02T03:04:05Z\",\"description\":\"sample\",\"id\":\"sample\",\"name\":\"sample\",\"object_id\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list", async ({ request, params }) => {
+  http.all("*/crm/lists/:list", async ({ request, params }) => {
     if (request.method !== "PATCH") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"created_at\":\"2024-01-02T03:04:05Z\",\"description\":\"sample\",\"id\":\"sample\",\"name\":\"sample\",\"object_id\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list/attributes", async ({ request, params }) => {
+  http.all("*/crm/lists/:list/attributes", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list/attributes", async ({ request, params }) => {
+  http.all("*/crm/lists/:list/attributes", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"id\":\"sample\",\"is_system\":true,\"key\":\"sample\",\"multiple\":true,\"name\":\"sample\",\"options\":[],\"required\":true,\"type\":\"text\"}}", { status: 201, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list/attributes/:attribute", async ({ request, params }) => {
+  http.all("*/crm/lists/:list/attributes/:attribute", async ({ request, params }) => {
     if (request.method !== "DELETE") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"deleted\":true}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list/attributes/:attribute", async ({ request, params }) => {
+  http.all("*/crm/lists/:list/attributes/:attribute", async ({ request, params }) => {
     if (request.method !== "PATCH") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"id\":\"sample\",\"is_system\":true,\"key\":\"sample\",\"multiple\":true,\"name\":\"sample\",\"options\":[],\"required\":true,\"type\":\"text\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list/entries", async ({ request, params }) => {
+  http.all("*/crm/lists/:list/entries", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":[],\"page\":{\"limit\":0,\"next_cursor\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list/entries", async ({ request, params }) => {
+  http.all("*/crm/lists/:list/entries", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"created_at\":\"2024-01-02T03:04:05Z\",\"id\":\"sample\",\"list_id\":\"sample\",\"record_id\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\",\"values\":{}}}", { status: 201, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list/entries/:entry", async ({ request, params }) => {
+  http.all("*/crm/lists/:list/entries/:entry", async ({ request, params }) => {
     if (request.method !== "DELETE") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"deleted\":true,\"id\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list/entries/:entry", async ({ request, params }) => {
+  http.all("*/crm/lists/:list/entries/:entry", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"created_at\":\"2024-01-02T03:04:05Z\",\"id\":\"sample\",\"list_id\":\"sample\",\"record_id\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\",\"values\":{}}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/lists/:list/entries/:entry", async ({ request, params }) => {
+  http.all("*/crm/lists/:list/entries/:entry", async ({ request, params }) => {
     if (request.method !== "PATCH") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"created_at\":\"2024-01-02T03:04:05Z\",\"id\":\"sample\",\"list_id\":\"sample\",\"record_id\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\",\"values\":{}}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/notes/:note_id", async ({ request, params }) => {
+  http.all("*/crm/notes/:note_id", async ({ request, params }) => {
     if (request.method !== "DELETE") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"deleted_at\":\"2024-01-02T03:04:05Z\",\"id\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/notes/:note_id", async ({ request, params }) => {
+  http.all("*/crm/notes/:note_id", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"body\":\"sample\",\"created_at\":\"2024-01-02T03:04:05Z\",\"id\":\"sample\",\"mentions\":[],\"record_id\":\"sample\",\"title\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/notes/:note_id", async ({ request, params }) => {
+  http.all("*/crm/notes/:note_id", async ({ request, params }) => {
     if (request.method !== "PATCH") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"body\":\"sample\",\"created_at\":\"2024-01-02T03:04:05Z\",\"id\":\"sample\",\"mentions\":[],\"record_id\":\"sample\",\"title\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects", async ({ request, params }) => {
+  http.all("*/crm/objects", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects", async ({ request, params }) => {
+  http.all("*/crm/objects", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"enabled\":true,\"id\":\"sample\",\"is_system\":true,\"name\":\"sample\",\"slug\":\"sample\"}}", { status: 201, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object", async ({ request, params }) => {
+  http.all("*/crm/objects/:object", async ({ request, params }) => {
     if (request.method !== "DELETE") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"deleted\":true}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object", async ({ request, params }) => {
+  http.all("*/crm/objects/:object", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object", async ({ request, params }) => {
+  http.all("*/crm/objects/:object", async ({ request, params }) => {
     if (request.method !== "PATCH") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"enabled\":true,\"id\":\"sample\",\"is_system\":true,\"name\":\"sample\",\"slug\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object/attributes", async ({ request, params }) => {
+  http.all("*/crm/objects/:object/attributes", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object/attributes", async ({ request, params }) => {
+  http.all("*/crm/objects/:object/attributes", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"id\":\"sample\",\"is_system\":true,\"key\":\"sample\",\"multiple\":true,\"name\":\"sample\",\"options\":[],\"required\":true,\"type\":\"text\"}}", { status: 201, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object/attributes/:attribute", async ({ request, params }) => {
+  http.all("*/crm/objects/:object/attributes/:attribute", async ({ request, params }) => {
     if (request.method !== "DELETE") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"deleted\":true}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object/attributes/:attribute", async ({ request, params }) => {
+  http.all("*/crm/objects/:object/attributes/:attribute", async ({ request, params }) => {
     if (request.method !== "PATCH") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"id\":\"sample\",\"is_system\":true,\"key\":\"sample\",\"multiple\":true,\"name\":\"sample\",\"options\":[],\"required\":true,\"type\":\"text\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object/deletion-preview", async ({ request, params }) => {
+  http.all("*/crm/objects/:object/deletion-preview", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"blocking_relationships\":[],\"list_count\":0,\"object\":{\"enabled\":true,\"id\":\"sample\",\"is_system\":true,\"name\":\"sample\",\"slug\":\"sample\"},\"record_count\":0}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object/quality", async ({ request, params }) => {
+  http.all("*/crm/objects/:object/quality", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"notice\":\"sample\",\"object_id\":\"sample\",\"records\":[],\"scanned_records\":0,\"summary\":{\"broken_references\":0,\"duplicate_candidates\":0,\"invalid_values\":0,\"missing_required\":0,\"records_with_issues\":0}},\"page\":{}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object/records", async ({ request, params }) => {
+  http.all("*/crm/objects/:object/records", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object/records", async ({ request, params }) => {
+  http.all("*/crm/objects/:object/records", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
     return new HttpResponse("{}", { status: 201, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/objects/:object/records/upsert", async ({ request, params }) => {
+  http.all("*/crm/objects/:object/records/upsert", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
     return new HttpResponse("{}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/records/:record_id", async ({ request, params }) => {
+  http.all("*/crm/records/:record_id", async ({ request, params }) => {
     if (request.method !== "DELETE") return undefined;
     return new HttpResponse("{}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/records/:record_id", async ({ request, params }) => {
+  http.all("*/crm/records/:record_id", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/records/:record_id", async ({ request, params }) => {
+  http.all("*/crm/records/:record_id", async ({ request, params }) => {
     if (request.method !== "PATCH") return undefined;
     return new HttpResponse("{}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/records/:record_id/activities", async ({ request, params }) => {
+  http.all("*/crm/records/:record_id/activities", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":[],\"page\":{\"limit\":0,\"next_cursor\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/records/:record_id/notes", async ({ request, params }) => {
+  http.all("*/crm/records/:record_id/notes", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":[],\"page\":{\"limit\":0,\"next_cursor\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/records/:record_id/notes", async ({ request, params }) => {
+  http.all("*/crm/records/:record_id/notes", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"body\":\"sample\",\"created_at\":\"2024-01-02T03:04:05Z\",\"id\":\"sample\",\"mentions\":[],\"record_id\":\"sample\",\"title\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\"}}", { status: 201, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/records/:record_id/tasks", async ({ request, params }) => {
+  http.all("*/crm/records/:record_id/tasks", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":[],\"page\":{\"limit\":0,\"next_cursor\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/records/:record_id/tasks", async ({ request, params }) => {
+  http.all("*/crm/records/:record_id/tasks", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"created_at\":\"2024-01-02T03:04:05Z\",\"description\":\"sample\",\"due_at\":\"2024-01-02T03:04:05Z\",\"due_timezone\":\"sample\",\"id\":\"sample\",\"record_id\":\"sample\",\"status\":\"open\",\"title\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\"}}", { status: 201, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/tasks/:task_id", async ({ request, params }) => {
+  http.all("*/crm/tasks/:task_id", async ({ request, params }) => {
     if (request.method !== "DELETE") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"id\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/tasks/:task_id", async ({ request, params }) => {
+  http.all("*/crm/tasks/:task_id", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"created_at\":\"2024-01-02T03:04:05Z\",\"description\":\"sample\",\"due_at\":\"2024-01-02T03:04:05Z\",\"due_timezone\":\"sample\",\"id\":\"sample\",\"record_id\":\"sample\",\"status\":\"open\",\"title\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/crm/tasks/:task_id", async ({ request, params }) => {
+  http.all("*/crm/tasks/:task_id", async ({ request, params }) => {
     if (request.method !== "PATCH") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"created_at\":\"2024-01-02T03:04:05Z\",\"description\":\"sample\",\"due_at\":\"2024-01-02T03:04:05Z\",\"due_timezone\":\"sample\",\"id\":\"sample\",\"record_id\":\"sample\",\"status\":\"open\",\"title\":\"sample\",\"updated_at\":\"2024-01-02T03:04:05Z\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/email/auth-check", async ({ request, params }) => {
+  http.all("*/email/api-keys", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse(null, { status: 200, headers: {} });
   }),
-  http.all("*/v1/email/contacts", async ({ request, params }) => {
-    if (request.method !== "GET") return undefined;
-    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
-  }),
-  http.all("*/v1/email/contacts", async ({ request, params }) => {
+  http.all("*/email/api-keys", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
     return new HttpResponse(null, { status: 201, headers: {} });
   }),
-  http.all("*/v1/email/contacts/query", async ({ request, params }) => {
-    if (request.method !== "POST") return undefined;
+  http.all("*/email/api-keys/:id", async ({ request, params }) => {
+    if (request.method !== "DELETE") return undefined;
     return new HttpResponse(null, { status: 200, headers: {} });
   }),
-  http.all("*/v1/email/contacts/:id", async ({ request, params }) => {
+  http.all("*/email/attachments/:attachment_id", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"content_type\":\"sample\",\"download_expires_at\":\"2024-01-02T03:04:05Z\",\"download_url\":\"sample\",\"file_name\":\"sample\",\"id\":\"sample\",\"inline\":true,\"size_bytes\":0}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/auth-check", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse(null, { status: 200, headers: {} });
   }),
-  http.all("*/v1/email/contacts/:id", async ({ request, params }) => {
-    if (request.method !== "PATCH") return undefined;
-    return new HttpResponse(null, { status: 200, headers: {} });
-  }),
-  http.all("*/v1/email/domains", async ({ request, params }) => {
+  http.all("*/email/contacts", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/email/domains/:id", async ({ request, params }) => {
+  http.all("*/email/contacts", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 201, headers: {} });
+  }),
+  http.all("*/email/contacts/query", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/contacts/:id", async ({ request, params }) => {
+    if (request.method !== "DELETE") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/contacts/:id", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse(null, { status: 200, headers: {} });
   }),
-  http.all("*/v1/email/events", async ({ request, params }) => {
+  http.all("*/email/contacts/:id", async ({ request, params }) => {
+    if (request.method !== "PATCH") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/domains", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/domains", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 201, headers: {} });
+  }),
+  http.all("*/email/domains/:id", async ({ request, params }) => {
+    if (request.method !== "DELETE") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/domains/:id", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/domains/:id/verify", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/emails", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"accepted_at\":\"2024-01-02T03:04:05Z\",\"api_version\":\"sample\",\"id\":\"sample\",\"reason_code\":\"sample\",\"recipients\":[],\"state\":\"sample\",\"tags\":[]}", { status: 202, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/emails/batch", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/emails/query", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/emails/:email_id", async ({ request, params }) => {
+    if (request.method !== "DELETE") return undefined;
+    return new HttpResponse("{\"accepted_at\":\"2024-01-02T03:04:05Z\",\"api_version\":\"sample\",\"id\":\"sample\",\"reason_code\":\"sample\",\"recipients\":[],\"state\":\"sample\",\"tags\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/emails/:email_id", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"accepted_at\":\"2024-01-02T03:04:05Z\",\"api_version\":\"sample\",\"id\":\"sample\",\"reason_code\":\"sample\",\"recipients\":[],\"state\":\"sample\",\"tags\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/emails/:email_id", async ({ request, params }) => {
+    if (request.method !== "PATCH") return undefined;
+    return new HttpResponse("{\"accepted_at\":\"2024-01-02T03:04:05Z\",\"api_version\":\"sample\",\"id\":\"sample\",\"reason_code\":\"sample\",\"recipients\":[],\"state\":\"sample\",\"tags\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/emails/:email_id/events", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/emails/:email_id/recipients/:recipient_send_id/events", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/events", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"event_id\":\"sample\",\"received_at\":\"2024-01-02T03:04:05Z\",\"replayed\":true}", { status: 202, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/email/inbound", async ({ request, params }) => {
+  http.all("*/email/inbound", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/email/inbound/:message_id", async ({ request, params }) => {
+  http.all("*/email/inbound/:message_id", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse(null, { status: 200, headers: {} });
   }),
-  http.all("*/v1/email/segments", async ({ request, params }) => {
-    if (request.method !== "GET") return undefined;
-    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
-  }),
-  http.all("*/v1/email/segments/:id", async ({ request, params }) => {
-    if (request.method !== "GET") return undefined;
-    return new HttpResponse(null, { status: 200, headers: {} });
-  }),
-  http.all("*/v1/email/sender-identities", async ({ request, params }) => {
-    if (request.method !== "GET") return undefined;
-    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
-  }),
-  http.all("*/v1/email/sender-identities/:id", async ({ request, params }) => {
-    if (request.method !== "GET") return undefined;
-    return new HttpResponse(null, { status: 200, headers: {} });
-  }),
-  http.all("*/v1/email/sends", async ({ request, params }) => {
+  http.all("*/email/inbound/:message_id/forward", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
-    return new HttpResponse("{\"accepted_at\":\"2024-01-02T03:04:05Z\",\"api_version\":\"sample\",\"reason_code\":\"sample\",\"recipients\":[],\"send_id\":\"sample\",\"state\":\"sample\"}", { status: 202, headers: {"content-type":"application/json"} });
+    return new HttpResponse(null, { status: 202, headers: {} });
   }),
-  http.all("*/v1/email/sends/query", async ({ request, params }) => {
+  http.all("*/email/inbound/:message_id/reply", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
-    return new HttpResponse(null, { status: 200, headers: {} });
+    return new HttpResponse(null, { status: 202, headers: {} });
   }),
-  http.all("*/v1/email/sends/:send_id", async ({ request, params }) => {
-    if (request.method !== "DELETE") return undefined;
-    return new HttpResponse("{\"accepted_at\":\"2024-01-02T03:04:05Z\",\"api_version\":\"sample\",\"reason_code\":\"sample\",\"recipients\":[],\"send_id\":\"sample\",\"state\":\"sample\"}", { status: 200, headers: {"content-type":"application/json"} });
-  }),
-  http.all("*/v1/email/sends/:send_id", async ({ request, params }) => {
-    if (request.method !== "GET") return undefined;
-    return new HttpResponse("{\"accepted_at\":\"2024-01-02T03:04:05Z\",\"api_version\":\"sample\",\"reason_code\":\"sample\",\"recipients\":[],\"send_id\":\"sample\",\"state\":\"sample\"}", { status: 200, headers: {"content-type":"application/json"} });
-  }),
-  http.all("*/v1/email/webhooks", async ({ request, params }) => {
+  http.all("*/email/inboxes", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
   }),
-  http.all("*/v1/email/webhooks", async ({ request, params }) => {
+  http.all("*/email/inboxes", async ({ request, params }) => {
     if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 201, headers: {} });
+  }),
+  http.all("*/email/inboxes/provided-domains", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
     return new HttpResponse(null, { status: 200, headers: {} });
   }),
-  http.all("*/v1/email/webhooks/:webhook_id", async ({ request, params }) => {
+  http.all("*/email/inboxes/:inbox_id", async ({ request, params }) => {
     if (request.method !== "DELETE") return undefined;
     return new HttpResponse(null, { status: 204, headers: {} });
   }),
-  http.all("*/v1/email/webhooks/:webhook_id", async ({ request, params }) => {
+  http.all("*/email/inboxes/:inbox_id", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/inboxes/:inbox_id/messages", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 202, headers: {} });
+  }),
+  http.all("*/email/inboxes/:inbox_id/threads", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/labels", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/labels", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 201, headers: {} });
+  }),
+  http.all("*/email/labels/:label_id", async ({ request, params }) => {
+    if (request.method !== "DELETE") return undefined;
+    return new HttpResponse(null, { status: 204, headers: {} });
+  }),
+  http.all("*/email/segments", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/segments/:id", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/sender-identities", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/sender-identities/:id", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/suppressions", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/suppressions", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/suppressions/batch", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/suppressions/:address", async ({ request, params }) => {
+    if (request.method !== "DELETE") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/suppressions/:address", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/templates", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/templates", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 201, headers: {} });
+  }),
+  http.all("*/email/templates/:template", async ({ request, params }) => {
+    if (request.method !== "DELETE") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/templates/:template", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/templates/:template", async ({ request, params }) => {
     if (request.method !== "PATCH") return undefined;
     return new HttpResponse(null, { status: 200, headers: {} });
   }),
-  http.all("*/v1/email/webhooks/:webhook_id/deliveries", async ({ request, params }) => {
+  http.all("*/email/templates/:template/duplicate", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 201, headers: {} });
+  }),
+  http.all("*/email/templates/:template/publish", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/templates/:template/render", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/threads/:thread_id", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/threads/:thread_id", async ({ request, params }) => {
+    if (request.method !== "PATCH") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/threads/:thread_id/notes", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 201, headers: {} });
+  }),
+  http.all("*/email/threads/:thread_id/read", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 204, headers: {} });
+  }),
+  http.all("*/email/usage", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/webhooks", async ({ request, params }) => {
     if (request.method !== "GET") return undefined;
     return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/webhooks", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/webhooks/:webhook_id", async ({ request, params }) => {
+    if (request.method !== "DELETE") return undefined;
+    return new HttpResponse(null, { status: 204, headers: {} });
+  }),
+  http.all("*/email/webhooks/:webhook_id", async ({ request, params }) => {
+    if (request.method !== "PATCH") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/webhooks/:webhook_id/deliveries", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/email/webhooks/:webhook_id/deliveries/:delivery_id/replay", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/webhooks/:webhook_id/replay", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/email/webhooks/:webhook_id/rotate-secret", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/schedule/booking-pages/:workspace/:event", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"data\":{\"bookingAvailable\":true,\"bookingUnavailableReason\":\"sample\",\"event\":{\"allowBookingViewSwitch\":true,\"bookingHorizonDays\":0,\"bookingQuestions\":[],\"bookingView\":\"month\",\"description\":\"sample\",\"durationMinutes\":0,\"location\":\"sample\",\"name\":\"sample\"},\"organizationLogo\":\"sample\",\"organizationName\":\"sample\",\"timezone\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/bookings", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"hasMore\":true,\"items\":[],\"page\":0}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/bookings", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"data\":{\"conferenceUrl\":\"https://example.com/\",\"end\":0,\"eventName\":\"sample\",\"id\":\"sample\",\"managementUrl\":\"https://example.com/\",\"name\":\"sample\",\"start\":0,\"state\":\"sample\",\"successRedirectUrl\":\"https://example.com/\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/bookings/:id", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"answers\":[],\"attendance\":\"unknown\",\"email\":\"sample@example.com\",\"endAt\":\"2024-01-02T03:04:05Z\",\"eventTypeId\":\"sample\",\"eventTypeName\":\"sample\",\"id\":\"sample\",\"name\":\"sample\",\"revision\":1,\"startAt\":\"2024-01-02T03:04:05Z\",\"state\":\"processing\",\"timezone\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/bookings/:id/attendance", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"revision\":1}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/bookings/:id/cancel", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"revision\":1,\"state\":\"cancelling\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/bookings/:id/feedback", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"data\":{\"eligible\":true,\"rating\":1}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/bookings/:id/feedback", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"data\":{\"rating\":1}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/bookings/:id/management-link", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"url\":\"https://example.com/\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/bookings/:id/reschedule", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"data\":{\"id\":\"sample\",\"revision\":0,\"state\":\"confirmed\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/bookings/:id/slots", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"data\":{\"slots\":[]}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/bookings/:id/status", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"data\":{\"conferenceUrl\":\"https://example.com/\",\"state\":\"sample\",\"successRedirectUrl\":\"https://example.com/\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/event-types", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/event-types", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"id\":\"sample\"}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/event-types/:id", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse(null, { status: 200, headers: {} });
+  }),
+  http.all("*/schedule/event-types/:id", async ({ request, params }) => {
+    if (request.method !== "PUT") return undefined;
+    return new HttpResponse("{\"id\":\"sample\"}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/event-types/:id/private-links", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/event-types/:id/private-links", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"id\":\"sample\",\"path\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/event-types/:id/private-links/:link_id", async ({ request, params }) => {
+    if (request.method !== "DELETE") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"revoked\":true}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/hosts/:actor", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"availability_schedules\":[],\"event_types\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/hosts/:actor/booking-limits", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"limits\":{},\"revision\":1,\"timezone\":\"sample\"}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/hosts/:actor/booking-limits", async ({ request, params }) => {
+    if (request.method !== "PUT") return undefined;
+    return new HttpResponse("{\"limits\":{},\"revision\":1,\"timezone\":\"sample\"}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/hosts/:actor/insights", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"attendanceDenominator\":0,\"averageRating\":0.0,\"byLink\":[],\"cancelled\":0,\"confirmed\":0,\"dateBasis\":\"scheduled_start\",\"feedbackCount\":0,\"generatedAt\":\"2024-01-02T03:04:05Z\",\"noShows\":0,\"reportingTimezone\":\"UTC\",\"rescheduled\":0,\"total\":0,\"unknownAttendance\":0}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/hosts/:actor/insights/export", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("sample", { status: 200, headers: {"content-type":"text/csv"} });
+  }),
+  http.all("*/schedule/notification-history", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/notification-senders", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/notification-settings", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"enabled\":true,\"notifyHost\":true,\"projectId\":\"sample\",\"reminder1h\":true,\"reminder24h\":true,\"senderIdentityId\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/notification-settings", async ({ request, params }) => {
+    if (request.method !== "PUT") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"enabled\":true,\"notifyHost\":true,\"projectId\":\"sample\",\"reminder1h\":true,\"reminder24h\":true,\"senderIdentityId\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/schedules", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/schedules", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"id\":\"sample\"}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/schedules/:id", async ({ request, params }) => {
+    if (request.method !== "DELETE") return undefined;
+    return new HttpResponse("{\"id\":\"sample\"}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/schedules/:id", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"data\":{\"date_overrides\":[],\"id\":\"sample\",\"name\":\"sample\",\"revision\":1,\"timezone\":\"sample\",\"weekly_intervals\":[]}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/schedules/:id", async ({ request, params }) => {
+    if (request.method !== "PUT") return undefined;
+    return new HttpResponse("{\"id\":\"sample\"}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/slots", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"data\":{\"slots\":[]}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/slots/diagnose", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"available\":true,\"blockers\":[],\"capacityBlockers\":[],\"checkedAt\":0,\"date\":\"2024-01-02\",\"limitations\":[],\"link\":\"sample\",\"start\":\"2024-01-02T03:04:05Z\",\"timezone\":\"sample\",\"verification\":\"complete\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/webhooks", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/webhooks", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"signingSecret\":\"sample\",\"subscription\":{\"createdAt\":\"2024-01-02T03:04:05Z\",\"eventTypes\":[\"schedule.booking.created\"],\"id\":\"sample\",\"status\":\"active\",\"updatedAt\":\"2024-01-02T03:04:05Z\",\"url\":\"https://example.com/\"}}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/webhooks/:id", async ({ request, params }) => {
+    if (request.method !== "PATCH") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"createdAt\":\"2024-01-02T03:04:05Z\",\"eventTypes\":[\"schedule.booking.created\"],\"id\":\"sample\",\"status\":\"active\",\"updatedAt\":\"2024-01-02T03:04:05Z\",\"url\":\"https://example.com/\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/webhooks/:id/deliveries", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/webhooks/:id/rotate-secret", async ({ request, params }) => {
+    if (request.method !== "POST") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"signingSecret\":\"sample\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/workflows", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":[]}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/workflows/:id", async ({ request, params }) => {
+    if (request.method !== "GET") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"definition\":{},\"id\":\"sample\",\"name\":\"sample\",\"ownerUserId\":\"sample\",\"revision\":1,\"state\":\"draft\"}}", { status: 200, headers: {"content-type":"application/json"} });
+  }),
+  http.all("*/schedule/workflows/:id/state", async ({ request, params }) => {
+    if (request.method !== "PUT") return undefined;
+    return new HttpResponse("{\"api_version\":\"sample\",\"data\":{\"definition\":{},\"id\":\"sample\",\"name\":\"sample\",\"ownerUserId\":\"sample\",\"revision\":1,\"state\":\"draft\"}}", { status: 200, headers: {"content-type":"application/json"} });
   }),
 ];

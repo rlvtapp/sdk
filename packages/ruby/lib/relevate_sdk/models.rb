@@ -42,3 +42,5 @@ module RelevateSdk
 end
 require_relative "models/chunk_0000"
 require_relative "models/chunk_0001"
+require_relative "models/chunk_0002"
+require_relative "models/chunk_0003"

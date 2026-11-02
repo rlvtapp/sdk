@@ -5,15 +5,27 @@ defmodule RelevateSdk.Resources.Sends.Chunk0000 do
 
   alias RelevateSdk.{API, Client}
 
-  @spec create(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def create(client, options \\ []), do: API.create(client, options)
+  @spec send_email(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def send_email(client, options \\ []), do: API.send_email(client, options)
 
-  @spec query(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def query(client, options \\ []), do: API.query(client, options)
+  @spec send_email_batch(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def send_email_batch(client, options \\ []), do: API.send_email_batch(client, options)
 
-  @spec cancel(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def cancel(client, options \\ []), do: API.cancel(client, options)
+  @spec query_emails(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def query_emails(client, options \\ []), do: API.query_emails(client, options)
 
-  @spec get(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def get(client, options \\ []), do: API.get(client, options)
+  @spec cancel_email(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def cancel_email(client, options \\ []), do: API.cancel_email(client, options)
+
+  @spec get_email(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def get_email(client, options \\ []), do: API.get_email(client, options)
+
+  @spec reschedule_email(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def reschedule_email(client, options \\ []), do: API.reschedule_email(client, options)
+
+  @spec list_email_events(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def list_email_events(client, options \\ []), do: API.list_email_events(client, options)
+
+  @spec list_email_recipient_events(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def list_email_recipient_events(client, options \\ []), do: API.list_email_recipient_events(client, options)
 end

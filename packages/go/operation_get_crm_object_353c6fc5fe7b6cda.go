@@ -146,12 +146,12 @@ func decodeGetCrmObjectError(requestError error) error {
 	}
 }
 
-// GetCrmObject invokes GET /v1/crm/objects/{object}.
+// GetCrmObject invokes GET /crm/objects/{object}.
 func (client *Client) GetCrmObject(ctx context.Context, input *GetCrmObjectRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &GetCrmObjectRequest{}
 	}
-	path := "/v1/crm/objects/{object}"
+	path := "/crm/objects/{object}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{object}", url.PathEscape(fmt.Sprint(input.Object)))

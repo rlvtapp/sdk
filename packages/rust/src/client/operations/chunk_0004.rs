@@ -5,80 +5,46 @@ use super::super::*;
 #[allow(unused_imports)]
 use crate::models::*;
 
-/// Errors returned by `list_inbound`. Declared OpenAPI error bodies are decoded into typed variants.
+/// Errors returned by `getEmailContact`. Declared OpenAPI error bodies are decoded into typed variants.
 #[derive(Debug)]
-pub enum ListInboundError {
+pub enum GetEmailContactError {
     Transport(reqwest::Error),
     TokenProvider(TokenProviderError),
     Decode { source: serde_json::Error, response: ApiResponse },
     UnsupportedRequestMedia(&'static str),
     Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
+    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
+    Unexpected(ApiResponse),
+}
+
+#[derive(Clone, Debug)]
+pub struct GetEmailContactRequest {
+    pub id: String,
+}
+
+/// Errors returned by `updateEmailContact`. Declared OpenAPI error bodies are decoded into typed variants.
+#[derive(Debug)]
+pub enum UpdateEmailContactError {
+    Transport(reqwest::Error),
+    TokenProvider(TokenProviderError),
+    Decode { source: serde_json::Error, response: ApiResponse },
+    UnsupportedRequestMedia(&'static str),
+    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
     UnprocessableEntity { body: crate::models::ErrorResponse, response: ApiResponse },
     ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
     Unexpected(ApiResponse),
 }
 
-#[derive(Clone, Debug, Default)]
-pub struct ListInboundRequest {
-    pub limit: Option<i64>,
-}
-
-/// Errors returned by `get_inbound`. Declared OpenAPI error bodies are decoded into typed variants.
-#[derive(Debug)]
-pub enum GetInboundError {
-    Transport(reqwest::Error),
-    TokenProvider(TokenProviderError),
-    Decode { source: serde_json::Error, response: ApiResponse },
-    UnsupportedRequestMedia(&'static str),
-    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
-    NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
-    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
-    Unexpected(ApiResponse),
-}
-
 #[derive(Clone, Debug)]
-pub struct GetInboundRequest {
-    pub message_id: String,
-}
-
-/// Errors returned by `list_segments`. Declared OpenAPI error bodies are decoded into typed variants.
-#[derive(Debug)]
-pub enum ListSegmentsError {
-    Transport(reqwest::Error),
-    TokenProvider(TokenProviderError),
-    Decode { source: serde_json::Error, response: ApiResponse },
-    UnsupportedRequestMedia(&'static str),
-    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
-    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
-    Unexpected(ApiResponse),
-}
-
-#[derive(Clone, Debug, Default)]
-pub struct ListSegmentsRequest {
-    pub limit: Option<i64>,
-}
-
-/// Errors returned by `get_segment`. Declared OpenAPI error bodies are decoded into typed variants.
-#[derive(Debug)]
-pub enum GetSegmentError {
-    Transport(reqwest::Error),
-    TokenProvider(TokenProviderError),
-    Decode { source: serde_json::Error, response: ApiResponse },
-    UnsupportedRequestMedia(&'static str),
-    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
-    NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
-    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
-    Unexpected(ApiResponse),
-}
-
-#[derive(Clone, Debug)]
-pub struct GetSegmentRequest {
+pub struct UpdateEmailContactRequest {
     pub id: String,
 }
 
-/// Errors returned by `list_sender_identities`. Declared OpenAPI error bodies are decoded into typed variants.
+/// Errors returned by `listEmailDomains`. Declared OpenAPI error bodies are decoded into typed variants.
 #[derive(Debug)]
-pub enum ListSenderIdentitiesError {
+pub enum ListEmailDomainsError {
     Transport(reqwest::Error),
     TokenProvider(TokenProviderError),
     Decode { source: serde_json::Error, response: ApiResponse },
@@ -89,13 +55,48 @@ pub enum ListSenderIdentitiesError {
 }
 
 #[derive(Clone, Debug, Default)]
-pub struct ListSenderIdentitiesRequest {
+pub struct ListEmailDomainsRequest {
     pub limit: Option<i64>,
 }
 
-/// Errors returned by `get_sender_identity`. Declared OpenAPI error bodies are decoded into typed variants.
+/// Errors returned by `createEmailDomain`. Declared OpenAPI error bodies are decoded into typed variants.
 #[derive(Debug)]
-pub enum GetSenderIdentityError {
+pub enum CreateEmailDomainError {
+    Transport(reqwest::Error),
+    TokenProvider(TokenProviderError),
+    Decode { source: serde_json::Error, response: ApiResponse },
+    UnsupportedRequestMedia(&'static str),
+    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    Forbidden { body: crate::models::ErrorResponse, response: ApiResponse },
+    Conflict { body: crate::models::ErrorResponse, response: ApiResponse },
+    UnprocessableEntity { body: crate::models::ErrorResponse, response: ApiResponse },
+    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
+    Unexpected(ApiResponse),
+}
+
+/// Errors returned by `deleteEmailDomain`. Declared OpenAPI error bodies are decoded into typed variants.
+#[derive(Debug)]
+pub enum DeleteEmailDomainError {
+    Transport(reqwest::Error),
+    TokenProvider(TokenProviderError),
+    Decode { source: serde_json::Error, response: ApiResponse },
+    UnsupportedRequestMedia(&'static str),
+    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    Forbidden { body: crate::models::ErrorResponse, response: ApiResponse },
+    NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
+    Conflict { body: crate::models::ErrorResponse, response: ApiResponse },
+    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
+    Unexpected(ApiResponse),
+}
+
+#[derive(Clone, Debug)]
+pub struct DeleteEmailDomainRequest {
+    pub id: String,
+}
+
+/// Errors returned by `getEmailDomain`. Declared OpenAPI error bodies are decoded into typed variants.
+#[derive(Debug)]
+pub enum GetEmailDomainError {
     Transport(reqwest::Error),
     TokenProvider(TokenProviderError),
     Decode { source: serde_json::Error, response: ApiResponse },
@@ -107,13 +108,34 @@ pub enum GetSenderIdentityError {
 }
 
 #[derive(Clone, Debug)]
-pub struct GetSenderIdentityRequest {
+pub struct GetEmailDomainRequest {
     pub id: String,
 }
 
-/// Errors returned by `create`. Declared OpenAPI error bodies are decoded into typed variants.
+/// Errors returned by `verifyEmailDomain`. Declared OpenAPI error bodies are decoded into typed variants.
 #[derive(Debug)]
-pub enum CreateError {
+pub enum VerifyEmailDomainError {
+    Transport(reqwest::Error),
+    TokenProvider(TokenProviderError),
+    Decode { source: serde_json::Error, response: ApiResponse },
+    UnsupportedRequestMedia(&'static str),
+    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    Forbidden { body: crate::models::ErrorResponse, response: ApiResponse },
+    NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
+    Conflict { body: crate::models::ErrorResponse, response: ApiResponse },
+    TooManyRequests { body: crate::models::ErrorResponse, response: ApiResponse },
+    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
+    Unexpected(ApiResponse),
+}
+
+#[derive(Clone, Debug)]
+pub struct VerifyEmailDomainRequest {
+    pub id: String,
+}
+
+/// Errors returned by `sendEmail`. Declared OpenAPI error bodies are decoded into typed variants.
+#[derive(Debug)]
+pub enum SendEmailError {
     Transport(reqwest::Error),
     TokenProvider(TokenProviderError),
     Decode { source: serde_json::Error, response: ApiResponse },
@@ -127,9 +149,32 @@ pub enum CreateError {
     Unexpected(ApiResponse),
 }
 
-/// Errors returned by `query`. Declared OpenAPI error bodies are decoded into typed variants.
+#[derive(Clone, Debug, Default)]
+pub struct SendEmailRequest {
+    pub idempotency_key: Option<String>,
+}
+
+/// Errors returned by `sendEmailBatch`. Declared OpenAPI error bodies are decoded into typed variants.
 #[derive(Debug)]
-pub enum QueryError {
+pub enum SendEmailBatchError {
+    Transport(reqwest::Error),
+    TokenProvider(TokenProviderError),
+    Decode { source: serde_json::Error, response: ApiResponse },
+    UnsupportedRequestMedia(&'static str),
+    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    Forbidden { body: crate::models::ErrorResponse, response: ApiResponse },
+    UnprocessableEntity { body: crate::models::ErrorResponse, response: ApiResponse },
+    Unexpected(ApiResponse),
+}
+
+#[derive(Clone, Debug, Default)]
+pub struct SendEmailBatchRequest {
+    pub idempotency_key: Option<String>,
+}
+
+/// Errors returned by `queryEmails`. Declared OpenAPI error bodies are decoded into typed variants.
+#[derive(Debug)]
+pub enum QueryEmailsError {
     Transport(reqwest::Error),
     TokenProvider(TokenProviderError),
     Decode { source: serde_json::Error, response: ApiResponse },
@@ -141,9 +186,9 @@ pub enum QueryError {
     Unexpected(ApiResponse),
 }
 
-/// Errors returned by `cancel`. Declared OpenAPI error bodies are decoded into typed variants.
+/// Errors returned by `cancelEmail`. Declared OpenAPI error bodies are decoded into typed variants.
 #[derive(Debug)]
-pub enum CancelError {
+pub enum CancelEmailError {
     Transport(reqwest::Error),
     TokenProvider(TokenProviderError),
     Decode { source: serde_json::Error, response: ApiResponse },
@@ -157,13 +202,13 @@ pub enum CancelError {
 }
 
 #[derive(Clone, Debug)]
-pub struct CancelRequest {
-    pub send_id: String,
+pub struct CancelEmailRequest {
+    pub email_id: String,
 }
 
-/// Errors returned by `get`. Declared OpenAPI error bodies are decoded into typed variants.
+/// Errors returned by `getEmail`. Declared OpenAPI error bodies are decoded into typed variants.
 #[derive(Debug)]
-pub enum GetError {
+pub enum GetEmailError {
     Transport(reqwest::Error),
     TokenProvider(TokenProviderError),
     Decode { source: serde_json::Error, response: ApiResponse },
@@ -176,61 +221,39 @@ pub enum GetError {
 }
 
 #[derive(Clone, Debug)]
-pub struct GetRequest {
-    pub send_id: String,
+pub struct GetEmailRequest {
+    pub email_id: String,
 }
 
-/// Errors returned by `list_webhooks`. Declared OpenAPI error bodies are decoded into typed variants.
+/// Errors returned by `rescheduleEmail`. Declared OpenAPI error bodies are decoded into typed variants.
 #[derive(Debug)]
-pub enum ListWebhooksError {
+pub enum RescheduleEmailError {
     Transport(reqwest::Error),
     TokenProvider(TokenProviderError),
     Decode { source: serde_json::Error, response: ApiResponse },
     UnsupportedRequestMedia(&'static str),
     Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
-    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
-    Unexpected(ApiResponse),
-}
-
-/// Errors returned by `create_webhook`. Declared OpenAPI error bodies are decoded into typed variants.
-#[derive(Debug)]
-pub enum CreateWebhookError {
-    Transport(reqwest::Error),
-    TokenProvider(TokenProviderError),
-    Decode { source: serde_json::Error, response: ApiResponse },
-    UnsupportedRequestMedia(&'static str),
-    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
-    UnprocessableEntity { body: crate::models::ErrorResponse, response: ApiResponse },
-    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
-    Unexpected(ApiResponse),
-}
-
-/// Errors returned by `delete_webhook`. Declared OpenAPI error bodies are decoded into typed variants.
-#[derive(Debug)]
-pub enum DeleteWebhookError {
-    Transport(reqwest::Error),
-    TokenProvider(TokenProviderError),
-    Decode { source: serde_json::Error, response: ApiResponse },
-    UnsupportedRequestMedia(&'static str),
-    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    Forbidden { body: crate::models::ErrorResponse, response: ApiResponse },
     NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
-    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
+    Conflict { body: crate::models::ErrorResponse, response: ApiResponse },
+    UnprocessableEntity { body: crate::models::ErrorResponse, response: ApiResponse },
     Unexpected(ApiResponse),
 }
 
 #[derive(Clone, Debug)]
-pub struct DeleteWebhookRequest {
-    pub webhook_id: String,
+pub struct RescheduleEmailRequest {
+    pub email_id: String,
 }
 
-/// Errors returned by `update_webhook`. Declared OpenAPI error bodies are decoded into typed variants.
+/// Errors returned by `listEmailEvents`. Declared OpenAPI error bodies are decoded into typed variants.
 #[derive(Debug)]
-pub enum UpdateWebhookError {
+pub enum ListEmailEventsError {
     Transport(reqwest::Error),
     TokenProvider(TokenProviderError),
     Decode { source: serde_json::Error, response: ApiResponse },
     UnsupportedRequestMedia(&'static str),
     Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    Forbidden { body: crate::models::ErrorResponse, response: ApiResponse },
     NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
     UnprocessableEntity { body: crate::models::ErrorResponse, response: ApiResponse },
     ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
@@ -238,13 +261,53 @@ pub enum UpdateWebhookError {
 }
 
 #[derive(Clone, Debug)]
-pub struct UpdateWebhookRequest {
-    pub webhook_id: String,
+pub struct ListEmailEventsRequest {
+    pub email_id: String,
+    pub limit: Option<i64>,
+    pub after: Option<String>,
 }
 
-/// Errors returned by `list_deliveries`. Declared OpenAPI error bodies are decoded into typed variants.
+/// Errors returned by `listEmailRecipientEvents`. Declared OpenAPI error bodies are decoded into typed variants.
 #[derive(Debug)]
-pub enum ListDeliveriesError {
+pub enum ListEmailRecipientEventsError {
+    Transport(reqwest::Error),
+    TokenProvider(TokenProviderError),
+    Decode { source: serde_json::Error, response: ApiResponse },
+    UnsupportedRequestMedia(&'static str),
+    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    Forbidden { body: crate::models::ErrorResponse, response: ApiResponse },
+    NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
+    UnprocessableEntity { body: crate::models::ErrorResponse, response: ApiResponse },
+    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
+    Unexpected(ApiResponse),
+}
+
+#[derive(Clone, Debug)]
+pub struct ListEmailRecipientEventsRequest {
+    pub email_id: String,
+    pub recipient_send_id: String,
+    pub limit: Option<i64>,
+    pub after: Option<String>,
+}
+
+/// Errors returned by `trackEmailEvent`. Declared OpenAPI error bodies are decoded into typed variants.
+#[derive(Debug)]
+pub enum TrackEmailEventError {
+    Transport(reqwest::Error),
+    TokenProvider(TokenProviderError),
+    Decode { source: serde_json::Error, response: ApiResponse },
+    UnsupportedRequestMedia(&'static str),
+    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    Forbidden { body: crate::models::ErrorResponse, response: ApiResponse },
+    Conflict { body: crate::models::ErrorResponse, response: ApiResponse },
+    UnprocessableEntity { body: crate::models::ErrorResponse, response: ApiResponse },
+    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
+    Unexpected(ApiResponse),
+}
+
+/// Errors returned by `listEmailInbound`. Declared OpenAPI error bodies are decoded into typed variants.
+#[derive(Debug)]
+pub enum ListEmailInboundError {
     Transport(reqwest::Error),
     TokenProvider(TokenProviderError),
     Decode { source: serde_json::Error, response: ApiResponse },
@@ -255,16 +318,207 @@ pub enum ListDeliveriesError {
     Unexpected(ApiResponse),
 }
 
-#[derive(Clone, Debug)]
-pub struct ListDeliveriesRequest {
-    pub webhook_id: String,
+#[derive(Clone, Debug, Default)]
+pub struct ListEmailInboundRequest {
     pub limit: Option<i64>,
 }
 
+/// Errors returned by `getEmailInbound`. Declared OpenAPI error bodies are decoded into typed variants.
+#[derive(Debug)]
+pub enum GetEmailInboundError {
+    Transport(reqwest::Error),
+    TokenProvider(TokenProviderError),
+    Decode { source: serde_json::Error, response: ApiResponse },
+    UnsupportedRequestMedia(&'static str),
+    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
+    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
+    Unexpected(ApiResponse),
+}
+
+#[derive(Clone, Debug)]
+pub struct GetEmailInboundRequest {
+    pub message_id: String,
+}
+
+/// Errors returned by `forwardEmailInbound`. Declared OpenAPI error bodies are decoded into typed variants.
+#[derive(Debug)]
+pub enum ForwardEmailInboundError {
+    Transport(reqwest::Error),
+    TokenProvider(TokenProviderError),
+    Decode { source: serde_json::Error, response: ApiResponse },
+    UnsupportedRequestMedia(&'static str),
+    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
+    Conflict { body: crate::models::ErrorResponse, response: ApiResponse },
+    UnprocessableEntity { body: crate::models::ErrorResponse, response: ApiResponse },
+    TooManyRequests { body: crate::models::ErrorResponse, response: ApiResponse },
+    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
+    Unexpected(ApiResponse),
+}
+
+#[derive(Clone, Debug)]
+pub struct ForwardEmailInboundRequest {
+    pub message_id: String,
+}
+
+/// Errors returned by `replyToEmailInbound`. Declared OpenAPI error bodies are decoded into typed variants.
+#[derive(Debug)]
+pub enum ReplyToEmailInboundError {
+    Transport(reqwest::Error),
+    TokenProvider(TokenProviderError),
+    Decode { source: serde_json::Error, response: ApiResponse },
+    UnsupportedRequestMedia(&'static str),
+    Unauthorized { body: crate::models::ErrorResponse, response: ApiResponse },
+    NotFound { body: crate::models::ErrorResponse, response: ApiResponse },
+    Conflict { body: crate::models::ErrorResponse, response: ApiResponse },
+    UnprocessableEntity { body: crate::models::ErrorResponse, response: ApiResponse },
+    TooManyRequests { body: crate::models::ErrorResponse, response: ApiResponse },
+    ServiceUnavailable { body: crate::models::ErrorResponse, response: ApiResponse },
+    Unexpected(ApiResponse),
+}
+
+#[derive(Clone, Debug)]
+pub struct ReplyToEmailInboundRequest {
+    pub message_id: String,
+}
+
 impl Client {
-    /// Invokes GET /v1/email/inbound.
-    pub async fn list_inbound(&self, input: crate::client::operations::ListInboundRequest) -> Result<crate::models::InboundListResponse, ListInboundError> {
-        let path = "/v1/email/inbound".to_owned();
+    /// Invokes GET /email/contacts/{id}.
+    pub async fn get_email_contact(&self, input: crate::client::operations::GetEmailContactRequest) -> Result<crate::models::ContactResponse, GetEmailContactError> {
+        let mut path = "/email/contacts/{id}".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{id}", &poolster_path_segment(&poolster_query_value(&input.id)));
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = true;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(GetEmailContactError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(GetEmailContactError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| GetEmailContactError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(GetEmailContactError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(GetEmailContactError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailContactError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailContactError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailContactError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailContactError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailContactError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailContactError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => GetEmailContactError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(GetEmailContactError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::ContactResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(GetEmailContactError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes PATCH /email/contacts/{id}.
+    pub async fn update_email_contact(&self, input: crate::client::operations::UpdateEmailContactRequest, body: &crate::models::UpdateContact) -> Result<crate::models::ContactResponse, UpdateEmailContactError> {
+        let mut path = "/email/contacts/{id}".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{id}", &poolster_path_segment(&poolster_query_value(&input.id)));
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::PATCH, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = false;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::PATCH, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+        request = request.json(body);
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(UpdateEmailContactError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(UpdateEmailContactError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| UpdateEmailContactError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(UpdateEmailContactError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(UpdateEmailContactError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => UpdateEmailContactError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => UpdateEmailContactError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => UpdateEmailContactError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => UpdateEmailContactError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => UpdateEmailContactError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => UpdateEmailContactError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => UpdateEmailContactError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => UpdateEmailContactError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => UpdateEmailContactError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(UpdateEmailContactError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::ContactResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(UpdateEmailContactError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes GET /email/domains.
+    pub async fn list_email_domains(&self, input: crate::client::operations::ListEmailDomainsRequest) -> Result<crate::models::DomainListResponse, ListEmailDomainsError> {
+        let path = "/email/domains".to_owned();
         let mut query: Vec<(String, String)> = Vec::new();
         if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
         let request_url = format!("{}{}", self.base_url, path);
@@ -283,8 +537,8 @@ impl Client {
             if !query.is_empty() { request = request.query(&query); }
         if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
             #[allow(unused_mut)]
-            let mut request = request.build().map_err(ListInboundError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(ListInboundError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| ListInboundError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let mut request = request.build().map_err(ListEmailDomainsError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(ListEmailDomainsError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| ListEmailDomainsError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
             let response = match self.transport.execute(request).await {
                 Ok(response) => response,
                 Err(source) => {
@@ -293,7 +547,7 @@ impl Client {
                         continue;
                     }
                     self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(ListInboundError::Transport(source));
+                    return Err(ListEmailDomainsError::Transport(source));
                 }
             };
             let status = response.status();
@@ -306,30 +560,959 @@ impl Client {
             self.poolster_after_response(&request_info, &response);
             if !status.is_success() {
                 let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(ListInboundError::Transport)?.to_vec();
+                let body = response.bytes().await.map_err(ListEmailDomainsError::Transport)?.to_vec();
                 self.poolster_on_error(&request_info, &format!("HTTP {}", status));
                 return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListInboundError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListInboundError::Unexpected(ApiResponse { status, headers, body }) },
-                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListInboundError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListInboundError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListInboundError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListInboundError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => ListInboundError::Unexpected(ApiResponse { status, headers, body }),
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailDomainsError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailDomainsError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailDomainsError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailDomainsError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => ListEmailDomainsError::Unexpected(ApiResponse { status, headers, body }),
             });
             }
             let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(ListInboundError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::InboundListResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+            let body = response.bytes().await.map_err(ListEmailDomainsError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::DomainListResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
                 Ok(value) => Ok(value),
                 Err(source) => {
                     self.poolster_on_error(&request_info, &source.to_string());
-                    Err(ListInboundError::Decode { source, response: ApiResponse { status, headers, body } })
+                    Err(ListEmailDomainsError::Decode { source, response: ApiResponse { status, headers, body } })
                 }
             };
         }
     }
 
-    /// Invokes GET /v1/email/inbound/{message_id}.
-    pub async fn get_inbound(&self, input: crate::client::operations::GetInboundRequest) -> Result<crate::models::InboundResponse, GetInboundError> {
-        let mut path = "/v1/email/inbound/{message_id}".to_owned();
+    /// Invokes POST /email/domains.
+    pub async fn create_email_domain(&self, body: &crate::models::CreateDomainRequest) -> Result<crate::models::DomainSetupResponse, CreateEmailDomainError> {
+        let path = "/email/domains".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::POST, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = false;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::POST, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+        request = request.json(body);
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(CreateEmailDomainError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(CreateEmailDomainError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| CreateEmailDomainError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(CreateEmailDomainError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(CreateEmailDomainError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateEmailDomainError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateEmailDomainError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                409 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateEmailDomainError::Conflict { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateEmailDomainError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateEmailDomainError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => CreateEmailDomainError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(CreateEmailDomainError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::DomainSetupResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(CreateEmailDomainError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes DELETE /email/domains/{id}.
+    pub async fn delete_email_domain(&self, input: crate::client::operations::DeleteEmailDomainRequest) -> Result<crate::models::DeletedDomainResponse, DeleteEmailDomainError> {
+        let mut path = "/email/domains/{id}".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{id}", &poolster_path_segment(&poolster_query_value(&input.id)));
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::DELETE, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = true;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::DELETE, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(DeleteEmailDomainError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(DeleteEmailDomainError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| DeleteEmailDomainError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(DeleteEmailDomainError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(DeleteEmailDomainError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => DeleteEmailDomainError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => DeleteEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => DeleteEmailDomainError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => DeleteEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => DeleteEmailDomainError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => DeleteEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                409 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => DeleteEmailDomainError::Conflict { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => DeleteEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => DeleteEmailDomainError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => DeleteEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => DeleteEmailDomainError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(DeleteEmailDomainError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::DeletedDomainResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(DeleteEmailDomainError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes GET /email/domains/{id}.
+    pub async fn get_email_domain(&self, input: crate::client::operations::GetEmailDomainRequest) -> Result<crate::models::DomainResponse, GetEmailDomainError> {
+        let mut path = "/email/domains/{id}".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{id}", &poolster_path_segment(&poolster_query_value(&input.id)));
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = true;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(GetEmailDomainError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(GetEmailDomainError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| GetEmailDomainError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(GetEmailDomainError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(GetEmailDomainError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailDomainError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailDomainError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailDomainError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => GetEmailDomainError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(GetEmailDomainError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::DomainResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(GetEmailDomainError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes POST /email/domains/{id}/verify.
+    pub async fn verify_email_domain(&self, input: crate::client::operations::VerifyEmailDomainRequest) -> Result<crate::models::DomainSetupResponse, VerifyEmailDomainError> {
+        let mut path = "/email/domains/{id}/verify".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{id}", &poolster_path_segment(&poolster_query_value(&input.id)));
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::POST, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = false;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::POST, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(VerifyEmailDomainError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(VerifyEmailDomainError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| VerifyEmailDomainError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(VerifyEmailDomainError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(VerifyEmailDomainError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => VerifyEmailDomainError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => VerifyEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => VerifyEmailDomainError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => VerifyEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => VerifyEmailDomainError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => VerifyEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                409 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => VerifyEmailDomainError::Conflict { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => VerifyEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                429 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => VerifyEmailDomainError::TooManyRequests { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => VerifyEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => VerifyEmailDomainError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => VerifyEmailDomainError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => VerifyEmailDomainError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(VerifyEmailDomainError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::DomainSetupResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(VerifyEmailDomainError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes POST /email/emails.
+    pub async fn send_email(&self, input: crate::client::operations::SendEmailRequest, body: &crate::models::SendEmailRequest) -> Result<crate::models::SendResponse, SendEmailError> {
+        let path = "/email/emails".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::POST, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = input.idempotency_key.as_ref().is_some_and(|key| !poolster_query_value(key).trim().is_empty());
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::POST, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if let Some(value) = input.idempotency_key.as_ref() { request = request.header("Idempotency-Key", poolster_query_value(value)); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+        request = request.json(body);
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(SendEmailError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(SendEmailError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| SendEmailError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(SendEmailError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(SendEmailError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => SendEmailError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => SendEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => SendEmailError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => SendEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                409 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => SendEmailError::Conflict { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => SendEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => SendEmailError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => SendEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                429 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => SendEmailError::TooManyRequests { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => SendEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => SendEmailError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => SendEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => SendEmailError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(SendEmailError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::SendResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(SendEmailError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes POST /email/emails/batch.
+    pub async fn send_email_batch(&self, input: crate::client::operations::SendEmailBatchRequest, body: &crate::models::BatchSendRequest) -> Result<crate::models::BatchSendResponse, SendEmailBatchError> {
+        let path = "/email/emails/batch".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::POST, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = input.idempotency_key.as_ref().is_some_and(|key| !poolster_query_value(key).trim().is_empty());
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::POST, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if let Some(value) = input.idempotency_key.as_ref() { request = request.header("Idempotency-Key", poolster_query_value(value)); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+        request = request.json(body);
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(SendEmailBatchError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(SendEmailBatchError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| SendEmailBatchError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(SendEmailBatchError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(SendEmailBatchError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => SendEmailBatchError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => SendEmailBatchError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => SendEmailBatchError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => SendEmailBatchError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => SendEmailBatchError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => SendEmailBatchError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => SendEmailBatchError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(SendEmailBatchError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::BatchSendResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(SendEmailBatchError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes POST /email/emails/query.
+    pub async fn query_emails(&self, body: &crate::models::SendQuery) -> Result<(), QueryEmailsError> {
+        let path = "/email/emails/query".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::POST, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = false;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::POST, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+        request = request.json(body);
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(QueryEmailsError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(QueryEmailsError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| QueryEmailsError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(QueryEmailsError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(QueryEmailsError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => QueryEmailsError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => QueryEmailsError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => QueryEmailsError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => QueryEmailsError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => QueryEmailsError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => QueryEmailsError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => QueryEmailsError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => QueryEmailsError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => QueryEmailsError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            return Ok(());
+        }
+    }
+
+    /// Invokes DELETE /email/emails/{email_id}.
+    pub async fn cancel_email(&self, input: crate::client::operations::CancelEmailRequest) -> Result<crate::models::SendResponse, CancelEmailError> {
+        let mut path = "/email/emails/{email_id}".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{email_id}", &poolster_path_segment(&poolster_query_value(&input.email_id)));
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::DELETE, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = true;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::DELETE, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(CancelEmailError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(CancelEmailError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| CancelEmailError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(CancelEmailError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(CancelEmailError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CancelEmailError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CancelEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CancelEmailError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CancelEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CancelEmailError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CancelEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                409 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CancelEmailError::Conflict { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CancelEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CancelEmailError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CancelEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => CancelEmailError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(CancelEmailError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::SendResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(CancelEmailError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes GET /email/emails/{email_id}.
+    pub async fn get_email(&self, input: crate::client::operations::GetEmailRequest) -> Result<crate::models::SendResponse, GetEmailError> {
+        let mut path = "/email/emails/{email_id}".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{email_id}", &poolster_path_segment(&poolster_query_value(&input.email_id)));
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = true;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(GetEmailError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(GetEmailError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| GetEmailError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(GetEmailError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(GetEmailError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => GetEmailError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(GetEmailError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::SendResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(GetEmailError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes PATCH /email/emails/{email_id}.
+    pub async fn reschedule_email(&self, input: crate::client::operations::RescheduleEmailRequest, body: &crate::models::RescheduleRequest) -> Result<crate::models::SendResponse, RescheduleEmailError> {
+        let mut path = "/email/emails/{email_id}".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{email_id}", &poolster_path_segment(&poolster_query_value(&input.email_id)));
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::PATCH, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = false;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::PATCH, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+        request = request.json(body);
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(RescheduleEmailError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(RescheduleEmailError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| RescheduleEmailError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(RescheduleEmailError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(RescheduleEmailError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => RescheduleEmailError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => RescheduleEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => RescheduleEmailError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => RescheduleEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => RescheduleEmailError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => RescheduleEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                409 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => RescheduleEmailError::Conflict { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => RescheduleEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => RescheduleEmailError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => RescheduleEmailError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => RescheduleEmailError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(RescheduleEmailError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::SendResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(RescheduleEmailError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes GET /email/emails/{email_id}/events.
+    pub async fn list_email_events(&self, input: crate::client::operations::ListEmailEventsRequest) -> Result<crate::models::SendEventsResponse, ListEmailEventsError> {
+        let mut path = "/email/emails/{email_id}/events".to_owned();
+        let mut query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{email_id}", &poolster_path_segment(&poolster_query_value(&input.email_id)));
+        if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
+        if let Some(value) = input.after.as_ref() { query.extend(poolster_query_pairs("after", value, "form", true)); }
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = true;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(ListEmailEventsError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(ListEmailEventsError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| ListEmailEventsError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(ListEmailEventsError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(ListEmailEventsError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailEventsError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailEventsError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailEventsError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailEventsError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailEventsError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailEventsError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailEventsError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailEventsError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailEventsError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailEventsError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => ListEmailEventsError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(ListEmailEventsError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::SendEventsResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(ListEmailEventsError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes GET /email/emails/{email_id}/recipients/{recipient_send_id}/events.
+    pub async fn list_email_recipient_events(&self, input: crate::client::operations::ListEmailRecipientEventsRequest) -> Result<crate::models::SendEventsResponse, ListEmailRecipientEventsError> {
+        let mut path = "/email/emails/{email_id}/recipients/{recipient_send_id}/events".to_owned();
+        let mut query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{email_id}", &poolster_path_segment(&poolster_query_value(&input.email_id)));
+        path = path.replace("{recipient_send_id}", &poolster_path_segment(&poolster_query_value(&input.recipient_send_id)));
+        if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
+        if let Some(value) = input.after.as_ref() { query.extend(poolster_query_pairs("after", value, "form", true)); }
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = true;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(ListEmailRecipientEventsError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(ListEmailRecipientEventsError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| ListEmailRecipientEventsError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(ListEmailRecipientEventsError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(ListEmailRecipientEventsError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailRecipientEventsError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailRecipientEventsError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailRecipientEventsError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailRecipientEventsError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailRecipientEventsError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailRecipientEventsError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailRecipientEventsError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailRecipientEventsError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailRecipientEventsError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailRecipientEventsError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => ListEmailRecipientEventsError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(ListEmailRecipientEventsError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::SendEventsResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(ListEmailRecipientEventsError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes POST /email/events.
+    pub async fn track_email_event(&self, body: &crate::models::TrackEventRequest) -> Result<crate::models::EventResponse, TrackEmailEventError> {
+        let path = "/email/events".to_owned();
+        let query: Vec<(String, String)> = Vec::new();
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::POST, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = false;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::POST, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        request = request.json(body);
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(TrackEmailEventError::Transport)?;
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(TrackEmailEventError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(TrackEmailEventError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => TrackEmailEventError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => TrackEmailEventError::Unexpected(ApiResponse { status, headers, body }) },
+                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => TrackEmailEventError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => TrackEmailEventError::Unexpected(ApiResponse { status, headers, body }) },
+                409 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => TrackEmailEventError::Conflict { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => TrackEmailEventError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => TrackEmailEventError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => TrackEmailEventError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => TrackEmailEventError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => TrackEmailEventError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => TrackEmailEventError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(TrackEmailEventError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::EventResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(TrackEmailEventError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes GET /email/inbound.
+    pub async fn list_email_inbound(&self, input: crate::client::operations::ListEmailInboundRequest) -> Result<crate::models::InboundListResponse, ListEmailInboundError> {
+        let path = "/email/inbound".to_owned();
+        let mut query: Vec<(String, String)> = Vec::new();
+        if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
+        let request_url = format!("{}{}", self.base_url, path);
+        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
+        self.poolster_before_request(&request_info);
+        let retry_allowed = true;
+        let max_attempts = self.retry.max_attempts.max(1);
+        let mut attempt = 0_usize;
+        let mut oauth_replayed = false;
+        #[allow(unused_mut)]
+        let mut oauth_token: Option<String> = None;
+        loop {
+            attempt += 1;
+            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
+            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
+            if !query.is_empty() { request = request.query(&query); }
+        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
+            #[allow(unused_mut)]
+            let mut request = request.build().map_err(ListEmailInboundError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(ListEmailInboundError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| ListEmailInboundError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let response = match self.transport.execute(request).await {
+                Ok(response) => response,
+                Err(source) => {
+                    if retry_allowed && attempt < max_attempts {
+                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
+                        continue;
+                    }
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    return Err(ListEmailInboundError::Transport(source));
+                }
+            };
+            let status = response.status();
+            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
+            let retry_after = poolster_retry_after(response.headers());
+            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
+                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
+                continue;
+            }
+            self.poolster_after_response(&request_info, &response);
+            if !status.is_success() {
+                let headers = response.headers().clone();
+                let body = response.bytes().await.map_err(ListEmailInboundError::Transport)?.to_vec();
+                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
+                return Err(match status.as_u16() {
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailInboundError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailInboundError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListEmailInboundError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => ListEmailInboundError::Unexpected(ApiResponse { status, headers, body }),
+            });
+            }
+            let headers = response.headers().clone();
+            let body = response.bytes().await.map_err(ListEmailInboundError::Transport)?.to_vec();
+            return match poolster_decode_json::<crate::models::InboundListResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
+                Ok(value) => Ok(value),
+                Err(source) => {
+                    self.poolster_on_error(&request_info, &source.to_string());
+                    Err(ListEmailInboundError::Decode { source, response: ApiResponse { status, headers, body } })
+                }
+            };
+        }
+    }
+
+    /// Invokes GET /email/inbound/{message_id}.
+    pub async fn get_email_inbound(&self, input: crate::client::operations::GetEmailInboundRequest) -> Result<crate::models::InboundResponse, GetEmailInboundError> {
+        let mut path = "/email/inbound/{message_id}".to_owned();
         let query: Vec<(String, String)> = Vec::new();
         path = path.replace("{message_id}", &poolster_path_segment(&poolster_query_value(&input.message_id)));
         let request_url = format!("{}{}", self.base_url, path);
@@ -348,8 +1531,8 @@ impl Client {
             if !query.is_empty() { request = request.query(&query); }
         if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
             #[allow(unused_mut)]
-            let mut request = request.build().map_err(GetInboundError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(GetInboundError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| GetInboundError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let mut request = request.build().map_err(GetEmailInboundError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(GetEmailInboundError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| GetEmailInboundError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
             let response = match self.transport.execute(request).await {
                 Ok(response) => response,
                 Err(source) => {
@@ -358,7 +1541,7 @@ impl Client {
                         continue;
                     }
                     self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(GetInboundError::Transport(source));
+                    return Err(GetEmailInboundError::Transport(source));
                 }
             };
             let status = response.status();
@@ -371,289 +1554,32 @@ impl Client {
             self.poolster_after_response(&request_info, &response);
             if !status.is_success() {
                 let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(GetInboundError::Transport)?.to_vec();
+                let body = response.bytes().await.map_err(GetEmailInboundError::Transport)?.to_vec();
                 self.poolster_on_error(&request_info, &format!("HTTP {}", status));
                 return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetInboundError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetInboundError::Unexpected(ApiResponse { status, headers, body }) },
-                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetInboundError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetInboundError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetInboundError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetInboundError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => GetInboundError::Unexpected(ApiResponse { status, headers, body }),
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailInboundError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailInboundError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetEmailInboundError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => GetEmailInboundError::Unexpected(ApiResponse { status, headers, body }),
             });
             }
             let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(GetInboundError::Transport)?.to_vec();
+            let body = response.bytes().await.map_err(GetEmailInboundError::Transport)?.to_vec();
             return match poolster_decode_json::<crate::models::InboundResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
                 Ok(value) => Ok(value),
                 Err(source) => {
                     self.poolster_on_error(&request_info, &source.to_string());
-                    Err(GetInboundError::Decode { source, response: ApiResponse { status, headers, body } })
+                    Err(GetEmailInboundError::Decode { source, response: ApiResponse { status, headers, body } })
                 }
             };
         }
     }
 
-    /// Invokes GET /v1/email/segments.
-    pub async fn list_segments(&self, input: crate::client::operations::ListSegmentsRequest) -> Result<crate::models::SegmentListResponse, ListSegmentsError> {
-        let path = "/v1/email/segments".to_owned();
-        let mut query: Vec<(String, String)> = Vec::new();
-        if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
-        let request_url = format!("{}{}", self.base_url, path);
-        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
-        self.poolster_before_request(&request_info);
-        let retry_allowed = true;
-        let max_attempts = self.retry.max_attempts.max(1);
-        let mut attempt = 0_usize;
-        let mut oauth_replayed = false;
-        #[allow(unused_mut)]
-        let mut oauth_token: Option<String> = None;
-        loop {
-            attempt += 1;
-            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
-            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
-            if !query.is_empty() { request = request.query(&query); }
-        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
-            #[allow(unused_mut)]
-            let mut request = request.build().map_err(ListSegmentsError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(ListSegmentsError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| ListSegmentsError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
-            let response = match self.transport.execute(request).await {
-                Ok(response) => response,
-                Err(source) => {
-                    if retry_allowed && attempt < max_attempts {
-                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
-                        continue;
-                    }
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(ListSegmentsError::Transport(source));
-                }
-            };
-            let status = response.status();
-            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
-            let retry_after = poolster_retry_after(response.headers());
-            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
-                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
-                continue;
-            }
-            self.poolster_after_response(&request_info, &response);
-            if !status.is_success() {
-                let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(ListSegmentsError::Transport)?.to_vec();
-                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
-                return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListSegmentsError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListSegmentsError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListSegmentsError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListSegmentsError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => ListSegmentsError::Unexpected(ApiResponse { status, headers, body }),
-            });
-            }
-            let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(ListSegmentsError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::SegmentListResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
-                Ok(value) => Ok(value),
-                Err(source) => {
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    Err(ListSegmentsError::Decode { source, response: ApiResponse { status, headers, body } })
-                }
-            };
-        }
-    }
-
-    /// Invokes GET /v1/email/segments/{id}.
-    pub async fn get_segment(&self, input: crate::client::operations::GetSegmentRequest) -> Result<crate::models::SegmentResponse, GetSegmentError> {
-        let mut path = "/v1/email/segments/{id}".to_owned();
+    /// Invokes POST /email/inbound/{message_id}/forward.
+    pub async fn forward_email_inbound(&self, input: crate::client::operations::ForwardEmailInboundRequest, body: &crate::models::ForwardRequest) -> Result<(), ForwardEmailInboundError> {
+        let mut path = "/email/inbound/{message_id}/forward".to_owned();
         let query: Vec<(String, String)> = Vec::new();
-        path = path.replace("{id}", &poolster_path_segment(&poolster_query_value(&input.id)));
-        let request_url = format!("{}{}", self.base_url, path);
-        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
-        self.poolster_before_request(&request_info);
-        let retry_allowed = true;
-        let max_attempts = self.retry.max_attempts.max(1);
-        let mut attempt = 0_usize;
-        let mut oauth_replayed = false;
-        #[allow(unused_mut)]
-        let mut oauth_token: Option<String> = None;
-        loop {
-            attempt += 1;
-            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
-            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
-            if !query.is_empty() { request = request.query(&query); }
-        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
-            #[allow(unused_mut)]
-            let mut request = request.build().map_err(GetSegmentError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(GetSegmentError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| GetSegmentError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
-            let response = match self.transport.execute(request).await {
-                Ok(response) => response,
-                Err(source) => {
-                    if retry_allowed && attempt < max_attempts {
-                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
-                        continue;
-                    }
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(GetSegmentError::Transport(source));
-                }
-            };
-            let status = response.status();
-            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
-            let retry_after = poolster_retry_after(response.headers());
-            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
-                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
-                continue;
-            }
-            self.poolster_after_response(&request_info, &response);
-            if !status.is_success() {
-                let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(GetSegmentError::Transport)?.to_vec();
-                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
-                return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetSegmentError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetSegmentError::Unexpected(ApiResponse { status, headers, body }) },
-                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetSegmentError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetSegmentError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetSegmentError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetSegmentError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => GetSegmentError::Unexpected(ApiResponse { status, headers, body }),
-            });
-            }
-            let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(GetSegmentError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::SegmentResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
-                Ok(value) => Ok(value),
-                Err(source) => {
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    Err(GetSegmentError::Decode { source, response: ApiResponse { status, headers, body } })
-                }
-            };
-        }
-    }
-
-    /// Invokes GET /v1/email/sender-identities.
-    pub async fn list_sender_identities(&self, input: crate::client::operations::ListSenderIdentitiesRequest) -> Result<crate::models::SenderIdentityListResponse, ListSenderIdentitiesError> {
-        let path = "/v1/email/sender-identities".to_owned();
-        let mut query: Vec<(String, String)> = Vec::new();
-        if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
-        let request_url = format!("{}{}", self.base_url, path);
-        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
-        self.poolster_before_request(&request_info);
-        let retry_allowed = true;
-        let max_attempts = self.retry.max_attempts.max(1);
-        let mut attempt = 0_usize;
-        let mut oauth_replayed = false;
-        #[allow(unused_mut)]
-        let mut oauth_token: Option<String> = None;
-        loop {
-            attempt += 1;
-            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
-            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
-            if !query.is_empty() { request = request.query(&query); }
-        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
-            #[allow(unused_mut)]
-            let mut request = request.build().map_err(ListSenderIdentitiesError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(ListSenderIdentitiesError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| ListSenderIdentitiesError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
-            let response = match self.transport.execute(request).await {
-                Ok(response) => response,
-                Err(source) => {
-                    if retry_allowed && attempt < max_attempts {
-                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
-                        continue;
-                    }
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(ListSenderIdentitiesError::Transport(source));
-                }
-            };
-            let status = response.status();
-            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
-            let retry_after = poolster_retry_after(response.headers());
-            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
-                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
-                continue;
-            }
-            self.poolster_after_response(&request_info, &response);
-            if !status.is_success() {
-                let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(ListSenderIdentitiesError::Transport)?.to_vec();
-                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
-                return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListSenderIdentitiesError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListSenderIdentitiesError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListSenderIdentitiesError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListSenderIdentitiesError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => ListSenderIdentitiesError::Unexpected(ApiResponse { status, headers, body }),
-            });
-            }
-            let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(ListSenderIdentitiesError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::SenderIdentityListResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
-                Ok(value) => Ok(value),
-                Err(source) => {
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    Err(ListSenderIdentitiesError::Decode { source, response: ApiResponse { status, headers, body } })
-                }
-            };
-        }
-    }
-
-    /// Invokes GET /v1/email/sender-identities/{id}.
-    pub async fn get_sender_identity(&self, input: crate::client::operations::GetSenderIdentityRequest) -> Result<crate::models::SenderIdentityResponse, GetSenderIdentityError> {
-        let mut path = "/v1/email/sender-identities/{id}".to_owned();
-        let query: Vec<(String, String)> = Vec::new();
-        path = path.replace("{id}", &poolster_path_segment(&poolster_query_value(&input.id)));
-        let request_url = format!("{}{}", self.base_url, path);
-        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
-        self.poolster_before_request(&request_info);
-        let retry_allowed = true;
-        let max_attempts = self.retry.max_attempts.max(1);
-        let mut attempt = 0_usize;
-        let mut oauth_replayed = false;
-        #[allow(unused_mut)]
-        let mut oauth_token: Option<String> = None;
-        loop {
-            attempt += 1;
-            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
-            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
-            if !query.is_empty() { request = request.query(&query); }
-        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
-            #[allow(unused_mut)]
-            let mut request = request.build().map_err(GetSenderIdentityError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(GetSenderIdentityError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| GetSenderIdentityError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
-            let response = match self.transport.execute(request).await {
-                Ok(response) => response,
-                Err(source) => {
-                    if retry_allowed && attempt < max_attempts {
-                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
-                        continue;
-                    }
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(GetSenderIdentityError::Transport(source));
-                }
-            };
-            let status = response.status();
-            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
-            let retry_after = poolster_retry_after(response.headers());
-            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
-                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
-                continue;
-            }
-            self.poolster_after_response(&request_info, &response);
-            if !status.is_success() {
-                let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(GetSenderIdentityError::Transport)?.to_vec();
-                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
-                return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetSenderIdentityError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetSenderIdentityError::Unexpected(ApiResponse { status, headers, body }) },
-                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetSenderIdentityError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetSenderIdentityError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetSenderIdentityError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetSenderIdentityError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => GetSenderIdentityError::Unexpected(ApiResponse { status, headers, body }),
-            });
-            }
-            let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(GetSenderIdentityError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::SenderIdentityResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
-                Ok(value) => Ok(value),
-                Err(source) => {
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    Err(GetSenderIdentityError::Decode { source, response: ApiResponse { status, headers, body } })
-                }
-            };
-        }
-    }
-
-    /// Invokes POST /v1/email/sends.
-    pub async fn create(&self, body: &crate::models::SendRequest) -> Result<crate::models::SendResponse, CreateError> {
-        let path = "/v1/email/sends".to_owned();
-        let query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{message_id}", &poolster_path_segment(&poolster_query_value(&input.message_id)));
         let request_url = format!("{}{}", self.base_url, path);
         let request_info = RequestInfo { method: reqwest::Method::POST, url: request_url.clone() };
         self.poolster_before_request(&request_info);
@@ -671,8 +1597,8 @@ impl Client {
         if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
         request = request.json(body);
             #[allow(unused_mut)]
-            let mut request = request.build().map_err(CreateError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(CreateError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| CreateError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let mut request = request.build().map_err(ForwardEmailInboundError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(ForwardEmailInboundError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| ForwardEmailInboundError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
             let response = match self.transport.execute(request).await {
                 Ok(response) => response,
                 Err(source) => {
@@ -681,7 +1607,7 @@ impl Client {
                         continue;
                     }
                     self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(CreateError::Transport(source));
+                    return Err(ForwardEmailInboundError::Transport(source));
                 }
             };
             let status = response.status();
@@ -694,288 +1620,27 @@ impl Client {
             self.poolster_after_response(&request_info, &response);
             if !status.is_success() {
                 let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(CreateError::Transport)?.to_vec();
+                let body = response.bytes().await.map_err(ForwardEmailInboundError::Transport)?.to_vec();
                 self.poolster_on_error(&request_info, &format!("HTTP {}", status));
                 return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateError::Unexpected(ApiResponse { status, headers, body }) },
-                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateError::Unexpected(ApiResponse { status, headers, body }) },
-                409 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateError::Conflict { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateError::Unexpected(ApiResponse { status, headers, body }) },
-                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateError::Unexpected(ApiResponse { status, headers, body }) },
-                429 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateError::TooManyRequests { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => CreateError::Unexpected(ApiResponse { status, headers, body }),
-            });
-            }
-            let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(CreateError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::SendResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
-                Ok(value) => Ok(value),
-                Err(source) => {
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    Err(CreateError::Decode { source, response: ApiResponse { status, headers, body } })
-                }
-            };
-        }
-    }
-
-    /// Invokes POST /v1/email/sends/query.
-    pub async fn query(&self, body: &crate::models::SendQuery) -> Result<(), QueryError> {
-        let path = "/v1/email/sends/query".to_owned();
-        let query: Vec<(String, String)> = Vec::new();
-        let request_url = format!("{}{}", self.base_url, path);
-        let request_info = RequestInfo { method: reqwest::Method::POST, url: request_url.clone() };
-        self.poolster_before_request(&request_info);
-        let retry_allowed = false;
-        let max_attempts = self.retry.max_attempts.max(1);
-        let mut attempt = 0_usize;
-        let mut oauth_replayed = false;
-        #[allow(unused_mut)]
-        let mut oauth_token: Option<String> = None;
-        loop {
-            attempt += 1;
-            let mut request = self.http.request(reqwest::Method::POST, request_url.clone()).headers(self.call_options.headers.clone());
-            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
-            if !query.is_empty() { request = request.query(&query); }
-        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
-        request = request.json(body);
-            #[allow(unused_mut)]
-            let mut request = request.build().map_err(QueryError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(QueryError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| QueryError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
-            let response = match self.transport.execute(request).await {
-                Ok(response) => response,
-                Err(source) => {
-                    if retry_allowed && attempt < max_attempts {
-                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
-                        continue;
-                    }
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(QueryError::Transport(source));
-                }
-            };
-            let status = response.status();
-            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
-            let retry_after = poolster_retry_after(response.headers());
-            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
-                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
-                continue;
-            }
-            self.poolster_after_response(&request_info, &response);
-            if !status.is_success() {
-                let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(QueryError::Transport)?.to_vec();
-                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
-                return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => QueryError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => QueryError::Unexpected(ApiResponse { status, headers, body }) },
-                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => QueryError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => QueryError::Unexpected(ApiResponse { status, headers, body }) },
-                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => QueryError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => QueryError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => QueryError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => QueryError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => QueryError::Unexpected(ApiResponse { status, headers, body }),
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ForwardEmailInboundError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ForwardEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ForwardEmailInboundError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ForwardEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                409 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ForwardEmailInboundError::Conflict { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ForwardEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ForwardEmailInboundError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ForwardEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                429 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ForwardEmailInboundError::TooManyRequests { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ForwardEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ForwardEmailInboundError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ForwardEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => ForwardEmailInboundError::Unexpected(ApiResponse { status, headers, body }),
             });
             }
             return Ok(());
         }
     }
 
-    /// Invokes DELETE /v1/email/sends/{send_id}.
-    pub async fn cancel(&self, input: crate::client::operations::CancelRequest) -> Result<crate::models::SendResponse, CancelError> {
-        let mut path = "/v1/email/sends/{send_id}".to_owned();
+    /// Invokes POST /email/inbound/{message_id}/reply.
+    pub async fn reply_to_email_inbound(&self, input: crate::client::operations::ReplyToEmailInboundRequest, body: &crate::models::ReplyRequest) -> Result<(), ReplyToEmailInboundError> {
+        let mut path = "/email/inbound/{message_id}/reply".to_owned();
         let query: Vec<(String, String)> = Vec::new();
-        path = path.replace("{send_id}", &poolster_path_segment(&poolster_query_value(&input.send_id)));
-        let request_url = format!("{}{}", self.base_url, path);
-        let request_info = RequestInfo { method: reqwest::Method::DELETE, url: request_url.clone() };
-        self.poolster_before_request(&request_info);
-        let retry_allowed = true;
-        let max_attempts = self.retry.max_attempts.max(1);
-        let mut attempt = 0_usize;
-        let mut oauth_replayed = false;
-        #[allow(unused_mut)]
-        let mut oauth_token: Option<String> = None;
-        loop {
-            attempt += 1;
-            let mut request = self.http.request(reqwest::Method::DELETE, request_url.clone()).headers(self.call_options.headers.clone());
-            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
-            if !query.is_empty() { request = request.query(&query); }
-        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
-            #[allow(unused_mut)]
-            let mut request = request.build().map_err(CancelError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(CancelError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| CancelError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
-            let response = match self.transport.execute(request).await {
-                Ok(response) => response,
-                Err(source) => {
-                    if retry_allowed && attempt < max_attempts {
-                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
-                        continue;
-                    }
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(CancelError::Transport(source));
-                }
-            };
-            let status = response.status();
-            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
-            let retry_after = poolster_retry_after(response.headers());
-            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
-                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
-                continue;
-            }
-            self.poolster_after_response(&request_info, &response);
-            if !status.is_success() {
-                let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(CancelError::Transport)?.to_vec();
-                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
-                return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CancelError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CancelError::Unexpected(ApiResponse { status, headers, body }) },
-                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CancelError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CancelError::Unexpected(ApiResponse { status, headers, body }) },
-                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CancelError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CancelError::Unexpected(ApiResponse { status, headers, body }) },
-                409 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CancelError::Conflict { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CancelError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CancelError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CancelError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => CancelError::Unexpected(ApiResponse { status, headers, body }),
-            });
-            }
-            let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(CancelError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::SendResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
-                Ok(value) => Ok(value),
-                Err(source) => {
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    Err(CancelError::Decode { source, response: ApiResponse { status, headers, body } })
-                }
-            };
-        }
-    }
-
-    /// Invokes GET /v1/email/sends/{send_id}.
-    pub async fn get(&self, input: crate::client::operations::GetRequest) -> Result<crate::models::SendResponse, GetError> {
-        let mut path = "/v1/email/sends/{send_id}".to_owned();
-        let query: Vec<(String, String)> = Vec::new();
-        path = path.replace("{send_id}", &poolster_path_segment(&poolster_query_value(&input.send_id)));
-        let request_url = format!("{}{}", self.base_url, path);
-        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
-        self.poolster_before_request(&request_info);
-        let retry_allowed = true;
-        let max_attempts = self.retry.max_attempts.max(1);
-        let mut attempt = 0_usize;
-        let mut oauth_replayed = false;
-        #[allow(unused_mut)]
-        let mut oauth_token: Option<String> = None;
-        loop {
-            attempt += 1;
-            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
-            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
-            if !query.is_empty() { request = request.query(&query); }
-        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
-            #[allow(unused_mut)]
-            let mut request = request.build().map_err(GetError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(GetError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| GetError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
-            let response = match self.transport.execute(request).await {
-                Ok(response) => response,
-                Err(source) => {
-                    if retry_allowed && attempt < max_attempts {
-                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
-                        continue;
-                    }
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(GetError::Transport(source));
-                }
-            };
-            let status = response.status();
-            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
-            let retry_after = poolster_retry_after(response.headers());
-            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
-                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
-                continue;
-            }
-            self.poolster_after_response(&request_info, &response);
-            if !status.is_success() {
-                let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(GetError::Transport)?.to_vec();
-                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
-                return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetError::Unexpected(ApiResponse { status, headers, body }) },
-                403 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetError::Forbidden { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetError::Unexpected(ApiResponse { status, headers, body }) },
-                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => GetError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => GetError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => GetError::Unexpected(ApiResponse { status, headers, body }),
-            });
-            }
-            let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(GetError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::SendResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
-                Ok(value) => Ok(value),
-                Err(source) => {
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    Err(GetError::Decode { source, response: ApiResponse { status, headers, body } })
-                }
-            };
-        }
-    }
-
-    /// Invokes GET /v1/email/webhooks.
-    pub async fn list_webhooks(&self) -> Result<crate::models::WebhookListResponse, ListWebhooksError> {
-        let path = "/v1/email/webhooks".to_owned();
-        let query: Vec<(String, String)> = Vec::new();
-        let request_url = format!("{}{}", self.base_url, path);
-        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
-        self.poolster_before_request(&request_info);
-        let retry_allowed = true;
-        let max_attempts = self.retry.max_attempts.max(1);
-        let mut attempt = 0_usize;
-        let mut oauth_replayed = false;
-        #[allow(unused_mut)]
-        let mut oauth_token: Option<String> = None;
-        loop {
-            attempt += 1;
-            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
-            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
-            if !query.is_empty() { request = request.query(&query); }
-        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
-            #[allow(unused_mut)]
-            let mut request = request.build().map_err(ListWebhooksError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(ListWebhooksError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| ListWebhooksError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
-            let response = match self.transport.execute(request).await {
-                Ok(response) => response,
-                Err(source) => {
-                    if retry_allowed && attempt < max_attempts {
-                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
-                        continue;
-                    }
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(ListWebhooksError::Transport(source));
-                }
-            };
-            let status = response.status();
-            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
-            let retry_after = poolster_retry_after(response.headers());
-            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
-                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
-                continue;
-            }
-            self.poolster_after_response(&request_info, &response);
-            if !status.is_success() {
-                let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(ListWebhooksError::Transport)?.to_vec();
-                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
-                return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListWebhooksError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListWebhooksError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListWebhooksError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListWebhooksError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => ListWebhooksError::Unexpected(ApiResponse { status, headers, body }),
-            });
-            }
-            let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(ListWebhooksError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::WebhookListResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
-                Ok(value) => Ok(value),
-                Err(source) => {
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    Err(ListWebhooksError::Decode { source, response: ApiResponse { status, headers, body } })
-                }
-            };
-        }
-    }
-
-    /// Invokes POST /v1/email/webhooks.
-    pub async fn create_webhook(&self, body: &crate::models::HookCreate) -> Result<crate::models::CreateWebhookResponse, CreateWebhookError> {
-        let path = "/v1/email/webhooks".to_owned();
-        let query: Vec<(String, String)> = Vec::new();
+        path = path.replace("{message_id}", &poolster_path_segment(&poolster_query_value(&input.message_id)));
         let request_url = format!("{}{}", self.base_url, path);
         let request_info = RequestInfo { method: reqwest::Method::POST, url: request_url.clone() };
         self.poolster_before_request(&request_info);
@@ -993,8 +1658,8 @@ impl Client {
         if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
         request = request.json(body);
             #[allow(unused_mut)]
-            let mut request = request.build().map_err(CreateWebhookError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(CreateWebhookError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| CreateWebhookError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
+            let mut request = request.build().map_err(ReplyToEmailInboundError::Transport)?;
+            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(ReplyToEmailInboundError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| ReplyToEmailInboundError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
             let response = match self.transport.execute(request).await {
                 Ok(response) => response,
                 Err(source) => {
@@ -1003,7 +1668,7 @@ impl Client {
                         continue;
                     }
                     self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(CreateWebhookError::Transport(source));
+                    return Err(ReplyToEmailInboundError::Transport(source));
                 }
             };
             let status = response.status();
@@ -1016,214 +1681,19 @@ impl Client {
             self.poolster_after_response(&request_info, &response);
             if !status.is_success() {
                 let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(CreateWebhookError::Transport)?.to_vec();
+                let body = response.bytes().await.map_err(ReplyToEmailInboundError::Transport)?.to_vec();
                 self.poolster_on_error(&request_info, &format!("HTTP {}", status));
                 return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateWebhookError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateWebhookError::Unexpected(ApiResponse { status, headers, body }) },
-                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateWebhookError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateWebhookError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => CreateWebhookError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => CreateWebhookError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => CreateWebhookError::Unexpected(ApiResponse { status, headers, body }),
-            });
-            }
-            let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(CreateWebhookError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::CreateWebhookResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
-                Ok(value) => Ok(value),
-                Err(source) => {
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    Err(CreateWebhookError::Decode { source, response: ApiResponse { status, headers, body } })
-                }
-            };
-        }
-    }
-
-    /// Invokes DELETE /v1/email/webhooks/{webhook_id}.
-    pub async fn delete_webhook(&self, input: crate::client::operations::DeleteWebhookRequest) -> Result<(), DeleteWebhookError> {
-        let mut path = "/v1/email/webhooks/{webhook_id}".to_owned();
-        let query: Vec<(String, String)> = Vec::new();
-        path = path.replace("{webhook_id}", &poolster_path_segment(&poolster_query_value(&input.webhook_id)));
-        let request_url = format!("{}{}", self.base_url, path);
-        let request_info = RequestInfo { method: reqwest::Method::DELETE, url: request_url.clone() };
-        self.poolster_before_request(&request_info);
-        let retry_allowed = true;
-        let max_attempts = self.retry.max_attempts.max(1);
-        let mut attempt = 0_usize;
-        let mut oauth_replayed = false;
-        #[allow(unused_mut)]
-        let mut oauth_token: Option<String> = None;
-        loop {
-            attempt += 1;
-            let mut request = self.http.request(reqwest::Method::DELETE, request_url.clone()).headers(self.call_options.headers.clone());
-            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
-            if !query.is_empty() { request = request.query(&query); }
-        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
-            #[allow(unused_mut)]
-            let mut request = request.build().map_err(DeleteWebhookError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(DeleteWebhookError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| DeleteWebhookError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
-            let response = match self.transport.execute(request).await {
-                Ok(response) => response,
-                Err(source) => {
-                    if retry_allowed && attempt < max_attempts {
-                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
-                        continue;
-                    }
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(DeleteWebhookError::Transport(source));
-                }
-            };
-            let status = response.status();
-            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
-            let retry_after = poolster_retry_after(response.headers());
-            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
-                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
-                continue;
-            }
-            self.poolster_after_response(&request_info, &response);
-            if !status.is_success() {
-                let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(DeleteWebhookError::Transport)?.to_vec();
-                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
-                return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => DeleteWebhookError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => DeleteWebhookError::Unexpected(ApiResponse { status, headers, body }) },
-                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => DeleteWebhookError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => DeleteWebhookError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => DeleteWebhookError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => DeleteWebhookError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => DeleteWebhookError::Unexpected(ApiResponse { status, headers, body }),
+                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ReplyToEmailInboundError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ReplyToEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ReplyToEmailInboundError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ReplyToEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                409 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ReplyToEmailInboundError::Conflict { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ReplyToEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ReplyToEmailInboundError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ReplyToEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                429 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ReplyToEmailInboundError::TooManyRequests { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ReplyToEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ReplyToEmailInboundError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ReplyToEmailInboundError::Unexpected(ApiResponse { status, headers, body }) },
+                _ => ReplyToEmailInboundError::Unexpected(ApiResponse { status, headers, body }),
             });
             }
             return Ok(());
-        }
-    }
-
-    /// Invokes PATCH /v1/email/webhooks/{webhook_id}.
-    pub async fn update_webhook(&self, input: crate::client::operations::UpdateWebhookRequest, body: &crate::models::HookUpdate) -> Result<crate::models::WebhookResponse, UpdateWebhookError> {
-        let mut path = "/v1/email/webhooks/{webhook_id}".to_owned();
-        let query: Vec<(String, String)> = Vec::new();
-        path = path.replace("{webhook_id}", &poolster_path_segment(&poolster_query_value(&input.webhook_id)));
-        let request_url = format!("{}{}", self.base_url, path);
-        let request_info = RequestInfo { method: reqwest::Method::PATCH, url: request_url.clone() };
-        self.poolster_before_request(&request_info);
-        let retry_allowed = false;
-        let max_attempts = self.retry.max_attempts.max(1);
-        let mut attempt = 0_usize;
-        let mut oauth_replayed = false;
-        #[allow(unused_mut)]
-        let mut oauth_token: Option<String> = None;
-        loop {
-            attempt += 1;
-            let mut request = self.http.request(reqwest::Method::PATCH, request_url.clone()).headers(self.call_options.headers.clone());
-            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
-            if !query.is_empty() { request = request.query(&query); }
-        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
-        request = request.json(body);
-            #[allow(unused_mut)]
-            let mut request = request.build().map_err(UpdateWebhookError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(UpdateWebhookError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| UpdateWebhookError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
-            let response = match self.transport.execute(request).await {
-                Ok(response) => response,
-                Err(source) => {
-                    if retry_allowed && attempt < max_attempts {
-                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
-                        continue;
-                    }
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(UpdateWebhookError::Transport(source));
-                }
-            };
-            let status = response.status();
-            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
-            let retry_after = poolster_retry_after(response.headers());
-            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
-                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
-                continue;
-            }
-            self.poolster_after_response(&request_info, &response);
-            if !status.is_success() {
-                let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(UpdateWebhookError::Transport)?.to_vec();
-                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
-                return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => UpdateWebhookError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => UpdateWebhookError::Unexpected(ApiResponse { status, headers, body }) },
-                404 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => UpdateWebhookError::NotFound { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => UpdateWebhookError::Unexpected(ApiResponse { status, headers, body }) },
-                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => UpdateWebhookError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => UpdateWebhookError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => UpdateWebhookError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => UpdateWebhookError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => UpdateWebhookError::Unexpected(ApiResponse { status, headers, body }),
-            });
-            }
-            let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(UpdateWebhookError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::WebhookResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
-                Ok(value) => Ok(value),
-                Err(source) => {
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    Err(UpdateWebhookError::Decode { source, response: ApiResponse { status, headers, body } })
-                }
-            };
-        }
-    }
-
-    /// Invokes GET /v1/email/webhooks/{webhook_id}/deliveries.
-    pub async fn list_deliveries(&self, input: crate::client::operations::ListDeliveriesRequest) -> Result<crate::models::WebhookDeliveryListResponse, ListDeliveriesError> {
-        let mut path = "/v1/email/webhooks/{webhook_id}/deliveries".to_owned();
-        let mut query: Vec<(String, String)> = Vec::new();
-        path = path.replace("{webhook_id}", &poolster_path_segment(&poolster_query_value(&input.webhook_id)));
-        if let Some(value) = input.limit.as_ref() { query.extend(poolster_query_pairs("limit", value, "form", true)); }
-        let request_url = format!("{}{}", self.base_url, path);
-        let request_info = RequestInfo { method: reqwest::Method::GET, url: request_url.clone() };
-        self.poolster_before_request(&request_info);
-        let retry_allowed = true;
-        let max_attempts = self.retry.max_attempts.max(1);
-        let mut attempt = 0_usize;
-        let mut oauth_replayed = false;
-        #[allow(unused_mut)]
-        let mut oauth_token: Option<String> = None;
-        loop {
-            attempt += 1;
-            let mut request = self.http.request(reqwest::Method::GET, request_url.clone()).headers(self.call_options.headers.clone());
-            if let Some(timeout) = self.call_options.timeout { request = request.timeout(timeout); }
-            if !query.is_empty() { request = request.query(&query); }
-        if !self.call_options.headers.contains_key(reqwest::header::AUTHORIZATION) { if let Some(token) = &self.bearer_token { request = request.bearer_auth(token); } }
-            #[allow(unused_mut)]
-            let mut request = request.build().map_err(ListDeliveriesError::Transport)?;
-            if !request.headers().contains_key(reqwest::header::AUTHORIZATION) { if let Some(provider) = &self.token_provider { let token = provider.token().await.map_err(ListDeliveriesError::TokenProvider)?; let header = reqwest::header::HeaderValue::from_str(&format!("Bearer {token}")).map_err(|_| ListDeliveriesError::TokenProvider(TokenProviderError))?; request.headers_mut().insert(reqwest::header::AUTHORIZATION, header); oauth_token = Some(token); } }
-            let response = match self.transport.execute(request).await {
-                Ok(response) => response,
-                Err(source) => {
-                    if retry_allowed && attempt < max_attempts {
-                        tokio::time::sleep(self.poolster_retry_delay(attempt, None)).await;
-                        continue;
-                    }
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    return Err(ListDeliveriesError::Transport(source));
-                }
-            };
-            let status = response.status();
-            if status.as_u16() == 401 && retry_allowed && !oauth_replayed { if let (Some(provider), Some(token)) = (&self.token_provider, oauth_token.take()) { provider.invalidate(&token); oauth_replayed = true; continue; } }
-            let retry_after = poolster_retry_after(response.headers());
-            if retry_allowed && attempt < max_attempts && matches!(status.as_u16(), 408 | 429 | 500 | 502 | 503 | 504) {
-                tokio::time::sleep(self.poolster_retry_delay(attempt, retry_after)).await;
-                continue;
-            }
-            self.poolster_after_response(&request_info, &response);
-            if !status.is_success() {
-                let headers = response.headers().clone();
-                let body = response.bytes().await.map_err(ListDeliveriesError::Transport)?.to_vec();
-                self.poolster_on_error(&request_info, &format!("HTTP {}", status));
-                return Err(match status.as_u16() {
-                401 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListDeliveriesError::Unauthorized { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListDeliveriesError::Unexpected(ApiResponse { status, headers, body }) },
-                422 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListDeliveriesError::UnprocessableEntity { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListDeliveriesError::Unexpected(ApiResponse { status, headers, body }) },
-                503 => match serde_json::from_slice::<crate::models::ErrorResponse>(&body) { Ok(decoded_body) => ListDeliveriesError::ServiceUnavailable { body: decoded_body, response: ApiResponse { status, headers, body } }, Err(_) => ListDeliveriesError::Unexpected(ApiResponse { status, headers, body }) },
-                _ => ListDeliveriesError::Unexpected(ApiResponse { status, headers, body }),
-            });
-            }
-            let headers = response.headers().clone();
-            let body = response.bytes().await.map_err(ListDeliveriesError::Transport)?.to_vec();
-            return match poolster_decode_json::<crate::models::WebhookDeliveryListResponse>(&body, headers.get(reqwest::header::CONTENT_TYPE).and_then(|value|value.to_str().ok()).unwrap_or("")) {
-                Ok(value) => Ok(value),
-                Err(source) => {
-                    self.poolster_on_error(&request_info, &source.to_string());
-                    Err(ListDeliveriesError::Decode { source, response: ApiResponse { status, headers, body } })
-                }
-            };
         }
     }
 

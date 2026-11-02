@@ -146,12 +146,12 @@ func decodeDeleteCrmTaskError(requestError error) error {
 	}
 }
 
-// DeleteCrmTask invokes DELETE /v1/crm/tasks/{task_id}.
+// DeleteCrmTask invokes DELETE /crm/tasks/{task_id}.
 func (client *Client) DeleteCrmTask(ctx context.Context, input *DeleteCrmTaskRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &DeleteCrmTaskRequest{}
 	}
-	path := "/v1/crm/tasks/{task_id}"
+	path := "/crm/tasks/{task_id}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{task_id}", url.PathEscape(fmt.Sprint(input.TaskID)))

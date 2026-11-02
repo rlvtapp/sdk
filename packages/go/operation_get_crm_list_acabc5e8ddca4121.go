@@ -146,12 +146,12 @@ func decodeGetCrmListError(requestError error) error {
 	}
 }
 
-// GetCrmList invokes GET /v1/crm/lists/{list}.
+// GetCrmList invokes GET /crm/lists/{list}.
 func (client *Client) GetCrmList(ctx context.Context, input *GetCrmListRequest) (*CrmListResponse, error) {
 	if input == nil {
 		input = &GetCrmListRequest{}
 	}
-	path := "/v1/crm/lists/{list}"
+	path := "/crm/lists/{list}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{list}", url.PathEscape(fmt.Sprint(input.List)))

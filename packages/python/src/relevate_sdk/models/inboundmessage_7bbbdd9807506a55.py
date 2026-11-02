@@ -8,13 +8,20 @@ from ._model_codec import decode_model_value
 if TYPE_CHECKING:
     from typing import TypeAlias
 
+if TYPE_CHECKING:
+    from . import AttachmentSummary
+
 @dataclass
 class InboundMessage:
+    attachments: list[AttachmentSummary]
     authentication: Any
+    body_withheld: bool
     created_at: str
     delivery_id: str
     disposition: str
     envelope_to: str
+    header_cc: list[str]
+    header_reply_to: list[str]
     header_to: list[str]
     id: str
     malware_verdict: str
@@ -37,13 +44,17 @@ class InboundMessage:
     @classmethod
     def from_dict(cls, value: dict[str, Any]) -> "InboundMessage":
         instance = cls(
+            attachments=decode_model_value(value["attachments"], ("array", ("ref", "AttachmentSummary"))),
             authentication=value["authentication"],
+            body_withheld=value["body_withheld"],
             created_at=value["created_at"],
             delivery_id=value["delivery_id"],
             disposition=value["disposition"],
             envelope_from=value.get("envelope_from"),
             envelope_to=value["envelope_to"],
+            header_cc=decode_model_value(value["header_cc"], ("array", None)),
             header_from=value.get("header_from"),
+            header_reply_to=decode_model_value(value["header_reply_to"], ("array", None)),
             header_to=decode_model_value(value["header_to"], ("array", None)),
             html_body=value.get("html_body"),
             id=value["id"],
@@ -58,7 +69,7 @@ class InboundMessage:
             spam_verdict=value["spam_verdict"],
             subject=value["subject"],
             text_body=value.get("text_body"),
-            additional_properties={key: item for key, item in value.items() if key not in ["authentication", "created_at", "delivery_id", "disposition", "envelope_from", "envelope_to", "header_from", "header_to", "html_body", "id", "in_reply_to", "malware_verdict", "message_id", "received_at", "references", "release_reason", "released_at", "route_id", "spam_verdict", "subject", "text_body"]},
+            additional_properties={key: item for key, item in value.items() if key not in ["attachments", "authentication", "body_withheld", "created_at", "delivery_id", "disposition", "envelope_from", "envelope_to", "header_cc", "header_from", "header_reply_to", "header_to", "html_body", "id", "in_reply_to", "malware_verdict", "message_id", "received_at", "references", "release_reason", "released_at", "route_id", "spam_verdict", "subject", "text_body"]},
         )
         instance._poolster_present_fields = frozenset(value)
         return instance

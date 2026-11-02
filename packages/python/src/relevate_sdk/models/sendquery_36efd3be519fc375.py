@@ -8,13 +8,19 @@ from ._model_codec import decode_model_value
 if TYPE_CHECKING:
     from typing import TypeAlias
 
+if TYPE_CHECKING:
+    from . import SendTag
+
 @dataclass
 class SendQuery:
     limit: int | None | None = None
     message_class: str | None | None = None
     offset: int | None | None = None
     reference: str | None | None = None
+    scheduled: bool | None | None = None
     state: str | None | None = None
+    tags: list[SendTag] | None = None
+    topic_id: str | None | None = None
     additional_properties: dict[str, Any] = _poolster_field(default_factory=dict, metadata={"additional_properties": True})
     _poolster_present_fields: frozenset[str] | None = _poolster_field(default=None, init=False, repr=False, compare=False, metadata={"internal": True, "present_fields": True})
 
@@ -25,8 +31,11 @@ class SendQuery:
             message_class=value.get("message_class"),
             offset=value.get("offset"),
             reference=value.get("reference"),
+            scheduled=value.get("scheduled"),
             state=value.get("state"),
-            additional_properties={key: item for key, item in value.items() if key not in ["limit", "message_class", "offset", "reference", "state"]},
+            tags=decode_model_value(value.get("tags"), ("array", ("ref", "SendTag"))),
+            topic_id=value.get("topic_id"),
+            additional_properties={key: item for key, item in value.items() if key not in ["limit", "message_class", "offset", "reference", "scheduled", "state", "tags", "topic_id"]},
         )
         instance._poolster_present_fields = frozenset(value)
         return instance

@@ -8,7 +8,7 @@ const manifests = { typescript: 'package.json', python: 'pyproject.toml', go: 'g
 const methods = new Set(['get', 'post', 'put', 'patch', 'delete', 'head', 'options', 'trace']);
 const ids = new Set();
 for (const [path, item] of Object.entries(spec.paths)) {
-  assert.match(path, /^\/v1\/(crm|email)\//, `Unexpected public route: ${path}`);
+  assert.match(path, /^\/(crm|email|schedule)\//, `Unexpected public route: ${path}`);
   for (const [method, operation] of Object.entries(item)) {
     if (!methods.has(method)) continue;
     assert.ok(operation.operationId, `${method} ${path} needs an operationId`);
@@ -31,7 +31,7 @@ const expected = Object.entries(spec.paths).flatMap(([path, item]) => Object.key
   .filter(method => methods.has(method)).map(method => `${method.toUpperCase()} ${path}`));
 assert.deepEqual([...lock.api.operations].sort(), expected.sort(), 'Combined SDK is missing operations');
 for (const product of ['crm', 'email']) {
-  assert.ok(lock.api.operations.some(operation => operation.includes(`/v1/${product}/`)));
+  assert.ok(lock.api.operations.some(operation => operation.includes(`/${product}/`)));
 }
 console.log(`Combined CRM and Email contract: ${ids.size} operations, ${languages.length} SDK packages plus shared mock server`);
 const ts = read('packages/typescript/package.json');

@@ -23,7 +23,13 @@ public record SendQuery(
         @JsonInclude(JsonInclude.Include.NON_NULL)
         @JsonProperty("reference") String reference,
         @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty("scheduled") Boolean scheduled,
+        @JsonInclude(JsonInclude.Include.NON_NULL)
         @JsonProperty("state") String state,
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty("tags") List<SendTag> tags,
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty("topic_id") String topicId,
         @JsonAnyGetter @JsonAnySetter Map<String, Object> additionalProperties
 ) {
   public SendQuery {
@@ -33,10 +39,13 @@ public record SendQuery(
         if (additionalProperties.containsKey("message_class")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("offset")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("reference")) throw new IllegalArgumentException("additional property shadows declared field");
+        if (additionalProperties.containsKey("scheduled")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("state")) throw new IllegalArgumentException("additional property shadows declared field");
+        if (additionalProperties.containsKey("tags")) throw new IllegalArgumentException("additional property shadows declared field");
+        if (additionalProperties.containsKey("topic_id")) throw new IllegalArgumentException("additional property shadows declared field");
     }
-    public SendQuery(Long limit, String messageClass, Long offset, String reference, String state) {
-  this(limit, messageClass, offset, reference, state, Map.of());
+    public SendQuery(Long limit, String messageClass, Long offset, String reference, Boolean scheduled, String state, List<SendTag> tags, String topicId) {
+  this(limit, messageClass, offset, reference, scheduled, state, tags, topicId, Map.of());
 
 }
 }

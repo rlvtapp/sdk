@@ -8,7 +8,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @type list_crm_lists_option :: {:limit, integer()} | {:after_, String.t()} | {:object_id, String.t()}
   @spec list_crm_lists(Client.t(), [list_crm_lists_option()]) :: {:ok, RelevateSdk.Models.CrmListsPage.t()} | {:error, term()}
   def list_crm_lists(client, options \\ []) when is_list(options) do
-    path = "/v1/crm/lists"
+    path = "/crm/lists"
     query = [{"limit", Keyword.get(options, :limit)}, {"after", Keyword.get(options, :after_)}, {"object_id", Keyword.get(options, :object_id)}]
     headers = []
     headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
@@ -30,7 +30,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @spec create_crm_list(Client.t(), [create_crm_list_option()]) :: {:ok, RelevateSdk.Models.CrmListResponse.t()} | {:error, term()}
   def create_crm_list(client, options \\ []) when is_list(options) do
     with {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/lists"
+      path = "/crm/lists"
       query = []
       headers = []
       headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
@@ -53,7 +53,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @spec delete_crm_list(Client.t(), [delete_crm_list_option()]) :: {:ok, RelevateSdk.Models.CrmListDeletionResponse.t()} | {:error, term()}
   def delete_crm_list(client, options \\ []) when is_list(options) do
     with {:ok, list} <- Client.required(options, :list) do
-      path = "/v1/crm/lists/{list}"
+      path = "/crm/lists/{list}"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -77,7 +77,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @spec get_crm_list(Client.t(), [get_crm_list_option()]) :: {:ok, RelevateSdk.Models.CrmListResponse.t()} | {:error, term()}
   def get_crm_list(client, options \\ []) when is_list(options) do
     with {:ok, list} <- Client.required(options, :list) do
-      path = "/v1/crm/lists/{list}"
+      path = "/crm/lists/{list}"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -102,7 +102,7 @@ defmodule RelevateSdk.API.Operations0000 do
   def update_crm_list(client, options \\ []) when is_list(options) do
     with {:ok, list} <- Client.required(options, :list),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/lists/{list}"
+      path = "/crm/lists/{list}"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -126,7 +126,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @spec list_crm_list_attributes(Client.t(), [list_crm_list_attributes_option()]) :: {:ok, RelevateSdk.Models.CrmMetadataAttributesResponse.t()} | {:error, term()}
   def list_crm_list_attributes(client, options \\ []) when is_list(options) do
     with {:ok, list} <- Client.required(options, :list) do
-      path = "/v1/crm/lists/{list}/attributes"
+      path = "/crm/lists/{list}/attributes"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -151,7 +151,7 @@ defmodule RelevateSdk.API.Operations0000 do
   def create_crm_list_attribute(client, options \\ []) when is_list(options) do
     with {:ok, list} <- Client.required(options, :list),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/lists/{list}/attributes"
+      path = "/crm/lists/{list}/attributes"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -176,7 +176,7 @@ defmodule RelevateSdk.API.Operations0000 do
   def delete_crm_list_attribute(client, options \\ []) when is_list(options) do
     with {:ok, list} <- Client.required(options, :list),
          {:ok, attribute} <- Client.required(options, :attribute) do
-      path = "/v1/crm/lists/{list}/attributes/{attribute}"
+      path = "/crm/lists/{list}/attributes/{attribute}"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       path = String.replace(path, "{attribute}", URI.encode(to_string(attribute), &URI.char_unreserved?/1))
       query = []
@@ -203,7 +203,7 @@ defmodule RelevateSdk.API.Operations0000 do
     with {:ok, list} <- Client.required(options, :list),
          {:ok, attribute} <- Client.required(options, :attribute),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/lists/{list}/attributes/{attribute}"
+      path = "/crm/lists/{list}/attributes/{attribute}"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       path = String.replace(path, "{attribute}", URI.encode(to_string(attribute), &URI.char_unreserved?/1))
       query = []
@@ -228,7 +228,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @spec list_crm_list_entries(Client.t(), [list_crm_list_entries_option()]) :: {:ok, RelevateSdk.Models.CrmListEntriesPage.t()} | {:error, term()}
   def list_crm_list_entries(client, options \\ []) when is_list(options) do
     with {:ok, list} <- Client.required(options, :list) do
-      path = "/v1/crm/lists/{list}/entries"
+      path = "/crm/lists/{list}/entries"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       query = [{"limit", Keyword.get(options, :limit)}, {"after", Keyword.get(options, :after_)}]
       headers = []
@@ -253,7 +253,7 @@ defmodule RelevateSdk.API.Operations0000 do
   def create_crm_list_entry(client, options \\ []) when is_list(options) do
     with {:ok, list} <- Client.required(options, :list),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/lists/{list}/entries"
+      path = "/crm/lists/{list}/entries"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -278,7 +278,7 @@ defmodule RelevateSdk.API.Operations0000 do
   def delete_crm_list_entry(client, options \\ []) when is_list(options) do
     with {:ok, list} <- Client.required(options, :list),
          {:ok, entry} <- Client.required(options, :entry) do
-      path = "/v1/crm/lists/{list}/entries/{entry}"
+      path = "/crm/lists/{list}/entries/{entry}"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       path = String.replace(path, "{entry}", URI.encode(to_string(entry), &URI.char_unreserved?/1))
       query = []
@@ -304,7 +304,7 @@ defmodule RelevateSdk.API.Operations0000 do
   def get_crm_list_entry(client, options \\ []) when is_list(options) do
     with {:ok, list} <- Client.required(options, :list),
          {:ok, entry} <- Client.required(options, :entry) do
-      path = "/v1/crm/lists/{list}/entries/{entry}"
+      path = "/crm/lists/{list}/entries/{entry}"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       path = String.replace(path, "{entry}", URI.encode(to_string(entry), &URI.char_unreserved?/1))
       query = []
@@ -331,7 +331,7 @@ defmodule RelevateSdk.API.Operations0000 do
     with {:ok, list} <- Client.required(options, :list),
          {:ok, entry} <- Client.required(options, :entry),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/lists/{list}/entries/{entry}"
+      path = "/crm/lists/{list}/entries/{entry}"
       path = String.replace(path, "{list}", URI.encode(to_string(list), &URI.char_unreserved?/1))
       path = String.replace(path, "{entry}", URI.encode(to_string(entry), &URI.char_unreserved?/1))
       query = []
@@ -356,7 +356,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @spec delete_crm_note(Client.t(), [delete_crm_note_option()]) :: {:ok, map()} | {:error, term()}
   def delete_crm_note(client, options \\ []) when is_list(options) do
     with {:ok, note_id} <- Client.required(options, :note_id) do
-      path = "/v1/crm/notes/{note_id}"
+      path = "/crm/notes/{note_id}"
       path = String.replace(path, "{note_id}", URI.encode(to_string(note_id), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -380,7 +380,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @spec get_crm_note(Client.t(), [get_crm_note_option()]) :: {:ok, map()} | {:error, term()}
   def get_crm_note(client, options \\ []) when is_list(options) do
     with {:ok, note_id} <- Client.required(options, :note_id) do
-      path = "/v1/crm/notes/{note_id}"
+      path = "/crm/notes/{note_id}"
       path = String.replace(path, "{note_id}", URI.encode(to_string(note_id), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -405,7 +405,7 @@ defmodule RelevateSdk.API.Operations0000 do
   def update_crm_note(client, options \\ []) when is_list(options) do
     with {:ok, note_id} <- Client.required(options, :note_id),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/notes/{note_id}"
+      path = "/crm/notes/{note_id}"
       path = String.replace(path, "{note_id}", URI.encode(to_string(note_id), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -428,7 +428,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @type list_crm_objects_option :: {:limit, integer()} | {:after_, String.t()} | {:include_disabled, boolean()}
   @spec list_crm_objects(Client.t(), [list_crm_objects_option()]) :: {:ok, map()} | {:error, term()}
   def list_crm_objects(client, options \\ []) when is_list(options) do
-    path = "/v1/crm/objects"
+    path = "/crm/objects"
     query = [{"limit", Keyword.get(options, :limit)}, {"after", Keyword.get(options, :after_)}, {"include_disabled", Keyword.get(options, :include_disabled)}]
     headers = []
     headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
@@ -450,7 +450,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @spec create_crm_object(Client.t(), [create_crm_object_option()]) :: {:ok, RelevateSdk.Models.CrmMetadataObjectResponse.t()} | {:error, term()}
   def create_crm_object(client, options \\ []) when is_list(options) do
     with {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/objects"
+      path = "/crm/objects"
       query = []
       headers = []
       headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
@@ -474,7 +474,7 @@ defmodule RelevateSdk.API.Operations0000 do
   def delete_crm_object(client, options \\ []) when is_list(options) do
     with {:ok, object} <- Client.required(options, :object),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/objects/{object}"
+      path = "/crm/objects/{object}"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -498,7 +498,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @spec get_crm_object(Client.t(), [get_crm_object_option()]) :: {:ok, map()} | {:error, term()}
   def get_crm_object(client, options \\ []) when is_list(options) do
     with {:ok, object} <- Client.required(options, :object) do
-      path = "/v1/crm/objects/{object}"
+      path = "/crm/objects/{object}"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -523,7 +523,7 @@ defmodule RelevateSdk.API.Operations0000 do
   def update_crm_object(client, options \\ []) when is_list(options) do
     with {:ok, object} <- Client.required(options, :object),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/objects/{object}"
+      path = "/crm/objects/{object}"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -547,7 +547,7 @@ defmodule RelevateSdk.API.Operations0000 do
   @spec list_crm_object_attributes(Client.t(), [list_crm_object_attributes_option()]) :: {:ok, RelevateSdk.Models.CrmMetadataAttributesResponse.t()} | {:error, term()}
   def list_crm_object_attributes(client, options \\ []) when is_list(options) do
     with {:ok, object} <- Client.required(options, :object) do
-      path = "/v1/crm/objects/{object}/attributes"
+      path = "/crm/objects/{object}/attributes"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -572,7 +572,7 @@ defmodule RelevateSdk.API.Operations0000 do
   def create_crm_object_attribute(client, options \\ []) when is_list(options) do
     with {:ok, object} <- Client.required(options, :object),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/objects/{object}/attributes"
+      path = "/crm/objects/{object}/attributes"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -597,7 +597,7 @@ defmodule RelevateSdk.API.Operations0000 do
   def delete_crm_object_attribute(client, options \\ []) when is_list(options) do
     with {:ok, object} <- Client.required(options, :object),
          {:ok, attribute} <- Client.required(options, :attribute) do
-      path = "/v1/crm/objects/{object}/attributes/{attribute}"
+      path = "/crm/objects/{object}/attributes/{attribute}"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       path = String.replace(path, "{attribute}", URI.encode(to_string(attribute), &URI.char_unreserved?/1))
       query = []

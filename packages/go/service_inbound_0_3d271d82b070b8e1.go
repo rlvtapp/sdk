@@ -9,13 +9,13 @@ import (
 // InboundService groups Inbound operations.
 type InboundService struct { client *Client }
 
-// List invokes ListInbound through the Inbound namespace.
-func (service *InboundService) List(ctx context.Context, input *ListInboundRequest) (*InboundListResponse, error) {
-	return service.client.ListInbound(ctx, input)
+// ListEmail invokes ListEmailInbound through the Inbound namespace.
+func (service *InboundService) ListEmail(ctx context.Context, input *ListEmailInboundRequest) (*InboundListResponse, error) {
+	return service.client.ListEmailInbound(ctx, input)
 }
 
-// Get invokes GetInbound through the Inbound namespace.
-func (service *InboundService) Get(ctx context.Context, input *GetInboundRequest) (*InboundResponse, error) {
-	return service.client.GetInbound(ctx, input)
+// GetEmail invokes GetEmailInbound through the Inbound namespace.
+func (service *InboundService) GetEmail(ctx context.Context, input *GetEmailInboundRequest) (*InboundResponse, error) {
+	return service.client.GetEmailInbound(ctx, input)
 }
 

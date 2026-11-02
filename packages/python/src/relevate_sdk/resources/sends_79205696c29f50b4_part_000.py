@@ -11,15 +11,27 @@ class SendsResourcePart000:
 
     def __init__(self, client: Any) -> None:
         self._client = client
-    def create(self, *, body: SendRequest) -> SendResponse:
-        return self._client.create(body=body)
+    def send_email(self, *, idempotency_key: str | None | None = None, body: SendEmailRequest) -> SendResponse:
+        return self._client.send_email(idempotency_key=idempotency_key, body=body)
 
-    def query(self, *, body: SendQuery) -> None:
-        return self._client.query(body=body)
+    def send_email_batch(self, *, idempotency_key: str | None | None = None, body: BatchSendRequest) -> BatchSendResponse:
+        return self._client.send_email_batch(idempotency_key=idempotency_key, body=body)
 
-    def cancel(self, *, send_id: str) -> SendResponse:
-        return self._client.cancel(send_id=send_id)
+    def query_emails(self, *, body: SendQuery) -> None:
+        return self._client.query_emails(body=body)
 
-    def get(self, *, send_id: str) -> SendResponse:
-        return self._client.get(send_id=send_id)
+    def cancel_email(self, *, email_id: str) -> SendResponse:
+        return self._client.cancel_email(email_id=email_id)
+
+    def get_email(self, *, email_id: str) -> SendResponse:
+        return self._client.get_email(email_id=email_id)
+
+    def reschedule_email(self, *, email_id: str, body: RescheduleRequest) -> SendResponse:
+        return self._client.reschedule_email(email_id=email_id, body=body)
+
+    def list_email_events(self, *, email_id: str, limit: int | None = None, after: str | None = None) -> SendEventsResponse:
+        return self._client.list_email_events(email_id=email_id, limit=limit, after=after)
+
+    def list_email_recipient_events(self, *, email_id: str, recipient_send_id: str, limit: int | None = None, after: str | None = None) -> SendEventsResponse:
+        return self._client.list_email_recipient_events(email_id=email_id, recipient_send_id=recipient_send_id, limit=limit, after=after)
 

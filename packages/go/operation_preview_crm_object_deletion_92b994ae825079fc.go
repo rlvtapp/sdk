@@ -146,12 +146,12 @@ func decodePreviewCrmObjectDeletionError(requestError error) error {
 	}
 }
 
-// PreviewCrmObjectDeletion invokes GET /v1/crm/objects/{object}/deletion-preview.
+// PreviewCrmObjectDeletion invokes GET /crm/objects/{object}/deletion-preview.
 func (client *Client) PreviewCrmObjectDeletion(ctx context.Context, input *PreviewCrmObjectDeletionRequest) (*CrmObjectDeletionPreview, error) {
 	if input == nil {
 		input = &PreviewCrmObjectDeletionRequest{}
 	}
-	path := "/v1/crm/objects/{object}/deletion-preview"
+	path := "/crm/objects/{object}/deletion-preview"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{object}", url.PathEscape(fmt.Sprint(input.Object)))

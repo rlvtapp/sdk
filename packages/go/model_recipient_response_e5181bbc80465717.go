@@ -8,7 +8,10 @@ import (
 
 type RecipientResponse struct {
 	Address string `json:"address"`
+	Copy *string `json:"copy,omitempty"`
 	EligibleForProcessing *bool `json:"eligible_for_processing,omitempty"`
+	Provider *string `json:"provider,omitempty"`
+	ProviderMessageID *string `json:"provider_message_id,omitempty"`
 	ReasonCode string `json:"reason_code"`
 	RecipientSendID string `json:"recipient_send_id"`
 	State string `json:"state"`
@@ -19,10 +22,16 @@ func (model *RecipientResponse) UnmarshalJSON(data []byte) error {
  type plain RecipientResponse; var decoded plain; if err:=json.Unmarshal(data,&decoded);err!=nil {return err}; *model=RecipientResponse(decoded)
  var fields map[string]json.RawMessage; if err:=json.Unmarshal(data,&fields);err!=nil {return err}
 model.poolsterNullFields=map[string]bool{}
+if raw,ok:=fields["copy"];ok && string(raw)=="null" {model.poolsterNullFields["copy"]=true}
 if raw,ok:=fields["eligible_for_processing"];ok && string(raw)=="null" {model.poolsterNullFields["eligible_for_processing"]=true}
+if raw,ok:=fields["provider"];ok && string(raw)=="null" {model.poolsterNullFields["provider"]=true}
+if raw,ok:=fields["provider_message_id"];ok && string(raw)=="null" {model.poolsterNullFields["provider_message_id"]=true}
 model.AdditionalProperties=map[string]json.RawMessage{}
 delete(fields,"address")
+delete(fields,"copy")
 delete(fields,"eligible_for_processing")
+delete(fields,"provider")
+delete(fields,"provider_message_id")
 delete(fields,"reason_code")
 delete(fields,"recipient_send_id")
 delete(fields,"state")
@@ -33,6 +42,9 @@ func (model RecipientResponse) MarshalJSON() ([]byte,error) {
  type plain RecipientResponse;encoded,err:=json.Marshal(plain(model));if err!=nil {return nil,err};var fields map[string]json.RawMessage;if err:=json.Unmarshal(encoded,&fields);err!=nil {return nil,err}
 for key,value:=range model.AdditionalProperties {if _,exists:=fields[key];exists {continue};raw,err:=json.Marshal(value);if err!=nil {return nil,err};fields[key]=raw}
 
+if model.poolsterNullFields["copy"] && model.Copy==nil {fields["copy"]=json.RawMessage("null")}
 if model.poolsterNullFields["eligible_for_processing"] && model.EligibleForProcessing==nil {fields["eligible_for_processing"]=json.RawMessage("null")}
+if model.poolsterNullFields["provider"] && model.Provider==nil {fields["provider"]=json.RawMessage("null")}
+if model.poolsterNullFields["provider_message_id"] && model.ProviderMessageID==nil {fields["provider_message_id"]=json.RawMessage("null")}
 return json.Marshal(fields)
 }

@@ -147,12 +147,12 @@ func decodeCreateCrmNoteError(requestError error) error {
 	}
 }
 
-// CreateCrmNote invokes POST /v1/crm/records/{record_id}/notes.
+// CreateCrmNote invokes POST /crm/records/{record_id}/notes.
 func (client *Client) CreateCrmNote(ctx context.Context, input *CreateCrmNoteRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &CreateCrmNoteRequest{}
 	}
-	path := "/v1/crm/records/{record_id}/notes"
+	path := "/crm/records/{record_id}/notes"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{record_id}", url.PathEscape(fmt.Sprint(input.RecordID)))

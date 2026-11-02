@@ -14,9 +14,9 @@ use Relevate\Sdk\Models\TrackEventRequest;
 /** Bounded resource facade slice; composed into EventsResource. */
 trait EventsResourceOperations000
 {
-    public function track(TrackEventRequest $body): EventResponse
+    public function trackEmail(TrackEventRequest $body): EventResponse
     {
-        return $this->client->track($body);
+        return $this->client->trackEmailEvent($body);
     }
 
 }

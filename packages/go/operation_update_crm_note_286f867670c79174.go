@@ -147,12 +147,12 @@ func decodeUpdateCrmNoteError(requestError error) error {
 	}
 }
 
-// UpdateCrmNote invokes PATCH /v1/crm/notes/{note_id}.
+// UpdateCrmNote invokes PATCH /crm/notes/{note_id}.
 func (client *Client) UpdateCrmNote(ctx context.Context, input *UpdateCrmNoteRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &UpdateCrmNoteRequest{}
 	}
-	path := "/v1/crm/notes/{note_id}"
+	path := "/crm/notes/{note_id}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{note_id}", url.PathEscape(fmt.Sprint(input.NoteID)))

@@ -6,132 +6,296 @@ export {};
 const baseUrl = Cypress.env('API_BASE_URL') ?? "http://localhost:3000";
 
 describe("Relevate API", () => {
-  it("calls GET /v1/crm/lists", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/lists", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it("calls GET /crm/lists", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/lists", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/crm/lists", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls DELETE /v1/crm/lists/{list}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/lists/{list}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/lists/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /crm/lists", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /crm/lists/{list}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/lists/{list}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/lists/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls PATCH /v1/crm/lists/{list}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/lists/{list}/attributes", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/lists/sample/attributes", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls PATCH /crm/lists/{list}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/lists/{list}/attributes", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/lists/sample/attributes", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/crm/lists/{list}/attributes", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls DELETE /v1/crm/lists/{list}/attributes/{attribute}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls PATCH /v1/crm/lists/{list}/attributes/{attribute}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/lists/{list}/entries", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/lists/sample/entries", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /crm/lists/{list}/attributes", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /crm/lists/{list}/attributes/{attribute}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls PATCH /crm/lists/{list}/attributes/{attribute}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/lists/{list}/entries", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/lists/sample/entries", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/crm/lists/{list}/entries", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls DELETE /v1/crm/lists/{list}/entries/{entry}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/lists/{list}/entries/{entry}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/lists/sample/entries/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /crm/lists/{list}/entries", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /crm/lists/{list}/entries/{entry}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/lists/{list}/entries/{entry}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/lists/sample/entries/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls PATCH /v1/crm/lists/{list}/entries/{entry}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls DELETE /v1/crm/notes/{note_id}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/notes/{note_id}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/notes/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls PATCH /crm/lists/{list}/entries/{entry}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /crm/notes/{note_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/notes/{note_id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/notes/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls PATCH /v1/crm/notes/{note_id}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/objects", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/objects", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls PATCH /crm/notes/{note_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/objects", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/objects", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/crm/objects", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls DELETE /v1/crm/objects/{object}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/objects/{object}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/objects/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /crm/objects", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /crm/objects/{object}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/objects/{object}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/objects/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls PATCH /v1/crm/objects/{object}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/objects/{object}/attributes", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/objects/sample/attributes", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls PATCH /crm/objects/{object}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/objects/{object}/attributes", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/objects/sample/attributes", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/crm/objects/{object}/attributes", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls DELETE /v1/crm/objects/{object}/attributes/{attribute}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls PATCH /v1/crm/objects/{object}/attributes/{attribute}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/objects/{object}/deletion-preview", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/objects/sample/deletion-preview", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /crm/objects/{object}/attributes", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /crm/objects/{object}/attributes/{attribute}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls PATCH /crm/objects/{object}/attributes/{attribute}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/objects/{object}/deletion-preview", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/objects/sample/deletion-preview", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it("calls GET /v1/crm/objects/{object}/quality", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/objects/sample/quality", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it("calls GET /crm/objects/{object}/quality", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/objects/sample/quality", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it("calls GET /v1/crm/objects/{object}/records", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/objects/sample/records", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it("calls GET /crm/objects/{object}/records", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/objects/sample/records", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/crm/objects/{object}/records", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls POST /v1/crm/objects/{object}/records/upsert", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls DELETE /v1/crm/records/{record_id}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/records/{record_id}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/records/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /crm/objects/{object}/records", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /crm/objects/{object}/records/upsert", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /crm/records/{record_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/records/{record_id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/records/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls PATCH /v1/crm/records/{record_id}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/records/{record_id}/activities", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/records/sample/activities", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls PATCH /crm/records/{record_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/records/{record_id}/activities", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/records/sample/activities", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it("calls GET /v1/crm/records/{record_id}/notes", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/records/sample/notes", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it("calls GET /crm/records/{record_id}/notes", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/records/sample/notes", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/crm/records/{record_id}/notes", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/records/{record_id}/tasks", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/records/sample/tasks", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /crm/records/{record_id}/notes", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/records/{record_id}/tasks", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/records/sample/tasks", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/crm/records/{record_id}/tasks", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls DELETE /v1/crm/tasks/{task_id}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/crm/tasks/{task_id}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/crm/tasks/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /crm/records/{record_id}/tasks", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /crm/tasks/{task_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /crm/tasks/{task_id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/crm/tasks/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls PATCH /v1/crm/tasks/{task_id}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/email/auth-check", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/auth-check", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls PATCH /crm/tasks/{task_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/api-keys", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/api-keys", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it("calls GET /v1/email/contacts", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/contacts", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /email/api-keys", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /email/api-keys/{id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/attachments/{attachment_id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/attachments/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/email/contacts", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls POST /v1/email/contacts/query", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/email/contacts/{id}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/contacts/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it("calls GET /email/auth-check", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/auth-check", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls PATCH /v1/email/contacts/{id}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/email/domains", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/domains", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it("calls GET /email/contacts", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/contacts", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it("calls GET /v1/email/domains/{id}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/domains/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /email/contacts", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/contacts/query", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /email/contacts/{id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/contacts/{id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/contacts/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/email/events", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/email/inbound", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/inbound", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls PATCH /email/contacts/{id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/domains", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/domains", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it("calls GET /v1/email/inbound/{message_id}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/inbound/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /email/domains", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /email/domains/{id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/domains/{id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/domains/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it("calls GET /v1/email/segments", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/segments", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /email/domains/{id}/verify", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/emails", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/emails/batch", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/emails/query", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /email/emails/{email_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/emails/{email_id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/emails/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it("calls GET /v1/email/segments/{id}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/segments/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls PATCH /email/emails/{email_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/emails/{email_id}/events", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/emails/sample/events", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it("calls GET /v1/email/sender-identities", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/sender-identities", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it("calls GET /email/emails/{email_id}/recipients/{recipient_send_id}/events", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/emails/sample/recipients/sample/events", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it("calls GET /v1/email/sender-identities/{id}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/sender-identities/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /email/events", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/inbound", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/inbound", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/email/sends", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls POST /v1/email/sends/query", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls DELETE /v1/email/sends/{send_id}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/email/sends/{send_id}", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/sends/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it("calls GET /email/inbound/{message_id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/inbound/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it("calls GET /v1/email/webhooks", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/webhooks", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /email/inbound/{message_id}/forward", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/inbound/{message_id}/reply", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/inboxes", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/inboxes", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
-  it.skip("calls POST /v1/email/webhooks", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls DELETE /v1/email/webhooks/{webhook_id}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it.skip("calls PATCH /v1/email/webhooks/{webhook_id}", () => {}); // Enable this operation explicitly for a disposable test API.
-  it("calls GET /v1/email/webhooks/{webhook_id}/deliveries", () => {
-    cy.request({ method: "GET", url: baseUrl + "/v1/email/webhooks/sample/deliveries", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  it.skip("calls POST /email/inboxes", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/inboxes/provided-domains", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/inboxes/provided-domains", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
   });
+  it.skip("calls DELETE /email/inboxes/{inbox_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/inboxes/{inbox_id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/inboxes/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /email/inboxes/{inbox_id}/messages", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/inboxes/{inbox_id}/threads", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/inboxes/sample/threads", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /email/labels", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/labels", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /email/labels", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /email/labels/{label_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/segments", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/segments", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /email/segments/{id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/segments/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /email/sender-identities", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/sender-identities", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /email/sender-identities/{id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/sender-identities/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /email/suppressions", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/suppressions", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /email/suppressions", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/suppressions/batch", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /email/suppressions/{address}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/suppressions/{address}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/suppressions/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /email/templates", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/templates", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /email/templates", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /email/templates/{template}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/templates/{template}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/templates/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls PATCH /email/templates/{template}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/templates/{template}/duplicate", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/templates/{template}/publish", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/templates/{template}/render", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/threads/{thread_id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/threads/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls PATCH /email/threads/{thread_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/threads/{thread_id}/notes", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/threads/{thread_id}/read", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/usage", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/usage", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /email/webhooks", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/webhooks", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /email/webhooks", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /email/webhooks/{webhook_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls PATCH /email/webhooks/{webhook_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /email/webhooks/{webhook_id}/deliveries", () => {
+    cy.request({ method: "GET", url: baseUrl + "/email/webhooks/sample/deliveries", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /email/webhooks/{webhook_id}/deliveries/{delivery_id}/replay", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/webhooks/{webhook_id}/replay", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /email/webhooks/{webhook_id}/rotate-secret", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/booking-pages/{workspace}/{event}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/booking-pages/sample/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /schedule/bookings", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/bookings", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /schedule/bookings", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/bookings/{id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/bookings/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /schedule/bookings/{id}/attendance", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /schedule/bookings/{id}/cancel", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/bookings/{id}/feedback", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/bookings/sample/feedback", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /schedule/bookings/{id}/feedback", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /schedule/bookings/{id}/management-link", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls POST /schedule/bookings/{id}/reschedule", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/bookings/{id}/slots", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/bookings/sample/slots", qs: {"date":"2024-01-02"}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /schedule/bookings/{id}/status", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/bookings/sample/status", qs: {"event":"sample","workspace":"sample"}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /schedule/event-types", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/event-types", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /schedule/event-types", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/event-types/{id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/event-types/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls PUT /schedule/event-types/{id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/event-types/{id}/private-links", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/event-types/sample/private-links", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /schedule/event-types/{id}/private-links", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /schedule/event-types/{id}/private-links/{link_id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/hosts/{actor}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/hosts/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /schedule/hosts/{actor}/booking-limits", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/hosts/sample/booking-limits", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls PUT /schedule/hosts/{actor}/booking-limits", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/hosts/{actor}/insights", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/hosts/sample/insights", qs: {"from":"2024-01-02T03:04:05Z","to":"2024-01-02T03:04:05Z"}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /schedule/hosts/{actor}/insights/export", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/hosts/sample/insights/export", qs: {"from":"2024-01-02T03:04:05Z","to":"2024-01-02T03:04:05Z"}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /schedule/notification-history", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/notification-history", qs: {"bookingId":"sample"}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /schedule/notification-senders", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/notification-senders", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /schedule/notification-settings", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/notification-settings", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls PUT /schedule/notification-settings", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/schedules", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/schedules", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /schedule/schedules", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls DELETE /schedule/schedules/{id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/schedules/{id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/schedules/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls PUT /schedule/schedules/{id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/slots", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/slots", qs: {"date":"2024-01-02","event":"sample","timezone":"sample","workspace":"sample"}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /schedule/slots/diagnose", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/webhooks", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/webhooks", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /schedule/webhooks", () => {}); // Enable this operation explicitly for a disposable test API.
+  it.skip("calls PATCH /schedule/webhooks/{id}", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/webhooks/{id}/deliveries", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/webhooks/sample/deliveries", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls POST /schedule/webhooks/{id}/rotate-secret", () => {}); // Enable this operation explicitly for a disposable test API.
+  it("calls GET /schedule/workflows", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/workflows", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it("calls GET /schedule/workflows/{id}", () => {
+    cy.request({ method: "GET", url: baseUrl + "/schedule/workflows/sample", qs: {}, headers: { ...{}, ...(Cypress.env('API_HEADERS') ?? {}) }, timeout: 30000, failOnStatusCode: false }).its('status').should('be.oneOf', [200]);
+  });
+  it.skip("calls PUT /schedule/workflows/{id}/state", () => {}); // Enable this operation explicitly for a disposable test API.
 });

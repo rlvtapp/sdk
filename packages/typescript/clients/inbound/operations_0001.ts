@@ -1,2 +1,2 @@
-export { listInbound } from './listInbound.js'
-export { getInbound } from './getInbound.js'
+export { listEmailInbound } from './listEmailInbound.js'
+export { getEmailInbound } from './getEmailInbound.js'

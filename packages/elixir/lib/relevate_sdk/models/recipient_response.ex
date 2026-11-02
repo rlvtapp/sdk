@@ -5,11 +5,14 @@ defmodule RelevateSdk.Models.RecipientResponse do
   alias RelevateSdk.JSON
 
   @enforce_keys [:address, :reason_code, :recipient_send_id, :state]
-  defstruct [:address, :eligible_for_processing, :reason_code, :recipient_send_id, :state, poolster_present_fields: nil, additional_properties: %{}]
+  defstruct [:address, :copy, :eligible_for_processing, :provider, :provider_message_id, :reason_code, :recipient_send_id, :state, poolster_present_fields: nil, additional_properties: %{}]
 
   @type t :: %__MODULE__{
     address: String.t(),
+    copy: String.t() | nil | nil,
     eligible_for_processing: boolean() | nil | nil,
+    provider: String.t() | nil | nil,
+    provider_message_id: String.t() | nil | nil,
     reason_code: String.t(),
     recipient_send_id: String.t(),
     state: String.t(),
@@ -21,21 +24,24 @@ defmodule RelevateSdk.Models.RecipientResponse do
   def to_map(model) do
     [
       {"address", model.address},
+      {"copy", model.copy},
       {"eligible_for_processing", model.eligible_for_processing},
+      {"provider", model.provider},
+      {"provider_message_id", model.provider_message_id},
       {"reason_code", model.reason_code},
       {"recipient_send_id", model.recipient_send_id},
       {"state", model.state},
     ]
     |> Enum.reject(fn {key, value} -> is_nil(value) and key not in ["address", "reason_code", "recipient_send_id", "state"] and key not in (model.poolster_present_fields || []) end)
     |> Map.new(fn {key, value} -> {key, JSON.to_wire(value)} end)
-    |> then(fn known -> Map.merge(Map.drop(JSON.to_wire(model.additional_properties), ["address", "eligible_for_processing", "reason_code", "recipient_send_id", "state"]), known) end)
+    |> then(fn known -> Map.merge(Map.drop(JSON.to_wire(model.additional_properties), ["address", "copy", "eligible_for_processing", "provider", "provider_message_id", "reason_code", "recipient_send_id", "state"]), known) end)
   end
 
   @doc "Return a copy with explicit nulls present at the given wire keys."
   @spec with_present_fields(t(), [String.t() | atom()]) :: t()
   def with_present_fields(model, fields) when is_list(fields) do
     keys = Enum.map(fields, &to_string/1)
-    if Enum.any?(keys, &(&1 not in ["address", "eligible_for_processing", "reason_code", "recipient_send_id", "state"])), do: raise(ArgumentError, "unknown model wire field")
+    if Enum.any?(keys, &(&1 not in ["address", "copy", "eligible_for_processing", "provider", "provider_message_id", "reason_code", "recipient_send_id", "state"])), do: raise(ArgumentError, "unknown model wire field")
     %{model | poolster_present_fields: Enum.uniq((model.poolster_present_fields || []) ++ keys)}
   end
 
@@ -43,12 +49,15 @@ defmodule RelevateSdk.Models.RecipientResponse do
   def from_map(map) when is_map(map) do
     %__MODULE__{
       address: Map.get(map, "address"),
+      copy: Map.get(map, "copy"),
       eligible_for_processing: Map.get(map, "eligible_for_processing"),
+      provider: Map.get(map, "provider"),
+      provider_message_id: Map.get(map, "provider_message_id"),
       reason_code: Map.get(map, "reason_code"),
       recipient_send_id: Map.get(map, "recipient_send_id"),
       state: Map.get(map, "state"),
       poolster_present_fields: Map.keys(map),
-      additional_properties: Map.drop(map, ["address", "eligible_for_processing", "reason_code", "recipient_send_id", "state"]),
+      additional_properties: Map.drop(map, ["address", "copy", "eligible_for_processing", "provider", "provider_message_id", "reason_code", "recipient_send_id", "state"]),
     }
   end
   def from_map(value), do: value

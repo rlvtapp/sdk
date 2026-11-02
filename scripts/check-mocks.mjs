@@ -8,23 +8,23 @@ import { http, HttpResponse } from 'msw';
 import { Relevate } from '../packages/typescript/dist/index.js';
 import { handlers } from '../packages/typescript/dist/mocks/msw.js';
 import { seedPoolsterFixtures, createCrmListResponse } from '../packages/typescript/dist/fixtures/faker.js';
-assert.equal(handlers.length, 66);
+assert.equal(handlers.length, 154);
 seedPoolsterFixtures(1);
 const fixture = createCrmListResponse();
 assert.ok(fixture.attributes.length && typeof fixture.attributes[0] === 'object');
 const server = setupServer(...handlers);
 server.listen({ onUnhandledRequest: 'error' });
 // This inline response has no required properties; supply meaningful data to exercise decoding.
-server.use(http.get('*/v1/crm/objects', () => HttpResponse.json({ data: [{ id: 'object-test', name: 'Test', slug: 'test' }] })));
+server.use(http.get('*/crm/objects', () => HttpResponse.json({ data: [{ id: 'object-test', name: 'Test', slug: 'test' }] })));
 try {
   const sdk = new Relevate({ baseUrl: 'http://mock.example', apiKey: 'test', retry: false });
   const objects = await sdk.crm.listCrmObjects({});
   assert.ok(Array.isArray(objects.data));
-  const sends = await sdk.sends.create({ body: {} });
-  assert.equal(typeof sends.send_id, 'string');
-  const response = await fetch('http://mock.example/v1/email/sends', { method: 'POST' });
+  const sends = await sdk.sends.sendEmail({ body: { to: 'member@example.com', template: { id: 'order-shipped', variables: { order: { number: 'A-1', total: 42 } } } } });
+  assert.equal(typeof sends.id, 'string');
+  const response = await fetch('http://mock.example/email/emails', { method: 'POST' });
   assert.equal(response.status, 202);
-  server.use(http.get('*/v1/crm/objects', () => HttpResponse.json({ code: 'rate_limited', message: 'Try later' }, { status: 429 })));
+  server.use(http.get('*/crm/objects', () => HttpResponse.json({ code: 'rate_limited', message: 'Try later' }, { status: 429 })));
   await assert.rejects(sdk.crm.listCrmObjects({}), error => error.status === 429);
   server.resetHandlers();
   assert.deepEqual(await sdk.crm.listCrmObjects({}), {});
@@ -51,7 +51,7 @@ try {
   assert.ok(ready, 'Native mock did not start');
   const sdk = new Relevate({ baseUrl: origin, apiKey: 'test', retry: false });
   assert.ok(Array.isArray((await sdk.crm.listCrmObjects({})).data));
-  assert.equal(typeof (await sdk.sends.create({ body: {} })).send_id, 'string');
+  assert.equal(typeof (await sdk.sends.sendEmail({ body: { to: 'member@example.com', template: { id: 'order-shipped', variables: { order: { number: 'A-1', total: 42 } } } } })).id, 'string');
   const log = await (await fetch(origin + '/_poolster/requests')).json();
   assert.match(JSON.stringify(log), /listCrmObjects/);
 } finally {

@@ -9,23 +9,43 @@ import (
 // SendsService groups Sends operations.
 type SendsService struct { client *Client }
 
-// Create invokes Create through the Sends namespace.
-func (service *SendsService) Create(ctx context.Context, input *CreateRequest) (*SendResponse, error) {
-	return service.client.Create(ctx, input)
+// Email invokes SendEmail through the Sends namespace.
+func (service *SendsService) Email(ctx context.Context, input *SendEmailOperationRequest) (*SendResponse, error) {
+	return service.client.SendEmail(ctx, input)
 }
 
-// Query invokes Query through the Sends namespace.
-func (service *SendsService) Query(ctx context.Context, input *QueryRequest) error {
-	return service.client.Query(ctx, input)
+// EmailBatch invokes SendEmailBatch through the Sends namespace.
+func (service *SendsService) EmailBatch(ctx context.Context, input *SendEmailBatchRequest) (*BatchSendResponse, error) {
+	return service.client.SendEmailBatch(ctx, input)
 }
 
-// Cancel invokes Cancel through the Sends namespace.
-func (service *SendsService) Cancel(ctx context.Context, input *CancelRequest) (*SendResponse, error) {
-	return service.client.Cancel(ctx, input)
+// QueryEmails invokes QueryEmails through the Sends namespace.
+func (service *SendsService) QueryEmails(ctx context.Context, input *QueryEmailsRequest) error {
+	return service.client.QueryEmails(ctx, input)
 }
 
-// Get invokes Get through the Sends namespace.
-func (service *SendsService) Get(ctx context.Context, input *GetRequest) (*SendResponse, error) {
-	return service.client.Get(ctx, input)
+// CancelEmail invokes CancelEmail through the Sends namespace.
+func (service *SendsService) CancelEmail(ctx context.Context, input *CancelEmailRequest) (*SendResponse, error) {
+	return service.client.CancelEmail(ctx, input)
+}
+
+// GetEmail invokes GetEmail through the Sends namespace.
+func (service *SendsService) GetEmail(ctx context.Context, input *GetEmailRequest) (*SendResponse, error) {
+	return service.client.GetEmail(ctx, input)
+}
+
+// RescheduleEmail invokes RescheduleEmail through the Sends namespace.
+func (service *SendsService) RescheduleEmail(ctx context.Context, input *RescheduleEmailRequest) (*SendResponse, error) {
+	return service.client.RescheduleEmail(ctx, input)
+}
+
+// ListEmailEvents invokes ListEmailEvents through the Sends namespace.
+func (service *SendsService) ListEmailEvents(ctx context.Context, input *ListEmailEventsRequest) (*SendEventsResponse, error) {
+	return service.client.ListEmailEvents(ctx, input)
+}
+
+// ListEmailRecipientEvents invokes ListEmailRecipientEvents through the Sends namespace.
+func (service *SendsService) ListEmailRecipientEvents(ctx context.Context, input *ListEmailRecipientEventsRequest) (*SendEventsResponse, error) {
+	return service.client.ListEmailRecipientEvents(ctx, input)
 }
 

@@ -20,39 +20,44 @@ public class ContactsResourcePart000 {
 
     protected ContactsResourcePart000(Client client) { this.client = client; }
 
-    public ContactListResponse list(Client.ListContactsRequest input) {
+    public ContactListResponse listEmail(Client.ListEmailContactsRequest input) {
   
-        return client.listContacts(input);
+        return client.listEmailContacts(input);
     }
 
-    public ContactResponse create(Client.CreateContactRequest input) {
+    public ContactResponse createEmail(Client.CreateEmailContactRequest input) {
   
-        return client.createContact(input);
+        return client.createEmailContact(input);
     }
 
-    public ContactQueryResponse query(Client.QueryContactsRequest input) {
+    public ContactQueryResponse queryEmail(Client.QueryEmailContactsRequest input) {
   
-        return client.queryContacts(input);
+        return client.queryEmailContacts(input);
     }
 
-    public ContactResponse get(Client.GetContactRequest input) {
+    public void deleteEmail(Client.DeleteEmailContactRequest input) {
   
-        return client.getContact(input);
+        client.deleteEmailContact(input);
     }
 
-    public ContactResponse update(Client.UpdateContactRequest input) {
+    public ContactResponse getEmail(Client.GetEmailContactRequest input) {
   
-        return client.updateContact(input);
+        return client.getEmailContact(input);
     }
 
-    public SegmentListResponse listSegments(Client.ListSegmentsRequest input) {
+    public ContactResponse updateEmail(Client.UpdateEmailContactRequest input) {
   
-        return client.listSegments(input);
+        return client.updateEmailContact(input);
     }
 
-    public SegmentResponse getSegment(Client.GetSegmentRequest input) {
+    public SegmentListResponse listEmailSegments(Client.ListEmailSegmentsRequest input) {
   
-        return client.getSegment(input);
+        return client.listEmailSegments(input);
+    }
+
+    public SegmentResponse getEmailSegment(Client.GetEmailSegmentRequest input) {
+  
+        return client.getEmailSegment(input);
     }
 
 }

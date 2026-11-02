@@ -15,7 +15,7 @@ public sealed partial class EventsResource
 
     internal EventsResource(PoolsterClient client) => _client = client;
 
-    /// <summary>Invokes POST /v1/email/events.</summary>
-    public Task<EventResponse> TrackAsync(TrackEventRequest body, CancellationToken cancellationToken = default) => _client.TrackAsync(body, cancellationToken);
+    /// <summary>Invokes POST /email/events.</summary>
+    public Task<EventResponse> TrackEmailEventAsync(TrackEventRequest body, CancellationToken cancellationToken = default) => _client.TrackEmailEventAsync(body, cancellationToken);
 
 }

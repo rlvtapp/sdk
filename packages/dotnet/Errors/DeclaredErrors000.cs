@@ -4037,10 +4037,10 @@ public sealed class UpdateCrmTaskStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from auth_check.</summary>
-public sealed class AuthCheckStatus401Exception : ApiException
+/// <summary>Declared 401 response from listEmailApiKeys.</summary>
+public sealed class ListEmailApiKeysStatus401Exception : ApiException
 {
-  public AuthCheckStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public ListEmailApiKeysStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4049,10 +4049,10 @@ public sealed class AuthCheckStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 403 response from auth_check.</summary>
-public sealed class AuthCheckStatus403Exception : ApiException
+/// <summary>Declared 403 response from listEmailApiKeys.</summary>
+public sealed class ListEmailApiKeysStatus403Exception : ApiException
 {
-  public AuthCheckStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  public ListEmailApiKeysStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4061,10 +4061,10 @@ public sealed class AuthCheckStatus403Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from auth_check.</summary>
-public sealed class AuthCheckStatus503Exception : ApiException
+/// <summary>Declared 503 response from listEmailApiKeys.</summary>
+public sealed class ListEmailApiKeysStatus503Exception : ApiException
 {
-  public AuthCheckStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public ListEmailApiKeysStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4073,10 +4073,10 @@ public sealed class AuthCheckStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from list_contacts.</summary>
-public sealed class ListContactsStatus401Exception : ApiException
+/// <summary>Declared 401 response from createEmailApiKey.</summary>
+public sealed class CreateEmailApiKeyStatus401Exception : ApiException
 {
-  public ListContactsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public CreateEmailApiKeyStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4085,10 +4085,10 @@ public sealed class ListContactsStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from list_contacts.</summary>
-public sealed class ListContactsStatus503Exception : ApiException
+/// <summary>Declared 403 response from createEmailApiKey.</summary>
+public sealed class CreateEmailApiKeyStatus403Exception : ApiException
 {
-  public ListContactsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public CreateEmailApiKeyStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4097,10 +4097,10 @@ public sealed class ListContactsStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from create_contact.</summary>
-public sealed class CreateContactStatus401Exception : ApiException
+/// <summary>Declared 409 response from createEmailApiKey.</summary>
+public sealed class CreateEmailApiKeyStatus409Exception : ApiException
 {
-  public CreateContactStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public CreateEmailApiKeyStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4109,10 +4109,10 @@ public sealed class CreateContactStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 422 response from create_contact.</summary>
-public sealed class CreateContactStatus422Exception : ApiException
+/// <summary>Declared 422 response from createEmailApiKey.</summary>
+public sealed class CreateEmailApiKeyStatus422Exception : ApiException
 {
-  public CreateContactStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  public CreateEmailApiKeyStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4121,10 +4121,10 @@ public sealed class CreateContactStatus422Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from create_contact.</summary>
-public sealed class CreateContactStatus503Exception : ApiException
+/// <summary>Declared 503 response from createEmailApiKey.</summary>
+public sealed class CreateEmailApiKeyStatus503Exception : ApiException
 {
-  public CreateContactStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public CreateEmailApiKeyStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4133,10 +4133,10 @@ public sealed class CreateContactStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from query_contacts.</summary>
-public sealed class QueryContactsStatus401Exception : ApiException
+/// <summary>Declared 401 response from revokeEmailApiKey.</summary>
+public sealed class RevokeEmailApiKeyStatus401Exception : ApiException
 {
-  public QueryContactsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public RevokeEmailApiKeyStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4145,10 +4145,10 @@ public sealed class QueryContactsStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 422 response from query_contacts.</summary>
-public sealed class QueryContactsStatus422Exception : ApiException
+/// <summary>Declared 403 response from revokeEmailApiKey.</summary>
+public sealed class RevokeEmailApiKeyStatus403Exception : ApiException
 {
-  public QueryContactsStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  public RevokeEmailApiKeyStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4157,10 +4157,10 @@ public sealed class QueryContactsStatus422Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from query_contacts.</summary>
-public sealed class QueryContactsStatus503Exception : ApiException
+/// <summary>Declared 404 response from revokeEmailApiKey.</summary>
+public sealed class RevokeEmailApiKeyStatus404Exception : ApiException
 {
-  public QueryContactsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public RevokeEmailApiKeyStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4169,10 +4169,10 @@ public sealed class QueryContactsStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from get_contact.</summary>
-public sealed class GetContactStatus401Exception : ApiException
+/// <summary>Declared 503 response from revokeEmailApiKey.</summary>
+public sealed class RevokeEmailApiKeyStatus503Exception : ApiException
 {
-  public GetContactStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public RevokeEmailApiKeyStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4181,10 +4181,10 @@ public sealed class GetContactStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 404 response from get_contact.</summary>
-public sealed class GetContactStatus404Exception : ApiException
+/// <summary>Declared 401 response from getEmailAttachment.</summary>
+public sealed class GetEmailAttachmentStatus401Exception : ApiException
 {
-  public GetContactStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  public GetEmailAttachmentStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4193,10 +4193,10 @@ public sealed class GetContactStatus404Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from get_contact.</summary>
-public sealed class GetContactStatus503Exception : ApiException
+/// <summary>Declared 404 response from getEmailAttachment.</summary>
+public sealed class GetEmailAttachmentStatus404Exception : ApiException
 {
-  public GetContactStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public GetEmailAttachmentStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4205,10 +4205,10 @@ public sealed class GetContactStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from update_contact.</summary>
-public sealed class UpdateContactStatus401Exception : ApiException
+/// <summary>Declared 409 response from getEmailAttachment.</summary>
+public sealed class GetEmailAttachmentStatus409Exception : ApiException
 {
-  public UpdateContactStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public GetEmailAttachmentStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4217,10 +4217,10 @@ public sealed class UpdateContactStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 404 response from update_contact.</summary>
-public sealed class UpdateContactStatus404Exception : ApiException
+/// <summary>Declared 503 response from getEmailAttachment.</summary>
+public sealed class GetEmailAttachmentStatus503Exception : ApiException
 {
-  public UpdateContactStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  public GetEmailAttachmentStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4229,10 +4229,10 @@ public sealed class UpdateContactStatus404Exception : ApiException
   
 }
 
-/// <summary>Declared 422 response from update_contact.</summary>
-public sealed class UpdateContactStatus422Exception : ApiException
+/// <summary>Declared 401 response from checkEmailAuth.</summary>
+public sealed class CheckEmailAuthStatus401Exception : ApiException
 {
-  public UpdateContactStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  public CheckEmailAuthStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4241,10 +4241,10 @@ public sealed class UpdateContactStatus422Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from update_contact.</summary>
-public sealed class UpdateContactStatus503Exception : ApiException
+/// <summary>Declared 403 response from checkEmailAuth.</summary>
+public sealed class CheckEmailAuthStatus403Exception : ApiException
 {
-  public UpdateContactStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public CheckEmailAuthStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4253,10 +4253,10 @@ public sealed class UpdateContactStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from list_domains.</summary>
-public sealed class ListDomainsStatus401Exception : ApiException
+/// <summary>Declared 503 response from checkEmailAuth.</summary>
+public sealed class CheckEmailAuthStatus503Exception : ApiException
 {
-  public ListDomainsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public CheckEmailAuthStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4265,10 +4265,10 @@ public sealed class ListDomainsStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from list_domains.</summary>
-public sealed class ListDomainsStatus503Exception : ApiException
+/// <summary>Declared 401 response from listEmailContacts.</summary>
+public sealed class ListEmailContactsStatus401Exception : ApiException
 {
-  public ListDomainsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public ListEmailContactsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4277,10 +4277,10 @@ public sealed class ListDomainsStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from get_domain.</summary>
-public sealed class GetDomainStatus401Exception : ApiException
+/// <summary>Declared 503 response from listEmailContacts.</summary>
+public sealed class ListEmailContactsStatus503Exception : ApiException
 {
-  public GetDomainStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public ListEmailContactsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4289,10 +4289,10 @@ public sealed class GetDomainStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 404 response from get_domain.</summary>
-public sealed class GetDomainStatus404Exception : ApiException
+/// <summary>Declared 401 response from createEmailContact.</summary>
+public sealed class CreateEmailContactStatus401Exception : ApiException
 {
-  public GetDomainStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  public CreateEmailContactStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4301,10 +4301,10 @@ public sealed class GetDomainStatus404Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from get_domain.</summary>
-public sealed class GetDomainStatus503Exception : ApiException
+/// <summary>Declared 422 response from createEmailContact.</summary>
+public sealed class CreateEmailContactStatus422Exception : ApiException
 {
-  public GetDomainStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public CreateEmailContactStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4313,10 +4313,10 @@ public sealed class GetDomainStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from track.</summary>
-public sealed class TrackStatus401Exception : ApiException
+/// <summary>Declared 503 response from createEmailContact.</summary>
+public sealed class CreateEmailContactStatus503Exception : ApiException
 {
-  public TrackStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public CreateEmailContactStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4325,10 +4325,10 @@ public sealed class TrackStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 403 response from track.</summary>
-public sealed class TrackStatus403Exception : ApiException
+/// <summary>Declared 401 response from queryEmailContacts.</summary>
+public sealed class QueryEmailContactsStatus401Exception : ApiException
 {
-  public TrackStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  public QueryEmailContactsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4337,10 +4337,10 @@ public sealed class TrackStatus403Exception : ApiException
   
 }
 
-/// <summary>Declared 409 response from track.</summary>
-public sealed class TrackStatus409Exception : ApiException
+/// <summary>Declared 422 response from queryEmailContacts.</summary>
+public sealed class QueryEmailContactsStatus422Exception : ApiException
 {
-  public TrackStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  public QueryEmailContactsStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4349,10 +4349,10 @@ public sealed class TrackStatus409Exception : ApiException
   
 }
 
-/// <summary>Declared 422 response from track.</summary>
-public sealed class TrackStatus422Exception : ApiException
+/// <summary>Declared 503 response from queryEmailContacts.</summary>
+public sealed class QueryEmailContactsStatus503Exception : ApiException
 {
-  public TrackStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  public QueryEmailContactsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4361,10 +4361,10 @@ public sealed class TrackStatus422Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from track.</summary>
-public sealed class TrackStatus503Exception : ApiException
+/// <summary>Declared 401 response from deleteEmailContact.</summary>
+public sealed class DeleteEmailContactStatus401Exception : ApiException
 {
-  public TrackStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public DeleteEmailContactStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4373,10 +4373,10 @@ public sealed class TrackStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from list_inbound.</summary>
-public sealed class ListInboundStatus401Exception : ApiException
+/// <summary>Declared 404 response from deleteEmailContact.</summary>
+public sealed class DeleteEmailContactStatus404Exception : ApiException
 {
-  public ListInboundStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public DeleteEmailContactStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4385,10 +4385,10 @@ public sealed class ListInboundStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 422 response from list_inbound.</summary>
-public sealed class ListInboundStatus422Exception : ApiException
+/// <summary>Declared 503 response from deleteEmailContact.</summary>
+public sealed class DeleteEmailContactStatus503Exception : ApiException
 {
-  public ListInboundStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  public DeleteEmailContactStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4397,10 +4397,10 @@ public sealed class ListInboundStatus422Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from list_inbound.</summary>
-public sealed class ListInboundStatus503Exception : ApiException
+/// <summary>Declared 401 response from getEmailContact.</summary>
+public sealed class GetEmailContactStatus401Exception : ApiException
 {
-  public ListInboundStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public GetEmailContactStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4409,10 +4409,10 @@ public sealed class ListInboundStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from get_inbound.</summary>
-public sealed class GetInboundStatus401Exception : ApiException
+/// <summary>Declared 404 response from getEmailContact.</summary>
+public sealed class GetEmailContactStatus404Exception : ApiException
 {
-  public GetInboundStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public GetEmailContactStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4421,10 +4421,10 @@ public sealed class GetInboundStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 404 response from get_inbound.</summary>
-public sealed class GetInboundStatus404Exception : ApiException
+/// <summary>Declared 503 response from getEmailContact.</summary>
+public sealed class GetEmailContactStatus503Exception : ApiException
 {
-  public GetInboundStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  public GetEmailContactStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4433,10 +4433,10 @@ public sealed class GetInboundStatus404Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from get_inbound.</summary>
-public sealed class GetInboundStatus503Exception : ApiException
+/// <summary>Declared 401 response from updateEmailContact.</summary>
+public sealed class UpdateEmailContactStatus401Exception : ApiException
 {
-  public GetInboundStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public UpdateEmailContactStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4445,10 +4445,10 @@ public sealed class GetInboundStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from list_segments.</summary>
-public sealed class ListSegmentsStatus401Exception : ApiException
+/// <summary>Declared 404 response from updateEmailContact.</summary>
+public sealed class UpdateEmailContactStatus404Exception : ApiException
 {
-  public ListSegmentsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public UpdateEmailContactStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4457,10 +4457,10 @@ public sealed class ListSegmentsStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from list_segments.</summary>
-public sealed class ListSegmentsStatus503Exception : ApiException
+/// <summary>Declared 422 response from updateEmailContact.</summary>
+public sealed class UpdateEmailContactStatus422Exception : ApiException
 {
-  public ListSegmentsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public UpdateEmailContactStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4469,10 +4469,10 @@ public sealed class ListSegmentsStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from get_segment.</summary>
-public sealed class GetSegmentStatus401Exception : ApiException
+/// <summary>Declared 503 response from updateEmailContact.</summary>
+public sealed class UpdateEmailContactStatus503Exception : ApiException
 {
-  public GetSegmentStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public UpdateEmailContactStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4481,10 +4481,10 @@ public sealed class GetSegmentStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 404 response from get_segment.</summary>
-public sealed class GetSegmentStatus404Exception : ApiException
+/// <summary>Declared 401 response from listEmailDomains.</summary>
+public sealed class ListEmailDomainsStatus401Exception : ApiException
 {
-  public GetSegmentStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  public ListEmailDomainsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4493,10 +4493,10 @@ public sealed class GetSegmentStatus404Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from get_segment.</summary>
-public sealed class GetSegmentStatus503Exception : ApiException
+/// <summary>Declared 503 response from listEmailDomains.</summary>
+public sealed class ListEmailDomainsStatus503Exception : ApiException
 {
-  public GetSegmentStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public ListEmailDomainsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4505,10 +4505,10 @@ public sealed class GetSegmentStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from list_sender_identities.</summary>
-public sealed class ListSenderIdentitiesStatus401Exception : ApiException
+/// <summary>Declared 401 response from createEmailDomain.</summary>
+public sealed class CreateEmailDomainStatus401Exception : ApiException
 {
-  public ListSenderIdentitiesStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public CreateEmailDomainStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4517,10 +4517,10 @@ public sealed class ListSenderIdentitiesStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from list_sender_identities.</summary>
-public sealed class ListSenderIdentitiesStatus503Exception : ApiException
+/// <summary>Declared 403 response from createEmailDomain.</summary>
+public sealed class CreateEmailDomainStatus403Exception : ApiException
 {
-  public ListSenderIdentitiesStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public CreateEmailDomainStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4529,10 +4529,10 @@ public sealed class ListSenderIdentitiesStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from get_sender_identity.</summary>
-public sealed class GetSenderIdentityStatus401Exception : ApiException
+/// <summary>Declared 409 response from createEmailDomain.</summary>
+public sealed class CreateEmailDomainStatus409Exception : ApiException
 {
-  public GetSenderIdentityStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public CreateEmailDomainStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4541,10 +4541,10 @@ public sealed class GetSenderIdentityStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 404 response from get_sender_identity.</summary>
-public sealed class GetSenderIdentityStatus404Exception : ApiException
+/// <summary>Declared 422 response from createEmailDomain.</summary>
+public sealed class CreateEmailDomainStatus422Exception : ApiException
 {
-  public GetSenderIdentityStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  public CreateEmailDomainStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4553,10 +4553,10 @@ public sealed class GetSenderIdentityStatus404Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from get_sender_identity.</summary>
-public sealed class GetSenderIdentityStatus503Exception : ApiException
+/// <summary>Declared 503 response from createEmailDomain.</summary>
+public sealed class CreateEmailDomainStatus503Exception : ApiException
 {
-  public GetSenderIdentityStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public CreateEmailDomainStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4565,10 +4565,10 @@ public sealed class GetSenderIdentityStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from create.</summary>
-public sealed class CreateStatus401Exception : ApiException
+/// <summary>Declared 401 response from deleteEmailDomain.</summary>
+public sealed class DeleteEmailDomainStatus401Exception : ApiException
 {
-  public CreateStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public DeleteEmailDomainStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4577,10 +4577,10 @@ public sealed class CreateStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 403 response from create.</summary>
-public sealed class CreateStatus403Exception : ApiException
+/// <summary>Declared 403 response from deleteEmailDomain.</summary>
+public sealed class DeleteEmailDomainStatus403Exception : ApiException
 {
-  public CreateStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  public DeleteEmailDomainStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4589,10 +4589,10 @@ public sealed class CreateStatus403Exception : ApiException
   
 }
 
-/// <summary>Declared 409 response from create.</summary>
-public sealed class CreateStatus409Exception : ApiException
+/// <summary>Declared 404 response from deleteEmailDomain.</summary>
+public sealed class DeleteEmailDomainStatus404Exception : ApiException
 {
-  public CreateStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  public DeleteEmailDomainStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4601,10 +4601,10 @@ public sealed class CreateStatus409Exception : ApiException
   
 }
 
-/// <summary>Declared 422 response from create.</summary>
-public sealed class CreateStatus422Exception : ApiException
+/// <summary>Declared 409 response from deleteEmailDomain.</summary>
+public sealed class DeleteEmailDomainStatus409Exception : ApiException
 {
-  public CreateStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  public DeleteEmailDomainStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4613,10 +4613,10 @@ public sealed class CreateStatus422Exception : ApiException
   
 }
 
-/// <summary>Declared 429 response from create.</summary>
-public sealed class CreateStatus429Exception : ApiException
+/// <summary>Declared 503 response from deleteEmailDomain.</summary>
+public sealed class DeleteEmailDomainStatus503Exception : ApiException
 {
-  public CreateStatus429Exception(string responseBody, ErrorResponse? body) : base(429, responseBody) => Body = body;
+  public DeleteEmailDomainStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4625,10 +4625,10 @@ public sealed class CreateStatus429Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from create.</summary>
-public sealed class CreateStatus503Exception : ApiException
+/// <summary>Declared 401 response from getEmailDomain.</summary>
+public sealed class GetEmailDomainStatus401Exception : ApiException
 {
-  public CreateStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public GetEmailDomainStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4637,10 +4637,10 @@ public sealed class CreateStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from query.</summary>
-public sealed class QueryStatus401Exception : ApiException
+/// <summary>Declared 404 response from getEmailDomain.</summary>
+public sealed class GetEmailDomainStatus404Exception : ApiException
 {
-  public QueryStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public GetEmailDomainStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4649,10 +4649,10 @@ public sealed class QueryStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 403 response from query.</summary>
-public sealed class QueryStatus403Exception : ApiException
+/// <summary>Declared 503 response from getEmailDomain.</summary>
+public sealed class GetEmailDomainStatus503Exception : ApiException
 {
-  public QueryStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  public GetEmailDomainStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4661,10 +4661,10 @@ public sealed class QueryStatus403Exception : ApiException
   
 }
 
-/// <summary>Declared 422 response from query.</summary>
-public sealed class QueryStatus422Exception : ApiException
+/// <summary>Declared 401 response from verifyEmailDomain.</summary>
+public sealed class VerifyEmailDomainStatus401Exception : ApiException
 {
-  public QueryStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  public VerifyEmailDomainStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4673,10 +4673,10 @@ public sealed class QueryStatus422Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from query.</summary>
-public sealed class QueryStatus503Exception : ApiException
+/// <summary>Declared 403 response from verifyEmailDomain.</summary>
+public sealed class VerifyEmailDomainStatus403Exception : ApiException
 {
-  public QueryStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public VerifyEmailDomainStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4685,10 +4685,10 @@ public sealed class QueryStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from cancel.</summary>
-public sealed class CancelStatus401Exception : ApiException
+/// <summary>Declared 404 response from verifyEmailDomain.</summary>
+public sealed class VerifyEmailDomainStatus404Exception : ApiException
 {
-  public CancelStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public VerifyEmailDomainStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4697,10 +4697,10 @@ public sealed class CancelStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 403 response from cancel.</summary>
-public sealed class CancelStatus403Exception : ApiException
+/// <summary>Declared 409 response from verifyEmailDomain.</summary>
+public sealed class VerifyEmailDomainStatus409Exception : ApiException
 {
-  public CancelStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  public VerifyEmailDomainStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4709,10 +4709,10 @@ public sealed class CancelStatus403Exception : ApiException
   
 }
 
-/// <summary>Declared 404 response from cancel.</summary>
-public sealed class CancelStatus404Exception : ApiException
+/// <summary>Declared 429 response from verifyEmailDomain.</summary>
+public sealed class VerifyEmailDomainStatus429Exception : ApiException
 {
-  public CancelStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  public VerifyEmailDomainStatus429Exception(string responseBody, ErrorResponse? body) : base(429, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4721,10 +4721,10 @@ public sealed class CancelStatus404Exception : ApiException
   
 }
 
-/// <summary>Declared 409 response from cancel.</summary>
-public sealed class CancelStatus409Exception : ApiException
+/// <summary>Declared 503 response from verifyEmailDomain.</summary>
+public sealed class VerifyEmailDomainStatus503Exception : ApiException
 {
-  public CancelStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  public VerifyEmailDomainStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4733,10 +4733,10 @@ public sealed class CancelStatus409Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from cancel.</summary>
-public sealed class CancelStatus503Exception : ApiException
+/// <summary>Declared 401 response from sendEmail.</summary>
+public sealed class SendEmailStatus401Exception : ApiException
 {
-  public CancelStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public SendEmailStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4745,10 +4745,10 @@ public sealed class CancelStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from get.</summary>
-public sealed class GetStatus401Exception : ApiException
+/// <summary>Declared 403 response from sendEmail.</summary>
+public sealed class SendEmailStatus403Exception : ApiException
 {
-  public GetStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public SendEmailStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4757,10 +4757,10 @@ public sealed class GetStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 403 response from get.</summary>
-public sealed class GetStatus403Exception : ApiException
+/// <summary>Declared 409 response from sendEmail.</summary>
+public sealed class SendEmailStatus409Exception : ApiException
 {
-  public GetStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  public SendEmailStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4769,10 +4769,10 @@ public sealed class GetStatus403Exception : ApiException
   
 }
 
-/// <summary>Declared 404 response from get.</summary>
-public sealed class GetStatus404Exception : ApiException
+/// <summary>Declared 422 response from sendEmail.</summary>
+public sealed class SendEmailStatus422Exception : ApiException
 {
-  public GetStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  public SendEmailStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4781,10 +4781,10 @@ public sealed class GetStatus404Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from get.</summary>
-public sealed class GetStatus503Exception : ApiException
+/// <summary>Declared 429 response from sendEmail.</summary>
+public sealed class SendEmailStatus429Exception : ApiException
 {
-  public GetStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public SendEmailStatus429Exception(string responseBody, ErrorResponse? body) : base(429, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4793,10 +4793,10 @@ public sealed class GetStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from list_webhooks.</summary>
-public sealed class ListWebhooksStatus401Exception : ApiException
+/// <summary>Declared 503 response from sendEmail.</summary>
+public sealed class SendEmailStatus503Exception : ApiException
 {
-  public ListWebhooksStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public SendEmailStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4805,10 +4805,10 @@ public sealed class ListWebhooksStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from list_webhooks.</summary>
-public sealed class ListWebhooksStatus503Exception : ApiException
+/// <summary>Declared 401 response from sendEmailBatch.</summary>
+public sealed class SendEmailBatchStatus401Exception : ApiException
 {
-  public ListWebhooksStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public SendEmailBatchStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4817,10 +4817,10 @@ public sealed class ListWebhooksStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from create_webhook.</summary>
-public sealed class CreateWebhookStatus401Exception : ApiException
+/// <summary>Declared 403 response from sendEmailBatch.</summary>
+public sealed class SendEmailBatchStatus403Exception : ApiException
 {
-  public CreateWebhookStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public SendEmailBatchStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4829,10 +4829,10 @@ public sealed class CreateWebhookStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 422 response from create_webhook.</summary>
-public sealed class CreateWebhookStatus422Exception : ApiException
+/// <summary>Declared 422 response from sendEmailBatch.</summary>
+public sealed class SendEmailBatchStatus422Exception : ApiException
 {
-  public CreateWebhookStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  public SendEmailBatchStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4841,10 +4841,10 @@ public sealed class CreateWebhookStatus422Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from create_webhook.</summary>
-public sealed class CreateWebhookStatus503Exception : ApiException
+/// <summary>Declared 401 response from queryEmails.</summary>
+public sealed class QueryEmailsStatus401Exception : ApiException
 {
-  public CreateWebhookStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public QueryEmailsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4853,10 +4853,10 @@ public sealed class CreateWebhookStatus503Exception : ApiException
   
 }
 
-/// <summary>Declared 401 response from delete_webhook.</summary>
-public sealed class DeleteWebhookStatus401Exception : ApiException
+/// <summary>Declared 403 response from queryEmails.</summary>
+public sealed class QueryEmailsStatus403Exception : ApiException
 {
-  public DeleteWebhookStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public QueryEmailsStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4865,10 +4865,10 @@ public sealed class DeleteWebhookStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 404 response from delete_webhook.</summary>
-public sealed class DeleteWebhookStatus404Exception : ApiException
+/// <summary>Declared 422 response from queryEmails.</summary>
+public sealed class QueryEmailsStatus422Exception : ApiException
 {
-  public DeleteWebhookStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  public QueryEmailsStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -4877,58 +4877,10 @@ public sealed class DeleteWebhookStatus404Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from delete_webhook.</summary>
-public sealed class DeleteWebhookStatus503Exception : ApiException
+/// <summary>Declared 503 response from queryEmails.</summary>
+public sealed class QueryEmailsStatus503Exception : ApiException
 {
-  public DeleteWebhookStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
-  
-    public ErrorResponse? Body {
-    get;
-
-  }
-  
-}
-
-/// <summary>Declared 401 response from update_webhook.</summary>
-public sealed class UpdateWebhookStatus401Exception : ApiException
-{
-  public UpdateWebhookStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
-  
-    public ErrorResponse? Body {
-    get;
-
-  }
-  
-}
-
-/// <summary>Declared 404 response from update_webhook.</summary>
-public sealed class UpdateWebhookStatus404Exception : ApiException
-{
-  public UpdateWebhookStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
-  
-    public ErrorResponse? Body {
-    get;
-
-  }
-  
-}
-
-/// <summary>Declared 422 response from update_webhook.</summary>
-public sealed class UpdateWebhookStatus422Exception : ApiException
-{
-  public UpdateWebhookStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
-  
-    public ErrorResponse? Body {
-    get;
-
-  }
-  
-}
-
-/// <summary>Declared 503 response from update_webhook.</summary>
-public sealed class UpdateWebhookStatus503Exception : ApiException
-{
-  public UpdateWebhookStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public QueryEmailsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;

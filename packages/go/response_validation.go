@@ -39,6 +39,8 @@ type poolsterResponseShape struct {
 var poolsterResponseShapes = func() map[string]poolsterResponseShape {
 shapes := make(map[string]poolsterResponseShape)
 for name, shape := range poolsterResponseShapesChunk0000() { shapes[name] = shape }
+for name, shape := range poolsterResponseShapesChunk0001() { shapes[name] = shape }
+for name, shape := range poolsterResponseShapesChunk0002() { shapes[name] = shape }
 return shapes
 }()
 func poolsterValidateResponse(value any, destination reflect.Type, path string, depth int) error {

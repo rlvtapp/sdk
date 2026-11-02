@@ -18,21 +18,34 @@ final class Client
     private readonly RequestFactoryInterface $requestFactory;
     private readonly StreamFactoryInterface $streamFactory;
     use ClientOperations000;
+    use ClientOperations001;
+    private ?\Relevate\Sdk\Resources\APIKeysResource $aPIKeysResource = null;
     private ?\Relevate\Sdk\Resources\CRMResource $cRMResource = null;
     private ?\Relevate\Sdk\Resources\ConfigurationResource $configurationResource = null;
     private ?\Relevate\Sdk\Resources\ContactsResource $contactsResource = null;
     private ?\Relevate\Sdk\Resources\EventsResource $eventsResource = null;
     private ?\Relevate\Sdk\Resources\InboundResource $inboundResource = null;
+    private ?\Relevate\Sdk\Resources\InboxesResource $inboxesResource = null;
+    private ?\Relevate\Sdk\Resources\ScheduleResource $scheduleResource = null;
     private ?\Relevate\Sdk\Resources\SendsResource $sendsResource = null;
+    private ?\Relevate\Sdk\Resources\SuppressionsResource $suppressionsResource = null;
+    private ?\Relevate\Sdk\Resources\TemplatesResource $templatesResource = null;
+    private ?\Relevate\Sdk\Resources\UsageResource $usageResource = null;
     private ?\Relevate\Sdk\Resources\WebhooksResource $webhooksResource = null;
     public function __clone(): void
     {
+        $this->aPIKeysResource = null;
         $this->cRMResource = null;
         $this->configurationResource = null;
         $this->contactsResource = null;
         $this->eventsResource = null;
         $this->inboundResource = null;
+        $this->inboxesResource = null;
+        $this->scheduleResource = null;
         $this->sendsResource = null;
+        $this->suppressionsResource = null;
+        $this->templatesResource = null;
+        $this->usageResource = null;
         $this->webhooksResource = null;
     }
 
@@ -88,6 +101,11 @@ final class Client
     private ?ClientInterface $callHttpClient = null;
     private readonly string $baseUrl;
 
+    public function aPIKeys(): \Relevate\Sdk\Resources\APIKeysResource
+    {
+        return $this->aPIKeysResource ??= new \Relevate\Sdk\Resources\APIKeysResource($this);
+    }
+
     public function cRM(): \Relevate\Sdk\Resources\CRMResource
     {
         return $this->cRMResource ??= new \Relevate\Sdk\Resources\CRMResource($this);
@@ -113,9 +131,34 @@ final class Client
         return $this->inboundResource ??= new \Relevate\Sdk\Resources\InboundResource($this);
     }
 
+    public function inboxes(): \Relevate\Sdk\Resources\InboxesResource
+    {
+        return $this->inboxesResource ??= new \Relevate\Sdk\Resources\InboxesResource($this);
+    }
+
+    public function schedule(): \Relevate\Sdk\Resources\ScheduleResource
+    {
+        return $this->scheduleResource ??= new \Relevate\Sdk\Resources\ScheduleResource($this);
+    }
+
     public function sends(): \Relevate\Sdk\Resources\SendsResource
     {
         return $this->sendsResource ??= new \Relevate\Sdk\Resources\SendsResource($this);
+    }
+
+    public function suppressions(): \Relevate\Sdk\Resources\SuppressionsResource
+    {
+        return $this->suppressionsResource ??= new \Relevate\Sdk\Resources\SuppressionsResource($this);
+    }
+
+    public function templates(): \Relevate\Sdk\Resources\TemplatesResource
+    {
+        return $this->templatesResource ??= new \Relevate\Sdk\Resources\TemplatesResource($this);
+    }
+
+    public function usage(): \Relevate\Sdk\Resources\UsageResource
+    {
+        return $this->usageResource ??= new \Relevate\Sdk\Resources\UsageResource($this);
     }
 
     public function webhooks(): \Relevate\Sdk\Resources\WebhooksResource

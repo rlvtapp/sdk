@@ -146,12 +146,12 @@ func decodeGetCrmNoteError(requestError error) error {
 	}
 }
 
-// GetCrmNote invokes GET /v1/crm/notes/{note_id}.
+// GetCrmNote invokes GET /crm/notes/{note_id}.
 func (client *Client) GetCrmNote(ctx context.Context, input *GetCrmNoteRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &GetCrmNoteRequest{}
 	}
-	path := "/v1/crm/notes/{note_id}"
+	path := "/crm/notes/{note_id}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{note_id}", url.PathEscape(fmt.Sprint(input.NoteID)))

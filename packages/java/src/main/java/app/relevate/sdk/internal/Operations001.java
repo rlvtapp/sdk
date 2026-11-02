@@ -28,12 +28,12 @@ public class Operations001 extends Operations000 {
             CrmAttributeCreate body
     ) {}
 
-    /** Invokes POST /v1/crm/objects/{object}/attributes. */
+    /** Invokes POST /crm/objects/{object}/attributes. */
     public CrmMetadataAttributeResponse createCrmObjectAttribute(CreateCrmObjectAttributeRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}/attributes";
+        var path = "/crm/objects/{object}/attributes";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));
@@ -50,12 +50,12 @@ public class Operations001 extends Operations000 {
             String attribute
     ) {}
 
-    /** Invokes DELETE /v1/crm/objects/{object}/attributes/{attribute}. */
+    /** Invokes DELETE /crm/objects/{object}/attributes/{attribute}. */
     public CrmMetadataDeleted deleteCrmObjectAttribute(DeleteCrmObjectAttributeRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}/attributes/{attribute}";
+        var path = "/crm/objects/{object}/attributes/{attribute}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));
@@ -74,12 +74,12 @@ public class Operations001 extends Operations000 {
             CrmAttributePatch body
     ) {}
 
-    /** Invokes PATCH /v1/crm/objects/{object}/attributes/{attribute}. */
+    /** Invokes PATCH /crm/objects/{object}/attributes/{attribute}. */
     public CrmMetadataAttributeResponse updateCrmObjectAttribute(UpdateCrmObjectAttributeRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}/attributes/{attribute}";
+        var path = "/crm/objects/{object}/attributes/{attribute}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));
@@ -96,12 +96,12 @@ public class Operations001 extends Operations000 {
             String object
     ) {}
 
-    /** Invokes GET /v1/crm/objects/{object}/deletion-preview. */
+    /** Invokes GET /crm/objects/{object}/deletion-preview. */
     public CrmObjectDeletionPreview previewCrmObjectDeletion(PreviewCrmObjectDeletionRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}/deletion-preview";
+        var path = "/crm/objects/{object}/deletion-preview";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));
@@ -120,12 +120,12 @@ public class Operations001 extends Operations000 {
             Boolean includeArchived
     ) {}
 
-    /** Invokes GET /v1/crm/objects/{object}/quality. */
+    /** Invokes GET /crm/objects/{object}/quality. */
     public CrmQualityResponse getCrmObjectQuality(GetCrmObjectQualityRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}/quality";
+        var path = "/crm/objects/{object}/quality";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));
@@ -148,12 +148,12 @@ public class Operations001 extends Operations000 {
             Boolean includeArchived
     ) {}
 
-    /** Invokes GET /v1/crm/objects/{object}/records. */
+    /** Invokes GET /crm/objects/{object}/records. */
     public JsonNode listCrmRecords(ListCrmRecordsRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}/records";
+        var path = "/crm/objects/{object}/records";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));
@@ -174,12 +174,12 @@ public class Operations001 extends Operations000 {
             CrmRecordCreate body
     ) {}
 
-    /** Invokes POST /v1/crm/objects/{object}/records. */
+    /** Invokes POST /crm/objects/{object}/records. */
     public CrmRecordResponse createCrmRecord(CreateCrmRecordRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}/records";
+        var path = "/crm/objects/{object}/records";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));
@@ -196,12 +196,12 @@ public class Operations001 extends Operations000 {
             CrmUpsert body
     ) {}
 
-    /** Invokes POST /v1/crm/objects/{object}/records/upsert. */
+    /** Invokes POST /crm/objects/{object}/records/upsert. */
     public CrmRecordResponse upsertCrmRecord(UpsertCrmRecordRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/objects/{object}/records/upsert";
+        var path = "/crm/objects/{object}/records/upsert";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.object() != null) path = path.replace("{object}", pathValue(input.object()));
@@ -217,12 +217,12 @@ public class Operations001 extends Operations000 {
             String recordId
     ) {}
 
-    /** Invokes DELETE /v1/crm/records/{record_id}. */
+    /** Invokes DELETE /crm/records/{record_id}. */
     public CrmRecordResponse archiveCrmRecord(ArchiveCrmRecordRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/records/{record_id}";
+        var path = "/crm/records/{record_id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.recordId() != null) path = path.replace("{record_id}", pathValue(input.recordId()));
@@ -238,12 +238,12 @@ public class Operations001 extends Operations000 {
             String recordId
     ) {}
 
-    /** Invokes GET /v1/crm/records/{record_id}. */
+    /** Invokes GET /crm/records/{record_id}. */
     public CrmRecordResponse getCrmRecord(GetCrmRecordRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/records/{record_id}";
+        var path = "/crm/records/{record_id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.recordId() != null) path = path.replace("{record_id}", pathValue(input.recordId()));
@@ -260,12 +260,12 @@ public class Operations001 extends Operations000 {
             CrmRecordPatch body
     ) {}
 
-    /** Invokes PATCH /v1/crm/records/{record_id}. */
+    /** Invokes PATCH /crm/records/{record_id}. */
     public CrmRecordResponse updateCrmRecord(UpdateCrmRecordRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/records/{record_id}";
+        var path = "/crm/records/{record_id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.recordId() != null) path = path.replace("{record_id}", pathValue(input.recordId()));
@@ -283,12 +283,12 @@ public class Operations001 extends Operations000 {
             String after
     ) {}
 
-    /** Invokes GET /v1/crm/records/{record_id}/activities. */
+    /** Invokes GET /crm/records/{record_id}/activities. */
     public JsonNode listCrmActivities(ListCrmActivitiesRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/records/{record_id}/activities";
+        var path = "/crm/records/{record_id}/activities";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.recordId() != null) path = path.replace("{record_id}", pathValue(input.recordId()));
@@ -308,12 +308,12 @@ public class Operations001 extends Operations000 {
             String after
     ) {}
 
-    /** Invokes GET /v1/crm/records/{record_id}/notes. */
+    /** Invokes GET /crm/records/{record_id}/notes. */
     public JsonNode listCrmNotes(ListCrmNotesRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/records/{record_id}/notes";
+        var path = "/crm/records/{record_id}/notes";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.recordId() != null) path = path.replace("{record_id}", pathValue(input.recordId()));
@@ -332,12 +332,12 @@ public class Operations001 extends Operations000 {
             CrmNoteWrite body
     ) {}
 
-    /** Invokes POST /v1/crm/records/{record_id}/notes. */
+    /** Invokes POST /crm/records/{record_id}/notes. */
     public JsonNode createCrmNote(CreateCrmNoteRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/records/{record_id}/notes";
+        var path = "/crm/records/{record_id}/notes";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.recordId() != null) path = path.replace("{record_id}", pathValue(input.recordId()));
@@ -355,12 +355,12 @@ public class Operations001 extends Operations000 {
             String after
     ) {}
 
-    /** Invokes GET /v1/crm/records/{record_id}/tasks. */
+    /** Invokes GET /crm/records/{record_id}/tasks. */
     public JsonNode listCrmTasks(ListCrmTasksRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/records/{record_id}/tasks";
+        var path = "/crm/records/{record_id}/tasks";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.recordId() != null) path = path.replace("{record_id}", pathValue(input.recordId()));
@@ -379,12 +379,12 @@ public class Operations001 extends Operations000 {
             CrmTaskCreate body
     ) {}
 
-    /** Invokes POST /v1/crm/records/{record_id}/tasks. */
+    /** Invokes POST /crm/records/{record_id}/tasks. */
     public JsonNode createCrmTask(CreateCrmTaskRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/records/{record_id}/tasks";
+        var path = "/crm/records/{record_id}/tasks";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.recordId() != null) path = path.replace("{record_id}", pathValue(input.recordId()));
@@ -400,12 +400,12 @@ public class Operations001 extends Operations000 {
             String taskId
     ) {}
 
-    /** Invokes DELETE /v1/crm/tasks/{task_id}. */
+    /** Invokes DELETE /crm/tasks/{task_id}. */
     public JsonNode deleteCrmTask(DeleteCrmTaskRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/tasks/{task_id}";
+        var path = "/crm/tasks/{task_id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.taskId() != null) path = path.replace("{task_id}", pathValue(input.taskId()));
@@ -421,12 +421,12 @@ public class Operations001 extends Operations000 {
             String taskId
     ) {}
 
-    /** Invokes GET /v1/crm/tasks/{task_id}. */
+    /** Invokes GET /crm/tasks/{task_id}. */
     public JsonNode getCrmTask(GetCrmTaskRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/tasks/{task_id}";
+        var path = "/crm/tasks/{task_id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.taskId() != null) path = path.replace("{task_id}", pathValue(input.taskId()));
@@ -443,12 +443,12 @@ public class Operations001 extends Operations000 {
             CrmTaskPatch body
     ) {}
 
-    /** Invokes PATCH /v1/crm/tasks/{task_id}. */
+    /** Invokes PATCH /crm/tasks/{task_id}. */
     public JsonNode updateCrmTask(UpdateCrmTaskRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/crm/tasks/{task_id}";
+        var path = "/crm/tasks/{task_id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.taskId() != null) path = path.replace("{task_id}", pathValue(input.taskId()));
@@ -459,183 +459,171 @@ public class Operations001 extends Operations000 {
         }
     }
 
-    /** Invokes GET /v1/email/auth-check. */
-    public AuthCheckResponse authCheck() {
+    /** Invokes GET /email/api-keys. */
+    public void listEmailApiKeys() {
   
         try {
-        var path = "/v1/email/auth-check";
+        var path = "/email/api-keys";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        requestWithRetry("GET", path, query, headers, null, null);
+        } catch (ApiException error) {
+            throw mapListEmailApiKeysError(error);
+        }
+    }
+
+    /** Inputs accepted by CreateEmailApiKey. */
+    public record CreateEmailApiKeyRequest(
+            CreateApiKeyRequest body
+    ) {}
+
+    /** Invokes POST /email/api-keys. */
+    public void createEmailApiKey(CreateEmailApiKeyRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/api-keys";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        requestWithRetry("POST", path, query, headers, input.body(), null);
+        } catch (ApiException error) {
+            throw mapCreateEmailApiKeyError(error);
+        }
+    }
+
+    /** Inputs accepted by RevokeEmailApiKey. */
+    public record RevokeEmailApiKeyRequest(
+            String id
+    ) {}
+
+    /** Invokes DELETE /email/api-keys/{id}. */
+    public void revokeEmailApiKey(RevokeEmailApiKeyRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/api-keys/{id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.id() != null) path = path.replace("{id}", pathValue(input.id()));
+        requestWithRetry("DELETE", path, query, headers, null, null);
+        } catch (ApiException error) {
+            throw mapRevokeEmailApiKeyError(error);
+        }
+    }
+
+    /** Inputs accepted by GetEmailAttachment. */
+    public record GetEmailAttachmentRequest(
+            String attachmentId
+    ) {}
+
+    /** Invokes GET /email/attachments/{attachment_id}. */
+    public AttachmentResponse getEmailAttachment(GetEmailAttachmentRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/attachments/{attachment_id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.attachmentId() != null) path = path.replace("{attachment_id}", pathValue(input.attachmentId()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, AttachmentResponse.class);
+        } catch (ApiException error) {
+            throw mapGetEmailAttachmentError(error);
+        }
+    }
+
+    /** Invokes GET /email/auth-check. */
+    public AuthCheckResponse checkEmailAuth() {
+  
+        try {
+        var path = "/email/auth-check";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         var response = requestWithRetry("GET", path, query, headers, null, null);
         return decode(response, AuthCheckResponse.class);
         } catch (ApiException error) {
-            throw mapAuthCheckError(error);
+            throw mapCheckEmailAuthError(error);
         }
     }
 
-    /** Inputs accepted by ListContacts. */
-    public record ListContactsRequest(
+    /** Inputs accepted by ListEmailContacts. */
+    public record ListEmailContactsRequest(
             Long limit
     ) {}
 
-    /** Invokes GET /v1/email/contacts. */
-    public ContactListResponse listContacts(ListContactsRequest input) {
+    /** Invokes GET /email/contacts. */
+    public ContactListResponse listEmailContacts(ListEmailContactsRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/contacts";
+        var path = "/email/contacts";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         query.add(new QueryParameter("limit", input.limit()));
         var response = requestWithRetry("GET", path, query, headers, null, null);
         return decode(response, ContactListResponse.class);
         } catch (ApiException error) {
-            throw mapListContactsError(error);
+            throw mapListEmailContactsError(error);
         }
     }
 
-    /** Inputs accepted by CreateContact. */
-    public record CreateContactRequest(
+    /** Inputs accepted by CreateEmailContact. */
+    public record CreateEmailContactRequest(
             CreateContact body
     ) {}
 
-    /** Invokes POST /v1/email/contacts. */
-    public ContactResponse createContact(CreateContactRequest input) {
+    /** Invokes POST /email/contacts. */
+    public ContactResponse createEmailContact(CreateEmailContactRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/contacts";
+        var path = "/email/contacts";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         var response = requestWithRetry("POST", path, query, headers, input.body(), null);
         return decode(response, ContactResponse.class);
         } catch (ApiException error) {
-            throw mapCreateContactError(error);
+            throw mapCreateEmailContactError(error);
         }
     }
 
-    /** Inputs accepted by QueryContacts. */
-    public record QueryContactsRequest(
+    /** Inputs accepted by QueryEmailContacts. */
+    public record QueryEmailContactsRequest(
             ContactQuery body
     ) {}
 
-    /** Invokes POST /v1/email/contacts/query. */
-    public ContactQueryResponse queryContacts(QueryContactsRequest input) {
+    /** Invokes POST /email/contacts/query. */
+    public ContactQueryResponse queryEmailContacts(QueryEmailContactsRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/contacts/query";
+        var path = "/email/contacts/query";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         var response = requestWithRetry("POST", path, query, headers, input.body(), null);
         return decode(response, ContactQueryResponse.class);
         } catch (ApiException error) {
-            throw mapQueryContactsError(error);
+            throw mapQueryEmailContactsError(error);
         }
     }
 
-    /** Inputs accepted by GetContact. */
-    public record GetContactRequest(
+    /** Inputs accepted by DeleteEmailContact. */
+    public record DeleteEmailContactRequest(
             String id
     ) {}
 
-    /** Invokes GET /v1/email/contacts/{id}. */
-    public ContactResponse getContact(GetContactRequest input) {
+    /** Invokes DELETE /email/contacts/{id}. */
+    public void deleteEmailContact(DeleteEmailContactRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/contacts/{id}";
+        var path = "/email/contacts/{id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.id() != null) path = path.replace("{id}", pathValue(input.id()));
-        var response = requestWithRetry("GET", path, query, headers, null, null);
-        return decode(response, ContactResponse.class);
+        requestWithRetry("DELETE", path, query, headers, null, null);
         } catch (ApiException error) {
-            throw mapGetContactError(error);
-        }
-    }
-
-    /** Inputs accepted by UpdateContact. */
-    public record UpdateContactRequest(
-            String id,
-            UpdateContact body
-    ) {}
-
-    /** Invokes PATCH /v1/email/contacts/{id}. */
-    public ContactResponse updateContact(UpdateContactRequest input) {
-  
-        Objects.requireNonNull(input, "input");
-        try {
-        var path = "/v1/email/contacts/{id}";
-        var query = new ArrayList<QueryParameter>();
-        var headers = new java.util.LinkedHashMap<String, String>();
-        if (input.id() != null) path = path.replace("{id}", pathValue(input.id()));
-        var response = requestWithRetry("PATCH", path, query, headers, input.body(), null);
-        return decode(response, ContactResponse.class);
-        } catch (ApiException error) {
-            throw mapUpdateContactError(error);
-        }
-    }
-
-    /** Inputs accepted by ListDomains. */
-    public record ListDomainsRequest(
-            Long limit
-    ) {}
-
-    /** Invokes GET /v1/email/domains. */
-    public DomainListResponse listDomains(ListDomainsRequest input) {
-  
-        Objects.requireNonNull(input, "input");
-        try {
-        var path = "/v1/email/domains";
-        var query = new ArrayList<QueryParameter>();
-        var headers = new java.util.LinkedHashMap<String, String>();
-        query.add(new QueryParameter("limit", input.limit()));
-        var response = requestWithRetry("GET", path, query, headers, null, null);
-        return decode(response, DomainListResponse.class);
-        } catch (ApiException error) {
-            throw mapListDomainsError(error);
-        }
-    }
-
-    /** Inputs accepted by GetDomain. */
-    public record GetDomainRequest(
-            String id
-    ) {}
-
-    /** Invokes GET /v1/email/domains/{id}. */
-    public DomainResponse getDomain(GetDomainRequest input) {
-  
-        Objects.requireNonNull(input, "input");
-        try {
-        var path = "/v1/email/domains/{id}";
-        var query = new ArrayList<QueryParameter>();
-        var headers = new java.util.LinkedHashMap<String, String>();
-        if (input.id() != null) path = path.replace("{id}", pathValue(input.id()));
-        var response = requestWithRetry("GET", path, query, headers, null, null);
-        return decode(response, DomainResponse.class);
-        } catch (ApiException error) {
-            throw mapGetDomainError(error);
-        }
-    }
-
-    /** Inputs accepted by Track. */
-    public record TrackRequest(
-            TrackEventRequest body
-    ) {}
-
-    /** Invokes POST /v1/email/events. */
-    public EventResponse track(TrackRequest input) {
-  
-        Objects.requireNonNull(input, "input");
-        try {
-        var path = "/v1/email/events";
-        var query = new ArrayList<QueryParameter>();
-        var headers = new java.util.LinkedHashMap<String, String>();
-        var response = requestWithRetry("POST", path, query, headers, input.body(), null);
-        return decode(response, EventResponse.class);
-        } catch (ApiException error) {
-            throw mapTrackError(error);
+            throw mapDeleteEmailContactError(error);
         }
     }
 
@@ -3641,19 +3629,19 @@ public class Operations001 extends Operations000 {
 }
 
 
-    private RuntimeException mapAuthCheckError(ApiException error) {
+    private RuntimeException mapListEmailApiKeysError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new AuthCheckStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 403 -> new AuthCheckStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new AuthCheckStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new ListEmailApiKeysStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new ListEmailApiKeysStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailApiKeysStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class AuthCheckStatus401Exception extends ApiException {
+    public static final class ListEmailApiKeysStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private AuthCheckStatus401Exception(ApiException source, ErrorResponse body) {
+        private ListEmailApiKeysStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3668,10 +3656,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class AuthCheckStatus403Exception extends ApiException {
+    public static final class ListEmailApiKeysStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private AuthCheckStatus403Exception(ApiException source, ErrorResponse body) {
+        private ListEmailApiKeysStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3686,10 +3674,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class AuthCheckStatus503Exception extends ApiException {
+    public static final class ListEmailApiKeysStatus503Exception extends ApiException {
   private final ErrorResponse body;
   
-        private AuthCheckStatus503Exception(ApiException source, ErrorResponse body) {
+        private ListEmailApiKeysStatus503Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3704,18 +3692,21 @@ public class Operations001 extends Operations000 {
 }
 
 
-    private RuntimeException mapListContactsError(ApiException error) {
+    private RuntimeException mapCreateEmailApiKeyError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new ListContactsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new ListContactsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new CreateEmailApiKeyStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new CreateEmailApiKeyStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new CreateEmailApiKeyStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new CreateEmailApiKeyStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new CreateEmailApiKeyStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class ListContactsStatus401Exception extends ApiException {
+    public static final class CreateEmailApiKeyStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListContactsStatus401Exception(ApiException source, ErrorResponse body) {
+        private CreateEmailApiKeyStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3730,10 +3721,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class ListContactsStatus503Exception extends ApiException {
+    public static final class CreateEmailApiKeyStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListContactsStatus503Exception(ApiException source, ErrorResponse body) {
+        private CreateEmailApiKeyStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3748,19 +3739,74 @@ public class Operations001 extends Operations000 {
 }
 
 
-    private RuntimeException mapCreateContactError(ApiException error) {
+    public static final class CreateEmailApiKeyStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailApiKeyStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailApiKeyStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailApiKeyStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailApiKeyStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailApiKeyStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapRevokeEmailApiKeyError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new CreateContactStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 422 -> new CreateContactStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new CreateContactStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new RevokeEmailApiKeyStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new RevokeEmailApiKeyStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new RevokeEmailApiKeyStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new RevokeEmailApiKeyStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class CreateContactStatus401Exception extends ApiException {
+    public static final class RevokeEmailApiKeyStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateContactStatus401Exception(ApiException source, ErrorResponse body) {
+        private RevokeEmailApiKeyStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3775,10 +3821,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class CreateContactStatus422Exception extends ApiException {
+    public static final class RevokeEmailApiKeyStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateContactStatus422Exception(ApiException source, ErrorResponse body) {
+        private RevokeEmailApiKeyStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3793,10 +3839,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class CreateContactStatus503Exception extends ApiException {
+    public static final class RevokeEmailApiKeyStatus404Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateContactStatus503Exception(ApiException source, ErrorResponse body) {
+        private RevokeEmailApiKeyStatus404Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3811,19 +3857,38 @@ public class Operations001 extends Operations000 {
 }
 
 
-    private RuntimeException mapQueryContactsError(ApiException error) {
+    public static final class RevokeEmailApiKeyStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private RevokeEmailApiKeyStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapGetEmailAttachmentError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new QueryContactsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 422 -> new QueryContactsStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new QueryContactsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new GetEmailAttachmentStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new GetEmailAttachmentStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new GetEmailAttachmentStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new GetEmailAttachmentStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class QueryContactsStatus401Exception extends ApiException {
+    public static final class GetEmailAttachmentStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private QueryContactsStatus401Exception(ApiException source, ErrorResponse body) {
+        private GetEmailAttachmentStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3838,10 +3903,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class QueryContactsStatus422Exception extends ApiException {
+    public static final class GetEmailAttachmentStatus404Exception extends ApiException {
   private final ErrorResponse body;
   
-        private QueryContactsStatus422Exception(ApiException source, ErrorResponse body) {
+        private GetEmailAttachmentStatus404Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3856,10 +3921,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class QueryContactsStatus503Exception extends ApiException {
+    public static final class GetEmailAttachmentStatus409Exception extends ApiException {
   private final ErrorResponse body;
   
-        private QueryContactsStatus503Exception(ApiException source, ErrorResponse body) {
+        private GetEmailAttachmentStatus409Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3874,19 +3939,37 @@ public class Operations001 extends Operations000 {
 }
 
 
-    private RuntimeException mapGetContactError(ApiException error) {
+    public static final class GetEmailAttachmentStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailAttachmentStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapCheckEmailAuthError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new GetContactStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 404 -> new GetContactStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new GetContactStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new CheckEmailAuthStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new CheckEmailAuthStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new CheckEmailAuthStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class GetContactStatus401Exception extends ApiException {
+    public static final class CheckEmailAuthStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetContactStatus401Exception(ApiException source, ErrorResponse body) {
+        private CheckEmailAuthStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3901,10 +3984,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class GetContactStatus404Exception extends ApiException {
+    public static final class CheckEmailAuthStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetContactStatus404Exception(ApiException source, ErrorResponse body) {
+        private CheckEmailAuthStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3919,10 +4002,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class GetContactStatus503Exception extends ApiException {
+    public static final class CheckEmailAuthStatus503Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetContactStatus503Exception(ApiException source, ErrorResponse body) {
+        private CheckEmailAuthStatus503Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3937,20 +4020,18 @@ public class Operations001 extends Operations000 {
 }
 
 
-    private RuntimeException mapUpdateContactError(ApiException error) {
+    private RuntimeException mapListEmailContactsError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new UpdateContactStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 404 -> new UpdateContactStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 422 -> new UpdateContactStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new UpdateContactStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new ListEmailContactsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailContactsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class UpdateContactStatus401Exception extends ApiException {
+    public static final class ListEmailContactsStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private UpdateContactStatus401Exception(ApiException source, ErrorResponse body) {
+        private ListEmailContactsStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3965,10 +4046,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class UpdateContactStatus404Exception extends ApiException {
+    public static final class ListEmailContactsStatus503Exception extends ApiException {
   private final ErrorResponse body;
   
-        private UpdateContactStatus404Exception(ApiException source, ErrorResponse body) {
+        private ListEmailContactsStatus503Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -3983,54 +4064,19 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class UpdateContactStatus422Exception extends ApiException {
-  private final ErrorResponse body;
-  
-        private UpdateContactStatus422Exception(ApiException source, ErrorResponse body) {
-    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
-    this.body = body;
-
-  }
-  
-        public ErrorResponse body() {
-    return body;
-
-  }
-  
-
-}
-
-
-    public static final class UpdateContactStatus503Exception extends ApiException {
-  private final ErrorResponse body;
-  
-        private UpdateContactStatus503Exception(ApiException source, ErrorResponse body) {
-    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
-    this.body = body;
-
-  }
-  
-        public ErrorResponse body() {
-    return body;
-
-  }
-  
-
-}
-
-
-    private RuntimeException mapListDomainsError(ApiException error) {
+    private RuntimeException mapCreateEmailContactError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new ListDomainsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new ListDomainsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new CreateEmailContactStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new CreateEmailContactStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new CreateEmailContactStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class ListDomainsStatus401Exception extends ApiException {
+    public static final class CreateEmailContactStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListDomainsStatus401Exception(ApiException source, ErrorResponse body) {
+        private CreateEmailContactStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -4045,10 +4091,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class ListDomainsStatus503Exception extends ApiException {
+    public static final class CreateEmailContactStatus422Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListDomainsStatus503Exception(ApiException source, ErrorResponse body) {
+        private CreateEmailContactStatus422Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -4063,19 +4109,37 @@ public class Operations001 extends Operations000 {
 }
 
 
-    private RuntimeException mapGetDomainError(ApiException error) {
+    public static final class CreateEmailContactStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailContactStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapQueryEmailContactsError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new GetDomainStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 404 -> new GetDomainStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new GetDomainStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new QueryEmailContactsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new QueryEmailContactsStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new QueryEmailContactsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class GetDomainStatus401Exception extends ApiException {
+    public static final class QueryEmailContactsStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetDomainStatus401Exception(ApiException source, ErrorResponse body) {
+        private QueryEmailContactsStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -4090,10 +4154,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class GetDomainStatus404Exception extends ApiException {
+    public static final class QueryEmailContactsStatus422Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetDomainStatus404Exception(ApiException source, ErrorResponse body) {
+        private QueryEmailContactsStatus422Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -4108,10 +4172,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class GetDomainStatus503Exception extends ApiException {
+    public static final class QueryEmailContactsStatus503Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetDomainStatus503Exception(ApiException source, ErrorResponse body) {
+        private QueryEmailContactsStatus503Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -4126,21 +4190,19 @@ public class Operations001 extends Operations000 {
 }
 
 
-    private RuntimeException mapTrackError(ApiException error) {
+    private RuntimeException mapDeleteEmailContactError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new TrackStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 403 -> new TrackStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 409 -> new TrackStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 422 -> new TrackStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new TrackStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new DeleteEmailContactStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new DeleteEmailContactStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new DeleteEmailContactStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class TrackStatus401Exception extends ApiException {
+    public static final class DeleteEmailContactStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private TrackStatus401Exception(ApiException source, ErrorResponse body) {
+        private DeleteEmailContactStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -4155,10 +4217,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class TrackStatus403Exception extends ApiException {
+    public static final class DeleteEmailContactStatus404Exception extends ApiException {
   private final ErrorResponse body;
   
-        private TrackStatus403Exception(ApiException source, ErrorResponse body) {
+        private DeleteEmailContactStatus404Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -4173,46 +4235,10 @@ public class Operations001 extends Operations000 {
 }
 
 
-    public static final class TrackStatus409Exception extends ApiException {
+    public static final class DeleteEmailContactStatus503Exception extends ApiException {
   private final ErrorResponse body;
   
-        private TrackStatus409Exception(ApiException source, ErrorResponse body) {
-    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
-    this.body = body;
-
-  }
-  
-        public ErrorResponse body() {
-    return body;
-
-  }
-  
-
-}
-
-
-    public static final class TrackStatus422Exception extends ApiException {
-  private final ErrorResponse body;
-  
-        private TrackStatus422Exception(ApiException source, ErrorResponse body) {
-    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
-    this.body = body;
-
-  }
-  
-        public ErrorResponse body() {
-    return body;
-
-  }
-  
-
-}
-
-
-    public static final class TrackStatus503Exception extends ApiException {
-  private final ErrorResponse body;
-  
-        private TrackStatus503Exception(ApiException source, ErrorResponse body) {
+        private DeleteEmailContactStatus503Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 

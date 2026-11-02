@@ -16,12 +16,19 @@ import java.util.Map;
 public record SendResponse(
         @JsonProperty("accepted_at") String acceptedAt,
         @JsonProperty("api_version") String apiVersion,
+        @JsonProperty("id") String id,
         @JsonProperty("reason_code") String reasonCode,
         @JsonProperty("recipients") List<RecipientResponse> recipients,
         @JsonInclude(JsonInclude.Include.NON_NULL)
         @JsonProperty("replayed") Boolean replayed,
-        @JsonProperty("send_id") String sendId,
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty("scheduled_at") String scheduledAt,
         @JsonProperty("state") String state,
+        @JsonProperty("tags") List<SendTag> tags,
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty("thread_id") String threadId,
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty("topic_id") String topicId,
         @JsonAnyGetter @JsonAnySetter Map<String, Object> additionalProperties
 ) {
   public SendResponse {
@@ -29,14 +36,18 @@ public record SendResponse(
     
         if (additionalProperties.containsKey("accepted_at")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("api_version")) throw new IllegalArgumentException("additional property shadows declared field");
+        if (additionalProperties.containsKey("id")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("reason_code")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("recipients")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("replayed")) throw new IllegalArgumentException("additional property shadows declared field");
-        if (additionalProperties.containsKey("send_id")) throw new IllegalArgumentException("additional property shadows declared field");
+        if (additionalProperties.containsKey("scheduled_at")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("state")) throw new IllegalArgumentException("additional property shadows declared field");
+        if (additionalProperties.containsKey("tags")) throw new IllegalArgumentException("additional property shadows declared field");
+        if (additionalProperties.containsKey("thread_id")) throw new IllegalArgumentException("additional property shadows declared field");
+        if (additionalProperties.containsKey("topic_id")) throw new IllegalArgumentException("additional property shadows declared field");
     }
-    public SendResponse(String acceptedAt, String apiVersion, String reasonCode, List<RecipientResponse> recipients, Boolean replayed, String sendId, String state) {
-  this(acceptedAt, apiVersion, reasonCode, recipients, replayed, sendId, state, Map.of());
+    public SendResponse(String acceptedAt, String apiVersion, String id, String reasonCode, List<RecipientResponse> recipients, Boolean replayed, String scheduledAt, String state, List<SendTag> tags, String threadId, String topicId) {
+  this(acceptedAt, apiVersion, id, reasonCode, recipients, replayed, scheduledAt, state, tags, threadId, topicId, Map.of());
 
 }
 }

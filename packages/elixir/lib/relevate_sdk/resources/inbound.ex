@@ -5,6 +5,6 @@ defmodule RelevateSdk.Resources.Inbound do
 
 
   alias RelevateSdk.Resources.Inbound.Chunk0000
-  def list_inbound(client, options \\ []), do: Chunk0000.list_inbound(client, options)
-  def get_inbound(client, options \\ []), do: Chunk0000.get_inbound(client, options)
+  def list_email_inbound(client, options \\ []), do: Chunk0000.list_email_inbound(client, options)
+  def get_email_inbound(client, options \\ []), do: Chunk0000.get_email_inbound(client, options)
 end

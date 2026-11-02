@@ -3,22 +3,35 @@ from __future__ import annotations
 
 from .runtime import BaseClient
 from .operations_000 import Operations000
+from .operations_001 import Operations001
+from .resources.api_keys_0609ea65e707dd6d import APIKeysResource
 from .resources.crm_0b3eee19aa0a98d7 import CRMResource
 from .resources.configuration_f9b1c0661a02d9f9 import ConfigurationResource
 from .resources.contacts_c7217615ef254110 import ContactsResource
 from .resources.events_c265a3e29e1206e4 import EventsResource
 from .resources.inbound_d6cd099c566baef6 import InboundResource
+from .resources.inboxes_0248d19c6f19880b import InboxesResource
+from .resources.schedule_9b8dccb514a0e34c import ScheduleResource
 from .resources.sends_79205696c29f50b4 import SendsResource
+from .resources.suppressions_a19bd53ed9bb63d1 import SuppressionsResource
+from .resources.templates_a9c80640d9dc5c88 import TemplatesResource
+from .resources.usage_345be9d2d7ce0228 import UsageResource
 from .resources.webhooks_d3bb20d3231f4c6f import WebhooksResource
 
 
-class Client(Operations000, BaseClient):
+class Client(Operations000, Operations001, BaseClient):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
+        self.api_keys = APIKeysResource(self)
         self.crm = CRMResource(self)
         self.configuration = ConfigurationResource(self)
         self.contacts = ContactsResource(self)
         self.events = EventsResource(self)
         self.inbound = InboundResource(self)
+        self.inboxes = InboxesResource(self)
+        self.schedule = ScheduleResource(self)
         self.sends = SendsResource(self)
+        self.suppressions = SuppressionsResource(self)
+        self.templates = TemplatesResource(self)
+        self.usage = UsageResource(self)
         self.webhooks = WebhooksResource(self)

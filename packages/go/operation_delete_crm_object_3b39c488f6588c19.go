@@ -147,12 +147,12 @@ func decodeDeleteCrmObjectError(requestError error) error {
 	}
 }
 
-// DeleteCrmObject invokes DELETE /v1/crm/objects/{object}.
+// DeleteCrmObject invokes DELETE /crm/objects/{object}.
 func (client *Client) DeleteCrmObject(ctx context.Context, input *DeleteCrmObjectRequest) (*CrmMetadataDeleted, error) {
 	if input == nil {
 		input = &DeleteCrmObjectRequest{}
 	}
-	path := "/v1/crm/objects/{object}"
+	path := "/crm/objects/{object}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{object}", url.PathEscape(fmt.Sprint(input.Object)))

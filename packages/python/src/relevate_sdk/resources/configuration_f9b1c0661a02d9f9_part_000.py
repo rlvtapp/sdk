@@ -11,18 +11,27 @@ class ConfigurationResourcePart000:
 
     def __init__(self, client: Any) -> None:
         self._client = client
-    def auth_check(self) -> AuthCheckResponse:
-        return self._client.auth_check()
+    def check_email_auth(self) -> AuthCheckResponse:
+        return self._client.check_email_auth()
 
-    def list_domains(self, *, limit: int | None = None) -> DomainListResponse:
-        return self._client.list_domains(limit=limit)
+    def list_email_domains(self, *, limit: int | None = None) -> DomainListResponse:
+        return self._client.list_email_domains(limit=limit)
 
-    def get_domain(self, *, id: str) -> DomainResponse:
-        return self._client.get_domain(id=id)
+    def create_email_domain(self, *, body: CreateDomainRequest) -> DomainSetupResponse:
+        return self._client.create_email_domain(body=body)
 
-    def list_sender_identities(self, *, limit: int | None = None) -> SenderIdentityListResponse:
-        return self._client.list_sender_identities(limit=limit)
+    def delete_email_domain(self, *, id: str) -> DeletedDomainResponse:
+        return self._client.delete_email_domain(id=id)
 
-    def get_sender_identity(self, *, id: str) -> SenderIdentityResponse:
-        return self._client.get_sender_identity(id=id)
+    def get_email_domain(self, *, id: str) -> DomainResponse:
+        return self._client.get_email_domain(id=id)
+
+    def verify_email_domain(self, *, id: str) -> DomainSetupResponse:
+        return self._client.verify_email_domain(id=id)
+
+    def list_email_sender_identities(self, *, limit: int | None = None) -> SenderIdentityListResponse:
+        return self._client.list_email_sender_identities(limit=limit)
+
+    def get_email_sender_identity(self, *, id: str) -> SenderIdentityResponse:
+        return self._client.get_email_sender_identity(id=id)
 

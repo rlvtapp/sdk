@@ -14,7 +14,10 @@ class RecipientResponse:
     reason_code: str
     recipient_send_id: str
     state: str
+    copy: str | None | None = None
     eligible_for_processing: bool | None | None = None
+    provider: str | None | None = None
+    provider_message_id: str | None | None = None
     additional_properties: dict[str, Any] = _poolster_field(default_factory=dict, metadata={"additional_properties": True})
     _poolster_present_fields: frozenset[str] | None = _poolster_field(default=None, init=False, repr=False, compare=False, metadata={"internal": True, "present_fields": True})
 
@@ -22,11 +25,14 @@ class RecipientResponse:
     def from_dict(cls, value: dict[str, Any]) -> "RecipientResponse":
         instance = cls(
             address=value["address"],
+            copy=value.get("copy"),
             eligible_for_processing=value.get("eligible_for_processing"),
+            provider=value.get("provider"),
+            provider_message_id=value.get("provider_message_id"),
             reason_code=value["reason_code"],
             recipient_send_id=value["recipient_send_id"],
             state=value["state"],
-            additional_properties={key: item for key, item in value.items() if key not in ["address", "eligible_for_processing", "reason_code", "recipient_send_id", "state"]},
+            additional_properties={key: item for key, item in value.items() if key not in ["address", "copy", "eligible_for_processing", "provider", "provider_message_id", "reason_code", "recipient_send_id", "state"]},
         )
         instance._poolster_present_fields = frozenset(value)
         return instance
