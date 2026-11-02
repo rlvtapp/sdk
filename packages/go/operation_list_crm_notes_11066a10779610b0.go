@@ -148,12 +148,12 @@ func decodeListCrmNotesError(requestError error) error {
 	}
 }
 
-// ListCrmNotes invokes GET /v1/crm/records/{record_id}/notes.
+// ListCrmNotes invokes GET /crm/records/{record_id}/notes.
 func (client *Client) ListCrmNotes(ctx context.Context, input *ListCrmNotesRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &ListCrmNotesRequest{}
 	}
-	path := "/v1/crm/records/{record_id}/notes"
+	path := "/crm/records/{record_id}/notes"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{record_id}", url.PathEscape(fmt.Sprint(input.RecordID)))

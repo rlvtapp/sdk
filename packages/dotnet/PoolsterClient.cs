@@ -76,15 +76,23 @@ public sealed partial class PoolsterClient
         _retry = options.Retry ?? new PoolsterRetryOptions();
         if (_retry.MaxAttempts < 1) throw new ArgumentOutOfRangeException(nameof(options.Retry), "MaxAttempts must be at least 1.");
         _hooks = options.Hooks;
+        APIKeys = new APIKeysResource(this);
         CRM = new CRMResource(this);
         Configuration = new ConfigurationResource(this);
         Contacts = new ContactsResource(this);
         Events = new EventsResource(this);
         Inbound = new InboundResource(this);
+        Inboxes = new InboxesResource(this);
+        Schedule = new ScheduleResource(this);
         Sends = new SendsResource(this);
+        Suppressions = new SuppressionsResource(this);
+        Templates = new TemplatesResource(this);
+        Usage = new UsageResource(this);
         Webhooks = new WebhooksResource(this);
     }
 
+    /// <summary>Operations in the APIKeys resource.</summary>
+    public APIKeysResource APIKeys { get; }
     /// <summary>Operations in the CRM resource.</summary>
     public CRMResource CRM { get; }
     /// <summary>Operations in the Configuration resource.</summary>
@@ -95,8 +103,18 @@ public sealed partial class PoolsterClient
     public EventsResource Events { get; }
     /// <summary>Operations in the Inbound resource.</summary>
     public InboundResource Inbound { get; }
+    /// <summary>Operations in the Inboxes resource.</summary>
+    public InboxesResource Inboxes { get; }
+    /// <summary>Operations in the Schedule resource.</summary>
+    public ScheduleResource Schedule { get; }
     /// <summary>Operations in the Sends resource.</summary>
     public SendsResource Sends { get; }
+    /// <summary>Operations in the Suppressions resource.</summary>
+    public SuppressionsResource Suppressions { get; }
+    /// <summary>Operations in the Templates resource.</summary>
+    public TemplatesResource Templates { get; }
+    /// <summary>Operations in the Usage resource.</summary>
+    public UsageResource Usage { get; }
     /// <summary>Operations in the Webhooks resource.</summary>
     public WebhooksResource Webhooks { get; }
 

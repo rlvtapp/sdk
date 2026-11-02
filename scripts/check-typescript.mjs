@@ -13,12 +13,12 @@ const integrations = spawnSync(process.execPath, ['--input-type=module', '-e', `
   import * as vue from '@relevate/sdk/vue-query';
   import { handlers } from '@relevate/sdk/mocks';
   import { createContact } from '@relevate/sdk/fixtures';
-  assert.equal(handlers.length, 66);
+  assert.equal(handlers.length, 154);
   assert.equal(typeof createContact().id, 'string');
   assert.equal(typeof Relevate, 'function');
   for (const helpers of [react, vue]) {
     assert.equal(typeof helpers.useListCrmObjects, 'function');
-    assert.equal(typeof helpers.useCreate, 'function');
+    assert.equal(typeof helpers.useSendEmail, 'function');
     assert.deepEqual(helpers.listCrmObjectsQueryKey({}), ['listCrmObjects', 'default', { path: undefined, query: undefined, querystring: undefined, body: undefined }]);
   }
 `], { cwd: sdk, encoding: 'utf8' });
@@ -32,7 +32,20 @@ try {
     import assert from 'node:assert/strict';
     import { Relevate } from '@relevate/sdk';
     const sdk = new Relevate({ baseUrl: 'https://example.com' });
-    assert.ok(sdk.crm && sdk.sends && sdk.contacts);
+    assert.ok(sdk.crm && sdk.sends && sdk.contacts && sdk.templates);
+    let captured;
+    const sending = new Relevate({ baseUrl: 'https://example.com', apiKey: 'test', retry: false,
+      fetch: async (input, init) => {
+        captured = new Request(input, init);
+        return Response.json({ id: 'email-template-check' }, { status: 202 });
+      }
+    });
+    const body = { to: 'member@example.com', template: { id: 'order-shipped', version: 1, variables: { order: { number: 'A-1', total: 42 } } } };
+    const result = await sending.sends.sendEmail({ body, headers: { 'Idempotency-Key': 'order-A-1' } });
+    assert.equal(captured.url, 'https://example.com/email/emails');
+    assert.equal(captured.headers.get('Idempotency-Key'), 'order-A-1');
+    assert.deepEqual(await captured.json(), body);
+    assert.equal(result.id, 'email-template-check');
   `], { cwd: isolated, encoding: 'utf8' });
   assert.equal(core.status, 0, core.stderr);
 } finally {

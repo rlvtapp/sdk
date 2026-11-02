@@ -9,11 +9,15 @@ import (
 type SendResponse struct {
 	AcceptedAt string `json:"accepted_at"`
 	APIVersion string `json:"api_version"`
+	ID string `json:"id"`
 	ReasonCode string `json:"reason_code"`
 	Recipients []RecipientResponse `json:"recipients"`
 	Replayed *bool `json:"replayed,omitempty"`
-	SendID string `json:"send_id"`
+	ScheduledAt *string `json:"scheduled_at,omitempty"`
 	State string `json:"state"`
+	Tags []SendTag `json:"tags"`
+	ThreadID *string `json:"thread_id,omitempty"`
+	TopicID *string `json:"topic_id,omitempty"`
 	AdditionalProperties map[string]json.RawMessage `json:"-"`
 	poolsterNullFields map[string]bool
 }
@@ -22,14 +26,21 @@ func (model *SendResponse) UnmarshalJSON(data []byte) error {
  var fields map[string]json.RawMessage; if err:=json.Unmarshal(data,&fields);err!=nil {return err}
 model.poolsterNullFields=map[string]bool{}
 if raw,ok:=fields["replayed"];ok && string(raw)=="null" {model.poolsterNullFields["replayed"]=true}
+if raw,ok:=fields["scheduled_at"];ok && string(raw)=="null" {model.poolsterNullFields["scheduled_at"]=true}
+if raw,ok:=fields["thread_id"];ok && string(raw)=="null" {model.poolsterNullFields["thread_id"]=true}
+if raw,ok:=fields["topic_id"];ok && string(raw)=="null" {model.poolsterNullFields["topic_id"]=true}
 model.AdditionalProperties=map[string]json.RawMessage{}
 delete(fields,"accepted_at")
 delete(fields,"api_version")
+delete(fields,"id")
 delete(fields,"reason_code")
 delete(fields,"recipients")
 delete(fields,"replayed")
-delete(fields,"send_id")
+delete(fields,"scheduled_at")
 delete(fields,"state")
+delete(fields,"tags")
+delete(fields,"thread_id")
+delete(fields,"topic_id")
 for key,raw:=range fields {var value json.RawMessage;if err:=json.Unmarshal(raw,&value);err!=nil {return err};model.AdditionalProperties[key]=value}
 return nil
 }
@@ -38,5 +49,8 @@ func (model SendResponse) MarshalJSON() ([]byte,error) {
 for key,value:=range model.AdditionalProperties {if _,exists:=fields[key];exists {continue};raw,err:=json.Marshal(value);if err!=nil {return nil,err};fields[key]=raw}
 
 if model.poolsterNullFields["replayed"] && model.Replayed==nil {fields["replayed"]=json.RawMessage("null")}
+if model.poolsterNullFields["scheduled_at"] && model.ScheduledAt==nil {fields["scheduled_at"]=json.RawMessage("null")}
+if model.poolsterNullFields["thread_id"] && model.ThreadID==nil {fields["thread_id"]=json.RawMessage("null")}
+if model.poolsterNullFields["topic_id"] && model.TopicID==nil {fields["topic_id"]=json.RawMessage("null")}
 return json.Marshal(fields)
 }

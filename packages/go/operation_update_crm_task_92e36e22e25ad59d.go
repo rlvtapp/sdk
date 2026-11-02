@@ -147,12 +147,12 @@ func decodeUpdateCrmTaskError(requestError error) error {
 	}
 }
 
-// UpdateCrmTask invokes PATCH /v1/crm/tasks/{task_id}.
+// UpdateCrmTask invokes PATCH /crm/tasks/{task_id}.
 func (client *Client) UpdateCrmTask(ctx context.Context, input *UpdateCrmTaskRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &UpdateCrmTaskRequest{}
 	}
-	path := "/v1/crm/tasks/{task_id}"
+	path := "/crm/tasks/{task_id}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{task_id}", url.PathEscape(fmt.Sprint(input.TaskID)))

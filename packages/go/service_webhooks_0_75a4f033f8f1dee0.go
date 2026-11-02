@@ -9,28 +9,43 @@ import (
 // WebhooksService groups Webhooks operations.
 type WebhooksService struct { client *Client }
 
-// List invokes ListWebhooks through the Webhooks namespace.
-func (service *WebhooksService) List(ctx context.Context) (*WebhookListResponse, error) {
-	return service.client.ListWebhooks(ctx)
+// ListEmail invokes ListEmailWebhooks through the Webhooks namespace.
+func (service *WebhooksService) ListEmail(ctx context.Context) (*WebhookListResponse, error) {
+	return service.client.ListEmailWebhooks(ctx)
 }
 
-// Create invokes CreateWebhook through the Webhooks namespace.
-func (service *WebhooksService) Create(ctx context.Context, input *CreateWebhookRequest) (*CreateWebhookResponse, error) {
-	return service.client.CreateWebhook(ctx, input)
+// CreateEmail invokes CreateEmailWebhook through the Webhooks namespace.
+func (service *WebhooksService) CreateEmail(ctx context.Context, input *CreateEmailWebhookRequest) (*CreateWebhookResponse, error) {
+	return service.client.CreateEmailWebhook(ctx, input)
 }
 
-// Delete invokes DeleteWebhook through the Webhooks namespace.
-func (service *WebhooksService) Delete(ctx context.Context, input *DeleteWebhookRequest) error {
-	return service.client.DeleteWebhook(ctx, input)
+// DeleteEmail invokes DeleteEmailWebhook through the Webhooks namespace.
+func (service *WebhooksService) DeleteEmail(ctx context.Context, input *DeleteEmailWebhookRequest) error {
+	return service.client.DeleteEmailWebhook(ctx, input)
 }
 
-// Update invokes UpdateWebhook through the Webhooks namespace.
-func (service *WebhooksService) Update(ctx context.Context, input *UpdateWebhookRequest) (*WebhookResponse, error) {
-	return service.client.UpdateWebhook(ctx, input)
+// UpdateEmail invokes UpdateEmailWebhook through the Webhooks namespace.
+func (service *WebhooksService) UpdateEmail(ctx context.Context, input *UpdateEmailWebhookRequest) (*WebhookResponse, error) {
+	return service.client.UpdateEmailWebhook(ctx, input)
 }
 
-// ListDeliveries invokes ListDeliveries through the Webhooks namespace.
-func (service *WebhooksService) ListDeliveries(ctx context.Context, input *ListDeliveriesRequest) (*WebhookDeliveryListResponse, error) {
-	return service.client.ListDeliveries(ctx, input)
+// ListEmailWebhookDeliveries invokes ListEmailWebhookDeliveries through the Webhooks namespace.
+func (service *WebhooksService) ListEmailWebhookDeliveries(ctx context.Context, input *ListEmailWebhookDeliveriesRequest) (*WebhookDeliveryListResponse, error) {
+	return service.client.ListEmailWebhookDeliveries(ctx, input)
+}
+
+// ReplayEmailWebhookDelivery invokes ReplayEmailWebhookDelivery through the Webhooks namespace.
+func (service *WebhooksService) ReplayEmailWebhookDelivery(ctx context.Context, input *ReplayEmailWebhookDeliveryRequest) error {
+	return service.client.ReplayEmailWebhookDelivery(ctx, input)
+}
+
+// ReplayEmailWebhookRange invokes ReplayEmailWebhookRange through the Webhooks namespace.
+func (service *WebhooksService) ReplayEmailWebhookRange(ctx context.Context, input *ReplayEmailWebhookRangeRequest) error {
+	return service.client.ReplayEmailWebhookRange(ctx, input)
+}
+
+// RotateEmailWebhookSecret invokes RotateEmailWebhookSecret through the Webhooks namespace.
+func (service *WebhooksService) RotateEmailWebhookSecret(ctx context.Context, input *RotateEmailWebhookSecretRequest) error {
+	return service.client.RotateEmailWebhookSecret(ctx, input)
 }
 

@@ -1,13 +1,13 @@
 import type { ClientInstance } from '../../.poolster/client.js'
-import { listInbound } from '../../clients/inbound/listInbound.js'
-import { getInbound } from '../../clients/inbound/getInbound.js'
+import { listEmailInbound } from '../../clients/inbound/listEmailInbound.js'
+import { getEmailInbound } from '../../clients/inbound/getEmailInbound.js'
 
 export class InboundClientOperations0001 {
-  readonly list: typeof listInbound
-  readonly get: typeof getInbound
+  readonly listEmail: typeof listEmailInbound
+  readonly getEmail: typeof getEmailInbound
 
   constructor(client: ClientInstance) {
-    this.list = ((options: Parameters<typeof listInbound>[0]) => listInbound({ ...options, client })) as typeof listInbound
-    this.get = ((options: Parameters<typeof getInbound>[0]) => getInbound({ ...options, client })) as typeof getInbound
+    this.listEmail = ((options: Parameters<typeof listEmailInbound>[0]) => listEmailInbound({ ...options, client })) as typeof listEmailInbound
+    this.getEmail = ((options: Parameters<typeof getEmailInbound>[0]) => getEmailInbound({ ...options, client })) as typeof getEmailInbound
   }
 }

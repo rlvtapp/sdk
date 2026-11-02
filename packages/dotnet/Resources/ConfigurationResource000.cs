@@ -15,19 +15,28 @@ public sealed partial class ConfigurationResource
 
     internal ConfigurationResource(PoolsterClient client) => _client = client;
 
-    /// <summary>Invokes GET /v1/email/auth-check.</summary>
-    public Task<AuthCheckResponse> AuthCheckAsync(CancellationToken cancellationToken = default) => _client.AuthCheckAsync(cancellationToken);
+    /// <summary>Invokes GET /email/auth-check.</summary>
+    public Task<AuthCheckResponse> CheckEmailAuthAsync(CancellationToken cancellationToken = default) => _client.CheckEmailAuthAsync(cancellationToken);
 
-    /// <summary>Invokes GET /v1/email/domains.</summary>
-    public Task<DomainListResponse> ListDomainsAsync(long? limit = default, CancellationToken cancellationToken = default) => _client.ListDomainsAsync(limit, cancellationToken);
+    /// <summary>Invokes GET /email/domains.</summary>
+    public Task<DomainListResponse> ListEmailDomainsAsync(long? limit = default, CancellationToken cancellationToken = default) => _client.ListEmailDomainsAsync(limit, cancellationToken);
 
-    /// <summary>Invokes GET /v1/email/domains/{id}.</summary>
-    public Task<DomainResponse> GetDomainAsync(string id, CancellationToken cancellationToken = default) => _client.GetDomainAsync(id, cancellationToken);
+    /// <summary>Invokes POST /email/domains.</summary>
+    public Task<DomainSetupResponse> CreateEmailDomainAsync(CreateDomainRequest body, CancellationToken cancellationToken = default) => _client.CreateEmailDomainAsync(body, cancellationToken);
 
-    /// <summary>Invokes GET /v1/email/sender-identities.</summary>
-    public Task<SenderIdentityListResponse> ListSenderIdentitiesAsync(long? limit = default, CancellationToken cancellationToken = default) => _client.ListSenderIdentitiesAsync(limit, cancellationToken);
+    /// <summary>Invokes DELETE /email/domains/{id}.</summary>
+    public Task<DeletedDomainResponse> DeleteEmailDomainAsync(string id, CancellationToken cancellationToken = default) => _client.DeleteEmailDomainAsync(id, cancellationToken);
 
-    /// <summary>Invokes GET /v1/email/sender-identities/{id}.</summary>
-    public Task<SenderIdentityResponse> GetSenderIdentityAsync(string id, CancellationToken cancellationToken = default) => _client.GetSenderIdentityAsync(id, cancellationToken);
+    /// <summary>Invokes GET /email/domains/{id}.</summary>
+    public Task<DomainResponse> GetEmailDomainAsync(string id, CancellationToken cancellationToken = default) => _client.GetEmailDomainAsync(id, cancellationToken);
+
+    /// <summary>Invokes POST /email/domains/{id}/verify.</summary>
+    public Task<DomainSetupResponse> VerifyEmailDomainAsync(string id, CancellationToken cancellationToken = default) => _client.VerifyEmailDomainAsync(id, cancellationToken);
+
+    /// <summary>Invokes GET /email/sender-identities.</summary>
+    public Task<SenderIdentityListResponse> ListEmailSenderIdentitiesAsync(long? limit = default, CancellationToken cancellationToken = default) => _client.ListEmailSenderIdentitiesAsync(limit, cancellationToken);
+
+    /// <summary>Invokes GET /email/sender-identities/{id}.</summary>
+    public Task<SenderIdentityResponse> GetEmailSenderIdentityAsync(string id, CancellationToken cancellationToken = default) => _client.GetEmailSenderIdentityAsync(id, cancellationToken);
 
 }

@@ -49,12 +49,18 @@ type Client struct {
 	hooks        PoolsterClientHooks
 	validateResponses bool
 	tokenProvider PoolsterTokenProvider
+	APIKeys *APIKeysService
 	CRM *CRMService
 	Configuration *ConfigurationService
 	Contacts *ContactsService
 	Events *EventsService
 	Inbound *InboundService
+	Inboxes *InboxesService
+	Schedule *ScheduleService
 	Sends *SendsService
+	Suppressions *SuppressionsService
+	Templates *TemplatesService
+	Usage *UsageService
 	Webhooks *WebhooksService
 }
 
@@ -78,12 +84,18 @@ func NewClient(config ClientConfig) (*Client, error) {
 		if httpClient == nil { return nil, fmt.Errorf("poolster: middleware returned nil transport") }
 	}
 	client := &Client{baseURL: baseURL, apiKey: config.APIKey, apiKeyHeader: header, apiKeyPrefix: config.APIKeyPrefix, httpClient: httpClient, retry: normalizeRetry(config.Retry), hooks: config.Hooks, validateResponses: config.ValidateResponses, tokenProvider: config.TokenProvider}
+	client.APIKeys = &APIKeysService{client: client}
 	client.CRM = &CRMService{client: client}
 	client.Configuration = &ConfigurationService{client: client}
 	client.Contacts = &ContactsService{client: client}
 	client.Events = &EventsService{client: client}
 	client.Inbound = &InboundService{client: client}
+	client.Inboxes = &InboxesService{client: client}
+	client.Schedule = &ScheduleService{client: client}
 	client.Sends = &SendsService{client: client}
+	client.Suppressions = &SuppressionsService{client: client}
+	client.Templates = &TemplatesService{client: client}
+	client.Usage = &UsageService{client: client}
 	client.Webhooks = &WebhooksService{client: client}
 	return client, nil
 }

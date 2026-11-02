@@ -6,8 +6,11 @@ namespace Relevate\Sdk\Resources;
 
 use Relevate\Sdk\Client;
 use Relevate\Sdk\Models\AuthCheckResponse;
+use Relevate\Sdk\Models\CreateDomainRequest;
+use Relevate\Sdk\Models\DeletedDomainResponse;
 use Relevate\Sdk\Models\DomainListResponse;
 use Relevate\Sdk\Models\DomainResponse;
+use Relevate\Sdk\Models\DomainSetupResponse;
 use Relevate\Sdk\Models\ErrorResponse;
 use Relevate\Sdk\Models\SenderIdentityListResponse;
 use Relevate\Sdk\Models\SenderIdentityResponse;
@@ -17,29 +20,44 @@ use Relevate\Sdk\Models\SenderIdentityResponse;
 /** Bounded resource facade slice; composed into ConfigurationResource. */
 trait ConfigurationResourceOperations000
 {
-    public function authCheck(): AuthCheckResponse
+    public function checkEmailAuth(): AuthCheckResponse
     {
-        return $this->client->authCheck();
+        return $this->client->checkEmailAuth();
     }
 
-    public function listDomains(?int $limit = null): DomainListResponse
+    public function listEmailDomains(?int $limit = null): DomainListResponse
     {
-        return $this->client->listDomains($limit);
+        return $this->client->listEmailDomains($limit);
     }
 
-    public function getDomain(string $id): DomainResponse
+    public function createEmailDomain(CreateDomainRequest $body): DomainSetupResponse
     {
-        return $this->client->getDomain($id);
+        return $this->client->createEmailDomain($body);
     }
 
-    public function listSenderIdentities(?int $limit = null): SenderIdentityListResponse
+    public function deleteEmailDomain(string $id): DeletedDomainResponse
     {
-        return $this->client->listSenderIdentities($limit);
+        return $this->client->deleteEmailDomain($id);
     }
 
-    public function getSenderIdentity(string $id): SenderIdentityResponse
+    public function getEmailDomain(string $id): DomainResponse
     {
-        return $this->client->getSenderIdentity($id);
+        return $this->client->getEmailDomain($id);
+    }
+
+    public function verifyEmailDomain(string $id): DomainSetupResponse
+    {
+        return $this->client->verifyEmailDomain($id);
+    }
+
+    public function listEmailSenderIdentities(?int $limit = null): SenderIdentityListResponse
+    {
+        return $this->client->listEmailSenderIdentities($limit);
+    }
+
+    public function getEmailSenderIdentity(string $id): SenderIdentityResponse
+    {
+        return $this->client->getEmailSenderIdentity($id);
     }
 
 }

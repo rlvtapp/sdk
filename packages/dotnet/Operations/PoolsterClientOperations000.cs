@@ -16,11 +16,11 @@ namespace Poolster.RelevateSdk;
 
 public sealed partial class PoolsterClient
 {
-      /// <summary>Invokes GET /v1/crm/lists.</summary>
+      /// <summary>Invokes GET /crm/lists.</summary>
     public async Task<CrmListsPage> ListCrmListsAsync(long? limit = default, string? after = default, string? objectId = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists";
+        var poolsterRequestPath = "/crm/lists";
         var query = new List<KeyValuePair<string, string?>>();
         query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
         query.Add(new KeyValuePair<string, string?>("after", after is null ? null : ParameterString(after)));
@@ -52,11 +52,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/crm/lists.</summary>
+    /// <summary>Invokes POST /crm/lists.</summary>
     public async Task<CrmListResponse> CreateCrmListAsync(CrmCreateList body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists";
+        var poolsterRequestPath = "/crm/lists";
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
         request.Content = JsonContent.Create(body, options: JsonOptions);
@@ -86,11 +86,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes DELETE /v1/crm/lists/{list}.</summary>
+    /// <summary>Invokes DELETE /crm/lists/{list}.</summary>
     public async Task<CrmListDeletionResponse> DeleteCrmListAsync(string list, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}";
+        var poolsterRequestPath = "/crm/lists/{list}";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Delete, poolsterRequestPath, query);
@@ -120,11 +120,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/lists/{list}.</summary>
+    /// <summary>Invokes GET /crm/lists/{list}.</summary>
     public async Task<CrmListResponse> GetCrmListAsync(string list, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}";
+        var poolsterRequestPath = "/crm/lists/{list}";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -154,11 +154,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes PATCH /v1/crm/lists/{list}.</summary>
+    /// <summary>Invokes PATCH /crm/lists/{list}.</summary>
     public async Task<CrmListResponse> UpdateCrmListAsync(string list, CrmUpdateList body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}";
+        var poolsterRequestPath = "/crm/lists/{list}";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Patch, poolsterRequestPath, query);
@@ -189,11 +189,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/lists/{list}/attributes.</summary>
+    /// <summary>Invokes GET /crm/lists/{list}/attributes.</summary>
     public async Task<CrmMetadataAttributesResponse> ListCrmListAttributesAsync(string list, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}/attributes";
+        var poolsterRequestPath = "/crm/lists/{list}/attributes";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -223,11 +223,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/crm/lists/{list}/attributes.</summary>
+    /// <summary>Invokes POST /crm/lists/{list}/attributes.</summary>
     public async Task<CrmMetadataAttributeResponse> CreateCrmListAttributeAsync(string list, CrmAttributeCreate body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}/attributes";
+        var poolsterRequestPath = "/crm/lists/{list}/attributes";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
@@ -258,11 +258,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes DELETE /v1/crm/lists/{list}/attributes/{attribute}.</summary>
+    /// <summary>Invokes DELETE /crm/lists/{list}/attributes/{attribute}.</summary>
     public async Task<CrmMetadataDeleted> DeleteCrmListAttributeAsync(string list, string attribute, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}/attributes/{attribute}";
+        var poolsterRequestPath = "/crm/lists/{list}/attributes/{attribute}";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         poolsterRequestPath = poolsterRequestPath.Replace("{attribute}", Uri.EscapeDataString(ParameterString(attribute)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
@@ -293,11 +293,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes PATCH /v1/crm/lists/{list}/attributes/{attribute}.</summary>
+    /// <summary>Invokes PATCH /crm/lists/{list}/attributes/{attribute}.</summary>
     public async Task<CrmMetadataAttributeResponse> UpdateCrmListAttributeAsync(string list, string attribute, CrmAttributePatch body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}/attributes/{attribute}";
+        var poolsterRequestPath = "/crm/lists/{list}/attributes/{attribute}";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         poolsterRequestPath = poolsterRequestPath.Replace("{attribute}", Uri.EscapeDataString(ParameterString(attribute)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
@@ -329,11 +329,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/lists/{list}/entries.</summary>
+    /// <summary>Invokes GET /crm/lists/{list}/entries.</summary>
     public async Task<CrmListEntriesPage> ListCrmListEntriesAsync(string list, long? limit = default, string? after = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}/entries";
+        var poolsterRequestPath = "/crm/lists/{list}/entries";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
@@ -365,11 +365,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/crm/lists/{list}/entries.</summary>
+    /// <summary>Invokes POST /crm/lists/{list}/entries.</summary>
     public async Task<CrmListEntryResponse> CreateCrmListEntryAsync(string list, CrmCreateListEntry body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}/entries";
+        var poolsterRequestPath = "/crm/lists/{list}/entries";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
@@ -400,11 +400,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes DELETE /v1/crm/lists/{list}/entries/{entry}.</summary>
+    /// <summary>Invokes DELETE /crm/lists/{list}/entries/{entry}.</summary>
     public async Task<CrmListDeletionResponse> DeleteCrmListEntryAsync(string list, string entry, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}/entries/{entry}";
+        var poolsterRequestPath = "/crm/lists/{list}/entries/{entry}";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         poolsterRequestPath = poolsterRequestPath.Replace("{entry}", Uri.EscapeDataString(ParameterString(entry)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
@@ -435,11 +435,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/lists/{list}/entries/{entry}.</summary>
+    /// <summary>Invokes GET /crm/lists/{list}/entries/{entry}.</summary>
     public async Task<CrmListEntryResponse> GetCrmListEntryAsync(string list, string entry, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}/entries/{entry}";
+        var poolsterRequestPath = "/crm/lists/{list}/entries/{entry}";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         poolsterRequestPath = poolsterRequestPath.Replace("{entry}", Uri.EscapeDataString(ParameterString(entry)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
@@ -470,11 +470,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes PATCH /v1/crm/lists/{list}/entries/{entry}.</summary>
+    /// <summary>Invokes PATCH /crm/lists/{list}/entries/{entry}.</summary>
     public async Task<CrmListEntryResponse> UpdateCrmListEntryAsync(string list, string entry, CrmUpdateListEntry body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/lists/{list}/entries/{entry}";
+        var poolsterRequestPath = "/crm/lists/{list}/entries/{entry}";
         poolsterRequestPath = poolsterRequestPath.Replace("{list}", Uri.EscapeDataString(ParameterString(list)), StringComparison.Ordinal);
         poolsterRequestPath = poolsterRequestPath.Replace("{entry}", Uri.EscapeDataString(ParameterString(entry)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
@@ -506,11 +506,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes DELETE /v1/crm/notes/{note_id}.</summary>
+    /// <summary>Invokes DELETE /crm/notes/{note_id}.</summary>
     public async Task<JsonElement> DeleteCrmNoteAsync(string noteId, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/notes/{note_id}";
+        var poolsterRequestPath = "/crm/notes/{note_id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{note_id}", Uri.EscapeDataString(ParameterString(noteId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Delete, poolsterRequestPath, query);
@@ -540,11 +540,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/notes/{note_id}.</summary>
+    /// <summary>Invokes GET /crm/notes/{note_id}.</summary>
     public async Task<JsonElement> GetCrmNoteAsync(string noteId, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/notes/{note_id}";
+        var poolsterRequestPath = "/crm/notes/{note_id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{note_id}", Uri.EscapeDataString(ParameterString(noteId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -574,11 +574,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes PATCH /v1/crm/notes/{note_id}.</summary>
+    /// <summary>Invokes PATCH /crm/notes/{note_id}.</summary>
     public async Task<JsonElement> UpdateCrmNoteAsync(string noteId, CrmNoteWrite body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/notes/{note_id}";
+        var poolsterRequestPath = "/crm/notes/{note_id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{note_id}", Uri.EscapeDataString(ParameterString(noteId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Patch, poolsterRequestPath, query);
@@ -609,11 +609,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/objects.</summary>
+    /// <summary>Invokes GET /crm/objects.</summary>
     public async Task<JsonElement> ListCrmObjectsAsync(long? limit = default, string? after = default, bool? includeDisabled = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects";
+        var poolsterRequestPath = "/crm/objects";
         var query = new List<KeyValuePair<string, string?>>();
         query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
         query.Add(new KeyValuePair<string, string?>("after", after is null ? null : ParameterString(after)));
@@ -645,11 +645,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/crm/objects.</summary>
+    /// <summary>Invokes POST /crm/objects.</summary>
     public async Task<CrmMetadataObjectResponse> CreateCrmObjectAsync(CrmObjectCreate body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects";
+        var poolsterRequestPath = "/crm/objects";
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
         request.Content = JsonContent.Create(body, options: JsonOptions);
@@ -679,11 +679,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes DELETE /v1/crm/objects/{object}.</summary>
+    /// <summary>Invokes DELETE /crm/objects/{object}.</summary>
     public async Task<CrmMetadataDeleted> DeleteCrmObjectAsync(string objectValue, CrmObjectDelete body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}";
+        var poolsterRequestPath = "/crm/objects/{object}";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Delete, poolsterRequestPath, query);
@@ -714,11 +714,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/objects/{object}.</summary>
+    /// <summary>Invokes GET /crm/objects/{object}.</summary>
     public async Task<JsonElement> GetCrmObjectAsync(string objectValue, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}";
+        var poolsterRequestPath = "/crm/objects/{object}";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -748,11 +748,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes PATCH /v1/crm/objects/{object}.</summary>
+    /// <summary>Invokes PATCH /crm/objects/{object}.</summary>
     public async Task<CrmMetadataObjectResponse> UpdateCrmObjectAsync(string objectValue, CrmObjectPatch body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}";
+        var poolsterRequestPath = "/crm/objects/{object}";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Patch, poolsterRequestPath, query);
@@ -783,11 +783,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/objects/{object}/attributes.</summary>
+    /// <summary>Invokes GET /crm/objects/{object}/attributes.</summary>
     public async Task<CrmMetadataAttributesResponse> ListCrmObjectAttributesAsync(string objectValue, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}/attributes";
+        var poolsterRequestPath = "/crm/objects/{object}/attributes";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -817,11 +817,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/crm/objects/{object}/attributes.</summary>
+    /// <summary>Invokes POST /crm/objects/{object}/attributes.</summary>
     public async Task<CrmMetadataAttributeResponse> CreateCrmObjectAttributeAsync(string objectValue, CrmAttributeCreate body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}/attributes";
+        var poolsterRequestPath = "/crm/objects/{object}/attributes";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
@@ -852,11 +852,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes DELETE /v1/crm/objects/{object}/attributes/{attribute}.</summary>
+    /// <summary>Invokes DELETE /crm/objects/{object}/attributes/{attribute}.</summary>
     public async Task<CrmMetadataDeleted> DeleteCrmObjectAttributeAsync(string objectValue, string attribute, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}/attributes/{attribute}";
+        var poolsterRequestPath = "/crm/objects/{object}/attributes/{attribute}";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         poolsterRequestPath = poolsterRequestPath.Replace("{attribute}", Uri.EscapeDataString(ParameterString(attribute)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
@@ -887,11 +887,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes PATCH /v1/crm/objects/{object}/attributes/{attribute}.</summary>
+    /// <summary>Invokes PATCH /crm/objects/{object}/attributes/{attribute}.</summary>
     public async Task<CrmMetadataAttributeResponse> UpdateCrmObjectAttributeAsync(string objectValue, string attribute, CrmAttributePatch body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}/attributes/{attribute}";
+        var poolsterRequestPath = "/crm/objects/{object}/attributes/{attribute}";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         poolsterRequestPath = poolsterRequestPath.Replace("{attribute}", Uri.EscapeDataString(ParameterString(attribute)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
@@ -923,11 +923,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/objects/{object}/deletion-preview.</summary>
+    /// <summary>Invokes GET /crm/objects/{object}/deletion-preview.</summary>
     public async Task<CrmObjectDeletionPreview> PreviewCrmObjectDeletionAsync(string objectValue, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}/deletion-preview";
+        var poolsterRequestPath = "/crm/objects/{object}/deletion-preview";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -957,11 +957,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/objects/{object}/quality.</summary>
+    /// <summary>Invokes GET /crm/objects/{object}/quality.</summary>
     public async Task<CrmQualityResponse> GetCrmObjectQualityAsync(string objectValue, long? limit = default, string? after = default, bool? includeArchived = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}/quality";
+        var poolsterRequestPath = "/crm/objects/{object}/quality";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
@@ -994,11 +994,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/objects/{object}/records.</summary>
+    /// <summary>Invokes GET /crm/objects/{object}/records.</summary>
     public async Task<JsonElement> ListCrmRecordsAsync(string objectValue, long? limit = default, string? after = default, string? externalId = default, bool? includeArchived = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}/records";
+        var poolsterRequestPath = "/crm/objects/{object}/records";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
@@ -1032,11 +1032,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/crm/objects/{object}/records.</summary>
+    /// <summary>Invokes POST /crm/objects/{object}/records.</summary>
     public async Task<CrmRecordResponse> CreateCrmRecordAsync(string objectValue, CrmRecordCreate body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}/records";
+        var poolsterRequestPath = "/crm/objects/{object}/records";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
@@ -1067,11 +1067,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/crm/objects/{object}/records/upsert.</summary>
+    /// <summary>Invokes POST /crm/objects/{object}/records/upsert.</summary>
     public async Task<CrmRecordResponse> UpsertCrmRecordAsync(string objectValue, CrmUpsert body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/objects/{object}/records/upsert";
+        var poolsterRequestPath = "/crm/objects/{object}/records/upsert";
         poolsterRequestPath = poolsterRequestPath.Replace("{object}", Uri.EscapeDataString(ParameterString(objectValue)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
@@ -1102,11 +1102,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes DELETE /v1/crm/records/{record_id}.</summary>
+    /// <summary>Invokes DELETE /crm/records/{record_id}.</summary>
     public async Task<CrmRecordResponse> ArchiveCrmRecordAsync(string recordId, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/records/{record_id}";
+        var poolsterRequestPath = "/crm/records/{record_id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{record_id}", Uri.EscapeDataString(ParameterString(recordId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Delete, poolsterRequestPath, query);
@@ -1136,11 +1136,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/records/{record_id}.</summary>
+    /// <summary>Invokes GET /crm/records/{record_id}.</summary>
     public async Task<CrmRecordResponse> GetCrmRecordAsync(string recordId, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/records/{record_id}";
+        var poolsterRequestPath = "/crm/records/{record_id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{record_id}", Uri.EscapeDataString(ParameterString(recordId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -1170,11 +1170,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes PATCH /v1/crm/records/{record_id}.</summary>
+    /// <summary>Invokes PATCH /crm/records/{record_id}.</summary>
     public async Task<CrmRecordResponse> UpdateCrmRecordAsync(string recordId, CrmRecordPatch body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/records/{record_id}";
+        var poolsterRequestPath = "/crm/records/{record_id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{record_id}", Uri.EscapeDataString(ParameterString(recordId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Patch, poolsterRequestPath, query);
@@ -1205,11 +1205,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/records/{record_id}/activities.</summary>
+    /// <summary>Invokes GET /crm/records/{record_id}/activities.</summary>
     public async Task<JsonElement> ListCrmActivitiesAsync(string recordId, long? limit = default, string? after = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/records/{record_id}/activities";
+        var poolsterRequestPath = "/crm/records/{record_id}/activities";
         poolsterRequestPath = poolsterRequestPath.Replace("{record_id}", Uri.EscapeDataString(ParameterString(recordId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
@@ -1241,11 +1241,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/records/{record_id}/notes.</summary>
+    /// <summary>Invokes GET /crm/records/{record_id}/notes.</summary>
     public async Task<JsonElement> ListCrmNotesAsync(string recordId, long? limit = default, string? after = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/records/{record_id}/notes";
+        var poolsterRequestPath = "/crm/records/{record_id}/notes";
         poolsterRequestPath = poolsterRequestPath.Replace("{record_id}", Uri.EscapeDataString(ParameterString(recordId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
@@ -1277,11 +1277,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/crm/records/{record_id}/notes.</summary>
+    /// <summary>Invokes POST /crm/records/{record_id}/notes.</summary>
     public async Task<JsonElement> CreateCrmNoteAsync(string recordId, CrmNoteWrite body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/records/{record_id}/notes";
+        var poolsterRequestPath = "/crm/records/{record_id}/notes";
         poolsterRequestPath = poolsterRequestPath.Replace("{record_id}", Uri.EscapeDataString(ParameterString(recordId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
@@ -1312,11 +1312,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/records/{record_id}/tasks.</summary>
+    /// <summary>Invokes GET /crm/records/{record_id}/tasks.</summary>
     public async Task<JsonElement> ListCrmTasksAsync(string recordId, long? limit = default, string? after = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/records/{record_id}/tasks";
+        var poolsterRequestPath = "/crm/records/{record_id}/tasks";
         poolsterRequestPath = poolsterRequestPath.Replace("{record_id}", Uri.EscapeDataString(ParameterString(recordId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
@@ -1348,11 +1348,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/crm/records/{record_id}/tasks.</summary>
+    /// <summary>Invokes POST /crm/records/{record_id}/tasks.</summary>
     public async Task<JsonElement> CreateCrmTaskAsync(string recordId, CrmTaskCreate body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/records/{record_id}/tasks";
+        var poolsterRequestPath = "/crm/records/{record_id}/tasks";
         poolsterRequestPath = poolsterRequestPath.Replace("{record_id}", Uri.EscapeDataString(ParameterString(recordId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
@@ -1383,11 +1383,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes DELETE /v1/crm/tasks/{task_id}.</summary>
+    /// <summary>Invokes DELETE /crm/tasks/{task_id}.</summary>
     public async Task<JsonElement> DeleteCrmTaskAsync(string taskId, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/tasks/{task_id}";
+        var poolsterRequestPath = "/crm/tasks/{task_id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{task_id}", Uri.EscapeDataString(ParameterString(taskId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Delete, poolsterRequestPath, query);
@@ -1417,11 +1417,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/crm/tasks/{task_id}.</summary>
+    /// <summary>Invokes GET /crm/tasks/{task_id}.</summary>
     public async Task<JsonElement> GetCrmTaskAsync(string taskId, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/tasks/{task_id}";
+        var poolsterRequestPath = "/crm/tasks/{task_id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{task_id}", Uri.EscapeDataString(ParameterString(taskId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -1451,11 +1451,11 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes PATCH /v1/crm/tasks/{task_id}.</summary>
+    /// <summary>Invokes PATCH /crm/tasks/{task_id}.</summary>
     public async Task<JsonElement> UpdateCrmTaskAsync(string taskId, CrmTaskPatch body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/crm/tasks/{task_id}";
+        var poolsterRequestPath = "/crm/tasks/{task_id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{task_id}", Uri.EscapeDataString(ParameterString(taskId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Patch, poolsterRequestPath, query);
@@ -1486,11 +1486,130 @@ public sealed partial class PoolsterClient
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/email/auth-check.</summary>
-    public async Task<AuthCheckResponse> AuthCheckAsync(CancellationToken cancellationToken = default)
+    /// <summary>Invokes GET /email/api-keys.</summary>
+    public async Task ListEmailApiKeysAsync(CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/auth-check";
+        var poolsterRequestPath = "/email/api-keys";
+        var query = new List<KeyValuePair<string, string?>>();
+        var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
+        try
+        {
+        await SendWithRetryAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+        catch (ApiException error)
+        {
+            throw MapListEmailApiKeysError(error);
+        }
+    }
+
+
+    private static ApiException MapListEmailApiKeysError(ApiException error)
+    {
+        switch (error.StatusCode)
+        {
+            case 401: return new ListEmailApiKeysStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new ListEmailApiKeysStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new ListEmailApiKeysStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            default: return error;
+        }
+    }
+    /// <summary>Invokes POST /email/api-keys.</summary>
+    public async Task CreateEmailApiKeyAsync(CreateApiKeyRequest body, CancellationToken cancellationToken = default)
+    {
+  
+        var poolsterRequestPath = "/email/api-keys";
+        var query = new List<KeyValuePair<string, string?>>();
+        var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
+        request.Content = JsonContent.Create(body, options: JsonOptions);
+        try
+        {
+        await SendWithRetryAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+        catch (ApiException error)
+        {
+            throw MapCreateEmailApiKeyError(error);
+        }
+    }
+
+
+    private static ApiException MapCreateEmailApiKeyError(ApiException error)
+    {
+        switch (error.StatusCode)
+        {
+            case 401: return new CreateEmailApiKeyStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new CreateEmailApiKeyStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 409: return new CreateEmailApiKeyStatus409Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 422: return new CreateEmailApiKeyStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new CreateEmailApiKeyStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            default: return error;
+        }
+    }
+    /// <summary>Invokes DELETE /email/api-keys/{id}.</summary>
+    public async Task RevokeEmailApiKeyAsync(string id, CancellationToken cancellationToken = default)
+    {
+  
+        var poolsterRequestPath = "/email/api-keys/{id}";
+        poolsterRequestPath = poolsterRequestPath.Replace("{id}", Uri.EscapeDataString(ParameterString(id)), StringComparison.Ordinal);
+        var query = new List<KeyValuePair<string, string?>>();
+        var request = CreateRequest(HttpMethod.Delete, poolsterRequestPath, query);
+        try
+        {
+        await SendWithRetryAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+        catch (ApiException error)
+        {
+            throw MapRevokeEmailApiKeyError(error);
+        }
+    }
+
+
+    private static ApiException MapRevokeEmailApiKeyError(ApiException error)
+    {
+        switch (error.StatusCode)
+        {
+            case 401: return new RevokeEmailApiKeyStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new RevokeEmailApiKeyStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new RevokeEmailApiKeyStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new RevokeEmailApiKeyStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            default: return error;
+        }
+    }
+    /// <summary>Invokes GET /email/attachments/{attachment_id}.</summary>
+    public async Task<AttachmentResponse> GetEmailAttachmentAsync(string attachmentId, CancellationToken cancellationToken = default)
+    {
+  
+        var poolsterRequestPath = "/email/attachments/{attachment_id}";
+        poolsterRequestPath = poolsterRequestPath.Replace("{attachment_id}", Uri.EscapeDataString(ParameterString(attachmentId)), StringComparison.Ordinal);
+        var query = new List<KeyValuePair<string, string?>>();
+        var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
+        try
+        {
+        return await SendWithRetryAsync<AttachmentResponse>(request, cancellationToken).ConfigureAwait(false);
+        }
+        catch (ApiException error)
+        {
+            throw MapGetEmailAttachmentError(error);
+        }
+    }
+
+
+    private static ApiException MapGetEmailAttachmentError(ApiException error)
+    {
+        switch (error.StatusCode)
+        {
+            case 401: return new GetEmailAttachmentStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new GetEmailAttachmentStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 409: return new GetEmailAttachmentStatus409Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new GetEmailAttachmentStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            default: return error;
+        }
+    }
+    /// <summary>Invokes GET /email/auth-check.</summary>
+    public async Task<AuthCheckResponse> CheckEmailAuthAsync(CancellationToken cancellationToken = default)
+    {
+  
+        var poolsterRequestPath = "/email/auth-check";
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
         try
@@ -1499,26 +1618,26 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapAuthCheckError(error);
+            throw MapCheckEmailAuthError(error);
         }
     }
 
 
-    private static ApiException MapAuthCheckError(ApiException error)
+    private static ApiException MapCheckEmailAuthError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new AuthCheckStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 403: return new AuthCheckStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new AuthCheckStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new CheckEmailAuthStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new CheckEmailAuthStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new CheckEmailAuthStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/email/contacts.</summary>
-    public async Task<ContactListResponse> ListContactsAsync(long? limit = default, CancellationToken cancellationToken = default)
+    /// <summary>Invokes GET /email/contacts.</summary>
+    public async Task<ContactListResponse> ListEmailContactsAsync(long? limit = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/contacts";
+        var poolsterRequestPath = "/email/contacts";
         var query = new List<KeyValuePair<string, string?>>();
         query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -1528,25 +1647,25 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapListContactsError(error);
+            throw MapListEmailContactsError(error);
         }
     }
 
 
-    private static ApiException MapListContactsError(ApiException error)
+    private static ApiException MapListEmailContactsError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new ListContactsStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new ListContactsStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new ListEmailContactsStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new ListEmailContactsStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/email/contacts.</summary>
-    public async Task<ContactResponse> CreateContactAsync(CreateContact body, CancellationToken cancellationToken = default)
+    /// <summary>Invokes POST /email/contacts.</summary>
+    public async Task<ContactResponse> CreateEmailContactAsync(CreateContact body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/contacts";
+        var poolsterRequestPath = "/email/contacts";
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
         request.Content = JsonContent.Create(body, options: JsonOptions);
@@ -1556,26 +1675,26 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapCreateContactError(error);
+            throw MapCreateEmailContactError(error);
         }
     }
 
 
-    private static ApiException MapCreateContactError(ApiException error)
+    private static ApiException MapCreateEmailContactError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new CreateContactStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 422: return new CreateContactStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new CreateContactStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new CreateEmailContactStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 422: return new CreateEmailContactStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new CreateEmailContactStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/email/contacts/query.</summary>
-    public async Task<ContactQueryResponse> QueryContactsAsync(ContactQuery body, CancellationToken cancellationToken = default)
+    /// <summary>Invokes POST /email/contacts/query.</summary>
+    public async Task<ContactQueryResponse> QueryEmailContactsAsync(ContactQuery body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/contacts/query";
+        var poolsterRequestPath = "/email/contacts/query";
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
         request.Content = JsonContent.Create(body, options: JsonOptions);
@@ -1585,26 +1704,55 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapQueryContactsError(error);
+            throw MapQueryEmailContactsError(error);
         }
     }
 
 
-    private static ApiException MapQueryContactsError(ApiException error)
+    private static ApiException MapQueryEmailContactsError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new QueryContactsStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 422: return new QueryContactsStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new QueryContactsStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new QueryEmailContactsStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 422: return new QueryEmailContactsStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new QueryEmailContactsStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/email/contacts/{id}.</summary>
-    public async Task<ContactResponse> GetContactAsync(string id, CancellationToken cancellationToken = default)
+    /// <summary>Invokes DELETE /email/contacts/{id}.</summary>
+    public async Task DeleteEmailContactAsync(string id, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/contacts/{id}";
+        var poolsterRequestPath = "/email/contacts/{id}";
+        poolsterRequestPath = poolsterRequestPath.Replace("{id}", Uri.EscapeDataString(ParameterString(id)), StringComparison.Ordinal);
+        var query = new List<KeyValuePair<string, string?>>();
+        var request = CreateRequest(HttpMethod.Delete, poolsterRequestPath, query);
+        try
+        {
+        await SendWithRetryAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+        catch (ApiException error)
+        {
+            throw MapDeleteEmailContactError(error);
+        }
+    }
+
+
+    private static ApiException MapDeleteEmailContactError(ApiException error)
+    {
+        switch (error.StatusCode)
+        {
+            case 401: return new DeleteEmailContactStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new DeleteEmailContactStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new DeleteEmailContactStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            default: return error;
+        }
+    }
+    /// <summary>Invokes GET /email/contacts/{id}.</summary>
+    public async Task<ContactResponse> GetEmailContactAsync(string id, CancellationToken cancellationToken = default)
+    {
+  
+        var poolsterRequestPath = "/email/contacts/{id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{id}", Uri.EscapeDataString(ParameterString(id)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -1614,26 +1762,26 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapGetContactError(error);
+            throw MapGetEmailContactError(error);
         }
     }
 
 
-    private static ApiException MapGetContactError(ApiException error)
+    private static ApiException MapGetEmailContactError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new GetContactStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 404: return new GetContactStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new GetContactStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new GetEmailContactStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new GetEmailContactStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new GetEmailContactStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes PATCH /v1/email/contacts/{id}.</summary>
-    public async Task<ContactResponse> UpdateContactAsync(string id, UpdateContact body, CancellationToken cancellationToken = default)
+    /// <summary>Invokes PATCH /email/contacts/{id}.</summary>
+    public async Task<ContactResponse> UpdateEmailContactAsync(string id, UpdateContact body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/contacts/{id}";
+        var poolsterRequestPath = "/email/contacts/{id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{id}", Uri.EscapeDataString(ParameterString(id)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Patch, poolsterRequestPath, query);
@@ -1644,27 +1792,27 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapUpdateContactError(error);
+            throw MapUpdateEmailContactError(error);
         }
     }
 
 
-    private static ApiException MapUpdateContactError(ApiException error)
+    private static ApiException MapUpdateEmailContactError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new UpdateContactStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 404: return new UpdateContactStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 422: return new UpdateContactStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new UpdateContactStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new UpdateEmailContactStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new UpdateEmailContactStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 422: return new UpdateEmailContactStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new UpdateEmailContactStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/email/domains.</summary>
-    public async Task<DomainListResponse> ListDomainsAsync(long? limit = default, CancellationToken cancellationToken = default)
+    /// <summary>Invokes GET /email/domains.</summary>
+    public async Task<DomainListResponse> ListEmailDomainsAsync(long? limit = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/domains";
+        var poolsterRequestPath = "/email/domains";
         var query = new List<KeyValuePair<string, string?>>();
         query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -1674,25 +1822,87 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapListDomainsError(error);
+            throw MapListEmailDomainsError(error);
         }
     }
 
 
-    private static ApiException MapListDomainsError(ApiException error)
+    private static ApiException MapListEmailDomainsError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new ListDomainsStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new ListDomainsStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new ListEmailDomainsStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new ListEmailDomainsStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/email/domains/{id}.</summary>
-    public async Task<DomainResponse> GetDomainAsync(string id, CancellationToken cancellationToken = default)
+    /// <summary>Invokes POST /email/domains.</summary>
+    public async Task<DomainSetupResponse> CreateEmailDomainAsync(CreateDomainRequest body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/domains/{id}";
+        var poolsterRequestPath = "/email/domains";
+        var query = new List<KeyValuePair<string, string?>>();
+        var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
+        request.Content = JsonContent.Create(body, options: JsonOptions);
+        try
+        {
+        return await SendWithRetryAsync<DomainSetupResponse>(request, cancellationToken).ConfigureAwait(false);
+        }
+        catch (ApiException error)
+        {
+            throw MapCreateEmailDomainError(error);
+        }
+    }
+
+
+    private static ApiException MapCreateEmailDomainError(ApiException error)
+    {
+        switch (error.StatusCode)
+        {
+            case 401: return new CreateEmailDomainStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new CreateEmailDomainStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 409: return new CreateEmailDomainStatus409Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 422: return new CreateEmailDomainStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new CreateEmailDomainStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            default: return error;
+        }
+    }
+    /// <summary>Invokes DELETE /email/domains/{id}.</summary>
+    public async Task<DeletedDomainResponse> DeleteEmailDomainAsync(string id, CancellationToken cancellationToken = default)
+    {
+  
+        var poolsterRequestPath = "/email/domains/{id}";
+        poolsterRequestPath = poolsterRequestPath.Replace("{id}", Uri.EscapeDataString(ParameterString(id)), StringComparison.Ordinal);
+        var query = new List<KeyValuePair<string, string?>>();
+        var request = CreateRequest(HttpMethod.Delete, poolsterRequestPath, query);
+        try
+        {
+        return await SendWithRetryAsync<DeletedDomainResponse>(request, cancellationToken).ConfigureAwait(false);
+        }
+        catch (ApiException error)
+        {
+            throw MapDeleteEmailDomainError(error);
+        }
+    }
+
+
+    private static ApiException MapDeleteEmailDomainError(ApiException error)
+    {
+        switch (error.StatusCode)
+        {
+            case 401: return new DeleteEmailDomainStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new DeleteEmailDomainStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new DeleteEmailDomainStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 409: return new DeleteEmailDomainStatus409Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new DeleteEmailDomainStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            default: return error;
+        }
+    }
+    /// <summary>Invokes GET /email/domains/{id}.</summary>
+    public async Task<DomainResponse> GetEmailDomainAsync(string id, CancellationToken cancellationToken = default)
+    {
+  
+        var poolsterRequestPath = "/email/domains/{id}";
         poolsterRequestPath = poolsterRequestPath.Replace("{id}", Uri.EscapeDataString(ParameterString(id)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
@@ -1702,231 +1912,61 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapGetDomainError(error);
+            throw MapGetEmailDomainError(error);
         }
     }
 
 
-    private static ApiException MapGetDomainError(ApiException error)
+    private static ApiException MapGetEmailDomainError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new GetDomainStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 404: return new GetDomainStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new GetDomainStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new GetEmailDomainStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new GetEmailDomainStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new GetEmailDomainStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/email/events.</summary>
-    public async Task<EventResponse> TrackAsync(TrackEventRequest body, CancellationToken cancellationToken = default)
+    /// <summary>Invokes POST /email/domains/{id}/verify.</summary>
+    public async Task<DomainSetupResponse> VerifyEmailDomainAsync(string id, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/events";
-        var query = new List<KeyValuePair<string, string?>>();
-        var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
-        request.Content = JsonContent.Create(body, options: JsonOptions);
-        try
-        {
-        return await SendWithRetryAsync<EventResponse>(request, cancellationToken).ConfigureAwait(false);
-        }
-        catch (ApiException error)
-        {
-            throw MapTrackError(error);
-        }
-    }
-
-
-    private static ApiException MapTrackError(ApiException error)
-    {
-        switch (error.StatusCode)
-        {
-            case 401: return new TrackStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 403: return new TrackStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 409: return new TrackStatus409Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 422: return new TrackStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new TrackStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            default: return error;
-        }
-    }
-    /// <summary>Invokes GET /v1/email/inbound.</summary>
-    public async Task<InboundListResponse> ListInboundAsync(long? limit = default, CancellationToken cancellationToken = default)
-    {
-  
-        var poolsterRequestPath = "/v1/email/inbound";
-        var query = new List<KeyValuePair<string, string?>>();
-        query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
-        var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
-        try
-        {
-        return await SendWithRetryAsync<InboundListResponse>(request, cancellationToken).ConfigureAwait(false);
-        }
-        catch (ApiException error)
-        {
-            throw MapListInboundError(error);
-        }
-    }
-
-
-    private static ApiException MapListInboundError(ApiException error)
-    {
-        switch (error.StatusCode)
-        {
-            case 401: return new ListInboundStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 422: return new ListInboundStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new ListInboundStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            default: return error;
-        }
-    }
-    /// <summary>Invokes GET /v1/email/inbound/{message_id}.</summary>
-    public async Task<InboundResponse> GetInboundAsync(string messageId, CancellationToken cancellationToken = default)
-    {
-  
-        var poolsterRequestPath = "/v1/email/inbound/{message_id}";
-        poolsterRequestPath = poolsterRequestPath.Replace("{message_id}", Uri.EscapeDataString(ParameterString(messageId)), StringComparison.Ordinal);
-        var query = new List<KeyValuePair<string, string?>>();
-        var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
-        try
-        {
-        return await SendWithRetryAsync<InboundResponse>(request, cancellationToken).ConfigureAwait(false);
-        }
-        catch (ApiException error)
-        {
-            throw MapGetInboundError(error);
-        }
-    }
-
-
-    private static ApiException MapGetInboundError(ApiException error)
-    {
-        switch (error.StatusCode)
-        {
-            case 401: return new GetInboundStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 404: return new GetInboundStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new GetInboundStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            default: return error;
-        }
-    }
-    /// <summary>Invokes GET /v1/email/segments.</summary>
-    public async Task<SegmentListResponse> ListSegmentsAsync(long? limit = default, CancellationToken cancellationToken = default)
-    {
-  
-        var poolsterRequestPath = "/v1/email/segments";
-        var query = new List<KeyValuePair<string, string?>>();
-        query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
-        var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
-        try
-        {
-        return await SendWithRetryAsync<SegmentListResponse>(request, cancellationToken).ConfigureAwait(false);
-        }
-        catch (ApiException error)
-        {
-            throw MapListSegmentsError(error);
-        }
-    }
-
-
-    private static ApiException MapListSegmentsError(ApiException error)
-    {
-        switch (error.StatusCode)
-        {
-            case 401: return new ListSegmentsStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new ListSegmentsStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            default: return error;
-        }
-    }
-    /// <summary>Invokes GET /v1/email/segments/{id}.</summary>
-    public async Task<SegmentResponse> GetSegmentAsync(string id, CancellationToken cancellationToken = default)
-    {
-  
-        var poolsterRequestPath = "/v1/email/segments/{id}";
+        var poolsterRequestPath = "/email/domains/{id}/verify";
         poolsterRequestPath = poolsterRequestPath.Replace("{id}", Uri.EscapeDataString(ParameterString(id)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
-        var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
+        var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
         try
         {
-        return await SendWithRetryAsync<SegmentResponse>(request, cancellationToken).ConfigureAwait(false);
+        return await SendWithRetryAsync<DomainSetupResponse>(request, cancellationToken).ConfigureAwait(false);
         }
         catch (ApiException error)
         {
-            throw MapGetSegmentError(error);
+            throw MapVerifyEmailDomainError(error);
         }
     }
 
 
-    private static ApiException MapGetSegmentError(ApiException error)
+    private static ApiException MapVerifyEmailDomainError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new GetSegmentStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 404: return new GetSegmentStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new GetSegmentStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new VerifyEmailDomainStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new VerifyEmailDomainStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new VerifyEmailDomainStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 409: return new VerifyEmailDomainStatus409Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 429: return new VerifyEmailDomainStatus429Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new VerifyEmailDomainStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/email/sender-identities.</summary>
-    public async Task<SenderIdentityListResponse> ListSenderIdentitiesAsync(long? limit = default, CancellationToken cancellationToken = default)
+    /// <summary>Invokes POST /email/emails.</summary>
+    public async Task<SendResponse> SendEmailAsync(SendEmailRequest body, string? idempotencyKey = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/sender-identities";
-        var query = new List<KeyValuePair<string, string?>>();
-        query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
-        var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
-        try
-        {
-        return await SendWithRetryAsync<SenderIdentityListResponse>(request, cancellationToken).ConfigureAwait(false);
-        }
-        catch (ApiException error)
-        {
-            throw MapListSenderIdentitiesError(error);
-        }
-    }
-
-
-    private static ApiException MapListSenderIdentitiesError(ApiException error)
-    {
-        switch (error.StatusCode)
-        {
-            case 401: return new ListSenderIdentitiesStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new ListSenderIdentitiesStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            default: return error;
-        }
-    }
-    /// <summary>Invokes GET /v1/email/sender-identities/{id}.</summary>
-    public async Task<SenderIdentityResponse> GetSenderIdentityAsync(string id, CancellationToken cancellationToken = default)
-    {
-  
-        var poolsterRequestPath = "/v1/email/sender-identities/{id}";
-        poolsterRequestPath = poolsterRequestPath.Replace("{id}", Uri.EscapeDataString(ParameterString(id)), StringComparison.Ordinal);
-        var query = new List<KeyValuePair<string, string?>>();
-        var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
-        try
-        {
-        return await SendWithRetryAsync<SenderIdentityResponse>(request, cancellationToken).ConfigureAwait(false);
-        }
-        catch (ApiException error)
-        {
-            throw MapGetSenderIdentityError(error);
-        }
-    }
-
-
-    private static ApiException MapGetSenderIdentityError(ApiException error)
-    {
-        switch (error.StatusCode)
-        {
-            case 401: return new GetSenderIdentityStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 404: return new GetSenderIdentityStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new GetSenderIdentityStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            default: return error;
-        }
-    }
-    /// <summary>Invokes POST /v1/email/sends.</summary>
-    public async Task<SendResponse> CreateAsync(SendRequest body, CancellationToken cancellationToken = default)
-    {
-  
-        var poolsterRequestPath = "/v1/email/sends";
+        var poolsterRequestPath = "/email/emails";
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
+        if (idempotencyKey is not null) request.Headers.TryAddWithoutValidation("Idempotency-Key", ParameterString(idempotencyKey));
         request.Content = JsonContent.Create(body, options: JsonOptions);
         try
         {
@@ -1934,29 +1974,59 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapCreateError(error);
+            throw MapSendEmailError(error);
         }
     }
 
 
-    private static ApiException MapCreateError(ApiException error)
+    private static ApiException MapSendEmailError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new CreateStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 403: return new CreateStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 409: return new CreateStatus409Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 422: return new CreateStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 429: return new CreateStatus429Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new CreateStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new SendEmailStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new SendEmailStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 409: return new SendEmailStatus409Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 422: return new SendEmailStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 429: return new SendEmailStatus429Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new SendEmailStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes POST /v1/email/sends/query.</summary>
-    public async Task QueryAsync(SendQuery body, CancellationToken cancellationToken = default)
+    /// <summary>Invokes POST /email/emails/batch.</summary>
+    public async Task<BatchSendResponse> SendEmailBatchAsync(BatchSendRequest body, string? idempotencyKey = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/sends/query";
+        var poolsterRequestPath = "/email/emails/batch";
+        var query = new List<KeyValuePair<string, string?>>();
+        var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
+        if (idempotencyKey is not null) request.Headers.TryAddWithoutValidation("Idempotency-Key", ParameterString(idempotencyKey));
+        request.Content = JsonContent.Create(body, options: JsonOptions);
+        try
+        {
+        return await SendWithRetryAsync<BatchSendResponse>(request, cancellationToken).ConfigureAwait(false);
+        }
+        catch (ApiException error)
+        {
+            throw MapSendEmailBatchError(error);
+        }
+    }
+
+
+    private static ApiException MapSendEmailBatchError(ApiException error)
+    {
+        switch (error.StatusCode)
+        {
+            case 401: return new SendEmailBatchStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new SendEmailBatchStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 422: return new SendEmailBatchStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            default: return error;
+        }
+    }
+    /// <summary>Invokes POST /email/emails/query.</summary>
+    public async Task QueryEmailsAsync(SendQuery body, CancellationToken cancellationToken = default)
+    {
+  
+        var poolsterRequestPath = "/email/emails/query";
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
         request.Content = JsonContent.Create(body, options: JsonOptions);
@@ -1966,28 +2036,28 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapQueryError(error);
+            throw MapQueryEmailsError(error);
         }
     }
 
 
-    private static ApiException MapQueryError(ApiException error)
+    private static ApiException MapQueryEmailsError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new QueryStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 403: return new QueryStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 422: return new QueryStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new QueryStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new QueryEmailsStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new QueryEmailsStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 422: return new QueryEmailsStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new QueryEmailsStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes DELETE /v1/email/sends/{send_id}.</summary>
-    public async Task<SendResponse> CancelAsync(string sendId, CancellationToken cancellationToken = default)
+    /// <summary>Invokes DELETE /email/emails/{email_id}.</summary>
+    public async Task<SendResponse> CancelEmailAsync(string emailId, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/sends/{send_id}";
-        poolsterRequestPath = poolsterRequestPath.Replace("{send_id}", Uri.EscapeDataString(ParameterString(sendId)), StringComparison.Ordinal);
+        var poolsterRequestPath = "/email/emails/{email_id}";
+        poolsterRequestPath = poolsterRequestPath.Replace("{email_id}", Uri.EscapeDataString(ParameterString(emailId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Delete, poolsterRequestPath, query);
         try
@@ -1996,29 +2066,29 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapCancelError(error);
+            throw MapCancelEmailError(error);
         }
     }
 
 
-    private static ApiException MapCancelError(ApiException error)
+    private static ApiException MapCancelEmailError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new CancelStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 403: return new CancelStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 404: return new CancelStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 409: return new CancelStatus409Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new CancelStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new CancelEmailStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new CancelEmailStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new CancelEmailStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 409: return new CancelEmailStatus409Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new CancelEmailStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/email/sends/{send_id}.</summary>
-    public async Task<SendResponse> GetAsync(string sendId, CancellationToken cancellationToken = default)
+    /// <summary>Invokes GET /email/emails/{email_id}.</summary>
+    public async Task<SendResponse> GetEmailAsync(string emailId, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/sends/{send_id}";
-        poolsterRequestPath = poolsterRequestPath.Replace("{send_id}", Uri.EscapeDataString(ParameterString(sendId)), StringComparison.Ordinal);
+        var poolsterRequestPath = "/email/emails/{email_id}";
+        poolsterRequestPath = poolsterRequestPath.Replace("{email_id}", Uri.EscapeDataString(ParameterString(emailId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
         try
@@ -2027,165 +2097,84 @@ public sealed partial class PoolsterClient
         }
         catch (ApiException error)
         {
-            throw MapGetError(error);
+            throw MapGetEmailError(error);
         }
     }
 
 
-    private static ApiException MapGetError(ApiException error)
+    private static ApiException MapGetEmailError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new GetStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 403: return new GetStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 404: return new GetStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new GetStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new GetEmailStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new GetEmailStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new GetEmailStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new GetEmailStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/email/webhooks.</summary>
-    public async Task<WebhookListResponse> ListWebhooksAsync(CancellationToken cancellationToken = default)
+    /// <summary>Invokes PATCH /email/emails/{email_id}.</summary>
+    public async Task<SendResponse> RescheduleEmailAsync(string emailId, RescheduleRequest body, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/webhooks";
-        var query = new List<KeyValuePair<string, string?>>();
-        var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
-        try
-        {
-        return await SendWithRetryAsync<WebhookListResponse>(request, cancellationToken).ConfigureAwait(false);
-        }
-        catch (ApiException error)
-        {
-            throw MapListWebhooksError(error);
-        }
-    }
-
-
-    private static ApiException MapListWebhooksError(ApiException error)
-    {
-        switch (error.StatusCode)
-        {
-            case 401: return new ListWebhooksStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new ListWebhooksStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            default: return error;
-        }
-    }
-    /// <summary>Invokes POST /v1/email/webhooks.</summary>
-    public async Task<CreateWebhookResponse> CreateWebhookAsync(HookCreate body, CancellationToken cancellationToken = default)
-    {
-  
-        var poolsterRequestPath = "/v1/email/webhooks";
-        var query = new List<KeyValuePair<string, string?>>();
-        var request = CreateRequest(HttpMethod.Post, poolsterRequestPath, query);
-        request.Content = JsonContent.Create(body, options: JsonOptions);
-        try
-        {
-        return await SendWithRetryAsync<CreateWebhookResponse>(request, cancellationToken).ConfigureAwait(false);
-        }
-        catch (ApiException error)
-        {
-            throw MapCreateWebhookError(error);
-        }
-    }
-
-
-    private static ApiException MapCreateWebhookError(ApiException error)
-    {
-        switch (error.StatusCode)
-        {
-            case 401: return new CreateWebhookStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 422: return new CreateWebhookStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new CreateWebhookStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            default: return error;
-        }
-    }
-    /// <summary>Invokes DELETE /v1/email/webhooks/{webhook_id}.</summary>
-    public async Task DeleteWebhookAsync(string webhookId, CancellationToken cancellationToken = default)
-    {
-  
-        var poolsterRequestPath = "/v1/email/webhooks/{webhook_id}";
-        poolsterRequestPath = poolsterRequestPath.Replace("{webhook_id}", Uri.EscapeDataString(ParameterString(webhookId)), StringComparison.Ordinal);
-        var query = new List<KeyValuePair<string, string?>>();
-        var request = CreateRequest(HttpMethod.Delete, poolsterRequestPath, query);
-        try
-        {
-        await SendWithRetryAsync(request, cancellationToken).ConfigureAwait(false);
-        }
-        catch (ApiException error)
-        {
-            throw MapDeleteWebhookError(error);
-        }
-    }
-
-
-    private static ApiException MapDeleteWebhookError(ApiException error)
-    {
-        switch (error.StatusCode)
-        {
-            case 401: return new DeleteWebhookStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 404: return new DeleteWebhookStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new DeleteWebhookStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            default: return error;
-        }
-    }
-    /// <summary>Invokes PATCH /v1/email/webhooks/{webhook_id}.</summary>
-    public async Task<WebhookResponse> UpdateWebhookAsync(string webhookId, HookUpdate body, CancellationToken cancellationToken = default)
-    {
-  
-        var poolsterRequestPath = "/v1/email/webhooks/{webhook_id}";
-        poolsterRequestPath = poolsterRequestPath.Replace("{webhook_id}", Uri.EscapeDataString(ParameterString(webhookId)), StringComparison.Ordinal);
+        var poolsterRequestPath = "/email/emails/{email_id}";
+        poolsterRequestPath = poolsterRequestPath.Replace("{email_id}", Uri.EscapeDataString(ParameterString(emailId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         var request = CreateRequest(HttpMethod.Patch, poolsterRequestPath, query);
         request.Content = JsonContent.Create(body, options: JsonOptions);
         try
         {
-        return await SendWithRetryAsync<WebhookResponse>(request, cancellationToken).ConfigureAwait(false);
+        return await SendWithRetryAsync<SendResponse>(request, cancellationToken).ConfigureAwait(false);
         }
         catch (ApiException error)
         {
-            throw MapUpdateWebhookError(error);
+            throw MapRescheduleEmailError(error);
         }
     }
 
 
-    private static ApiException MapUpdateWebhookError(ApiException error)
+    private static ApiException MapRescheduleEmailError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new UpdateWebhookStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 404: return new UpdateWebhookStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 422: return new UpdateWebhookStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new UpdateWebhookStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new RescheduleEmailStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new RescheduleEmailStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new RescheduleEmailStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 409: return new RescheduleEmailStatus409Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 422: return new RescheduleEmailStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }
-    /// <summary>Invokes GET /v1/email/webhooks/{webhook_id}/deliveries.</summary>
-    public async Task<WebhookDeliveryListResponse> ListDeliveriesAsync(string webhookId, long? limit = default, CancellationToken cancellationToken = default)
+    /// <summary>Invokes GET /email/emails/{email_id}/events.</summary>
+    public async Task<SendEventsResponse> ListEmailEventsAsync(string emailId, long? limit = default, string? after = default, CancellationToken cancellationToken = default)
     {
   
-        var poolsterRequestPath = "/v1/email/webhooks/{webhook_id}/deliveries";
-        poolsterRequestPath = poolsterRequestPath.Replace("{webhook_id}", Uri.EscapeDataString(ParameterString(webhookId)), StringComparison.Ordinal);
+        var poolsterRequestPath = "/email/emails/{email_id}/events";
+        poolsterRequestPath = poolsterRequestPath.Replace("{email_id}", Uri.EscapeDataString(ParameterString(emailId)), StringComparison.Ordinal);
         var query = new List<KeyValuePair<string, string?>>();
         query.Add(new KeyValuePair<string, string?>("limit", limit is null ? null : ParameterString(limit)));
+        query.Add(new KeyValuePair<string, string?>("after", after is null ? null : ParameterString(after)));
         var request = CreateRequest(HttpMethod.Get, poolsterRequestPath, query);
         try
         {
-        return await SendWithRetryAsync<WebhookDeliveryListResponse>(request, cancellationToken).ConfigureAwait(false);
+        return await SendWithRetryAsync<SendEventsResponse>(request, cancellationToken).ConfigureAwait(false);
         }
         catch (ApiException error)
         {
-            throw MapListDeliveriesError(error);
+            throw MapListEmailEventsError(error);
         }
     }
 
 
-    private static ApiException MapListDeliveriesError(ApiException error)
+    private static ApiException MapListEmailEventsError(ApiException error)
     {
         switch (error.StatusCode)
         {
-            case 401: return new ListDeliveriesStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 422: return new ListDeliveriesStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
-            case 503: return new ListDeliveriesStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 401: return new ListEmailEventsStatus401Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 403: return new ListEmailEventsStatus403Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 404: return new ListEmailEventsStatus404Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 422: return new ListEmailEventsStatus422Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
+            case 503: return new ListEmailEventsStatus503Exception(error.ResponseBody, TryDeserializeError<ErrorResponse>(error.ResponseBody));
             default: return error;
         }
     }

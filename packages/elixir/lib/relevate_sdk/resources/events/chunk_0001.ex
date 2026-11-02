@@ -5,6 +5,6 @@ defmodule RelevateSdk.Resources.Events.Chunk0000 do
 
   alias RelevateSdk.{API, Client}
 
-  @spec track(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def track(client, options \\ []), do: API.track(client, options)
+  @spec track_email_event(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def track_email_event(client, options \\ []), do: API.track_email_event(client, options)
 end

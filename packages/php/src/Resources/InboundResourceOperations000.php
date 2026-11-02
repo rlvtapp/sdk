@@ -14,14 +14,14 @@ use Relevate\Sdk\Models\InboundResponse;
 /** Bounded resource facade slice; composed into InboundResource. */
 trait InboundResourceOperations000
 {
-    public function listOperation(?int $limit = null): InboundListResponse
+    public function listEmail(?int $limit = null): InboundListResponse
     {
-        return $this->client->listInbound($limit);
+        return $this->client->listEmailInbound($limit);
     }
 
-    public function get(string $messageId): InboundResponse
+    public function getEmail(string $messageId): InboundResponse
     {
-        return $this->client->getInbound($messageId);
+        return $this->client->getEmailInbound($messageId);
     }
 
 }

@@ -1,10 +1,10 @@
 import type { ClientInstance } from '../../.poolster/client.js'
-import { track } from '../../clients/events/track.js'
+import { trackEmailEvent } from '../../clients/events/trackEmailEvent.js'
 
 export class EventsClientOperations0001 {
-  readonly track: typeof track
+  readonly trackEmail: typeof trackEmailEvent
 
   constructor(client: ClientInstance) {
-    this.track = ((options: Parameters<typeof track>[0]) => track({ ...options, client })) as typeof track
+    this.trackEmail = ((options: Parameters<typeof trackEmailEvent>[0]) => trackEmailEvent({ ...options, client })) as typeof trackEmailEvent
   }
 }

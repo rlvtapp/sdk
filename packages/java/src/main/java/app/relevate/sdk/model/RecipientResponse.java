@@ -16,7 +16,13 @@ import java.util.Map;
 public record RecipientResponse(
         @JsonProperty("address") String address,
         @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty("copy") String copy,
+        @JsonInclude(JsonInclude.Include.NON_NULL)
         @JsonProperty("eligible_for_processing") Boolean eligibleForProcessing,
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty("provider") String provider,
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty("provider_message_id") String providerMessageId,
         @JsonProperty("reason_code") String reasonCode,
         @JsonProperty("recipient_send_id") String recipientSendId,
         @JsonProperty("state") String state,
@@ -26,13 +32,16 @@ public record RecipientResponse(
     additionalProperties = additionalProperties == null ? Map.of() : Collections.unmodifiableMap(new LinkedHashMap<>(additionalProperties));
     
         if (additionalProperties.containsKey("address")) throw new IllegalArgumentException("additional property shadows declared field");
+        if (additionalProperties.containsKey("copy")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("eligible_for_processing")) throw new IllegalArgumentException("additional property shadows declared field");
+        if (additionalProperties.containsKey("provider")) throw new IllegalArgumentException("additional property shadows declared field");
+        if (additionalProperties.containsKey("provider_message_id")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("reason_code")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("recipient_send_id")) throw new IllegalArgumentException("additional property shadows declared field");
         if (additionalProperties.containsKey("state")) throw new IllegalArgumentException("additional property shadows declared field");
     }
-    public RecipientResponse(String address, Boolean eligibleForProcessing, String reasonCode, String recipientSendId, String state) {
-  this(address, eligibleForProcessing, reasonCode, recipientSendId, state, Map.of());
+    public RecipientResponse(String address, String copy, Boolean eligibleForProcessing, String provider, String providerMessageId, String reasonCode, String recipientSendId, String state) {
+  this(address, copy, eligibleForProcessing, provider, providerMessageId, reasonCode, recipientSendId, state, Map.of());
 
 }
 }

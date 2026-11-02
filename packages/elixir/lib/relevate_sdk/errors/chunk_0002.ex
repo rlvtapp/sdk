@@ -1360,8 +1360,8 @@ defmodule RelevateSdk.Errors.UpdateCrmTaskStatus503Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.AuthCheckStatus401Error do
-  @moduledoc "Declared 401 response for `auth_check`."
+defmodule RelevateSdk.Errors.ListEmailApiKeysStatus401Error do
+  @moduledoc "Declared 401 response for `listEmailApiKeys`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1370,8 +1370,8 @@ defmodule RelevateSdk.Errors.AuthCheckStatus401Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.AuthCheckStatus403Error do
-  @moduledoc "Declared 403 response for `auth_check`."
+defmodule RelevateSdk.Errors.ListEmailApiKeysStatus403Error do
+  @moduledoc "Declared 403 response for `listEmailApiKeys`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1380,8 +1380,8 @@ defmodule RelevateSdk.Errors.AuthCheckStatus403Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.AuthCheckStatus503Error do
-  @moduledoc "Declared 503 response for `auth_check`."
+defmodule RelevateSdk.Errors.ListEmailApiKeysStatus503Error do
+  @moduledoc "Declared 503 response for `listEmailApiKeys`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1390,8 +1390,8 @@ defmodule RelevateSdk.Errors.AuthCheckStatus503Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.ListContactsStatus401Error do
-  @moduledoc "Declared 401 response for `list_contacts`."
+defmodule RelevateSdk.Errors.CreateEmailApiKeyStatus401Error do
+  @moduledoc "Declared 401 response for `createEmailApiKey`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1400,8 +1400,8 @@ defmodule RelevateSdk.Errors.ListContactsStatus401Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.ListContactsStatus503Error do
-  @moduledoc "Declared 503 response for `list_contacts`."
+defmodule RelevateSdk.Errors.CreateEmailApiKeyStatus403Error do
+  @moduledoc "Declared 403 response for `createEmailApiKey`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1410,8 +1410,8 @@ defmodule RelevateSdk.Errors.ListContactsStatus503Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.CreateContactStatus401Error do
-  @moduledoc "Declared 401 response for `create_contact`."
+defmodule RelevateSdk.Errors.CreateEmailApiKeyStatus409Error do
+  @moduledoc "Declared 409 response for `createEmailApiKey`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1420,8 +1420,8 @@ defmodule RelevateSdk.Errors.CreateContactStatus401Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.CreateContactStatus422Error do
-  @moduledoc "Declared 422 response for `create_contact`."
+defmodule RelevateSdk.Errors.CreateEmailApiKeyStatus422Error do
+  @moduledoc "Declared 422 response for `createEmailApiKey`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1430,8 +1430,8 @@ defmodule RelevateSdk.Errors.CreateContactStatus422Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.CreateContactStatus503Error do
-  @moduledoc "Declared 503 response for `create_contact`."
+defmodule RelevateSdk.Errors.CreateEmailApiKeyStatus503Error do
+  @moduledoc "Declared 503 response for `createEmailApiKey`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1440,8 +1440,8 @@ defmodule RelevateSdk.Errors.CreateContactStatus503Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.QueryContactsStatus401Error do
-  @moduledoc "Declared 401 response for `query_contacts`."
+defmodule RelevateSdk.Errors.RevokeEmailApiKeyStatus401Error do
+  @moduledoc "Declared 401 response for `revokeEmailApiKey`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1450,8 +1450,8 @@ defmodule RelevateSdk.Errors.QueryContactsStatus401Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.QueryContactsStatus422Error do
-  @moduledoc "Declared 422 response for `query_contacts`."
+defmodule RelevateSdk.Errors.RevokeEmailApiKeyStatus403Error do
+  @moduledoc "Declared 403 response for `revokeEmailApiKey`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1460,8 +1460,8 @@ defmodule RelevateSdk.Errors.QueryContactsStatus422Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.QueryContactsStatus503Error do
-  @moduledoc "Declared 503 response for `query_contacts`."
+defmodule RelevateSdk.Errors.RevokeEmailApiKeyStatus404Error do
+  @moduledoc "Declared 404 response for `revokeEmailApiKey`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1470,8 +1470,8 @@ defmodule RelevateSdk.Errors.QueryContactsStatus503Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.GetContactStatus401Error do
-  @moduledoc "Declared 401 response for `get_contact`."
+defmodule RelevateSdk.Errors.RevokeEmailApiKeyStatus503Error do
+  @moduledoc "Declared 503 response for `revokeEmailApiKey`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1480,8 +1480,8 @@ defmodule RelevateSdk.Errors.GetContactStatus401Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.GetContactStatus404Error do
-  @moduledoc "Declared 404 response for `get_contact`."
+defmodule RelevateSdk.Errors.GetEmailAttachmentStatus401Error do
+  @moduledoc "Declared 401 response for `getEmailAttachment`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1490,8 +1490,8 @@ defmodule RelevateSdk.Errors.GetContactStatus404Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.GetContactStatus503Error do
-  @moduledoc "Declared 503 response for `get_contact`."
+defmodule RelevateSdk.Errors.GetEmailAttachmentStatus404Error do
+  @moduledoc "Declared 404 response for `getEmailAttachment`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1500,8 +1500,8 @@ defmodule RelevateSdk.Errors.GetContactStatus503Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.UpdateContactStatus401Error do
-  @moduledoc "Declared 401 response for `update_contact`."
+defmodule RelevateSdk.Errors.GetEmailAttachmentStatus409Error do
+  @moduledoc "Declared 409 response for `getEmailAttachment`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1510,8 +1510,8 @@ defmodule RelevateSdk.Errors.UpdateContactStatus401Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.UpdateContactStatus404Error do
-  @moduledoc "Declared 404 response for `update_contact`."
+defmodule RelevateSdk.Errors.GetEmailAttachmentStatus503Error do
+  @moduledoc "Declared 503 response for `getEmailAttachment`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1520,8 +1520,8 @@ defmodule RelevateSdk.Errors.UpdateContactStatus404Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.UpdateContactStatus422Error do
-  @moduledoc "Declared 422 response for `update_contact`."
+defmodule RelevateSdk.Errors.CheckEmailAuthStatus401Error do
+  @moduledoc "Declared 401 response for `checkEmailAuth`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1530,8 +1530,8 @@ defmodule RelevateSdk.Errors.UpdateContactStatus422Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.UpdateContactStatus503Error do
-  @moduledoc "Declared 503 response for `update_contact`."
+defmodule RelevateSdk.Errors.CheckEmailAuthStatus403Error do
+  @moduledoc "Declared 403 response for `checkEmailAuth`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1540,8 +1540,8 @@ defmodule RelevateSdk.Errors.UpdateContactStatus503Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.ListDomainsStatus401Error do
-  @moduledoc "Declared 401 response for `list_domains`."
+defmodule RelevateSdk.Errors.CheckEmailAuthStatus503Error do
+  @moduledoc "Declared 503 response for `checkEmailAuth`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1550,8 +1550,8 @@ defmodule RelevateSdk.Errors.ListDomainsStatus401Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.ListDomainsStatus503Error do
-  @moduledoc "Declared 503 response for `list_domains`."
+defmodule RelevateSdk.Errors.ListEmailContactsStatus401Error do
+  @moduledoc "Declared 401 response for `listEmailContacts`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1560,8 +1560,8 @@ defmodule RelevateSdk.Errors.ListDomainsStatus503Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.GetDomainStatus401Error do
-  @moduledoc "Declared 401 response for `get_domain`."
+defmodule RelevateSdk.Errors.ListEmailContactsStatus503Error do
+  @moduledoc "Declared 503 response for `listEmailContacts`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1570,8 +1570,8 @@ defmodule RelevateSdk.Errors.GetDomainStatus401Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.GetDomainStatus404Error do
-  @moduledoc "Declared 404 response for `get_domain`."
+defmodule RelevateSdk.Errors.CreateEmailContactStatus401Error do
+  @moduledoc "Declared 401 response for `createEmailContact`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
@@ -1580,8 +1580,48 @@ defmodule RelevateSdk.Errors.GetDomainStatus404Error do
   def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
 end
 
-defmodule RelevateSdk.Errors.GetDomainStatus503Error do
-  @moduledoc "Declared 503 response for `get_domain`."
+defmodule RelevateSdk.Errors.CreateEmailContactStatus422Error do
+  @moduledoc "Declared 422 response for `createEmailContact`."
+  defexception [:status, :body, :headers]
+
+  @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
+
+  @impl true
+  def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
+end
+
+defmodule RelevateSdk.Errors.CreateEmailContactStatus503Error do
+  @moduledoc "Declared 503 response for `createEmailContact`."
+  defexception [:status, :body, :headers]
+
+  @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
+
+  @impl true
+  def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
+end
+
+defmodule RelevateSdk.Errors.QueryEmailContactsStatus401Error do
+  @moduledoc "Declared 401 response for `queryEmailContacts`."
+  defexception [:status, :body, :headers]
+
+  @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
+
+  @impl true
+  def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
+end
+
+defmodule RelevateSdk.Errors.QueryEmailContactsStatus422Error do
+  @moduledoc "Declared 422 response for `queryEmailContacts`."
+  defexception [:status, :body, :headers]
+
+  @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}
+
+  @impl true
+  def message(%__MODULE__{status: status}), do: "Poolster API request failed with status #{status}"
+end
+
+defmodule RelevateSdk.Errors.QueryEmailContactsStatus503Error do
+  @moduledoc "Declared 503 response for `queryEmailContacts`."
   defexception [:status, :body, :headers]
 
   @type t :: %__MODULE__{status: pos_integer(), body: term(), headers: list()}

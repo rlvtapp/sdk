@@ -2,7 +2,7 @@
 # Default happy-path response
 when:
   method: GET
-  path_matches: '^/v1/crm/records/[^/]+/activities$'
+  path_matches: '^/crm/records/[^/]+/activities$'
 then:
   status: 200
   header:

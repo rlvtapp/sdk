@@ -1,0 +1,8 @@
+export { listEmailTemplates } from './listEmailTemplates.js'
+export { createEmailTemplate } from './createEmailTemplate.js'
+export { deleteEmailTemplate } from './deleteEmailTemplate.js'
+export { getEmailTemplate } from './getEmailTemplate.js'
+export { updateEmailTemplate } from './updateEmailTemplate.js'
+export { duplicateEmailTemplate } from './duplicateEmailTemplate.js'
+export { publishEmailTemplate } from './publishEmailTemplate.js'
+export { renderEmailTemplate } from './renderEmailTemplate.js'

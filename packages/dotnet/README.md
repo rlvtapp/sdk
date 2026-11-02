@@ -21,7 +21,7 @@ await client.ListCrmListsAsync(/* typed arguments */);
 ## Namespaced client
 
 ```csharp
-await client.CRM.ListCrmListsAsync(/* typed arguments */);
+await client.APIKeys.ListCrmListsAsync(/* typed arguments */);
 ```
 
 The namespaced example applies to packages generated with `SdkClientStyle::Namespaced`; direct `PoolsterClient` methods remain available in that mode. See [STYLE_GUIDE.md](STYLE_GUIDE.md) for selection guidance.

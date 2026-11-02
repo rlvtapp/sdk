@@ -9,38 +9,43 @@ import (
 // ContactsService groups Contacts operations.
 type ContactsService struct { client *Client }
 
-// List invokes ListContacts through the Contacts namespace.
-func (service *ContactsService) List(ctx context.Context, input *ListContactsRequest) (*ContactListResponse, error) {
-	return service.client.ListContacts(ctx, input)
+// ListEmail invokes ListEmailContacts through the Contacts namespace.
+func (service *ContactsService) ListEmail(ctx context.Context, input *ListEmailContactsRequest) (*ContactListResponse, error) {
+	return service.client.ListEmailContacts(ctx, input)
 }
 
-// Create invokes CreateContact through the Contacts namespace.
-func (service *ContactsService) Create(ctx context.Context, input *CreateContactRequest) (*ContactResponse, error) {
-	return service.client.CreateContact(ctx, input)
+// CreateEmail invokes CreateEmailContact through the Contacts namespace.
+func (service *ContactsService) CreateEmail(ctx context.Context, input *CreateEmailContactRequest) (*ContactResponse, error) {
+	return service.client.CreateEmailContact(ctx, input)
 }
 
-// Query invokes QueryContacts through the Contacts namespace.
-func (service *ContactsService) Query(ctx context.Context, input *QueryContactsRequest) (*ContactQueryResponse, error) {
-	return service.client.QueryContacts(ctx, input)
+// QueryEmail invokes QueryEmailContacts through the Contacts namespace.
+func (service *ContactsService) QueryEmail(ctx context.Context, input *QueryEmailContactsRequest) (*ContactQueryResponse, error) {
+	return service.client.QueryEmailContacts(ctx, input)
 }
 
-// Get invokes GetContact through the Contacts namespace.
-func (service *ContactsService) Get(ctx context.Context, input *GetContactRequest) (*ContactResponse, error) {
-	return service.client.GetContact(ctx, input)
+// DeleteEmail invokes DeleteEmailContact through the Contacts namespace.
+func (service *ContactsService) DeleteEmail(ctx context.Context, input *DeleteEmailContactRequest) error {
+	return service.client.DeleteEmailContact(ctx, input)
 }
 
-// Update invokes UpdateContact through the Contacts namespace.
-func (service *ContactsService) Update(ctx context.Context, input *UpdateContactRequest) (*ContactResponse, error) {
-	return service.client.UpdateContact(ctx, input)
+// GetEmail invokes GetEmailContact through the Contacts namespace.
+func (service *ContactsService) GetEmail(ctx context.Context, input *GetEmailContactRequest) (*ContactResponse, error) {
+	return service.client.GetEmailContact(ctx, input)
 }
 
-// ListSegments invokes ListSegments through the Contacts namespace.
-func (service *ContactsService) ListSegments(ctx context.Context, input *ListSegmentsRequest) (*SegmentListResponse, error) {
-	return service.client.ListSegments(ctx, input)
+// UpdateEmail invokes UpdateEmailContact through the Contacts namespace.
+func (service *ContactsService) UpdateEmail(ctx context.Context, input *UpdateEmailContactRequest) (*ContactResponse, error) {
+	return service.client.UpdateEmailContact(ctx, input)
 }
 
-// GetSegment invokes GetSegment through the Contacts namespace.
-func (service *ContactsService) GetSegment(ctx context.Context, input *GetSegmentRequest) (*SegmentResponse, error) {
-	return service.client.GetSegment(ctx, input)
+// ListEmailSegments invokes ListEmailSegments through the Contacts namespace.
+func (service *ContactsService) ListEmailSegments(ctx context.Context, input *ListEmailSegmentsRequest) (*SegmentListResponse, error) {
+	return service.client.ListEmailSegments(ctx, input)
+}
+
+// GetEmailSegment invokes GetEmailSegment through the Contacts namespace.
+func (service *ContactsService) GetEmailSegment(ctx context.Context, input *GetEmailSegmentRequest) (*SegmentResponse, error) {
+	return service.client.GetEmailSegment(ctx, input)
 }
 

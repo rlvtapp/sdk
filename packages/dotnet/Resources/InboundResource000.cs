@@ -15,10 +15,10 @@ public sealed partial class InboundResource
 
     internal InboundResource(PoolsterClient client) => _client = client;
 
-    /// <summary>Invokes GET /v1/email/inbound.</summary>
-    public Task<InboundListResponse> ListInboundAsync(long? limit = default, CancellationToken cancellationToken = default) => _client.ListInboundAsync(limit, cancellationToken);
+    /// <summary>Invokes GET /email/inbound.</summary>
+    public Task<InboundListResponse> ListEmailInboundAsync(long? limit = default, CancellationToken cancellationToken = default) => _client.ListEmailInboundAsync(limit, cancellationToken);
 
-    /// <summary>Invokes GET /v1/email/inbound/{message_id}.</summary>
-    public Task<InboundResponse> GetInboundAsync(string messageId, CancellationToken cancellationToken = default) => _client.GetInboundAsync(messageId, cancellationToken);
+    /// <summary>Invokes GET /email/inbound/{message_id}.</summary>
+    public Task<InboundResponse> GetEmailInboundAsync(string messageId, CancellationToken cancellationToken = default) => _client.GetEmailInboundAsync(messageId, cancellationToken);
 
 }

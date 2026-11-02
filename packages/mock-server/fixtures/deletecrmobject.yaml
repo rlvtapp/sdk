@@ -2,7 +2,7 @@
 # Default happy-path response
 when:
   method: DELETE
-  path_matches: '^/v1/crm/objects/[^/]+$'
+  path_matches: '^/crm/objects/[^/]+$'
 then:
   status: 200
   header:

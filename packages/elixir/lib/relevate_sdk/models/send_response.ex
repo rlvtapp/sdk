@@ -4,17 +4,21 @@ defmodule RelevateSdk.Models.SendResponse do
   @moduledoc "Generated model for SendResponse."
   alias RelevateSdk.JSON
 
-  @enforce_keys [:accepted_at, :api_version, :reason_code, :recipients, :send_id, :state]
-  defstruct [:accepted_at, :api_version, :reason_code, :recipients, :replayed, :send_id, :state, poolster_present_fields: nil, additional_properties: %{}]
+  @enforce_keys [:accepted_at, :api_version, :id, :reason_code, :recipients, :state, :tags]
+  defstruct [:accepted_at, :api_version, :id, :reason_code, :recipients, :replayed, :scheduled_at, :state, :tags, :thread_id, :topic_id, poolster_present_fields: nil, additional_properties: %{}]
 
   @type t :: %__MODULE__{
     accepted_at: String.t(),
     api_version: String.t(),
+    id: String.t(),
     reason_code: String.t(),
     recipients: [RelevateSdk.Models.RecipientResponse.t()],
     replayed: boolean() | nil | nil,
-    send_id: String.t(),
+    scheduled_at: String.t() | nil | nil,
     state: String.t(),
+    tags: [RelevateSdk.Models.SendTag.t()],
+    thread_id: String.t() | nil | nil,
+    topic_id: String.t() | nil | nil,
     poolster_present_fields: [String.t()] | nil,
     additional_properties: map(),
   }
@@ -24,22 +28,26 @@ defmodule RelevateSdk.Models.SendResponse do
     [
       {"accepted_at", model.accepted_at},
       {"api_version", model.api_version},
+      {"id", model.id},
       {"reason_code", model.reason_code},
       {"recipients", model.recipients},
       {"replayed", model.replayed},
-      {"send_id", model.send_id},
+      {"scheduled_at", model.scheduled_at},
       {"state", model.state},
+      {"tags", model.tags},
+      {"thread_id", model.thread_id},
+      {"topic_id", model.topic_id},
     ]
-    |> Enum.reject(fn {key, value} -> is_nil(value) and key not in ["accepted_at", "api_version", "reason_code", "recipients", "send_id", "state"] and key not in (model.poolster_present_fields || []) end)
+    |> Enum.reject(fn {key, value} -> is_nil(value) and key not in ["accepted_at", "api_version", "id", "reason_code", "recipients", "state", "tags"] and key not in (model.poolster_present_fields || []) end)
     |> Map.new(fn {key, value} -> {key, JSON.to_wire(value)} end)
-    |> then(fn known -> Map.merge(Map.drop(JSON.to_wire(model.additional_properties), ["accepted_at", "api_version", "reason_code", "recipients", "replayed", "send_id", "state"]), known) end)
+    |> then(fn known -> Map.merge(Map.drop(JSON.to_wire(model.additional_properties), ["accepted_at", "api_version", "id", "reason_code", "recipients", "replayed", "scheduled_at", "state", "tags", "thread_id", "topic_id"]), known) end)
   end
 
   @doc "Return a copy with explicit nulls present at the given wire keys."
   @spec with_present_fields(t(), [String.t() | atom()]) :: t()
   def with_present_fields(model, fields) when is_list(fields) do
     keys = Enum.map(fields, &to_string/1)
-    if Enum.any?(keys, &(&1 not in ["accepted_at", "api_version", "reason_code", "recipients", "replayed", "send_id", "state"])), do: raise(ArgumentError, "unknown model wire field")
+    if Enum.any?(keys, &(&1 not in ["accepted_at", "api_version", "id", "reason_code", "recipients", "replayed", "scheduled_at", "state", "tags", "thread_id", "topic_id"])), do: raise(ArgumentError, "unknown model wire field")
     %{model | poolster_present_fields: Enum.uniq((model.poolster_present_fields || []) ++ keys)}
   end
 
@@ -48,13 +56,17 @@ defmodule RelevateSdk.Models.SendResponse do
     %__MODULE__{
       accepted_at: Map.get(map, "accepted_at"),
       api_version: Map.get(map, "api_version"),
+      id: Map.get(map, "id"),
       reason_code: Map.get(map, "reason_code"),
       recipients: case Map.get(map, "recipients") do nil -> nil; items when is_list(items) -> Enum.map(items, fn item -> case item do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.RecipientResponse.from_map(map); other -> other end end); other -> other end,
       replayed: Map.get(map, "replayed"),
-      send_id: Map.get(map, "send_id"),
+      scheduled_at: Map.get(map, "scheduled_at"),
       state: Map.get(map, "state"),
+      tags: case Map.get(map, "tags") do nil -> nil; items when is_list(items) -> Enum.map(items, fn item -> case item do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.SendTag.from_map(map); other -> other end end); other -> other end,
+      thread_id: Map.get(map, "thread_id"),
+      topic_id: Map.get(map, "topic_id"),
       poolster_present_fields: Map.keys(map),
-      additional_properties: Map.drop(map, ["accepted_at", "api_version", "reason_code", "recipients", "replayed", "send_id", "state"]),
+      additional_properties: Map.drop(map, ["accepted_at", "api_version", "id", "reason_code", "recipients", "replayed", "scheduled_at", "state", "tags", "thread_id", "topic_id"]),
     }
   end
   def from_map(value), do: value

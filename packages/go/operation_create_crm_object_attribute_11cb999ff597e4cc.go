@@ -147,12 +147,12 @@ func decodeCreateCrmObjectAttributeError(requestError error) error {
 	}
 }
 
-// CreateCrmObjectAttribute invokes POST /v1/crm/objects/{object}/attributes.
+// CreateCrmObjectAttribute invokes POST /crm/objects/{object}/attributes.
 func (client *Client) CreateCrmObjectAttribute(ctx context.Context, input *CreateCrmObjectAttributeRequest) (*CrmMetadataAttributeResponse, error) {
 	if input == nil {
 		input = &CreateCrmObjectAttributeRequest{}
 	}
-	path := "/v1/crm/objects/{object}/attributes"
+	path := "/crm/objects/{object}/attributes"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{object}", url.PathEscape(fmt.Sprint(input.Object)))

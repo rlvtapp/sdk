@@ -5,24 +5,27 @@ defmodule RelevateSdk.Resources.Contacts.Chunk0000 do
 
   alias RelevateSdk.{API, Client}
 
-  @spec list_contacts(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def list_contacts(client, options \\ []), do: API.list_contacts(client, options)
+  @spec list_email_contacts(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def list_email_contacts(client, options \\ []), do: API.list_email_contacts(client, options)
 
-  @spec create_contact(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def create_contact(client, options \\ []), do: API.create_contact(client, options)
+  @spec create_email_contact(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def create_email_contact(client, options \\ []), do: API.create_email_contact(client, options)
 
-  @spec query_contacts(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def query_contacts(client, options \\ []), do: API.query_contacts(client, options)
+  @spec query_email_contacts(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def query_email_contacts(client, options \\ []), do: API.query_email_contacts(client, options)
 
-  @spec get_contact(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def get_contact(client, options \\ []), do: API.get_contact(client, options)
+  @spec delete_email_contact(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def delete_email_contact(client, options \\ []), do: API.delete_email_contact(client, options)
 
-  @spec update_contact(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def update_contact(client, options \\ []), do: API.update_contact(client, options)
+  @spec get_email_contact(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def get_email_contact(client, options \\ []), do: API.get_email_contact(client, options)
 
-  @spec list_segments(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def list_segments(client, options \\ []), do: API.list_segments(client, options)
+  @spec update_email_contact(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def update_email_contact(client, options \\ []), do: API.update_email_contact(client, options)
 
-  @spec get_segment(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def get_segment(client, options \\ []), do: API.get_segment(client, options)
+  @spec list_email_segments(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def list_email_segments(client, options \\ []), do: API.list_email_segments(client, options)
+
+  @spec get_email_segment(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def get_email_segment(client, options \\ []), do: API.get_email_segment(client, options)
 end

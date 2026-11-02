@@ -2,7 +2,7 @@
 # Default happy-path response
 when:
   method: PATCH
-  path_matches: '^/v1/crm/lists/[^/]+/attributes/[^/]+$'
+  path_matches: '^/crm/lists/[^/]+/attributes/[^/]+$'
 then:
   status: 200
   header:

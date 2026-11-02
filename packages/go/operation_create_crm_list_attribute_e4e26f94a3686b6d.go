@@ -147,12 +147,12 @@ func decodeCreateCrmListAttributeError(requestError error) error {
 	}
 }
 
-// CreateCrmListAttribute invokes POST /v1/crm/lists/{list}/attributes.
+// CreateCrmListAttribute invokes POST /crm/lists/{list}/attributes.
 func (client *Client) CreateCrmListAttribute(ctx context.Context, input *CreateCrmListAttributeRequest) (*CrmMetadataAttributeResponse, error) {
 	if input == nil {
 		input = &CreateCrmListAttributeRequest{}
 	}
-	path := "/v1/crm/lists/{list}/attributes"
+	path := "/crm/lists/{list}/attributes"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{list}", url.PathEscape(fmt.Sprint(input.List)))

@@ -11,7 +11,10 @@ type SendQuery struct {
 	MessageClass *string `json:"message_class,omitempty"`
 	Offset *int64 `json:"offset,omitempty"`
 	Reference *string `json:"reference,omitempty"`
+	Scheduled *bool `json:"scheduled,omitempty"`
 	State *string `json:"state,omitempty"`
+	Tags *[]SendTag `json:"tags,omitempty"`
+	TopicID *string `json:"topic_id,omitempty"`
 	AdditionalProperties map[string]json.RawMessage `json:"-"`
 	poolsterNullFields map[string]bool
 }
@@ -23,13 +26,18 @@ if raw,ok:=fields["limit"];ok && string(raw)=="null" {model.poolsterNullFields["
 if raw,ok:=fields["message_class"];ok && string(raw)=="null" {model.poolsterNullFields["message_class"]=true}
 if raw,ok:=fields["offset"];ok && string(raw)=="null" {model.poolsterNullFields["offset"]=true}
 if raw,ok:=fields["reference"];ok && string(raw)=="null" {model.poolsterNullFields["reference"]=true}
+if raw,ok:=fields["scheduled"];ok && string(raw)=="null" {model.poolsterNullFields["scheduled"]=true}
 if raw,ok:=fields["state"];ok && string(raw)=="null" {model.poolsterNullFields["state"]=true}
+if raw,ok:=fields["topic_id"];ok && string(raw)=="null" {model.poolsterNullFields["topic_id"]=true}
 model.AdditionalProperties=map[string]json.RawMessage{}
 delete(fields,"limit")
 delete(fields,"message_class")
 delete(fields,"offset")
 delete(fields,"reference")
+delete(fields,"scheduled")
 delete(fields,"state")
+delete(fields,"tags")
+delete(fields,"topic_id")
 for key,raw:=range fields {var value json.RawMessage;if err:=json.Unmarshal(raw,&value);err!=nil {return err};model.AdditionalProperties[key]=value}
 return nil
 }
@@ -41,6 +49,8 @@ if model.poolsterNullFields["limit"] && model.Limit==nil {fields["limit"]=json.R
 if model.poolsterNullFields["message_class"] && model.MessageClass==nil {fields["message_class"]=json.RawMessage("null")}
 if model.poolsterNullFields["offset"] && model.Offset==nil {fields["offset"]=json.RawMessage("null")}
 if model.poolsterNullFields["reference"] && model.Reference==nil {fields["reference"]=json.RawMessage("null")}
+if model.poolsterNullFields["scheduled"] && model.Scheduled==nil {fields["scheduled"]=json.RawMessage("null")}
 if model.poolsterNullFields["state"] && model.State==nil {fields["state"]=json.RawMessage("null")}
+if model.poolsterNullFields["topic_id"] && model.TopicID==nil {fields["topic_id"]=json.RawMessage("null")}
 return json.Marshal(fields)
 }

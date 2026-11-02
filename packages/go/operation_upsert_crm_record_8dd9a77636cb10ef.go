@@ -147,12 +147,12 @@ func decodeUpsertCrmRecordError(requestError error) error {
 	}
 }
 
-// UpsertCrmRecord invokes POST /v1/crm/objects/{object}/records/upsert.
+// UpsertCrmRecord invokes POST /crm/objects/{object}/records/upsert.
 func (client *Client) UpsertCrmRecord(ctx context.Context, input *UpsertCrmRecordRequest) (*CrmRecordResponse, error) {
 	if input == nil {
 		input = &UpsertCrmRecordRequest{}
 	}
-	path := "/v1/crm/objects/{object}/records/upsert"
+	path := "/crm/objects/{object}/records/upsert"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{object}", url.PathEscape(fmt.Sprint(input.Object)))

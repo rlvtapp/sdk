@@ -20,29 +20,44 @@ public class WebhooksResourcePart000 {
 
     protected WebhooksResourcePart000(Client client) { this.client = client; }
 
-    public WebhookListResponse list() {
+    public WebhookListResponse listEmail() {
   
-        return client.listWebhooks();
+        return client.listEmailWebhooks();
     }
 
-    public CreateWebhookResponse create(Client.CreateWebhookRequest input) {
+    public CreateWebhookResponse createEmail(Client.CreateEmailWebhookRequest input) {
   
-        return client.createWebhook(input);
+        return client.createEmailWebhook(input);
     }
 
-    public void delete(Client.DeleteWebhookRequest input) {
+    public void deleteEmail(Client.DeleteEmailWebhookRequest input) {
   
-        client.deleteWebhook(input);
+        client.deleteEmailWebhook(input);
     }
 
-    public WebhookResponse update(Client.UpdateWebhookRequest input) {
+    public WebhookResponse updateEmail(Client.UpdateEmailWebhookRequest input) {
   
-        return client.updateWebhook(input);
+        return client.updateEmailWebhook(input);
     }
 
-    public WebhookDeliveryListResponse listDeliveries(Client.ListDeliveriesRequest input) {
+    public WebhookDeliveryListResponse listEmailWebhookDeliveries(Client.ListEmailWebhookDeliveriesRequest input) {
   
-        return client.listDeliveries(input);
+        return client.listEmailWebhookDeliveries(input);
+    }
+
+    public void replayEmailWebhookDelivery(Client.ReplayEmailWebhookDeliveryRequest input) {
+  
+        client.replayEmailWebhookDelivery(input);
+    }
+
+    public void replayEmailWebhookRange(Client.ReplayEmailWebhookRangeRequest input) {
+  
+        client.replayEmailWebhookRange(input);
+    }
+
+    public void rotateEmailWebhookSecret(Client.RotateEmailWebhookSecretRequest input) {
+  
+        client.rotateEmailWebhookSecret(input);
     }
 
 }

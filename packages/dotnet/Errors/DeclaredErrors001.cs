@@ -5,10 +5,10 @@
 using System.Text.Json;
 namespace Poolster.RelevateSdk;
 
-/// <summary>Declared 401 response from list_deliveries.</summary>
-public sealed class ListDeliveriesStatus401Exception : ApiException
+/// <summary>Declared 401 response from cancelEmail.</summary>
+public sealed class CancelEmailStatus401Exception : ApiException
 {
-  public ListDeliveriesStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  public CancelEmailStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -17,10 +17,10 @@ public sealed class ListDeliveriesStatus401Exception : ApiException
   
 }
 
-/// <summary>Declared 422 response from list_deliveries.</summary>
-public sealed class ListDeliveriesStatus422Exception : ApiException
+/// <summary>Declared 403 response from cancelEmail.</summary>
+public sealed class CancelEmailStatus403Exception : ApiException
 {
-  public ListDeliveriesStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  public CancelEmailStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
   
     public ErrorResponse? Body {
     get;
@@ -29,12 +29,4527 @@ public sealed class ListDeliveriesStatus422Exception : ApiException
   
 }
 
-/// <summary>Declared 503 response from list_deliveries.</summary>
-public sealed class ListDeliveriesStatus503Exception : ApiException
+/// <summary>Declared 404 response from cancelEmail.</summary>
+public sealed class CancelEmailStatus404Exception : ApiException
 {
-  public ListDeliveriesStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  public CancelEmailStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
   
     public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from cancelEmail.</summary>
+public sealed class CancelEmailStatus409Exception : ApiException
+{
+  public CancelEmailStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from cancelEmail.</summary>
+public sealed class CancelEmailStatus503Exception : ApiException
+{
+  public CancelEmailStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getEmail.</summary>
+public sealed class GetEmailStatus401Exception : ApiException
+{
+  public GetEmailStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from getEmail.</summary>
+public sealed class GetEmailStatus403Exception : ApiException
+{
+  public GetEmailStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getEmail.</summary>
+public sealed class GetEmailStatus404Exception : ApiException
+{
+  public GetEmailStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getEmail.</summary>
+public sealed class GetEmailStatus503Exception : ApiException
+{
+  public GetEmailStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from rescheduleEmail.</summary>
+public sealed class RescheduleEmailStatus401Exception : ApiException
+{
+  public RescheduleEmailStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from rescheduleEmail.</summary>
+public sealed class RescheduleEmailStatus403Exception : ApiException
+{
+  public RescheduleEmailStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from rescheduleEmail.</summary>
+public sealed class RescheduleEmailStatus404Exception : ApiException
+{
+  public RescheduleEmailStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from rescheduleEmail.</summary>
+public sealed class RescheduleEmailStatus409Exception : ApiException
+{
+  public RescheduleEmailStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from rescheduleEmail.</summary>
+public sealed class RescheduleEmailStatus422Exception : ApiException
+{
+  public RescheduleEmailStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailEvents.</summary>
+public sealed class ListEmailEventsStatus401Exception : ApiException
+{
+  public ListEmailEventsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from listEmailEvents.</summary>
+public sealed class ListEmailEventsStatus403Exception : ApiException
+{
+  public ListEmailEventsStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from listEmailEvents.</summary>
+public sealed class ListEmailEventsStatus404Exception : ApiException
+{
+  public ListEmailEventsStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listEmailEvents.</summary>
+public sealed class ListEmailEventsStatus422Exception : ApiException
+{
+  public ListEmailEventsStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listEmailEvents.</summary>
+public sealed class ListEmailEventsStatus503Exception : ApiException
+{
+  public ListEmailEventsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailRecipientEvents.</summary>
+public sealed class ListEmailRecipientEventsStatus401Exception : ApiException
+{
+  public ListEmailRecipientEventsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from listEmailRecipientEvents.</summary>
+public sealed class ListEmailRecipientEventsStatus403Exception : ApiException
+{
+  public ListEmailRecipientEventsStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from listEmailRecipientEvents.</summary>
+public sealed class ListEmailRecipientEventsStatus404Exception : ApiException
+{
+  public ListEmailRecipientEventsStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listEmailRecipientEvents.</summary>
+public sealed class ListEmailRecipientEventsStatus422Exception : ApiException
+{
+  public ListEmailRecipientEventsStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listEmailRecipientEvents.</summary>
+public sealed class ListEmailRecipientEventsStatus503Exception : ApiException
+{
+  public ListEmailRecipientEventsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from trackEmailEvent.</summary>
+public sealed class TrackEmailEventStatus401Exception : ApiException
+{
+  public TrackEmailEventStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from trackEmailEvent.</summary>
+public sealed class TrackEmailEventStatus403Exception : ApiException
+{
+  public TrackEmailEventStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from trackEmailEvent.</summary>
+public sealed class TrackEmailEventStatus409Exception : ApiException
+{
+  public TrackEmailEventStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from trackEmailEvent.</summary>
+public sealed class TrackEmailEventStatus422Exception : ApiException
+{
+  public TrackEmailEventStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from trackEmailEvent.</summary>
+public sealed class TrackEmailEventStatus503Exception : ApiException
+{
+  public TrackEmailEventStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailInbound.</summary>
+public sealed class ListEmailInboundStatus401Exception : ApiException
+{
+  public ListEmailInboundStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listEmailInbound.</summary>
+public sealed class ListEmailInboundStatus422Exception : ApiException
+{
+  public ListEmailInboundStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listEmailInbound.</summary>
+public sealed class ListEmailInboundStatus503Exception : ApiException
+{
+  public ListEmailInboundStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getEmailInbound.</summary>
+public sealed class GetEmailInboundStatus401Exception : ApiException
+{
+  public GetEmailInboundStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getEmailInbound.</summary>
+public sealed class GetEmailInboundStatus404Exception : ApiException
+{
+  public GetEmailInboundStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getEmailInbound.</summary>
+public sealed class GetEmailInboundStatus503Exception : ApiException
+{
+  public GetEmailInboundStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from forwardEmailInbound.</summary>
+public sealed class ForwardEmailInboundStatus401Exception : ApiException
+{
+  public ForwardEmailInboundStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from forwardEmailInbound.</summary>
+public sealed class ForwardEmailInboundStatus404Exception : ApiException
+{
+  public ForwardEmailInboundStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from forwardEmailInbound.</summary>
+public sealed class ForwardEmailInboundStatus409Exception : ApiException
+{
+  public ForwardEmailInboundStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from forwardEmailInbound.</summary>
+public sealed class ForwardEmailInboundStatus422Exception : ApiException
+{
+  public ForwardEmailInboundStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 429 response from forwardEmailInbound.</summary>
+public sealed class ForwardEmailInboundStatus429Exception : ApiException
+{
+  public ForwardEmailInboundStatus429Exception(string responseBody, ErrorResponse? body) : base(429, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from forwardEmailInbound.</summary>
+public sealed class ForwardEmailInboundStatus503Exception : ApiException
+{
+  public ForwardEmailInboundStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from replyToEmailInbound.</summary>
+public sealed class ReplyToEmailInboundStatus401Exception : ApiException
+{
+  public ReplyToEmailInboundStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from replyToEmailInbound.</summary>
+public sealed class ReplyToEmailInboundStatus404Exception : ApiException
+{
+  public ReplyToEmailInboundStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from replyToEmailInbound.</summary>
+public sealed class ReplyToEmailInboundStatus409Exception : ApiException
+{
+  public ReplyToEmailInboundStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from replyToEmailInbound.</summary>
+public sealed class ReplyToEmailInboundStatus422Exception : ApiException
+{
+  public ReplyToEmailInboundStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 429 response from replyToEmailInbound.</summary>
+public sealed class ReplyToEmailInboundStatus429Exception : ApiException
+{
+  public ReplyToEmailInboundStatus429Exception(string responseBody, ErrorResponse? body) : base(429, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from replyToEmailInbound.</summary>
+public sealed class ReplyToEmailInboundStatus503Exception : ApiException
+{
+  public ReplyToEmailInboundStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailInboxes.</summary>
+public sealed class ListEmailInboxesStatus401Exception : ApiException
+{
+  public ListEmailInboxesStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listEmailInboxes.</summary>
+public sealed class ListEmailInboxesStatus422Exception : ApiException
+{
+  public ListEmailInboxesStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listEmailInboxes.</summary>
+public sealed class ListEmailInboxesStatus503Exception : ApiException
+{
+  public ListEmailInboxesStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from createEmailInbox.</summary>
+public sealed class CreateEmailInboxStatus401Exception : ApiException
+{
+  public CreateEmailInboxStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from createEmailInbox.</summary>
+public sealed class CreateEmailInboxStatus409Exception : ApiException
+{
+  public CreateEmailInboxStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from createEmailInbox.</summary>
+public sealed class CreateEmailInboxStatus422Exception : ApiException
+{
+  public CreateEmailInboxStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 429 response from createEmailInbox.</summary>
+public sealed class CreateEmailInboxStatus429Exception : ApiException
+{
+  public CreateEmailInboxStatus429Exception(string responseBody, ErrorResponse? body) : base(429, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from createEmailInbox.</summary>
+public sealed class CreateEmailInboxStatus503Exception : ApiException
+{
+  public CreateEmailInboxStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from disableEmailInbox.</summary>
+public sealed class DisableEmailInboxStatus401Exception : ApiException
+{
+  public DisableEmailInboxStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from disableEmailInbox.</summary>
+public sealed class DisableEmailInboxStatus404Exception : ApiException
+{
+  public DisableEmailInboxStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from disableEmailInbox.</summary>
+public sealed class DisableEmailInboxStatus503Exception : ApiException
+{
+  public DisableEmailInboxStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getEmailInbox.</summary>
+public sealed class GetEmailInboxStatus401Exception : ApiException
+{
+  public GetEmailInboxStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getEmailInbox.</summary>
+public sealed class GetEmailInboxStatus404Exception : ApiException
+{
+  public GetEmailInboxStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getEmailInbox.</summary>
+public sealed class GetEmailInboxStatus503Exception : ApiException
+{
+  public GetEmailInboxStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from sendEmailInboxMessage.</summary>
+public sealed class SendEmailInboxMessageStatus401Exception : ApiException
+{
+  public SendEmailInboxMessageStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from sendEmailInboxMessage.</summary>
+public sealed class SendEmailInboxMessageStatus404Exception : ApiException
+{
+  public SendEmailInboxMessageStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from sendEmailInboxMessage.</summary>
+public sealed class SendEmailInboxMessageStatus409Exception : ApiException
+{
+  public SendEmailInboxMessageStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from sendEmailInboxMessage.</summary>
+public sealed class SendEmailInboxMessageStatus422Exception : ApiException
+{
+  public SendEmailInboxMessageStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 429 response from sendEmailInboxMessage.</summary>
+public sealed class SendEmailInboxMessageStatus429Exception : ApiException
+{
+  public SendEmailInboxMessageStatus429Exception(string responseBody, ErrorResponse? body) : base(429, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from sendEmailInboxMessage.</summary>
+public sealed class SendEmailInboxMessageStatus503Exception : ApiException
+{
+  public SendEmailInboxMessageStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailThreads.</summary>
+public sealed class ListEmailThreadsStatus401Exception : ApiException
+{
+  public ListEmailThreadsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from listEmailThreads.</summary>
+public sealed class ListEmailThreadsStatus404Exception : ApiException
+{
+  public ListEmailThreadsStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listEmailThreads.</summary>
+public sealed class ListEmailThreadsStatus422Exception : ApiException
+{
+  public ListEmailThreadsStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listEmailThreads.</summary>
+public sealed class ListEmailThreadsStatus503Exception : ApiException
+{
+  public ListEmailThreadsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailLabels.</summary>
+public sealed class ListEmailLabelsStatus401Exception : ApiException
+{
+  public ListEmailLabelsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listEmailLabels.</summary>
+public sealed class ListEmailLabelsStatus503Exception : ApiException
+{
+  public ListEmailLabelsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from createEmailLabel.</summary>
+public sealed class CreateEmailLabelStatus401Exception : ApiException
+{
+  public CreateEmailLabelStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from createEmailLabel.</summary>
+public sealed class CreateEmailLabelStatus409Exception : ApiException
+{
+  public CreateEmailLabelStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from createEmailLabel.</summary>
+public sealed class CreateEmailLabelStatus422Exception : ApiException
+{
+  public CreateEmailLabelStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from createEmailLabel.</summary>
+public sealed class CreateEmailLabelStatus503Exception : ApiException
+{
+  public CreateEmailLabelStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from deleteEmailLabel.</summary>
+public sealed class DeleteEmailLabelStatus401Exception : ApiException
+{
+  public DeleteEmailLabelStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from deleteEmailLabel.</summary>
+public sealed class DeleteEmailLabelStatus404Exception : ApiException
+{
+  public DeleteEmailLabelStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from deleteEmailLabel.</summary>
+public sealed class DeleteEmailLabelStatus503Exception : ApiException
+{
+  public DeleteEmailLabelStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailSegments.</summary>
+public sealed class ListEmailSegmentsStatus401Exception : ApiException
+{
+  public ListEmailSegmentsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listEmailSegments.</summary>
+public sealed class ListEmailSegmentsStatus503Exception : ApiException
+{
+  public ListEmailSegmentsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getEmailSegment.</summary>
+public sealed class GetEmailSegmentStatus401Exception : ApiException
+{
+  public GetEmailSegmentStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getEmailSegment.</summary>
+public sealed class GetEmailSegmentStatus404Exception : ApiException
+{
+  public GetEmailSegmentStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getEmailSegment.</summary>
+public sealed class GetEmailSegmentStatus503Exception : ApiException
+{
+  public GetEmailSegmentStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailSenderIdentities.</summary>
+public sealed class ListEmailSenderIdentitiesStatus401Exception : ApiException
+{
+  public ListEmailSenderIdentitiesStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listEmailSenderIdentities.</summary>
+public sealed class ListEmailSenderIdentitiesStatus503Exception : ApiException
+{
+  public ListEmailSenderIdentitiesStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getEmailSenderIdentity.</summary>
+public sealed class GetEmailSenderIdentityStatus401Exception : ApiException
+{
+  public GetEmailSenderIdentityStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getEmailSenderIdentity.</summary>
+public sealed class GetEmailSenderIdentityStatus404Exception : ApiException
+{
+  public GetEmailSenderIdentityStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getEmailSenderIdentity.</summary>
+public sealed class GetEmailSenderIdentityStatus503Exception : ApiException
+{
+  public GetEmailSenderIdentityStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailSuppressions.</summary>
+public sealed class ListEmailSuppressionsStatus401Exception : ApiException
+{
+  public ListEmailSuppressionsStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from listEmailSuppressions.</summary>
+public sealed class ListEmailSuppressionsStatus403Exception : ApiException
+{
+  public ListEmailSuppressionsStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listEmailSuppressions.</summary>
+public sealed class ListEmailSuppressionsStatus422Exception : ApiException
+{
+  public ListEmailSuppressionsStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listEmailSuppressions.</summary>
+public sealed class ListEmailSuppressionsStatus503Exception : ApiException
+{
+  public ListEmailSuppressionsStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from createEmailSuppression.</summary>
+public sealed class CreateEmailSuppressionStatus401Exception : ApiException
+{
+  public CreateEmailSuppressionStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from createEmailSuppression.</summary>
+public sealed class CreateEmailSuppressionStatus403Exception : ApiException
+{
+  public CreateEmailSuppressionStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from createEmailSuppression.</summary>
+public sealed class CreateEmailSuppressionStatus422Exception : ApiException
+{
+  public CreateEmailSuppressionStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from createEmailSuppression.</summary>
+public sealed class CreateEmailSuppressionStatus503Exception : ApiException
+{
+  public CreateEmailSuppressionStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from createEmailSuppressionBatch.</summary>
+public sealed class CreateEmailSuppressionBatchStatus401Exception : ApiException
+{
+  public CreateEmailSuppressionBatchStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from createEmailSuppressionBatch.</summary>
+public sealed class CreateEmailSuppressionBatchStatus403Exception : ApiException
+{
+  public CreateEmailSuppressionBatchStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from createEmailSuppressionBatch.</summary>
+public sealed class CreateEmailSuppressionBatchStatus422Exception : ApiException
+{
+  public CreateEmailSuppressionBatchStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from createEmailSuppressionBatch.</summary>
+public sealed class CreateEmailSuppressionBatchStatus503Exception : ApiException
+{
+  public CreateEmailSuppressionBatchStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from deleteEmailSuppression.</summary>
+public sealed class DeleteEmailSuppressionStatus401Exception : ApiException
+{
+  public DeleteEmailSuppressionStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from deleteEmailSuppression.</summary>
+public sealed class DeleteEmailSuppressionStatus403Exception : ApiException
+{
+  public DeleteEmailSuppressionStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from deleteEmailSuppression.</summary>
+public sealed class DeleteEmailSuppressionStatus404Exception : ApiException
+{
+  public DeleteEmailSuppressionStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from deleteEmailSuppression.</summary>
+public sealed class DeleteEmailSuppressionStatus409Exception : ApiException
+{
+  public DeleteEmailSuppressionStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from deleteEmailSuppression.</summary>
+public sealed class DeleteEmailSuppressionStatus422Exception : ApiException
+{
+  public DeleteEmailSuppressionStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from deleteEmailSuppression.</summary>
+public sealed class DeleteEmailSuppressionStatus503Exception : ApiException
+{
+  public DeleteEmailSuppressionStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getEmailSuppression.</summary>
+public sealed class GetEmailSuppressionStatus401Exception : ApiException
+{
+  public GetEmailSuppressionStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from getEmailSuppression.</summary>
+public sealed class GetEmailSuppressionStatus403Exception : ApiException
+{
+  public GetEmailSuppressionStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getEmailSuppression.</summary>
+public sealed class GetEmailSuppressionStatus404Exception : ApiException
+{
+  public GetEmailSuppressionStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from getEmailSuppression.</summary>
+public sealed class GetEmailSuppressionStatus422Exception : ApiException
+{
+  public GetEmailSuppressionStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getEmailSuppression.</summary>
+public sealed class GetEmailSuppressionStatus503Exception : ApiException
+{
+  public GetEmailSuppressionStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailTemplates.</summary>
+public sealed class ListEmailTemplatesStatus401Exception : ApiException
+{
+  public ListEmailTemplatesStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from listEmailTemplates.</summary>
+public sealed class ListEmailTemplatesStatus403Exception : ApiException
+{
+  public ListEmailTemplatesStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from createEmailTemplate.</summary>
+public sealed class CreateEmailTemplateStatus401Exception : ApiException
+{
+  public CreateEmailTemplateStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from createEmailTemplate.</summary>
+public sealed class CreateEmailTemplateStatus403Exception : ApiException
+{
+  public CreateEmailTemplateStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from createEmailTemplate.</summary>
+public sealed class CreateEmailTemplateStatus409Exception : ApiException
+{
+  public CreateEmailTemplateStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from createEmailTemplate.</summary>
+public sealed class CreateEmailTemplateStatus422Exception : ApiException
+{
+  public CreateEmailTemplateStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from deleteEmailTemplate.</summary>
+public sealed class DeleteEmailTemplateStatus404Exception : ApiException
+{
+  public DeleteEmailTemplateStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from deleteEmailTemplate.</summary>
+public sealed class DeleteEmailTemplateStatus409Exception : ApiException
+{
+  public DeleteEmailTemplateStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getEmailTemplate.</summary>
+public sealed class GetEmailTemplateStatus404Exception : ApiException
+{
+  public GetEmailTemplateStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from getEmailTemplate.</summary>
+public sealed class GetEmailTemplateStatus409Exception : ApiException
+{
+  public GetEmailTemplateStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from getEmailTemplate.</summary>
+public sealed class GetEmailTemplateStatus422Exception : ApiException
+{
+  public GetEmailTemplateStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from updateEmailTemplate.</summary>
+public sealed class UpdateEmailTemplateStatus404Exception : ApiException
+{
+  public UpdateEmailTemplateStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from updateEmailTemplate.</summary>
+public sealed class UpdateEmailTemplateStatus409Exception : ApiException
+{
+  public UpdateEmailTemplateStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from updateEmailTemplate.</summary>
+public sealed class UpdateEmailTemplateStatus422Exception : ApiException
+{
+  public UpdateEmailTemplateStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from duplicateEmailTemplate.</summary>
+public sealed class DuplicateEmailTemplateStatus401Exception : ApiException
+{
+  public DuplicateEmailTemplateStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from duplicateEmailTemplate.</summary>
+public sealed class DuplicateEmailTemplateStatus403Exception : ApiException
+{
+  public DuplicateEmailTemplateStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from duplicateEmailTemplate.</summary>
+public sealed class DuplicateEmailTemplateStatus404Exception : ApiException
+{
+  public DuplicateEmailTemplateStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from duplicateEmailTemplate.</summary>
+public sealed class DuplicateEmailTemplateStatus409Exception : ApiException
+{
+  public DuplicateEmailTemplateStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from duplicateEmailTemplate.</summary>
+public sealed class DuplicateEmailTemplateStatus422Exception : ApiException
+{
+  public DuplicateEmailTemplateStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from publishEmailTemplate.</summary>
+public sealed class PublishEmailTemplateStatus404Exception : ApiException
+{
+  public PublishEmailTemplateStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from publishEmailTemplate.</summary>
+public sealed class PublishEmailTemplateStatus422Exception : ApiException
+{
+  public PublishEmailTemplateStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from renderEmailTemplate.</summary>
+public sealed class RenderEmailTemplateStatus404Exception : ApiException
+{
+  public RenderEmailTemplateStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from renderEmailTemplate.</summary>
+public sealed class RenderEmailTemplateStatus409Exception : ApiException
+{
+  public RenderEmailTemplateStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from renderEmailTemplate.</summary>
+public sealed class RenderEmailTemplateStatus422Exception : ApiException
+{
+  public RenderEmailTemplateStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getEmailThread.</summary>
+public sealed class GetEmailThreadStatus401Exception : ApiException
+{
+  public GetEmailThreadStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getEmailThread.</summary>
+public sealed class GetEmailThreadStatus404Exception : ApiException
+{
+  public GetEmailThreadStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from getEmailThread.</summary>
+public sealed class GetEmailThreadStatus422Exception : ApiException
+{
+  public GetEmailThreadStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getEmailThread.</summary>
+public sealed class GetEmailThreadStatus503Exception : ApiException
+{
+  public GetEmailThreadStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from updateEmailThread.</summary>
+public sealed class UpdateEmailThreadStatus401Exception : ApiException
+{
+  public UpdateEmailThreadStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from updateEmailThread.</summary>
+public sealed class UpdateEmailThreadStatus404Exception : ApiException
+{
+  public UpdateEmailThreadStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from updateEmailThread.</summary>
+public sealed class UpdateEmailThreadStatus422Exception : ApiException
+{
+  public UpdateEmailThreadStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from updateEmailThread.</summary>
+public sealed class UpdateEmailThreadStatus503Exception : ApiException
+{
+  public UpdateEmailThreadStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from addEmailThreadNote.</summary>
+public sealed class AddEmailThreadNoteStatus401Exception : ApiException
+{
+  public AddEmailThreadNoteStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from addEmailThreadNote.</summary>
+public sealed class AddEmailThreadNoteStatus404Exception : ApiException
+{
+  public AddEmailThreadNoteStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from addEmailThreadNote.</summary>
+public sealed class AddEmailThreadNoteStatus422Exception : ApiException
+{
+  public AddEmailThreadNoteStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from addEmailThreadNote.</summary>
+public sealed class AddEmailThreadNoteStatus503Exception : ApiException
+{
+  public AddEmailThreadNoteStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from markEmailThreadRead.</summary>
+public sealed class MarkEmailThreadReadStatus401Exception : ApiException
+{
+  public MarkEmailThreadReadStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from markEmailThreadRead.</summary>
+public sealed class MarkEmailThreadReadStatus404Exception : ApiException
+{
+  public MarkEmailThreadReadStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from markEmailThreadRead.</summary>
+public sealed class MarkEmailThreadReadStatus503Exception : ApiException
+{
+  public MarkEmailThreadReadStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getEmailUsage.</summary>
+public sealed class GetEmailUsageStatus401Exception : ApiException
+{
+  public GetEmailUsageStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from getEmailUsage.</summary>
+public sealed class GetEmailUsageStatus403Exception : ApiException
+{
+  public GetEmailUsageStatus403Exception(string responseBody, ErrorResponse? body) : base(403, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getEmailUsage.</summary>
+public sealed class GetEmailUsageStatus503Exception : ApiException
+{
+  public GetEmailUsageStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailWebhooks.</summary>
+public sealed class ListEmailWebhooksStatus401Exception : ApiException
+{
+  public ListEmailWebhooksStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listEmailWebhooks.</summary>
+public sealed class ListEmailWebhooksStatus503Exception : ApiException
+{
+  public ListEmailWebhooksStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from createEmailWebhook.</summary>
+public sealed class CreateEmailWebhookStatus401Exception : ApiException
+{
+  public CreateEmailWebhookStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from createEmailWebhook.</summary>
+public sealed class CreateEmailWebhookStatus422Exception : ApiException
+{
+  public CreateEmailWebhookStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from createEmailWebhook.</summary>
+public sealed class CreateEmailWebhookStatus503Exception : ApiException
+{
+  public CreateEmailWebhookStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from deleteEmailWebhook.</summary>
+public sealed class DeleteEmailWebhookStatus401Exception : ApiException
+{
+  public DeleteEmailWebhookStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from deleteEmailWebhook.</summary>
+public sealed class DeleteEmailWebhookStatus404Exception : ApiException
+{
+  public DeleteEmailWebhookStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from deleteEmailWebhook.</summary>
+public sealed class DeleteEmailWebhookStatus503Exception : ApiException
+{
+  public DeleteEmailWebhookStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from updateEmailWebhook.</summary>
+public sealed class UpdateEmailWebhookStatus401Exception : ApiException
+{
+  public UpdateEmailWebhookStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from updateEmailWebhook.</summary>
+public sealed class UpdateEmailWebhookStatus404Exception : ApiException
+{
+  public UpdateEmailWebhookStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from updateEmailWebhook.</summary>
+public sealed class UpdateEmailWebhookStatus422Exception : ApiException
+{
+  public UpdateEmailWebhookStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from updateEmailWebhook.</summary>
+public sealed class UpdateEmailWebhookStatus503Exception : ApiException
+{
+  public UpdateEmailWebhookStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listEmailWebhookDeliveries.</summary>
+public sealed class ListEmailWebhookDeliveriesStatus401Exception : ApiException
+{
+  public ListEmailWebhookDeliveriesStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listEmailWebhookDeliveries.</summary>
+public sealed class ListEmailWebhookDeliveriesStatus422Exception : ApiException
+{
+  public ListEmailWebhookDeliveriesStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listEmailWebhookDeliveries.</summary>
+public sealed class ListEmailWebhookDeliveriesStatus503Exception : ApiException
+{
+  public ListEmailWebhookDeliveriesStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from replayEmailWebhookDelivery.</summary>
+public sealed class ReplayEmailWebhookDeliveryStatus401Exception : ApiException
+{
+  public ReplayEmailWebhookDeliveryStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from replayEmailWebhookDelivery.</summary>
+public sealed class ReplayEmailWebhookDeliveryStatus404Exception : ApiException
+{
+  public ReplayEmailWebhookDeliveryStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from replayEmailWebhookDelivery.</summary>
+public sealed class ReplayEmailWebhookDeliveryStatus409Exception : ApiException
+{
+  public ReplayEmailWebhookDeliveryStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from replayEmailWebhookDelivery.</summary>
+public sealed class ReplayEmailWebhookDeliveryStatus503Exception : ApiException
+{
+  public ReplayEmailWebhookDeliveryStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from replayEmailWebhookRange.</summary>
+public sealed class ReplayEmailWebhookRangeStatus401Exception : ApiException
+{
+  public ReplayEmailWebhookRangeStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from replayEmailWebhookRange.</summary>
+public sealed class ReplayEmailWebhookRangeStatus404Exception : ApiException
+{
+  public ReplayEmailWebhookRangeStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from replayEmailWebhookRange.</summary>
+public sealed class ReplayEmailWebhookRangeStatus409Exception : ApiException
+{
+  public ReplayEmailWebhookRangeStatus409Exception(string responseBody, ErrorResponse? body) : base(409, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from replayEmailWebhookRange.</summary>
+public sealed class ReplayEmailWebhookRangeStatus422Exception : ApiException
+{
+  public ReplayEmailWebhookRangeStatus422Exception(string responseBody, ErrorResponse? body) : base(422, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from replayEmailWebhookRange.</summary>
+public sealed class ReplayEmailWebhookRangeStatus503Exception : ApiException
+{
+  public ReplayEmailWebhookRangeStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from rotateEmailWebhookSecret.</summary>
+public sealed class RotateEmailWebhookSecretStatus401Exception : ApiException
+{
+  public RotateEmailWebhookSecretStatus401Exception(string responseBody, ErrorResponse? body) : base(401, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from rotateEmailWebhookSecret.</summary>
+public sealed class RotateEmailWebhookSecretStatus404Exception : ApiException
+{
+  public RotateEmailWebhookSecretStatus404Exception(string responseBody, ErrorResponse? body) : base(404, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from rotateEmailWebhookSecret.</summary>
+public sealed class RotateEmailWebhookSecretStatus503Exception : ApiException
+{
+  public RotateEmailWebhookSecretStatus503Exception(string responseBody, ErrorResponse? body) : base(503, responseBody) => Body = body;
+  
+    public ErrorResponse? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from getScheduleBookingPage.</summary>
+public sealed class GetScheduleBookingPageStatus400Exception : ApiException
+{
+  public GetScheduleBookingPageStatus400Exception(string responseBody) : base(400, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getScheduleBookingPage.</summary>
+public sealed class GetScheduleBookingPageStatus404Exception : ApiException
+{
+  public GetScheduleBookingPageStatus404Exception(string responseBody) : base(404, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getScheduleBookingPage.</summary>
+public sealed class GetScheduleBookingPageStatus503Exception : ApiException
+{
+  public GetScheduleBookingPageStatus503Exception(string responseBody) : base(503, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from listScheduleBookings.</summary>
+public sealed class ListScheduleBookingsStatus400Exception : ApiException
+{
+  public ListScheduleBookingsStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listScheduleBookings.</summary>
+public sealed class ListScheduleBookingsStatus401Exception : ApiException
+{
+  public ListScheduleBookingsStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from listScheduleBookings.</summary>
+public sealed class ListScheduleBookingsStatus403Exception : ApiException
+{
+  public ListScheduleBookingsStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from listScheduleBookings.</summary>
+public sealed class ListScheduleBookingsStatus404Exception : ApiException
+{
+  public ListScheduleBookingsStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from listScheduleBookings.</summary>
+public sealed class ListScheduleBookingsStatus409Exception : ApiException
+{
+  public ListScheduleBookingsStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from listScheduleBookings.</summary>
+public sealed class ListScheduleBookingsStatus413Exception : ApiException
+{
+  public ListScheduleBookingsStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from listScheduleBookings.</summary>
+public sealed class ListScheduleBookingsStatus415Exception : ApiException
+{
+  public ListScheduleBookingsStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listScheduleBookings.</summary>
+public sealed class ListScheduleBookingsStatus422Exception : ApiException
+{
+  public ListScheduleBookingsStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listScheduleBookings.</summary>
+public sealed class ListScheduleBookingsStatus503Exception : ApiException
+{
+  public ListScheduleBookingsStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from createScheduleBooking.</summary>
+public sealed class CreateScheduleBookingStatus400Exception : ApiException
+{
+  public CreateScheduleBookingStatus400Exception(string responseBody) : base(400, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from createScheduleBooking.</summary>
+public sealed class CreateScheduleBookingStatus404Exception : ApiException
+{
+  public CreateScheduleBookingStatus404Exception(string responseBody) : base(404, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from createScheduleBooking.</summary>
+public sealed class CreateScheduleBookingStatus409Exception : ApiException
+{
+  public CreateScheduleBookingStatus409Exception(string responseBody) : base(409, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from createScheduleBooking.</summary>
+public sealed class CreateScheduleBookingStatus503Exception : ApiException
+{
+  public CreateScheduleBookingStatus503Exception(string responseBody) : base(503, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from getScheduleBooking.</summary>
+public sealed class GetScheduleBookingStatus400Exception : ApiException
+{
+  public GetScheduleBookingStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getScheduleBooking.</summary>
+public sealed class GetScheduleBookingStatus401Exception : ApiException
+{
+  public GetScheduleBookingStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from getScheduleBooking.</summary>
+public sealed class GetScheduleBookingStatus403Exception : ApiException
+{
+  public GetScheduleBookingStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getScheduleBooking.</summary>
+public sealed class GetScheduleBookingStatus404Exception : ApiException
+{
+  public GetScheduleBookingStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from getScheduleBooking.</summary>
+public sealed class GetScheduleBookingStatus409Exception : ApiException
+{
+  public GetScheduleBookingStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from getScheduleBooking.</summary>
+public sealed class GetScheduleBookingStatus413Exception : ApiException
+{
+  public GetScheduleBookingStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from getScheduleBooking.</summary>
+public sealed class GetScheduleBookingStatus415Exception : ApiException
+{
+  public GetScheduleBookingStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from getScheduleBooking.</summary>
+public sealed class GetScheduleBookingStatus422Exception : ApiException
+{
+  public GetScheduleBookingStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getScheduleBooking.</summary>
+public sealed class GetScheduleBookingStatus503Exception : ApiException
+{
+  public GetScheduleBookingStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from markScheduleBookingAttendance.</summary>
+public sealed class MarkScheduleBookingAttendanceStatus400Exception : ApiException
+{
+  public MarkScheduleBookingAttendanceStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from markScheduleBookingAttendance.</summary>
+public sealed class MarkScheduleBookingAttendanceStatus401Exception : ApiException
+{
+  public MarkScheduleBookingAttendanceStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from markScheduleBookingAttendance.</summary>
+public sealed class MarkScheduleBookingAttendanceStatus403Exception : ApiException
+{
+  public MarkScheduleBookingAttendanceStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from markScheduleBookingAttendance.</summary>
+public sealed class MarkScheduleBookingAttendanceStatus404Exception : ApiException
+{
+  public MarkScheduleBookingAttendanceStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from markScheduleBookingAttendance.</summary>
+public sealed class MarkScheduleBookingAttendanceStatus409Exception : ApiException
+{
+  public MarkScheduleBookingAttendanceStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from markScheduleBookingAttendance.</summary>
+public sealed class MarkScheduleBookingAttendanceStatus413Exception : ApiException
+{
+  public MarkScheduleBookingAttendanceStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from markScheduleBookingAttendance.</summary>
+public sealed class MarkScheduleBookingAttendanceStatus415Exception : ApiException
+{
+  public MarkScheduleBookingAttendanceStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from markScheduleBookingAttendance.</summary>
+public sealed class MarkScheduleBookingAttendanceStatus422Exception : ApiException
+{
+  public MarkScheduleBookingAttendanceStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from markScheduleBookingAttendance.</summary>
+public sealed class MarkScheduleBookingAttendanceStatus503Exception : ApiException
+{
+  public MarkScheduleBookingAttendanceStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from cancelScheduleBooking.</summary>
+public sealed class CancelScheduleBookingStatus400Exception : ApiException
+{
+  public CancelScheduleBookingStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from cancelScheduleBooking.</summary>
+public sealed class CancelScheduleBookingStatus401Exception : ApiException
+{
+  public CancelScheduleBookingStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from cancelScheduleBooking.</summary>
+public sealed class CancelScheduleBookingStatus403Exception : ApiException
+{
+  public CancelScheduleBookingStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from cancelScheduleBooking.</summary>
+public sealed class CancelScheduleBookingStatus404Exception : ApiException
+{
+  public CancelScheduleBookingStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from cancelScheduleBooking.</summary>
+public sealed class CancelScheduleBookingStatus409Exception : ApiException
+{
+  public CancelScheduleBookingStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from cancelScheduleBooking.</summary>
+public sealed class CancelScheduleBookingStatus413Exception : ApiException
+{
+  public CancelScheduleBookingStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from cancelScheduleBooking.</summary>
+public sealed class CancelScheduleBookingStatus415Exception : ApiException
+{
+  public CancelScheduleBookingStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from cancelScheduleBooking.</summary>
+public sealed class CancelScheduleBookingStatus422Exception : ApiException
+{
+  public CancelScheduleBookingStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from cancelScheduleBooking.</summary>
+public sealed class CancelScheduleBookingStatus503Exception : ApiException
+{
+  public CancelScheduleBookingStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from getScheduleBookingFeedback.</summary>
+public sealed class GetScheduleBookingFeedbackStatus400Exception : ApiException
+{
+  public GetScheduleBookingFeedbackStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getScheduleBookingFeedback.</summary>
+public sealed class GetScheduleBookingFeedbackStatus401Exception : ApiException
+{
+  public GetScheduleBookingFeedbackStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getScheduleBookingFeedback.</summary>
+public sealed class GetScheduleBookingFeedbackStatus404Exception : ApiException
+{
+  public GetScheduleBookingFeedbackStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from getScheduleBookingFeedback.</summary>
+public sealed class GetScheduleBookingFeedbackStatus409Exception : ApiException
+{
+  public GetScheduleBookingFeedbackStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from getScheduleBookingFeedback.</summary>
+public sealed class GetScheduleBookingFeedbackStatus422Exception : ApiException
+{
+  public GetScheduleBookingFeedbackStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getScheduleBookingFeedback.</summary>
+public sealed class GetScheduleBookingFeedbackStatus503Exception : ApiException
+{
+  public GetScheduleBookingFeedbackStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from rateScheduleBooking.</summary>
+public sealed class RateScheduleBookingStatus400Exception : ApiException
+{
+  public RateScheduleBookingStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from rateScheduleBooking.</summary>
+public sealed class RateScheduleBookingStatus401Exception : ApiException
+{
+  public RateScheduleBookingStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from rateScheduleBooking.</summary>
+public sealed class RateScheduleBookingStatus404Exception : ApiException
+{
+  public RateScheduleBookingStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from rateScheduleBooking.</summary>
+public sealed class RateScheduleBookingStatus409Exception : ApiException
+{
+  public RateScheduleBookingStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from rateScheduleBooking.</summary>
+public sealed class RateScheduleBookingStatus422Exception : ApiException
+{
+  public RateScheduleBookingStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from rateScheduleBooking.</summary>
+public sealed class RateScheduleBookingStatus503Exception : ApiException
+{
+  public RateScheduleBookingStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from createScheduleBookingManagementLink.</summary>
+public sealed class CreateScheduleBookingManagementLinkStatus400Exception : ApiException
+{
+  public CreateScheduleBookingManagementLinkStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from createScheduleBookingManagementLink.</summary>
+public sealed class CreateScheduleBookingManagementLinkStatus401Exception : ApiException
+{
+  public CreateScheduleBookingManagementLinkStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from createScheduleBookingManagementLink.</summary>
+public sealed class CreateScheduleBookingManagementLinkStatus403Exception : ApiException
+{
+  public CreateScheduleBookingManagementLinkStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from createScheduleBookingManagementLink.</summary>
+public sealed class CreateScheduleBookingManagementLinkStatus404Exception : ApiException
+{
+  public CreateScheduleBookingManagementLinkStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from createScheduleBookingManagementLink.</summary>
+public sealed class CreateScheduleBookingManagementLinkStatus409Exception : ApiException
+{
+  public CreateScheduleBookingManagementLinkStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from createScheduleBookingManagementLink.</summary>
+public sealed class CreateScheduleBookingManagementLinkStatus413Exception : ApiException
+{
+  public CreateScheduleBookingManagementLinkStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from createScheduleBookingManagementLink.</summary>
+public sealed class CreateScheduleBookingManagementLinkStatus415Exception : ApiException
+{
+  public CreateScheduleBookingManagementLinkStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from createScheduleBookingManagementLink.</summary>
+public sealed class CreateScheduleBookingManagementLinkStatus422Exception : ApiException
+{
+  public CreateScheduleBookingManagementLinkStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from createScheduleBookingManagementLink.</summary>
+public sealed class CreateScheduleBookingManagementLinkStatus503Exception : ApiException
+{
+  public CreateScheduleBookingManagementLinkStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from rescheduleScheduleBooking.</summary>
+public sealed class RescheduleScheduleBookingStatus400Exception : ApiException
+{
+  public RescheduleScheduleBookingStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from rescheduleScheduleBooking.</summary>
+public sealed class RescheduleScheduleBookingStatus401Exception : ApiException
+{
+  public RescheduleScheduleBookingStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from rescheduleScheduleBooking.</summary>
+public sealed class RescheduleScheduleBookingStatus404Exception : ApiException
+{
+  public RescheduleScheduleBookingStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from rescheduleScheduleBooking.</summary>
+public sealed class RescheduleScheduleBookingStatus409Exception : ApiException
+{
+  public RescheduleScheduleBookingStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from rescheduleScheduleBooking.</summary>
+public sealed class RescheduleScheduleBookingStatus422Exception : ApiException
+{
+  public RescheduleScheduleBookingStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from rescheduleScheduleBooking.</summary>
+public sealed class RescheduleScheduleBookingStatus503Exception : ApiException
+{
+  public RescheduleScheduleBookingStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from listScheduleBookingSlots.</summary>
+public sealed class ListScheduleBookingSlotsStatus400Exception : ApiException
+{
+  public ListScheduleBookingSlotsStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listScheduleBookingSlots.</summary>
+public sealed class ListScheduleBookingSlotsStatus401Exception : ApiException
+{
+  public ListScheduleBookingSlotsStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from listScheduleBookingSlots.</summary>
+public sealed class ListScheduleBookingSlotsStatus404Exception : ApiException
+{
+  public ListScheduleBookingSlotsStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from listScheduleBookingSlots.</summary>
+public sealed class ListScheduleBookingSlotsStatus409Exception : ApiException
+{
+  public ListScheduleBookingSlotsStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listScheduleBookingSlots.</summary>
+public sealed class ListScheduleBookingSlotsStatus422Exception : ApiException
+{
+  public ListScheduleBookingSlotsStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listScheduleBookingSlots.</summary>
+public sealed class ListScheduleBookingSlotsStatus503Exception : ApiException
+{
+  public ListScheduleBookingSlotsStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from getScheduleBookingStatus.</summary>
+public sealed class GetScheduleBookingStatusStatus400Exception : ApiException
+{
+  public GetScheduleBookingStatusStatus400Exception(string responseBody) : base(400, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getScheduleBookingStatus.</summary>
+public sealed class GetScheduleBookingStatusStatus401Exception : ApiException
+{
+  public GetScheduleBookingStatusStatus401Exception(string responseBody) : base(401, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from getScheduleBookingStatus.</summary>
+public sealed class GetScheduleBookingStatusStatus409Exception : ApiException
+{
+  public GetScheduleBookingStatusStatus409Exception(string responseBody) : base(409, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getScheduleBookingStatus.</summary>
+public sealed class GetScheduleBookingStatusStatus503Exception : ApiException
+{
+  public GetScheduleBookingStatusStatus503Exception(string responseBody) : base(503, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from listScheduleEventTypes.</summary>
+public sealed class ListScheduleEventTypesStatus400Exception : ApiException
+{
+  public ListScheduleEventTypesStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listScheduleEventTypes.</summary>
+public sealed class ListScheduleEventTypesStatus401Exception : ApiException
+{
+  public ListScheduleEventTypesStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from listScheduleEventTypes.</summary>
+public sealed class ListScheduleEventTypesStatus403Exception : ApiException
+{
+  public ListScheduleEventTypesStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from listScheduleEventTypes.</summary>
+public sealed class ListScheduleEventTypesStatus404Exception : ApiException
+{
+  public ListScheduleEventTypesStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from listScheduleEventTypes.</summary>
+public sealed class ListScheduleEventTypesStatus409Exception : ApiException
+{
+  public ListScheduleEventTypesStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from listScheduleEventTypes.</summary>
+public sealed class ListScheduleEventTypesStatus413Exception : ApiException
+{
+  public ListScheduleEventTypesStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from listScheduleEventTypes.</summary>
+public sealed class ListScheduleEventTypesStatus415Exception : ApiException
+{
+  public ListScheduleEventTypesStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listScheduleEventTypes.</summary>
+public sealed class ListScheduleEventTypesStatus422Exception : ApiException
+{
+  public ListScheduleEventTypesStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listScheduleEventTypes.</summary>
+public sealed class ListScheduleEventTypesStatus503Exception : ApiException
+{
+  public ListScheduleEventTypesStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from createScheduleEventType.</summary>
+public sealed class CreateScheduleEventTypeStatus400Exception : ApiException
+{
+  public CreateScheduleEventTypeStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from createScheduleEventType.</summary>
+public sealed class CreateScheduleEventTypeStatus401Exception : ApiException
+{
+  public CreateScheduleEventTypeStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from createScheduleEventType.</summary>
+public sealed class CreateScheduleEventTypeStatus403Exception : ApiException
+{
+  public CreateScheduleEventTypeStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from createScheduleEventType.</summary>
+public sealed class CreateScheduleEventTypeStatus404Exception : ApiException
+{
+  public CreateScheduleEventTypeStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from createScheduleEventType.</summary>
+public sealed class CreateScheduleEventTypeStatus409Exception : ApiException
+{
+  public CreateScheduleEventTypeStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from createScheduleEventType.</summary>
+public sealed class CreateScheduleEventTypeStatus413Exception : ApiException
+{
+  public CreateScheduleEventTypeStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from createScheduleEventType.</summary>
+public sealed class CreateScheduleEventTypeStatus415Exception : ApiException
+{
+  public CreateScheduleEventTypeStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from createScheduleEventType.</summary>
+public sealed class CreateScheduleEventTypeStatus422Exception : ApiException
+{
+  public CreateScheduleEventTypeStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from createScheduleEventType.</summary>
+public sealed class CreateScheduleEventTypeStatus503Exception : ApiException
+{
+  public CreateScheduleEventTypeStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from getScheduleEventType.</summary>
+public sealed class GetScheduleEventTypeStatus400Exception : ApiException
+{
+  public GetScheduleEventTypeStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getScheduleEventType.</summary>
+public sealed class GetScheduleEventTypeStatus401Exception : ApiException
+{
+  public GetScheduleEventTypeStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from getScheduleEventType.</summary>
+public sealed class GetScheduleEventTypeStatus403Exception : ApiException
+{
+  public GetScheduleEventTypeStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getScheduleEventType.</summary>
+public sealed class GetScheduleEventTypeStatus404Exception : ApiException
+{
+  public GetScheduleEventTypeStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from getScheduleEventType.</summary>
+public sealed class GetScheduleEventTypeStatus409Exception : ApiException
+{
+  public GetScheduleEventTypeStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from getScheduleEventType.</summary>
+public sealed class GetScheduleEventTypeStatus413Exception : ApiException
+{
+  public GetScheduleEventTypeStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from getScheduleEventType.</summary>
+public sealed class GetScheduleEventTypeStatus415Exception : ApiException
+{
+  public GetScheduleEventTypeStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from getScheduleEventType.</summary>
+public sealed class GetScheduleEventTypeStatus422Exception : ApiException
+{
+  public GetScheduleEventTypeStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getScheduleEventType.</summary>
+public sealed class GetScheduleEventTypeStatus503Exception : ApiException
+{
+  public GetScheduleEventTypeStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from replaceScheduleEventType.</summary>
+public sealed class ReplaceScheduleEventTypeStatus400Exception : ApiException
+{
+  public ReplaceScheduleEventTypeStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from replaceScheduleEventType.</summary>
+public sealed class ReplaceScheduleEventTypeStatus401Exception : ApiException
+{
+  public ReplaceScheduleEventTypeStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from replaceScheduleEventType.</summary>
+public sealed class ReplaceScheduleEventTypeStatus403Exception : ApiException
+{
+  public ReplaceScheduleEventTypeStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from replaceScheduleEventType.</summary>
+public sealed class ReplaceScheduleEventTypeStatus404Exception : ApiException
+{
+  public ReplaceScheduleEventTypeStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from replaceScheduleEventType.</summary>
+public sealed class ReplaceScheduleEventTypeStatus409Exception : ApiException
+{
+  public ReplaceScheduleEventTypeStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from replaceScheduleEventType.</summary>
+public sealed class ReplaceScheduleEventTypeStatus413Exception : ApiException
+{
+  public ReplaceScheduleEventTypeStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from replaceScheduleEventType.</summary>
+public sealed class ReplaceScheduleEventTypeStatus415Exception : ApiException
+{
+  public ReplaceScheduleEventTypeStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from replaceScheduleEventType.</summary>
+public sealed class ReplaceScheduleEventTypeStatus422Exception : ApiException
+{
+  public ReplaceScheduleEventTypeStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from replaceScheduleEventType.</summary>
+public sealed class ReplaceScheduleEventTypeStatus503Exception : ApiException
+{
+  public ReplaceScheduleEventTypeStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from listSchedulePrivateLinks.</summary>
+public sealed class ListSchedulePrivateLinksStatus400Exception : ApiException
+{
+  public ListSchedulePrivateLinksStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listSchedulePrivateLinks.</summary>
+public sealed class ListSchedulePrivateLinksStatus401Exception : ApiException
+{
+  public ListSchedulePrivateLinksStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from listSchedulePrivateLinks.</summary>
+public sealed class ListSchedulePrivateLinksStatus403Exception : ApiException
+{
+  public ListSchedulePrivateLinksStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from listSchedulePrivateLinks.</summary>
+public sealed class ListSchedulePrivateLinksStatus404Exception : ApiException
+{
+  public ListSchedulePrivateLinksStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from listSchedulePrivateLinks.</summary>
+public sealed class ListSchedulePrivateLinksStatus409Exception : ApiException
+{
+  public ListSchedulePrivateLinksStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from listSchedulePrivateLinks.</summary>
+public sealed class ListSchedulePrivateLinksStatus413Exception : ApiException
+{
+  public ListSchedulePrivateLinksStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from listSchedulePrivateLinks.</summary>
+public sealed class ListSchedulePrivateLinksStatus415Exception : ApiException
+{
+  public ListSchedulePrivateLinksStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listSchedulePrivateLinks.</summary>
+public sealed class ListSchedulePrivateLinksStatus422Exception : ApiException
+{
+  public ListSchedulePrivateLinksStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listSchedulePrivateLinks.</summary>
+public sealed class ListSchedulePrivateLinksStatus503Exception : ApiException
+{
+  public ListSchedulePrivateLinksStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from issueSchedulePrivateLink.</summary>
+public sealed class IssueSchedulePrivateLinkStatus400Exception : ApiException
+{
+  public IssueSchedulePrivateLinkStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from issueSchedulePrivateLink.</summary>
+public sealed class IssueSchedulePrivateLinkStatus401Exception : ApiException
+{
+  public IssueSchedulePrivateLinkStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from issueSchedulePrivateLink.</summary>
+public sealed class IssueSchedulePrivateLinkStatus403Exception : ApiException
+{
+  public IssueSchedulePrivateLinkStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from issueSchedulePrivateLink.</summary>
+public sealed class IssueSchedulePrivateLinkStatus404Exception : ApiException
+{
+  public IssueSchedulePrivateLinkStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from issueSchedulePrivateLink.</summary>
+public sealed class IssueSchedulePrivateLinkStatus409Exception : ApiException
+{
+  public IssueSchedulePrivateLinkStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from issueSchedulePrivateLink.</summary>
+public sealed class IssueSchedulePrivateLinkStatus413Exception : ApiException
+{
+  public IssueSchedulePrivateLinkStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from issueSchedulePrivateLink.</summary>
+public sealed class IssueSchedulePrivateLinkStatus415Exception : ApiException
+{
+  public IssueSchedulePrivateLinkStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from issueSchedulePrivateLink.</summary>
+public sealed class IssueSchedulePrivateLinkStatus422Exception : ApiException
+{
+  public IssueSchedulePrivateLinkStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from issueSchedulePrivateLink.</summary>
+public sealed class IssueSchedulePrivateLinkStatus503Exception : ApiException
+{
+  public IssueSchedulePrivateLinkStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from revokeSchedulePrivateLink.</summary>
+public sealed class RevokeSchedulePrivateLinkStatus400Exception : ApiException
+{
+  public RevokeSchedulePrivateLinkStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from revokeSchedulePrivateLink.</summary>
+public sealed class RevokeSchedulePrivateLinkStatus401Exception : ApiException
+{
+  public RevokeSchedulePrivateLinkStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from revokeSchedulePrivateLink.</summary>
+public sealed class RevokeSchedulePrivateLinkStatus403Exception : ApiException
+{
+  public RevokeSchedulePrivateLinkStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from revokeSchedulePrivateLink.</summary>
+public sealed class RevokeSchedulePrivateLinkStatus404Exception : ApiException
+{
+  public RevokeSchedulePrivateLinkStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from revokeSchedulePrivateLink.</summary>
+public sealed class RevokeSchedulePrivateLinkStatus409Exception : ApiException
+{
+  public RevokeSchedulePrivateLinkStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from revokeSchedulePrivateLink.</summary>
+public sealed class RevokeSchedulePrivateLinkStatus413Exception : ApiException
+{
+  public RevokeSchedulePrivateLinkStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from revokeSchedulePrivateLink.</summary>
+public sealed class RevokeSchedulePrivateLinkStatus415Exception : ApiException
+{
+  public RevokeSchedulePrivateLinkStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from revokeSchedulePrivateLink.</summary>
+public sealed class RevokeSchedulePrivateLinkStatus422Exception : ApiException
+{
+  public RevokeSchedulePrivateLinkStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from revokeSchedulePrivateLink.</summary>
+public sealed class RevokeSchedulePrivateLinkStatus503Exception : ApiException
+{
+  public RevokeSchedulePrivateLinkStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from getScheduleHost.</summary>
+public sealed class GetScheduleHostStatus400Exception : ApiException
+{
+  public GetScheduleHostStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getScheduleHost.</summary>
+public sealed class GetScheduleHostStatus401Exception : ApiException
+{
+  public GetScheduleHostStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from getScheduleHost.</summary>
+public sealed class GetScheduleHostStatus403Exception : ApiException
+{
+  public GetScheduleHostStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getScheduleHost.</summary>
+public sealed class GetScheduleHostStatus404Exception : ApiException
+{
+  public GetScheduleHostStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from getScheduleHost.</summary>
+public sealed class GetScheduleHostStatus409Exception : ApiException
+{
+  public GetScheduleHostStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from getScheduleHost.</summary>
+public sealed class GetScheduleHostStatus413Exception : ApiException
+{
+  public GetScheduleHostStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from getScheduleHost.</summary>
+public sealed class GetScheduleHostStatus415Exception : ApiException
+{
+  public GetScheduleHostStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from getScheduleHost.</summary>
+public sealed class GetScheduleHostStatus422Exception : ApiException
+{
+  public GetScheduleHostStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getScheduleHost.</summary>
+public sealed class GetScheduleHostStatus503Exception : ApiException
+{
+  public GetScheduleHostStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from getScheduleHostBookingLimits.</summary>
+public sealed class GetScheduleHostBookingLimitsStatus400Exception : ApiException
+{
+  public GetScheduleHostBookingLimitsStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getScheduleHostBookingLimits.</summary>
+public sealed class GetScheduleHostBookingLimitsStatus401Exception : ApiException
+{
+  public GetScheduleHostBookingLimitsStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from getScheduleHostBookingLimits.</summary>
+public sealed class GetScheduleHostBookingLimitsStatus403Exception : ApiException
+{
+  public GetScheduleHostBookingLimitsStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from getScheduleHostBookingLimits.</summary>
+public sealed class GetScheduleHostBookingLimitsStatus404Exception : ApiException
+{
+  public GetScheduleHostBookingLimitsStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from getScheduleHostBookingLimits.</summary>
+public sealed class GetScheduleHostBookingLimitsStatus409Exception : ApiException
+{
+  public GetScheduleHostBookingLimitsStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from getScheduleHostBookingLimits.</summary>
+public sealed class GetScheduleHostBookingLimitsStatus413Exception : ApiException
+{
+  public GetScheduleHostBookingLimitsStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from getScheduleHostBookingLimits.</summary>
+public sealed class GetScheduleHostBookingLimitsStatus415Exception : ApiException
+{
+  public GetScheduleHostBookingLimitsStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from getScheduleHostBookingLimits.</summary>
+public sealed class GetScheduleHostBookingLimitsStatus422Exception : ApiException
+{
+  public GetScheduleHostBookingLimitsStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getScheduleHostBookingLimits.</summary>
+public sealed class GetScheduleHostBookingLimitsStatus503Exception : ApiException
+{
+  public GetScheduleHostBookingLimitsStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from updateScheduleHostBookingLimits.</summary>
+public sealed class UpdateScheduleHostBookingLimitsStatus400Exception : ApiException
+{
+  public UpdateScheduleHostBookingLimitsStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from updateScheduleHostBookingLimits.</summary>
+public sealed class UpdateScheduleHostBookingLimitsStatus401Exception : ApiException
+{
+  public UpdateScheduleHostBookingLimitsStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from updateScheduleHostBookingLimits.</summary>
+public sealed class UpdateScheduleHostBookingLimitsStatus403Exception : ApiException
+{
+  public UpdateScheduleHostBookingLimitsStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 404 response from updateScheduleHostBookingLimits.</summary>
+public sealed class UpdateScheduleHostBookingLimitsStatus404Exception : ApiException
+{
+  public UpdateScheduleHostBookingLimitsStatus404Exception(string responseBody, ScheduleApiError? body) : base(404, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 409 response from updateScheduleHostBookingLimits.</summary>
+public sealed class UpdateScheduleHostBookingLimitsStatus409Exception : ApiException
+{
+  public UpdateScheduleHostBookingLimitsStatus409Exception(string responseBody, ScheduleApiError? body) : base(409, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from updateScheduleHostBookingLimits.</summary>
+public sealed class UpdateScheduleHostBookingLimitsStatus413Exception : ApiException
+{
+  public UpdateScheduleHostBookingLimitsStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from updateScheduleHostBookingLimits.</summary>
+public sealed class UpdateScheduleHostBookingLimitsStatus415Exception : ApiException
+{
+  public UpdateScheduleHostBookingLimitsStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from updateScheduleHostBookingLimits.</summary>
+public sealed class UpdateScheduleHostBookingLimitsStatus422Exception : ApiException
+{
+  public UpdateScheduleHostBookingLimitsStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from updateScheduleHostBookingLimits.</summary>
+public sealed class UpdateScheduleHostBookingLimitsStatus503Exception : ApiException
+{
+  public UpdateScheduleHostBookingLimitsStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from getScheduleHostInsights.</summary>
+public sealed class GetScheduleHostInsightsStatus400Exception : ApiException
+{
+  public GetScheduleHostInsightsStatus400Exception(string responseBody) : base(400, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getScheduleHostInsights.</summary>
+public sealed class GetScheduleHostInsightsStatus401Exception : ApiException
+{
+  public GetScheduleHostInsightsStatus401Exception(string responseBody) : base(401, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from getScheduleHostInsights.</summary>
+public sealed class GetScheduleHostInsightsStatus403Exception : ApiException
+{
+  public GetScheduleHostInsightsStatus403Exception(string responseBody) : base(403, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getScheduleHostInsights.</summary>
+public sealed class GetScheduleHostInsightsStatus503Exception : ApiException
+{
+  public GetScheduleHostInsightsStatus503Exception(string responseBody) : base(503, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from exportScheduleHostInsightsCsv.</summary>
+public sealed class ExportScheduleHostInsightsCsvStatus400Exception : ApiException
+{
+  public ExportScheduleHostInsightsCsvStatus400Exception(string responseBody) : base(400, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from exportScheduleHostInsightsCsv.</summary>
+public sealed class ExportScheduleHostInsightsCsvStatus401Exception : ApiException
+{
+  public ExportScheduleHostInsightsCsvStatus401Exception(string responseBody) : base(401, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from exportScheduleHostInsightsCsv.</summary>
+public sealed class ExportScheduleHostInsightsCsvStatus403Exception : ApiException
+{
+  public ExportScheduleHostInsightsCsvStatus403Exception(string responseBody) : base(403, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from exportScheduleHostInsightsCsv.</summary>
+public sealed class ExportScheduleHostInsightsCsvStatus503Exception : ApiException
+{
+  public ExportScheduleHostInsightsCsvStatus503Exception(string responseBody) : base(503, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from listScheduleNotificationHistory.</summary>
+public sealed class ListScheduleNotificationHistoryStatus400Exception : ApiException
+{
+  public ListScheduleNotificationHistoryStatus400Exception(string responseBody) : base(400, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listScheduleNotificationHistory.</summary>
+public sealed class ListScheduleNotificationHistoryStatus401Exception : ApiException
+{
+  public ListScheduleNotificationHistoryStatus401Exception(string responseBody) : base(401, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from listScheduleNotificationHistory.</summary>
+public sealed class ListScheduleNotificationHistoryStatus403Exception : ApiException
+{
+  public ListScheduleNotificationHistoryStatus403Exception(string responseBody) : base(403, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listScheduleNotificationHistory.</summary>
+public sealed class ListScheduleNotificationHistoryStatus503Exception : ApiException
+{
+  public ListScheduleNotificationHistoryStatus503Exception(string responseBody) : base(503, responseBody) {
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from listScheduleNotificationSenders.</summary>
+public sealed class ListScheduleNotificationSendersStatus400Exception : ApiException
+{
+  public ListScheduleNotificationSendersStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from listScheduleNotificationSenders.</summary>
+public sealed class ListScheduleNotificationSendersStatus401Exception : ApiException
+{
+  public ListScheduleNotificationSendersStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from listScheduleNotificationSenders.</summary>
+public sealed class ListScheduleNotificationSendersStatus403Exception : ApiException
+{
+  public ListScheduleNotificationSendersStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from listScheduleNotificationSenders.</summary>
+public sealed class ListScheduleNotificationSendersStatus413Exception : ApiException
+{
+  public ListScheduleNotificationSendersStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from listScheduleNotificationSenders.</summary>
+public sealed class ListScheduleNotificationSendersStatus415Exception : ApiException
+{
+  public ListScheduleNotificationSendersStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from listScheduleNotificationSenders.</summary>
+public sealed class ListScheduleNotificationSendersStatus422Exception : ApiException
+{
+  public ListScheduleNotificationSendersStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from listScheduleNotificationSenders.</summary>
+public sealed class ListScheduleNotificationSendersStatus503Exception : ApiException
+{
+  public ListScheduleNotificationSendersStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from getScheduleNotificationSettings.</summary>
+public sealed class GetScheduleNotificationSettingsStatus400Exception : ApiException
+{
+  public GetScheduleNotificationSettingsStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from getScheduleNotificationSettings.</summary>
+public sealed class GetScheduleNotificationSettingsStatus401Exception : ApiException
+{
+  public GetScheduleNotificationSettingsStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from getScheduleNotificationSettings.</summary>
+public sealed class GetScheduleNotificationSettingsStatus403Exception : ApiException
+{
+  public GetScheduleNotificationSettingsStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from getScheduleNotificationSettings.</summary>
+public sealed class GetScheduleNotificationSettingsStatus413Exception : ApiException
+{
+  public GetScheduleNotificationSettingsStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from getScheduleNotificationSettings.</summary>
+public sealed class GetScheduleNotificationSettingsStatus415Exception : ApiException
+{
+  public GetScheduleNotificationSettingsStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from getScheduleNotificationSettings.</summary>
+public sealed class GetScheduleNotificationSettingsStatus422Exception : ApiException
+{
+  public GetScheduleNotificationSettingsStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from getScheduleNotificationSettings.</summary>
+public sealed class GetScheduleNotificationSettingsStatus503Exception : ApiException
+{
+  public GetScheduleNotificationSettingsStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 400 response from saveScheduleNotificationSettings.</summary>
+public sealed class SaveScheduleNotificationSettingsStatus400Exception : ApiException
+{
+  public SaveScheduleNotificationSettingsStatus400Exception(string responseBody, ScheduleApiError? body) : base(400, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 401 response from saveScheduleNotificationSettings.</summary>
+public sealed class SaveScheduleNotificationSettingsStatus401Exception : ApiException
+{
+  public SaveScheduleNotificationSettingsStatus401Exception(string responseBody, ScheduleApiError? body) : base(401, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 403 response from saveScheduleNotificationSettings.</summary>
+public sealed class SaveScheduleNotificationSettingsStatus403Exception : ApiException
+{
+  public SaveScheduleNotificationSettingsStatus403Exception(string responseBody, ScheduleApiError? body) : base(403, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 413 response from saveScheduleNotificationSettings.</summary>
+public sealed class SaveScheduleNotificationSettingsStatus413Exception : ApiException
+{
+  public SaveScheduleNotificationSettingsStatus413Exception(string responseBody, ScheduleApiError? body) : base(413, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 415 response from saveScheduleNotificationSettings.</summary>
+public sealed class SaveScheduleNotificationSettingsStatus415Exception : ApiException
+{
+  public SaveScheduleNotificationSettingsStatus415Exception(string responseBody, ScheduleApiError? body) : base(415, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 422 response from saveScheduleNotificationSettings.</summary>
+public sealed class SaveScheduleNotificationSettingsStatus422Exception : ApiException
+{
+  public SaveScheduleNotificationSettingsStatus422Exception(string responseBody, ScheduleApiError? body) : base(422, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
+    get;
+
+  }
+  
+}
+
+/// <summary>Declared 503 response from saveScheduleNotificationSettings.</summary>
+public sealed class SaveScheduleNotificationSettingsStatus503Exception : ApiException
+{
+  public SaveScheduleNotificationSettingsStatus503Exception(string responseBody, ScheduleApiError? body) : base(503, responseBody) => Body = body;
+  
+    public ScheduleApiError? Body {
     get;
 
   }

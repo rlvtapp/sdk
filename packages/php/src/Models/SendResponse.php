@@ -15,11 +15,15 @@ final class SendResponse implements JsonSerializable
     public function __construct(
         public readonly string $acceptedAt,
         public readonly string $apiVersion,
+        public readonly string $id,
         public readonly string $reasonCode,
         public readonly array $recipients,
-        public readonly string $sendId,
         public readonly string $state,
+        public readonly array $tags,
         public readonly ?bool $replayed = null,
+        public readonly ?string $scheduledAt = null,
+        public readonly ?string $threadId = null,
+        public readonly ?string $topicId = null,
         public readonly array $additionalProperties = [], // array<string, mixed>
     ) {
     }
@@ -30,12 +34,16 @@ final class SendResponse implements JsonSerializable
         $instance = new self(
             acceptedAt: (string) $data['accepted_at'],
             apiVersion: (string) $data['api_version'],
+            id: (string) $data['id'],
             reasonCode: (string) $data['reason_code'],
             recipients: array_map(static fn (mixed $item): mixed => RecipientResponse::fromArray($item), $data['recipients']),
             replayed: array_key_exists('replayed', $data) && $data['replayed'] !== null ? ($data['replayed'] === null ? null : (bool) $data['replayed']) : null,
-            sendId: (string) $data['send_id'],
+            scheduledAt: array_key_exists('scheduled_at', $data) && $data['scheduled_at'] !== null ? ($data['scheduled_at'] === null ? null : (string) $data['scheduled_at']) : null,
             state: (string) $data['state'],
-            additionalProperties: array_diff_key($data, array_fill_keys(['accepted_at', 'api_version', 'reason_code', 'recipients', 'replayed', 'send_id', 'state'], true)),
+            tags: array_map(static fn (mixed $item): mixed => SendTag::fromArray($item), $data['tags']),
+            threadId: array_key_exists('thread_id', $data) && $data['thread_id'] !== null ? ($data['thread_id'] === null ? null : (string) $data['thread_id']) : null,
+            topicId: array_key_exists('topic_id', $data) && $data['topic_id'] !== null ? ($data['topic_id'] === null ? null : (string) $data['topic_id']) : null,
+            additionalProperties: array_diff_key($data, array_fill_keys(['accepted_at', 'api_version', 'id', 'reason_code', 'recipients', 'replayed', 'scheduled_at', 'state', 'tags', 'thread_id', 'topic_id'], true)),
         );
         $instance->poolsterPresentFields = array_keys($data);
         return $instance;
@@ -45,7 +53,7 @@ final class SendResponse implements JsonSerializable
     public function withPresentFields(array $fields): self
     {
         foreach ($fields as $field) {
-            if (!is_string($field) || !in_array($field, ['accepted_at', 'api_version', 'reason_code', 'recipients', 'replayed', 'send_id', 'state'], true)) throw new \InvalidArgumentException('unknown model wire field');
+            if (!is_string($field) || !in_array($field, ['accepted_at', 'api_version', 'id', 'reason_code', 'recipients', 'replayed', 'scheduled_at', 'state', 'tags', 'thread_id', 'topic_id'], true)) throw new \InvalidArgumentException('unknown model wire field');
         }
         $copy = clone $this;
         $copy->poolsterPresentFields = array_values(array_unique(array_merge($this->poolsterPresentFields ?? [], $fields)));
@@ -55,14 +63,18 @@ final class SendResponse implements JsonSerializable
     public function jsonSerialize(): object
     {
         $value = [];
-        $value = array_diff_key($this->additionalProperties, array_fill_keys(['accepted_at', 'api_version', 'reason_code', 'recipients', 'replayed', 'send_id', 'state'], true));
+        $value = array_diff_key($this->additionalProperties, array_fill_keys(['accepted_at', 'api_version', 'id', 'reason_code', 'recipients', 'replayed', 'scheduled_at', 'state', 'tags', 'thread_id', 'topic_id'], true));
         $value['accepted_at'] = $this->acceptedAt;
         $value['api_version'] = $this->apiVersion;
+        $value['id'] = $this->id;
         $value['reason_code'] = $this->reasonCode;
         $value['recipients'] = $this->recipients;
         if ($this->replayed !== null || in_array('replayed', $this->poolsterPresentFields ?? [], true)) { $value['replayed'] = $this->replayed; }
-        $value['send_id'] = $this->sendId;
+        if ($this->scheduledAt !== null || in_array('scheduled_at', $this->poolsterPresentFields ?? [], true)) { $value['scheduled_at'] = $this->scheduledAt; }
         $value['state'] = $this->state;
+        $value['tags'] = $this->tags;
+        if ($this->threadId !== null || in_array('thread_id', $this->poolsterPresentFields ?? [], true)) { $value['thread_id'] = $this->threadId; }
+        if ($this->topicId !== null || in_array('topic_id', $this->poolsterPresentFields ?? [], true)) { $value['topic_id'] = $this->topicId; }
         return (object) $value;
     }
 }

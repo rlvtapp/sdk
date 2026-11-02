@@ -5,5 +5,5 @@ defmodule RelevateSdk.Resources.Events do
 
 
   alias RelevateSdk.Resources.Events.Chunk0000
-  def track(client, options \\ []), do: Chunk0000.track(client, options)
+  def track_email_event(client, options \\ []), do: Chunk0000.track_email_event(client, options)
 end

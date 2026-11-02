@@ -4,14 +4,17 @@ defmodule RelevateSdk.Models.SendQuery do
   @moduledoc "Generated model for SendQuery."
   alias RelevateSdk.JSON
 
-  defstruct [:limit, :message_class, :offset, :reference, :state, poolster_present_fields: nil, additional_properties: %{}]
+  defstruct [:limit, :message_class, :offset, :reference, :scheduled, :state, :tags, :topic_id, poolster_present_fields: nil, additional_properties: %{}]
 
   @type t :: %__MODULE__{
     limit: integer() | nil | nil,
     message_class: String.t() | nil | nil,
     offset: integer() | nil | nil,
     reference: String.t() | nil | nil,
+    scheduled: boolean() | nil | nil,
     state: String.t() | nil | nil,
+    tags: [RelevateSdk.Models.SendTag.t()] | nil,
+    topic_id: String.t() | nil | nil,
     poolster_present_fields: [String.t()] | nil,
     additional_properties: map(),
   }
@@ -23,18 +26,21 @@ defmodule RelevateSdk.Models.SendQuery do
       {"message_class", model.message_class},
       {"offset", model.offset},
       {"reference", model.reference},
+      {"scheduled", model.scheduled},
       {"state", model.state},
+      {"tags", model.tags},
+      {"topic_id", model.topic_id},
     ]
     |> Enum.reject(fn {key, value} -> is_nil(value) and key not in [] and key not in (model.poolster_present_fields || []) end)
     |> Map.new(fn {key, value} -> {key, JSON.to_wire(value)} end)
-    |> then(fn known -> Map.merge(Map.drop(JSON.to_wire(model.additional_properties), ["limit", "message_class", "offset", "reference", "state"]), known) end)
+    |> then(fn known -> Map.merge(Map.drop(JSON.to_wire(model.additional_properties), ["limit", "message_class", "offset", "reference", "scheduled", "state", "tags", "topic_id"]), known) end)
   end
 
   @doc "Return a copy with explicit nulls present at the given wire keys."
   @spec with_present_fields(t(), [String.t() | atom()]) :: t()
   def with_present_fields(model, fields) when is_list(fields) do
     keys = Enum.map(fields, &to_string/1)
-    if Enum.any?(keys, &(&1 not in ["limit", "message_class", "offset", "reference", "state"])), do: raise(ArgumentError, "unknown model wire field")
+    if Enum.any?(keys, &(&1 not in ["limit", "message_class", "offset", "reference", "scheduled", "state", "tags", "topic_id"])), do: raise(ArgumentError, "unknown model wire field")
     %{model | poolster_present_fields: Enum.uniq((model.poolster_present_fields || []) ++ keys)}
   end
 
@@ -45,9 +51,12 @@ defmodule RelevateSdk.Models.SendQuery do
       message_class: Map.get(map, "message_class"),
       offset: Map.get(map, "offset"),
       reference: Map.get(map, "reference"),
+      scheduled: Map.get(map, "scheduled"),
       state: Map.get(map, "state"),
+      tags: case Map.get(map, "tags") do nil -> nil; items when is_list(items) -> Enum.map(items, fn item -> case item do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.SendTag.from_map(map); other -> other end end); other -> other end,
+      topic_id: Map.get(map, "topic_id"),
       poolster_present_fields: Map.keys(map),
-      additional_properties: Map.drop(map, ["limit", "message_class", "offset", "reference", "state"]),
+      additional_properties: Map.drop(map, ["limit", "message_class", "offset", "reference", "scheduled", "state", "tags", "topic_id"]),
     }
   end
   def from_map(value), do: value

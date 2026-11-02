@@ -11,6 +11,6 @@ class EventsResourcePart000:
 
     def __init__(self, client: Any) -> None:
         self._client = client
-    def track(self, *, body: TrackEventRequest) -> EventResponse:
-        return self._client.track(body=body)
+    def track_email(self, *, body: TrackEventRequest) -> EventResponse:
+        return self._client.track_email_event(body=body)
 

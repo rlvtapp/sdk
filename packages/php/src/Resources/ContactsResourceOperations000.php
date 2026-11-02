@@ -20,39 +20,44 @@ use Relevate\Sdk\Models\UpdateContact;
 /** Bounded resource facade slice; composed into ContactsResource. */
 trait ContactsResourceOperations000
 {
-    public function listOperation(?int $limit = null): ContactListResponse
+    public function listEmail(?int $limit = null): ContactListResponse
     {
-        return $this->client->listContacts($limit);
+        return $this->client->listEmailContacts($limit);
     }
 
-    public function create(CreateContact $body): ContactResponse
+    public function createEmail(CreateContact $body): ContactResponse
     {
-        return $this->client->createContact($body);
+        return $this->client->createEmailContact($body);
     }
 
-    public function query(ContactQuery $body): ContactQueryResponse
+    public function queryEmail(ContactQuery $body): ContactQueryResponse
     {
-        return $this->client->queryContacts($body);
+        return $this->client->queryEmailContacts($body);
     }
 
-    public function get(string $id): ContactResponse
+    public function deleteEmail(string $id): void
     {
-        return $this->client->getContact($id);
+        $this->client->deleteEmailContact($id);
     }
 
-    public function update(string $id, UpdateContact $body): ContactResponse
+    public function getEmail(string $id): ContactResponse
     {
-        return $this->client->updateContact($id, $body);
+        return $this->client->getEmailContact($id);
     }
 
-    public function listSegments(?int $limit = null): SegmentListResponse
+    public function updateEmail(string $id, UpdateContact $body): ContactResponse
     {
-        return $this->client->listSegments($limit);
+        return $this->client->updateEmailContact($id, $body);
     }
 
-    public function getSegment(string $id): SegmentResponse
+    public function listEmailSegments(?int $limit = null): SegmentListResponse
     {
-        return $this->client->getSegment($id);
+        return $this->client->listEmailSegments($limit);
+    }
+
+    public function getEmailSegment(string $id): SegmentResponse
+    {
+        return $this->client->getEmailSegment($id);
     }
 
 }

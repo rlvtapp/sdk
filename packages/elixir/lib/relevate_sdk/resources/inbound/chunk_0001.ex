@@ -5,9 +5,9 @@ defmodule RelevateSdk.Resources.Inbound.Chunk0000 do
 
   alias RelevateSdk.{API, Client}
 
-  @spec list_inbound(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def list_inbound(client, options \\ []), do: API.list_inbound(client, options)
+  @spec list_email_inbound(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def list_email_inbound(client, options \\ []), do: API.list_email_inbound(client, options)
 
-  @spec get_inbound(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
-  def get_inbound(client, options \\ []), do: API.get_inbound(client, options)
+  @spec get_email_inbound(Client.t(), keyword()) :: {:ok, term()} | {:error, term()}
+  def get_email_inbound(client, options \\ []), do: API.get_email_inbound(client, options)
 end

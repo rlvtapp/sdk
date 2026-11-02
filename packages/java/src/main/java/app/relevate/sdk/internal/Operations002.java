@@ -22,325 +22,885 @@ public class Operations002 extends Operations001 {
   }
   
 
-    /** Inputs accepted by ListInbound. */
-    public record ListInboundRequest(
-            Long limit
+    /** Inputs accepted by GetEmailContact. */
+    public record GetEmailContactRequest(
+            String id
     ) {}
 
-    /** Invokes GET /v1/email/inbound. */
-    public InboundListResponse listInbound(ListInboundRequest input) {
+    /** Invokes GET /email/contacts/{id}. */
+    public ContactResponse getEmailContact(GetEmailContactRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/inbound";
+        var path = "/email/contacts/{id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.id() != null) path = path.replace("{id}", pathValue(input.id()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, ContactResponse.class);
+        } catch (ApiException error) {
+            throw mapGetEmailContactError(error);
+        }
+    }
+
+    /** Inputs accepted by UpdateEmailContact. */
+    public record UpdateEmailContactRequest(
+            String id,
+            UpdateContact body
+    ) {}
+
+    /** Invokes PATCH /email/contacts/{id}. */
+    public ContactResponse updateEmailContact(UpdateEmailContactRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/contacts/{id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.id() != null) path = path.replace("{id}", pathValue(input.id()));
+        var response = requestWithRetry("PATCH", path, query, headers, input.body(), null);
+        return decode(response, ContactResponse.class);
+        } catch (ApiException error) {
+            throw mapUpdateEmailContactError(error);
+        }
+    }
+
+    /** Inputs accepted by ListEmailDomains. */
+    public record ListEmailDomainsRequest(
+            Long limit
+    ) {}
+
+    /** Invokes GET /email/domains. */
+    public DomainListResponse listEmailDomains(ListEmailDomainsRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/domains";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        query.add(new QueryParameter("limit", input.limit()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, DomainListResponse.class);
+        } catch (ApiException error) {
+            throw mapListEmailDomainsError(error);
+        }
+    }
+
+    /** Inputs accepted by CreateEmailDomain. */
+    public record CreateEmailDomainRequest(
+            CreateDomainRequest body
+    ) {}
+
+    /** Invokes POST /email/domains. */
+    public DomainSetupResponse createEmailDomain(CreateEmailDomainRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/domains";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        var response = requestWithRetry("POST", path, query, headers, input.body(), null);
+        return decode(response, DomainSetupResponse.class);
+        } catch (ApiException error) {
+            throw mapCreateEmailDomainError(error);
+        }
+    }
+
+    /** Inputs accepted by DeleteEmailDomain. */
+    public record DeleteEmailDomainRequest(
+            String id
+    ) {}
+
+    /** Invokes DELETE /email/domains/{id}. */
+    public DeletedDomainResponse deleteEmailDomain(DeleteEmailDomainRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/domains/{id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.id() != null) path = path.replace("{id}", pathValue(input.id()));
+        var response = requestWithRetry("DELETE", path, query, headers, null, null);
+        return decode(response, DeletedDomainResponse.class);
+        } catch (ApiException error) {
+            throw mapDeleteEmailDomainError(error);
+        }
+    }
+
+    /** Inputs accepted by GetEmailDomain. */
+    public record GetEmailDomainRequest(
+            String id
+    ) {}
+
+    /** Invokes GET /email/domains/{id}. */
+    public DomainResponse getEmailDomain(GetEmailDomainRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/domains/{id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.id() != null) path = path.replace("{id}", pathValue(input.id()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, DomainResponse.class);
+        } catch (ApiException error) {
+            throw mapGetEmailDomainError(error);
+        }
+    }
+
+    /** Inputs accepted by VerifyEmailDomain. */
+    public record VerifyEmailDomainRequest(
+            String id
+    ) {}
+
+    /** Invokes POST /email/domains/{id}/verify. */
+    public DomainSetupResponse verifyEmailDomain(VerifyEmailDomainRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/domains/{id}/verify";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.id() != null) path = path.replace("{id}", pathValue(input.id()));
+        var response = requestWithRetry("POST", path, query, headers, null, null);
+        return decode(response, DomainSetupResponse.class);
+        } catch (ApiException error) {
+            throw mapVerifyEmailDomainError(error);
+        }
+    }
+
+    /** Inputs accepted by SendEmail. */
+    public record SendEmailRequest(
+            String idempotencyKey,
+            SendEmailRequestModel body
+    ) {}
+
+    /** Invokes POST /email/emails. */
+    public SendResponse sendEmail(SendEmailRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/emails";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.idempotencyKey() != null) headers.put("Idempotency-Key", String.valueOf(input.idempotencyKey()));
+        var response = requestWithRetry("POST", path, query, headers, input.body(), null);
+        return decode(response, SendResponse.class);
+        } catch (ApiException error) {
+            throw mapSendEmailError(error);
+        }
+    }
+
+    /** Inputs accepted by SendEmailBatch. */
+    public record SendEmailBatchRequest(
+            String idempotencyKey,
+            BatchSendRequest body
+    ) {}
+
+    /** Invokes POST /email/emails/batch. */
+    public BatchSendResponse sendEmailBatch(SendEmailBatchRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/emails/batch";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.idempotencyKey() != null) headers.put("Idempotency-Key", String.valueOf(input.idempotencyKey()));
+        var response = requestWithRetry("POST", path, query, headers, input.body(), null);
+        return decode(response, BatchSendResponse.class);
+        } catch (ApiException error) {
+            throw mapSendEmailBatchError(error);
+        }
+    }
+
+    /** Inputs accepted by QueryEmails. */
+    public record QueryEmailsRequest(
+            SendQuery body
+    ) {}
+
+    /** Invokes POST /email/emails/query. */
+    public void queryEmails(QueryEmailsRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/emails/query";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        requestWithRetry("POST", path, query, headers, input.body(), null);
+        } catch (ApiException error) {
+            throw mapQueryEmailsError(error);
+        }
+    }
+
+    /** Inputs accepted by CancelEmail. */
+    public record CancelEmailRequest(
+            String emailId
+    ) {}
+
+    /** Invokes DELETE /email/emails/{email_id}. */
+    public SendResponse cancelEmail(CancelEmailRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/emails/{email_id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.emailId() != null) path = path.replace("{email_id}", pathValue(input.emailId()));
+        var response = requestWithRetry("DELETE", path, query, headers, null, null);
+        return decode(response, SendResponse.class);
+        } catch (ApiException error) {
+            throw mapCancelEmailError(error);
+        }
+    }
+
+    /** Inputs accepted by GetEmail. */
+    public record GetEmailRequest(
+            String emailId
+    ) {}
+
+    /** Invokes GET /email/emails/{email_id}. */
+    public SendResponse getEmail(GetEmailRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/emails/{email_id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.emailId() != null) path = path.replace("{email_id}", pathValue(input.emailId()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, SendResponse.class);
+        } catch (ApiException error) {
+            throw mapGetEmailError(error);
+        }
+    }
+
+    /** Inputs accepted by RescheduleEmail. */
+    public record RescheduleEmailRequest(
+            String emailId,
+            RescheduleRequest body
+    ) {}
+
+    /** Invokes PATCH /email/emails/{email_id}. */
+    public SendResponse rescheduleEmail(RescheduleEmailRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/emails/{email_id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.emailId() != null) path = path.replace("{email_id}", pathValue(input.emailId()));
+        var response = requestWithRetry("PATCH", path, query, headers, input.body(), null);
+        return decode(response, SendResponse.class);
+        } catch (ApiException error) {
+            throw mapRescheduleEmailError(error);
+        }
+    }
+
+    /** Inputs accepted by ListEmailEvents. */
+    public record ListEmailEventsRequest(
+            String emailId,
+            Long limit,
+            String after
+    ) {}
+
+    /** Invokes GET /email/emails/{email_id}/events. */
+    public SendEventsResponse listEmailEvents(ListEmailEventsRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/emails/{email_id}/events";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.emailId() != null) path = path.replace("{email_id}", pathValue(input.emailId()));
+        query.add(new QueryParameter("limit", input.limit()));
+        query.add(new QueryParameter("after", input.after()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, SendEventsResponse.class);
+        } catch (ApiException error) {
+            throw mapListEmailEventsError(error);
+        }
+    }
+
+    /** Inputs accepted by ListEmailRecipientEvents. */
+    public record ListEmailRecipientEventsRequest(
+            String emailId,
+            String recipientSendId,
+            Long limit,
+            String after
+    ) {}
+
+    /** Invokes GET /email/emails/{email_id}/recipients/{recipient_send_id}/events. */
+    public SendEventsResponse listEmailRecipientEvents(ListEmailRecipientEventsRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/emails/{email_id}/recipients/{recipient_send_id}/events";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.emailId() != null) path = path.replace("{email_id}", pathValue(input.emailId()));
+        if (input.recipientSendId() != null) path = path.replace("{recipient_send_id}", pathValue(input.recipientSendId()));
+        query.add(new QueryParameter("limit", input.limit()));
+        query.add(new QueryParameter("after", input.after()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, SendEventsResponse.class);
+        } catch (ApiException error) {
+            throw mapListEmailRecipientEventsError(error);
+        }
+    }
+
+    /** Inputs accepted by TrackEmailEvent. */
+    public record TrackEmailEventRequest(
+            TrackEventRequest body
+    ) {}
+
+    /** Invokes POST /email/events. */
+    public EventResponse trackEmailEvent(TrackEmailEventRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/events";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        var response = requestWithRetry("POST", path, query, headers, input.body(), null);
+        return decode(response, EventResponse.class);
+        } catch (ApiException error) {
+            throw mapTrackEmailEventError(error);
+        }
+    }
+
+    /** Inputs accepted by ListEmailInbound. */
+    public record ListEmailInboundRequest(
+            Long limit
+    ) {}
+
+    /** Invokes GET /email/inbound. */
+    public InboundListResponse listEmailInbound(ListEmailInboundRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/inbound";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         query.add(new QueryParameter("limit", input.limit()));
         var response = requestWithRetry("GET", path, query, headers, null, null);
         return decode(response, InboundListResponse.class);
         } catch (ApiException error) {
-            throw mapListInboundError(error);
+            throw mapListEmailInboundError(error);
         }
     }
 
-    /** Inputs accepted by GetInbound. */
-    public record GetInboundRequest(
+    /** Inputs accepted by GetEmailInbound. */
+    public record GetEmailInboundRequest(
             String messageId
     ) {}
 
-    /** Invokes GET /v1/email/inbound/{message_id}. */
-    public InboundResponse getInbound(GetInboundRequest input) {
+    /** Invokes GET /email/inbound/{message_id}. */
+    public InboundResponse getEmailInbound(GetEmailInboundRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/inbound/{message_id}";
+        var path = "/email/inbound/{message_id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.messageId() != null) path = path.replace("{message_id}", pathValue(input.messageId()));
         var response = requestWithRetry("GET", path, query, headers, null, null);
         return decode(response, InboundResponse.class);
         } catch (ApiException error) {
-            throw mapGetInboundError(error);
+            throw mapGetEmailInboundError(error);
         }
     }
 
-    /** Inputs accepted by ListSegments. */
-    public record ListSegmentsRequest(
-            Long limit
+    /** Inputs accepted by ForwardEmailInbound. */
+    public record ForwardEmailInboundRequest(
+            String messageId,
+            ForwardRequest body
     ) {}
 
-    /** Invokes GET /v1/email/segments. */
-    public SegmentListResponse listSegments(ListSegmentsRequest input) {
+    /** Invokes POST /email/inbound/{message_id}/forward. */
+    public void forwardEmailInbound(ForwardEmailInboundRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/segments";
+        var path = "/email/inbound/{message_id}/forward";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.messageId() != null) path = path.replace("{message_id}", pathValue(input.messageId()));
+        requestWithRetry("POST", path, query, headers, input.body(), null);
+        } catch (ApiException error) {
+            throw mapForwardEmailInboundError(error);
+        }
+    }
+
+    /** Inputs accepted by ReplyToEmailInbound. */
+    public record ReplyToEmailInboundRequest(
+            String messageId,
+            ReplyRequest body
+    ) {}
+
+    /** Invokes POST /email/inbound/{message_id}/reply. */
+    public void replyToEmailInbound(ReplyToEmailInboundRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/inbound/{message_id}/reply";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.messageId() != null) path = path.replace("{message_id}", pathValue(input.messageId()));
+        requestWithRetry("POST", path, query, headers, input.body(), null);
+        } catch (ApiException error) {
+            throw mapReplyToEmailInboundError(error);
+        }
+    }
+
+    /** Inputs accepted by ListEmailInboxes. */
+    public record ListEmailInboxesRequest(
+            Long limit,
+            String after,
+            String reference
+    ) {}
+
+    /** Invokes GET /email/inboxes. */
+    public InboxListResponse listEmailInboxes(ListEmailInboxesRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/inboxes";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        query.add(new QueryParameter("limit", input.limit()));
+        query.add(new QueryParameter("after", input.after()));
+        query.add(new QueryParameter("reference", input.reference()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, InboxListResponse.class);
+        } catch (ApiException error) {
+            throw mapListEmailInboxesError(error);
+        }
+    }
+
+    /** Inputs accepted by CreateEmailInbox. */
+    public record CreateEmailInboxRequest(
+            CreateInbox body
+    ) {}
+
+    /** Invokes POST /email/inboxes. */
+    public InboxResponse createEmailInbox(CreateEmailInboxRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/inboxes";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        var response = requestWithRetry("POST", path, query, headers, input.body(), null);
+        return decode(response, InboxResponse.class);
+        } catch (ApiException error) {
+            throw mapCreateEmailInboxError(error);
+        }
+    }
+
+    /** Invokes GET /email/inboxes/provided-domains. */
+    public void listProvidedEmailDomains() {
+  
+        var path = "/email/inboxes/provided-domains";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        requestWithRetry("GET", path, query, headers, null, null);
+    }
+
+    /** Inputs accepted by DisableEmailInbox. */
+    public record DisableEmailInboxRequest(
+            String inboxId
+    ) {}
+
+    /** Invokes DELETE /email/inboxes/{inbox_id}. */
+    public void disableEmailInbox(DisableEmailInboxRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/inboxes/{inbox_id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.inboxId() != null) path = path.replace("{inbox_id}", pathValue(input.inboxId()));
+        requestWithRetry("DELETE", path, query, headers, null, null);
+        } catch (ApiException error) {
+            throw mapDisableEmailInboxError(error);
+        }
+    }
+
+    /** Inputs accepted by GetEmailInbox. */
+    public record GetEmailInboxRequest(
+            String inboxId
+    ) {}
+
+    /** Invokes GET /email/inboxes/{inbox_id}. */
+    public InboxResponse getEmailInbox(GetEmailInboxRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/inboxes/{inbox_id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.inboxId() != null) path = path.replace("{inbox_id}", pathValue(input.inboxId()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, InboxResponse.class);
+        } catch (ApiException error) {
+            throw mapGetEmailInboxError(error);
+        }
+    }
+
+    /** Inputs accepted by SendEmailInboxMessage. */
+    public record SendEmailInboxMessageRequest(
+            String inboxId,
+            InboxMessage body
+    ) {}
+
+    /** Invokes POST /email/inboxes/{inbox_id}/messages. */
+    public void sendEmailInboxMessage(SendEmailInboxMessageRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/inboxes/{inbox_id}/messages";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.inboxId() != null) path = path.replace("{inbox_id}", pathValue(input.inboxId()));
+        requestWithRetry("POST", path, query, headers, input.body(), null);
+        } catch (ApiException error) {
+            throw mapSendEmailInboxMessageError(error);
+        }
+    }
+
+    /** Inputs accepted by ListEmailThreads. */
+    public record ListEmailThreadsRequest(
+            String inboxId,
+            Long limit,
+            String after,
+            String status,
+            String label,
+            String assignedAgent,
+            String assignedUserId,
+            Boolean unassigned,
+            Boolean unread,
+            String q
+    ) {}
+
+    /** Invokes GET /email/inboxes/{inbox_id}/threads. */
+    public ThreadListResponse listEmailThreads(ListEmailThreadsRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/inboxes/{inbox_id}/threads";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.inboxId() != null) path = path.replace("{inbox_id}", pathValue(input.inboxId()));
+        query.add(new QueryParameter("limit", input.limit()));
+        query.add(new QueryParameter("after", input.after()));
+        query.add(new QueryParameter("status", input.status()));
+        query.add(new QueryParameter("label", input.label()));
+        query.add(new QueryParameter("assigned_agent", input.assignedAgent()));
+        query.add(new QueryParameter("assigned_user_id", input.assignedUserId()));
+        query.add(new QueryParameter("unassigned", input.unassigned()));
+        query.add(new QueryParameter("unread", input.unread()));
+        query.add(new QueryParameter("q", input.q()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, ThreadListResponse.class);
+        } catch (ApiException error) {
+            throw mapListEmailThreadsError(error);
+        }
+    }
+
+    /** Invokes GET /email/labels. */
+    public void listEmailLabels() {
+  
+        try {
+        var path = "/email/labels";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        requestWithRetry("GET", path, query, headers, null, null);
+        } catch (ApiException error) {
+            throw mapListEmailLabelsError(error);
+        }
+    }
+
+    /** Inputs accepted by CreateEmailLabel. */
+    public record CreateEmailLabelRequest(
+            LabelInput body
+    ) {}
+
+    /** Invokes POST /email/labels. */
+    public void createEmailLabel(CreateEmailLabelRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/labels";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        requestWithRetry("POST", path, query, headers, input.body(), null);
+        } catch (ApiException error) {
+            throw mapCreateEmailLabelError(error);
+        }
+    }
+
+    /** Inputs accepted by DeleteEmailLabel. */
+    public record DeleteEmailLabelRequest(
+            String labelId
+    ) {}
+
+    /** Invokes DELETE /email/labels/{label_id}. */
+    public void deleteEmailLabel(DeleteEmailLabelRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/labels/{label_id}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.labelId() != null) path = path.replace("{label_id}", pathValue(input.labelId()));
+        requestWithRetry("DELETE", path, query, headers, null, null);
+        } catch (ApiException error) {
+            throw mapDeleteEmailLabelError(error);
+        }
+    }
+
+    /** Inputs accepted by ListEmailSegments. */
+    public record ListEmailSegmentsRequest(
+            Long limit
+    ) {}
+
+    /** Invokes GET /email/segments. */
+    public SegmentListResponse listEmailSegments(ListEmailSegmentsRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/segments";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         query.add(new QueryParameter("limit", input.limit()));
         var response = requestWithRetry("GET", path, query, headers, null, null);
         return decode(response, SegmentListResponse.class);
         } catch (ApiException error) {
-            throw mapListSegmentsError(error);
+            throw mapListEmailSegmentsError(error);
         }
     }
 
-    /** Inputs accepted by GetSegment. */
-    public record GetSegmentRequest(
+    /** Inputs accepted by GetEmailSegment. */
+    public record GetEmailSegmentRequest(
             String id
     ) {}
 
-    /** Invokes GET /v1/email/segments/{id}. */
-    public SegmentResponse getSegment(GetSegmentRequest input) {
+    /** Invokes GET /email/segments/{id}. */
+    public SegmentResponse getEmailSegment(GetEmailSegmentRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/segments/{id}";
+        var path = "/email/segments/{id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.id() != null) path = path.replace("{id}", pathValue(input.id()));
         var response = requestWithRetry("GET", path, query, headers, null, null);
         return decode(response, SegmentResponse.class);
         } catch (ApiException error) {
-            throw mapGetSegmentError(error);
+            throw mapGetEmailSegmentError(error);
         }
     }
 
-    /** Inputs accepted by ListSenderIdentities. */
-    public record ListSenderIdentitiesRequest(
+    /** Inputs accepted by ListEmailSenderIdentities. */
+    public record ListEmailSenderIdentitiesRequest(
             Long limit
     ) {}
 
-    /** Invokes GET /v1/email/sender-identities. */
-    public SenderIdentityListResponse listSenderIdentities(ListSenderIdentitiesRequest input) {
+    /** Invokes GET /email/sender-identities. */
+    public SenderIdentityListResponse listEmailSenderIdentities(ListEmailSenderIdentitiesRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/sender-identities";
+        var path = "/email/sender-identities";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         query.add(new QueryParameter("limit", input.limit()));
         var response = requestWithRetry("GET", path, query, headers, null, null);
         return decode(response, SenderIdentityListResponse.class);
         } catch (ApiException error) {
-            throw mapListSenderIdentitiesError(error);
+            throw mapListEmailSenderIdentitiesError(error);
         }
     }
 
-    /** Inputs accepted by GetSenderIdentity. */
-    public record GetSenderIdentityRequest(
+    /** Inputs accepted by GetEmailSenderIdentity. */
+    public record GetEmailSenderIdentityRequest(
             String id
     ) {}
 
-    /** Invokes GET /v1/email/sender-identities/{id}. */
-    public SenderIdentityResponse getSenderIdentity(GetSenderIdentityRequest input) {
+    /** Invokes GET /email/sender-identities/{id}. */
+    public SenderIdentityResponse getEmailSenderIdentity(GetEmailSenderIdentityRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/sender-identities/{id}";
+        var path = "/email/sender-identities/{id}";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         if (input.id() != null) path = path.replace("{id}", pathValue(input.id()));
         var response = requestWithRetry("GET", path, query, headers, null, null);
         return decode(response, SenderIdentityResponse.class);
         } catch (ApiException error) {
-            throw mapGetSenderIdentityError(error);
+            throw mapGetEmailSenderIdentityError(error);
         }
     }
 
-    /** Inputs accepted by Create. */
-    public record CreateRequest(
-            SendRequest body
+    /** Inputs accepted by ListEmailSuppressions. */
+    public record ListEmailSuppressionsRequest(
+            Long limit,
+            Long offset,
+            String reason,
+            String scope,
+            String address,
+            String status
     ) {}
 
-    /** Invokes POST /v1/email/sends. */
-    public SendResponse create(CreateRequest input) {
+    /** Invokes GET /email/suppressions. */
+    public SuppressionListResponse listEmailSuppressions(ListEmailSuppressionsRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/sends";
+        var path = "/email/suppressions";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        query.add(new QueryParameter("limit", input.limit()));
+        query.add(new QueryParameter("offset", input.offset()));
+        query.add(new QueryParameter("reason", input.reason()));
+        query.add(new QueryParameter("scope", input.scope()));
+        query.add(new QueryParameter("address", input.address()));
+        query.add(new QueryParameter("status", input.status()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, SuppressionListResponse.class);
+        } catch (ApiException error) {
+            throw mapListEmailSuppressionsError(error);
+        }
+    }
+
+    /** Inputs accepted by CreateEmailSuppression. */
+    public record CreateEmailSuppressionRequest(
+            NewSuppression body
+    ) {}
+
+    /** Invokes POST /email/suppressions. */
+    public SuppressionResponse createEmailSuppression(CreateEmailSuppressionRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/suppressions";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         var response = requestWithRetry("POST", path, query, headers, input.body(), null);
-        return decode(response, SendResponse.class);
+        return decode(response, SuppressionResponse.class);
         } catch (ApiException error) {
-            throw mapCreateError(error);
+            throw mapCreateEmailSuppressionError(error);
         }
     }
 
-    /** Inputs accepted by Query. */
-    public record QueryRequest(
-            SendQuery body
+    /** Inputs accepted by CreateEmailSuppressionBatch. */
+    public record CreateEmailSuppressionBatchRequest(
+            SuppressionBatchRequest body
     ) {}
 
-    /** Invokes POST /v1/email/sends/query. */
-    public void query(QueryRequest input) {
+    /** Invokes POST /email/suppressions/batch. */
+    public SuppressionBatchResponse createEmailSuppressionBatch(CreateEmailSuppressionBatchRequest input) {
   
         Objects.requireNonNull(input, "input");
         try {
-        var path = "/v1/email/sends/query";
+        var path = "/email/suppressions/batch";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        var response = requestWithRetry("POST", path, query, headers, input.body(), null);
+        return decode(response, SuppressionBatchResponse.class);
+        } catch (ApiException error) {
+            throw mapCreateEmailSuppressionBatchError(error);
+        }
+    }
+
+    /** Inputs accepted by DeleteEmailSuppression. */
+    public record DeleteEmailSuppressionRequest(
+            String address
+    ) {}
+
+    /** Invokes DELETE /email/suppressions/{address}. */
+    public SuppressionRemovalResponse deleteEmailSuppression(DeleteEmailSuppressionRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/suppressions/{address}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.address() != null) path = path.replace("{address}", pathValue(input.address()));
+        var response = requestWithRetry("DELETE", path, query, headers, null, null);
+        return decode(response, SuppressionRemovalResponse.class);
+        } catch (ApiException error) {
+            throw mapDeleteEmailSuppressionError(error);
+        }
+    }
+
+    /** Inputs accepted by GetEmailSuppression. */
+    public record GetEmailSuppressionRequest(
+            String address
+    ) {}
+
+    /** Invokes GET /email/suppressions/{address}. */
+    public SuppressionResponse getEmailSuppression(GetEmailSuppressionRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/suppressions/{address}";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        if (input.address() != null) path = path.replace("{address}", pathValue(input.address()));
+        var response = requestWithRetry("GET", path, query, headers, null, null);
+        return decode(response, SuppressionResponse.class);
+        } catch (ApiException error) {
+            throw mapGetEmailSuppressionError(error);
+        }
+    }
+
+    /** Invokes GET /email/templates. */
+    public void listEmailTemplates() {
+  
+        try {
+        var path = "/email/templates";
+        var query = new ArrayList<QueryParameter>();
+        var headers = new java.util.LinkedHashMap<String, String>();
+        requestWithRetry("GET", path, query, headers, null, null);
+        } catch (ApiException error) {
+            throw mapListEmailTemplatesError(error);
+        }
+    }
+
+    /** Inputs accepted by CreateEmailTemplate. */
+    public record CreateEmailTemplateRequest(
+            CreateTemplateRequest body
+    ) {}
+
+    /** Invokes POST /email/templates. */
+    public void createEmailTemplate(CreateEmailTemplateRequest input) {
+  
+        Objects.requireNonNull(input, "input");
+        try {
+        var path = "/email/templates";
         var query = new ArrayList<QueryParameter>();
         var headers = new java.util.LinkedHashMap<String, String>();
         requestWithRetry("POST", path, query, headers, input.body(), null);
         } catch (ApiException error) {
-            throw mapQueryError(error);
+            throw mapCreateEmailTemplateError(error);
         }
     }
 
-    /** Inputs accepted by Cancel. */
-    public record CancelRequest(
-            String sendId
-    ) {}
-
-    /** Invokes DELETE /v1/email/sends/{send_id}. */
-    public SendResponse cancel(CancelRequest input) {
-  
-        Objects.requireNonNull(input, "input");
-        try {
-        var path = "/v1/email/sends/{send_id}";
-        var query = new ArrayList<QueryParameter>();
-        var headers = new java.util.LinkedHashMap<String, String>();
-        if (input.sendId() != null) path = path.replace("{send_id}", pathValue(input.sendId()));
-        var response = requestWithRetry("DELETE", path, query, headers, null, null);
-        return decode(response, SendResponse.class);
-        } catch (ApiException error) {
-            throw mapCancelError(error);
-        }
-    }
-
-    /** Inputs accepted by Get. */
-    public record GetRequest(
-            String sendId
-    ) {}
-
-    /** Invokes GET /v1/email/sends/{send_id}. */
-    public SendResponse get(GetRequest input) {
-  
-        Objects.requireNonNull(input, "input");
-        try {
-        var path = "/v1/email/sends/{send_id}";
-        var query = new ArrayList<QueryParameter>();
-        var headers = new java.util.LinkedHashMap<String, String>();
-        if (input.sendId() != null) path = path.replace("{send_id}", pathValue(input.sendId()));
-        var response = requestWithRetry("GET", path, query, headers, null, null);
-        return decode(response, SendResponse.class);
-        } catch (ApiException error) {
-            throw mapGetError(error);
-        }
-    }
-
-    /** Invokes GET /v1/email/webhooks. */
-    public WebhookListResponse listWebhooks() {
-  
-        try {
-        var path = "/v1/email/webhooks";
-        var query = new ArrayList<QueryParameter>();
-        var headers = new java.util.LinkedHashMap<String, String>();
-        var response = requestWithRetry("GET", path, query, headers, null, null);
-        return decode(response, WebhookListResponse.class);
-        } catch (ApiException error) {
-            throw mapListWebhooksError(error);
-        }
-    }
-
-    /** Inputs accepted by CreateWebhook. */
-    public record CreateWebhookRequest(
-            HookCreate body
-    ) {}
-
-    /** Invokes POST /v1/email/webhooks. */
-    public CreateWebhookResponse createWebhook(CreateWebhookRequest input) {
-  
-        Objects.requireNonNull(input, "input");
-        try {
-        var path = "/v1/email/webhooks";
-        var query = new ArrayList<QueryParameter>();
-        var headers = new java.util.LinkedHashMap<String, String>();
-        var response = requestWithRetry("POST", path, query, headers, input.body(), null);
-        return decode(response, CreateWebhookResponse.class);
-        } catch (ApiException error) {
-            throw mapCreateWebhookError(error);
-        }
-    }
-
-    /** Inputs accepted by DeleteWebhook. */
-    public record DeleteWebhookRequest(
-            String webhookId
-    ) {}
-
-    /** Invokes DELETE /v1/email/webhooks/{webhook_id}. */
-    public void deleteWebhook(DeleteWebhookRequest input) {
-  
-        Objects.requireNonNull(input, "input");
-        try {
-        var path = "/v1/email/webhooks/{webhook_id}";
-        var query = new ArrayList<QueryParameter>();
-        var headers = new java.util.LinkedHashMap<String, String>();
-        if (input.webhookId() != null) path = path.replace("{webhook_id}", pathValue(input.webhookId()));
-        requestWithRetry("DELETE", path, query, headers, null, null);
-        } catch (ApiException error) {
-            throw mapDeleteWebhookError(error);
-        }
-    }
-
-    /** Inputs accepted by UpdateWebhook. */
-    public record UpdateWebhookRequest(
-            String webhookId,
-            HookUpdate body
-    ) {}
-
-    /** Invokes PATCH /v1/email/webhooks/{webhook_id}. */
-    public WebhookResponse updateWebhook(UpdateWebhookRequest input) {
-  
-        Objects.requireNonNull(input, "input");
-        try {
-        var path = "/v1/email/webhooks/{webhook_id}";
-        var query = new ArrayList<QueryParameter>();
-        var headers = new java.util.LinkedHashMap<String, String>();
-        if (input.webhookId() != null) path = path.replace("{webhook_id}", pathValue(input.webhookId()));
-        var response = requestWithRetry("PATCH", path, query, headers, input.body(), null);
-        return decode(response, WebhookResponse.class);
-        } catch (ApiException error) {
-            throw mapUpdateWebhookError(error);
-        }
-    }
-
-    /** Inputs accepted by ListDeliveries. */
-    public record ListDeliveriesRequest(
-            String webhookId,
-            Long limit
-    ) {}
-
-    /** Invokes GET /v1/email/webhooks/{webhook_id}/deliveries. */
-    public WebhookDeliveryListResponse listDeliveries(ListDeliveriesRequest input) {
-  
-        Objects.requireNonNull(input, "input");
-        try {
-        var path = "/v1/email/webhooks/{webhook_id}/deliveries";
-        var query = new ArrayList<QueryParameter>();
-        var headers = new java.util.LinkedHashMap<String, String>();
-        if (input.webhookId() != null) path = path.replace("{webhook_id}", pathValue(input.webhookId()));
-        query.add(new QueryParameter("limit", input.limit()));
-        var response = requestWithRetry("GET", path, query, headers, null, null);
-        return decode(response, WebhookDeliveryListResponse.class);
-        } catch (ApiException error) {
-            throw mapListDeliveriesError(error);
-        }
-    }
-
-    private RuntimeException mapListInboundError(ApiException error) {
+    private RuntimeException mapGetEmailContactError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new ListInboundStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 422 -> new ListInboundStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new ListInboundStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new GetEmailContactStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new GetEmailContactStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new GetEmailContactStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class ListInboundStatus401Exception extends ApiException {
+    public static final class GetEmailContactStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListInboundStatus401Exception(ApiException source, ErrorResponse body) {
+        private GetEmailContactStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -355,10 +915,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class ListInboundStatus422Exception extends ApiException {
+    public static final class GetEmailContactStatus404Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListInboundStatus422Exception(ApiException source, ErrorResponse body) {
+        private GetEmailContactStatus404Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -373,10 +933,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class ListInboundStatus503Exception extends ApiException {
+    public static final class GetEmailContactStatus503Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListInboundStatus503Exception(ApiException source, ErrorResponse body) {
+        private GetEmailContactStatus503Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -391,19 +951,20 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapGetInboundError(ApiException error) {
+    private RuntimeException mapUpdateEmailContactError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new GetInboundStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 404 -> new GetInboundStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new GetInboundStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new UpdateEmailContactStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new UpdateEmailContactStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new UpdateEmailContactStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new UpdateEmailContactStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class GetInboundStatus401Exception extends ApiException {
+    public static final class UpdateEmailContactStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetInboundStatus401Exception(ApiException source, ErrorResponse body) {
+        private UpdateEmailContactStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -418,10 +979,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class GetInboundStatus404Exception extends ApiException {
+    public static final class UpdateEmailContactStatus404Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetInboundStatus404Exception(ApiException source, ErrorResponse body) {
+        private UpdateEmailContactStatus404Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -436,10 +997,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class GetInboundStatus503Exception extends ApiException {
+    public static final class UpdateEmailContactStatus422Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetInboundStatus503Exception(ApiException source, ErrorResponse body) {
+        private UpdateEmailContactStatus422Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -454,18 +1015,36 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapListSegmentsError(ApiException error) {
+    public static final class UpdateEmailContactStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private UpdateEmailContactStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapListEmailDomainsError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new ListSegmentsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new ListSegmentsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new ListEmailDomainsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailDomainsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class ListSegmentsStatus401Exception extends ApiException {
+    public static final class ListEmailDomainsStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListSegmentsStatus401Exception(ApiException source, ErrorResponse body) {
+        private ListEmailDomainsStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -480,10 +1059,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class ListSegmentsStatus503Exception extends ApiException {
+    public static final class ListEmailDomainsStatus503Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListSegmentsStatus503Exception(ApiException source, ErrorResponse body) {
+        private ListEmailDomainsStatus503Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -498,19 +1077,21 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapGetSegmentError(ApiException error) {
+    private RuntimeException mapCreateEmailDomainError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new GetSegmentStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 404 -> new GetSegmentStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new GetSegmentStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new CreateEmailDomainStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new CreateEmailDomainStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new CreateEmailDomainStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new CreateEmailDomainStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new CreateEmailDomainStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class GetSegmentStatus401Exception extends ApiException {
+    public static final class CreateEmailDomainStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetSegmentStatus401Exception(ApiException source, ErrorResponse body) {
+        private CreateEmailDomainStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -525,10 +1106,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class GetSegmentStatus404Exception extends ApiException {
+    public static final class CreateEmailDomainStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetSegmentStatus404Exception(ApiException source, ErrorResponse body) {
+        private CreateEmailDomainStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -543,10 +1124,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class GetSegmentStatus503Exception extends ApiException {
+    public static final class CreateEmailDomainStatus409Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetSegmentStatus503Exception(ApiException source, ErrorResponse body) {
+        private CreateEmailDomainStatus409Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -561,18 +1142,57 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapListSenderIdentitiesError(ApiException error) {
+    public static final class CreateEmailDomainStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailDomainStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailDomainStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailDomainStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapDeleteEmailDomainError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new ListSenderIdentitiesStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new ListSenderIdentitiesStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new DeleteEmailDomainStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new DeleteEmailDomainStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new DeleteEmailDomainStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new DeleteEmailDomainStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new DeleteEmailDomainStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class ListSenderIdentitiesStatus401Exception extends ApiException {
+    public static final class DeleteEmailDomainStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListSenderIdentitiesStatus401Exception(ApiException source, ErrorResponse body) {
+        private DeleteEmailDomainStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -587,10 +1207,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class ListSenderIdentitiesStatus503Exception extends ApiException {
+    public static final class DeleteEmailDomainStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListSenderIdentitiesStatus503Exception(ApiException source, ErrorResponse body) {
+        private DeleteEmailDomainStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -605,19 +1225,73 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapGetSenderIdentityError(ApiException error) {
+    public static final class DeleteEmailDomainStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailDomainStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class DeleteEmailDomainStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailDomainStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class DeleteEmailDomainStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailDomainStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapGetEmailDomainError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new GetSenderIdentityStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 404 -> new GetSenderIdentityStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new GetSenderIdentityStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new GetEmailDomainStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new GetEmailDomainStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new GetEmailDomainStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class GetSenderIdentityStatus401Exception extends ApiException {
+    public static final class GetEmailDomainStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetSenderIdentityStatus401Exception(ApiException source, ErrorResponse body) {
+        private GetEmailDomainStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -632,10 +1306,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class GetSenderIdentityStatus404Exception extends ApiException {
+    public static final class GetEmailDomainStatus404Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetSenderIdentityStatus404Exception(ApiException source, ErrorResponse body) {
+        private GetEmailDomainStatus404Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -650,10 +1324,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class GetSenderIdentityStatus503Exception extends ApiException {
+    public static final class GetEmailDomainStatus503Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetSenderIdentityStatus503Exception(ApiException source, ErrorResponse body) {
+        private GetEmailDomainStatus503Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -668,22 +1342,22 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapCreateError(ApiException error) {
+    private RuntimeException mapVerifyEmailDomainError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new CreateStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 403 -> new CreateStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 409 -> new CreateStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 422 -> new CreateStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 429 -> new CreateStatus429Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new CreateStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new VerifyEmailDomainStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new VerifyEmailDomainStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new VerifyEmailDomainStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new VerifyEmailDomainStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 429 -> new VerifyEmailDomainStatus429Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new VerifyEmailDomainStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class CreateStatus401Exception extends ApiException {
+    public static final class VerifyEmailDomainStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateStatus401Exception(ApiException source, ErrorResponse body) {
+        private VerifyEmailDomainStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -698,10 +1372,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class CreateStatus403Exception extends ApiException {
+    public static final class VerifyEmailDomainStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateStatus403Exception(ApiException source, ErrorResponse body) {
+        private VerifyEmailDomainStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -716,10 +1390,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class CreateStatus409Exception extends ApiException {
+    public static final class VerifyEmailDomainStatus404Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateStatus409Exception(ApiException source, ErrorResponse body) {
+        private VerifyEmailDomainStatus404Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -734,10 +1408,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class CreateStatus422Exception extends ApiException {
+    public static final class VerifyEmailDomainStatus409Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateStatus422Exception(ApiException source, ErrorResponse body) {
+        private VerifyEmailDomainStatus409Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -752,10 +1426,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class CreateStatus429Exception extends ApiException {
+    public static final class VerifyEmailDomainStatus429Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateStatus429Exception(ApiException source, ErrorResponse body) {
+        private VerifyEmailDomainStatus429Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -770,10 +1444,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class CreateStatus503Exception extends ApiException {
+    public static final class VerifyEmailDomainStatus503Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateStatus503Exception(ApiException source, ErrorResponse body) {
+        private VerifyEmailDomainStatus503Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -788,20 +1462,22 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapQueryError(ApiException error) {
+    private RuntimeException mapSendEmailError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new QueryStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 403 -> new QueryStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 422 -> new QueryStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new QueryStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new SendEmailStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new SendEmailStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new SendEmailStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new SendEmailStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 429 -> new SendEmailStatus429Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new SendEmailStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class QueryStatus401Exception extends ApiException {
+    public static final class SendEmailStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private QueryStatus401Exception(ApiException source, ErrorResponse body) {
+        private SendEmailStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -816,10 +1492,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class QueryStatus403Exception extends ApiException {
+    public static final class SendEmailStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private QueryStatus403Exception(ApiException source, ErrorResponse body) {
+        private SendEmailStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -834,10 +1510,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class QueryStatus422Exception extends ApiException {
+    public static final class SendEmailStatus409Exception extends ApiException {
   private final ErrorResponse body;
   
-        private QueryStatus422Exception(ApiException source, ErrorResponse body) {
+        private SendEmailStatus409Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -852,10 +1528,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class QueryStatus503Exception extends ApiException {
+    public static final class SendEmailStatus422Exception extends ApiException {
   private final ErrorResponse body;
   
-        private QueryStatus503Exception(ApiException source, ErrorResponse body) {
+        private SendEmailStatus422Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -870,21 +1546,55 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapCancelError(ApiException error) {
+    public static final class SendEmailStatus429Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private SendEmailStatus429Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class SendEmailStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private SendEmailStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapSendEmailBatchError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new CancelStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 403 -> new CancelStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 404 -> new CancelStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 409 -> new CancelStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new CancelStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new SendEmailBatchStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new SendEmailBatchStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new SendEmailBatchStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class CancelStatus401Exception extends ApiException {
+    public static final class SendEmailBatchStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CancelStatus401Exception(ApiException source, ErrorResponse body) {
+        private SendEmailBatchStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -899,10 +1609,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class CancelStatus403Exception extends ApiException {
+    public static final class SendEmailBatchStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CancelStatus403Exception(ApiException source, ErrorResponse body) {
+        private SendEmailBatchStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -917,10 +1627,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class CancelStatus404Exception extends ApiException {
+    public static final class SendEmailBatchStatus422Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CancelStatus404Exception(ApiException source, ErrorResponse body) {
+        private SendEmailBatchStatus422Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -935,56 +1645,20 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class CancelStatus409Exception extends ApiException {
-  private final ErrorResponse body;
-  
-        private CancelStatus409Exception(ApiException source, ErrorResponse body) {
-    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
-    this.body = body;
-
-  }
-  
-        public ErrorResponse body() {
-    return body;
-
-  }
-  
-
-}
-
-
-    public static final class CancelStatus503Exception extends ApiException {
-  private final ErrorResponse body;
-  
-        private CancelStatus503Exception(ApiException source, ErrorResponse body) {
-    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
-    this.body = body;
-
-  }
-  
-        public ErrorResponse body() {
-    return body;
-
-  }
-  
-
-}
-
-
-    private RuntimeException mapGetError(ApiException error) {
+    private RuntimeException mapQueryEmailsError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new GetStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 403 -> new GetStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 404 -> new GetStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new GetStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new QueryEmailsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new QueryEmailsStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new QueryEmailsStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new QueryEmailsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class GetStatus401Exception extends ApiException {
+    public static final class QueryEmailsStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetStatus401Exception(ApiException source, ErrorResponse body) {
+        private QueryEmailsStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -999,10 +1673,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class GetStatus403Exception extends ApiException {
+    public static final class QueryEmailsStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetStatus403Exception(ApiException source, ErrorResponse body) {
+        private QueryEmailsStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1017,10 +1691,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class GetStatus404Exception extends ApiException {
+    public static final class QueryEmailsStatus422Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetStatus404Exception(ApiException source, ErrorResponse body) {
+        private QueryEmailsStatus422Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1035,10 +1709,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class GetStatus503Exception extends ApiException {
+    public static final class QueryEmailsStatus503Exception extends ApiException {
   private final ErrorResponse body;
   
-        private GetStatus503Exception(ApiException source, ErrorResponse body) {
+        private QueryEmailsStatus503Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1053,18 +1727,21 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapListWebhooksError(ApiException error) {
+    private RuntimeException mapCancelEmailError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new ListWebhooksStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new ListWebhooksStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new CancelEmailStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new CancelEmailStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new CancelEmailStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new CancelEmailStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new CancelEmailStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class ListWebhooksStatus401Exception extends ApiException {
+    public static final class CancelEmailStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListWebhooksStatus401Exception(ApiException source, ErrorResponse body) {
+        private CancelEmailStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1079,10 +1756,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class ListWebhooksStatus503Exception extends ApiException {
+    public static final class CancelEmailStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListWebhooksStatus503Exception(ApiException source, ErrorResponse body) {
+        private CancelEmailStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1097,19 +1774,74 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapCreateWebhookError(ApiException error) {
+    public static final class CancelEmailStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CancelEmailStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CancelEmailStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CancelEmailStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CancelEmailStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CancelEmailStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapGetEmailError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new CreateWebhookStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 422 -> new CreateWebhookStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new CreateWebhookStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new GetEmailStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new GetEmailStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new GetEmailStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new GetEmailStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class CreateWebhookStatus401Exception extends ApiException {
+    public static final class GetEmailStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateWebhookStatus401Exception(ApiException source, ErrorResponse body) {
+        private GetEmailStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1124,10 +1856,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class CreateWebhookStatus422Exception extends ApiException {
+    public static final class GetEmailStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateWebhookStatus422Exception(ApiException source, ErrorResponse body) {
+        private GetEmailStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1142,10 +1874,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class CreateWebhookStatus503Exception extends ApiException {
+    public static final class GetEmailStatus404Exception extends ApiException {
   private final ErrorResponse body;
   
-        private CreateWebhookStatus503Exception(ApiException source, ErrorResponse body) {
+        private GetEmailStatus404Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1160,19 +1892,39 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapDeleteWebhookError(ApiException error) {
+    public static final class GetEmailStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapRescheduleEmailError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new DeleteWebhookStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 404 -> new DeleteWebhookStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new DeleteWebhookStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new RescheduleEmailStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new RescheduleEmailStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new RescheduleEmailStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new RescheduleEmailStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new RescheduleEmailStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class DeleteWebhookStatus401Exception extends ApiException {
+    public static final class RescheduleEmailStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private DeleteWebhookStatus401Exception(ApiException source, ErrorResponse body) {
+        private RescheduleEmailStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1187,10 +1939,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class DeleteWebhookStatus404Exception extends ApiException {
+    public static final class RescheduleEmailStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private DeleteWebhookStatus404Exception(ApiException source, ErrorResponse body) {
+        private RescheduleEmailStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1205,10 +1957,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class DeleteWebhookStatus503Exception extends ApiException {
+    public static final class RescheduleEmailStatus404Exception extends ApiException {
   private final ErrorResponse body;
   
-        private DeleteWebhookStatus503Exception(ApiException source, ErrorResponse body) {
+        private RescheduleEmailStatus404Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1223,20 +1975,57 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapUpdateWebhookError(ApiException error) {
+    public static final class RescheduleEmailStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private RescheduleEmailStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class RescheduleEmailStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private RescheduleEmailStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapListEmailEventsError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new UpdateWebhookStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 404 -> new UpdateWebhookStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 422 -> new UpdateWebhookStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new UpdateWebhookStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new ListEmailEventsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new ListEmailEventsStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new ListEmailEventsStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new ListEmailEventsStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailEventsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class UpdateWebhookStatus401Exception extends ApiException {
+    public static final class ListEmailEventsStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private UpdateWebhookStatus401Exception(ApiException source, ErrorResponse body) {
+        private ListEmailEventsStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1251,10 +2040,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class UpdateWebhookStatus404Exception extends ApiException {
+    public static final class ListEmailEventsStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private UpdateWebhookStatus404Exception(ApiException source, ErrorResponse body) {
+        private ListEmailEventsStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1269,10 +2058,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class UpdateWebhookStatus422Exception extends ApiException {
+    public static final class ListEmailEventsStatus404Exception extends ApiException {
   private final ErrorResponse body;
   
-        private UpdateWebhookStatus422Exception(ApiException source, ErrorResponse body) {
+        private ListEmailEventsStatus404Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1287,10 +2076,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class UpdateWebhookStatus503Exception extends ApiException {
+    public static final class ListEmailEventsStatus422Exception extends ApiException {
   private final ErrorResponse body;
   
-        private UpdateWebhookStatus503Exception(ApiException source, ErrorResponse body) {
+        private ListEmailEventsStatus422Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1305,19 +2094,39 @@ public class Operations002 extends Operations001 {
 }
 
 
-    private RuntimeException mapListDeliveriesError(ApiException error) {
+    public static final class ListEmailEventsStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailEventsStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapListEmailRecipientEventsError(ApiException error) {
         return switch (error.statusCode()) {
-            case 401 -> new ListDeliveriesStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 422 -> new ListDeliveriesStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
-            case 503 -> new ListDeliveriesStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 401 -> new ListEmailRecipientEventsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new ListEmailRecipientEventsStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new ListEmailRecipientEventsStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new ListEmailRecipientEventsStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailRecipientEventsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
             default -> error;
         };
     }
 
-    public static final class ListDeliveriesStatus401Exception extends ApiException {
+    public static final class ListEmailRecipientEventsStatus401Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListDeliveriesStatus401Exception(ApiException source, ErrorResponse body) {
+        private ListEmailRecipientEventsStatus401Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1332,10 +2141,10 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class ListDeliveriesStatus422Exception extends ApiException {
+    public static final class ListEmailRecipientEventsStatus403Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListDeliveriesStatus422Exception(ApiException source, ErrorResponse body) {
+        private ListEmailRecipientEventsStatus403Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 
@@ -1350,10 +2159,2001 @@ public class Operations002 extends Operations001 {
 }
 
 
-    public static final class ListDeliveriesStatus503Exception extends ApiException {
+    public static final class ListEmailRecipientEventsStatus404Exception extends ApiException {
   private final ErrorResponse body;
   
-        private ListDeliveriesStatus503Exception(ApiException source, ErrorResponse body) {
+        private ListEmailRecipientEventsStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailRecipientEventsStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailRecipientEventsStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailRecipientEventsStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailRecipientEventsStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapTrackEmailEventError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new TrackEmailEventStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new TrackEmailEventStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new TrackEmailEventStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new TrackEmailEventStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new TrackEmailEventStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class TrackEmailEventStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private TrackEmailEventStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class TrackEmailEventStatus403Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private TrackEmailEventStatus403Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class TrackEmailEventStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private TrackEmailEventStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class TrackEmailEventStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private TrackEmailEventStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class TrackEmailEventStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private TrackEmailEventStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapListEmailInboundError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new ListEmailInboundStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new ListEmailInboundStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailInboundStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class ListEmailInboundStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailInboundStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailInboundStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailInboundStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailInboundStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailInboundStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapGetEmailInboundError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new GetEmailInboundStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new GetEmailInboundStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new GetEmailInboundStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class GetEmailInboundStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailInboundStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailInboundStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailInboundStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailInboundStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailInboundStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapForwardEmailInboundError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new ForwardEmailInboundStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new ForwardEmailInboundStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new ForwardEmailInboundStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new ForwardEmailInboundStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 429 -> new ForwardEmailInboundStatus429Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ForwardEmailInboundStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class ForwardEmailInboundStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ForwardEmailInboundStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ForwardEmailInboundStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ForwardEmailInboundStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ForwardEmailInboundStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ForwardEmailInboundStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ForwardEmailInboundStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ForwardEmailInboundStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ForwardEmailInboundStatus429Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ForwardEmailInboundStatus429Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ForwardEmailInboundStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ForwardEmailInboundStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapReplyToEmailInboundError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new ReplyToEmailInboundStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new ReplyToEmailInboundStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new ReplyToEmailInboundStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new ReplyToEmailInboundStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 429 -> new ReplyToEmailInboundStatus429Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ReplyToEmailInboundStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class ReplyToEmailInboundStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ReplyToEmailInboundStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ReplyToEmailInboundStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ReplyToEmailInboundStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ReplyToEmailInboundStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ReplyToEmailInboundStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ReplyToEmailInboundStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ReplyToEmailInboundStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ReplyToEmailInboundStatus429Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ReplyToEmailInboundStatus429Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ReplyToEmailInboundStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ReplyToEmailInboundStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapListEmailInboxesError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new ListEmailInboxesStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new ListEmailInboxesStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailInboxesStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class ListEmailInboxesStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailInboxesStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailInboxesStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailInboxesStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailInboxesStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailInboxesStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapCreateEmailInboxError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new CreateEmailInboxStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new CreateEmailInboxStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new CreateEmailInboxStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 429 -> new CreateEmailInboxStatus429Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new CreateEmailInboxStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class CreateEmailInboxStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailInboxStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailInboxStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailInboxStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailInboxStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailInboxStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailInboxStatus429Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailInboxStatus429Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailInboxStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailInboxStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapDisableEmailInboxError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new DisableEmailInboxStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new DisableEmailInboxStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new DisableEmailInboxStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class DisableEmailInboxStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DisableEmailInboxStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class DisableEmailInboxStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DisableEmailInboxStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class DisableEmailInboxStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DisableEmailInboxStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapGetEmailInboxError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new GetEmailInboxStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new GetEmailInboxStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new GetEmailInboxStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class GetEmailInboxStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailInboxStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailInboxStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailInboxStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailInboxStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailInboxStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapSendEmailInboxMessageError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new SendEmailInboxMessageStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new SendEmailInboxMessageStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new SendEmailInboxMessageStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new SendEmailInboxMessageStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 429 -> new SendEmailInboxMessageStatus429Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new SendEmailInboxMessageStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class SendEmailInboxMessageStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private SendEmailInboxMessageStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class SendEmailInboxMessageStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private SendEmailInboxMessageStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class SendEmailInboxMessageStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private SendEmailInboxMessageStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class SendEmailInboxMessageStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private SendEmailInboxMessageStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class SendEmailInboxMessageStatus429Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private SendEmailInboxMessageStatus429Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class SendEmailInboxMessageStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private SendEmailInboxMessageStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapListEmailThreadsError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new ListEmailThreadsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new ListEmailThreadsStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new ListEmailThreadsStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailThreadsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class ListEmailThreadsStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailThreadsStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailThreadsStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailThreadsStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailThreadsStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailThreadsStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailThreadsStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailThreadsStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapListEmailLabelsError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new ListEmailLabelsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailLabelsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class ListEmailLabelsStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailLabelsStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailLabelsStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailLabelsStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapCreateEmailLabelError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new CreateEmailLabelStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new CreateEmailLabelStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new CreateEmailLabelStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new CreateEmailLabelStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class CreateEmailLabelStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailLabelStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailLabelStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailLabelStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailLabelStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailLabelStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailLabelStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailLabelStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapDeleteEmailLabelError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new DeleteEmailLabelStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new DeleteEmailLabelStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new DeleteEmailLabelStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class DeleteEmailLabelStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailLabelStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class DeleteEmailLabelStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailLabelStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class DeleteEmailLabelStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailLabelStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapListEmailSegmentsError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new ListEmailSegmentsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailSegmentsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class ListEmailSegmentsStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailSegmentsStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailSegmentsStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailSegmentsStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapGetEmailSegmentError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new GetEmailSegmentStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new GetEmailSegmentStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new GetEmailSegmentStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class GetEmailSegmentStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailSegmentStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailSegmentStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailSegmentStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailSegmentStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailSegmentStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapListEmailSenderIdentitiesError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new ListEmailSenderIdentitiesStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailSenderIdentitiesStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class ListEmailSenderIdentitiesStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailSenderIdentitiesStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailSenderIdentitiesStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailSenderIdentitiesStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapGetEmailSenderIdentityError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new GetEmailSenderIdentityStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new GetEmailSenderIdentityStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new GetEmailSenderIdentityStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class GetEmailSenderIdentityStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailSenderIdentityStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailSenderIdentityStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailSenderIdentityStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailSenderIdentityStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailSenderIdentityStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapListEmailSuppressionsError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new ListEmailSuppressionsStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new ListEmailSuppressionsStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new ListEmailSuppressionsStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new ListEmailSuppressionsStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class ListEmailSuppressionsStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailSuppressionsStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailSuppressionsStatus403Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailSuppressionsStatus403Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailSuppressionsStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailSuppressionsStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailSuppressionsStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailSuppressionsStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapCreateEmailSuppressionError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new CreateEmailSuppressionStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new CreateEmailSuppressionStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new CreateEmailSuppressionStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new CreateEmailSuppressionStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class CreateEmailSuppressionStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailSuppressionStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailSuppressionStatus403Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailSuppressionStatus403Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailSuppressionStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailSuppressionStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailSuppressionStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailSuppressionStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapCreateEmailSuppressionBatchError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new CreateEmailSuppressionBatchStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new CreateEmailSuppressionBatchStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new CreateEmailSuppressionBatchStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new CreateEmailSuppressionBatchStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class CreateEmailSuppressionBatchStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailSuppressionBatchStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailSuppressionBatchStatus403Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailSuppressionBatchStatus403Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailSuppressionBatchStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailSuppressionBatchStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailSuppressionBatchStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailSuppressionBatchStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapDeleteEmailSuppressionError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new DeleteEmailSuppressionStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new DeleteEmailSuppressionStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new DeleteEmailSuppressionStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new DeleteEmailSuppressionStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new DeleteEmailSuppressionStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new DeleteEmailSuppressionStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class DeleteEmailSuppressionStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailSuppressionStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class DeleteEmailSuppressionStatus403Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailSuppressionStatus403Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class DeleteEmailSuppressionStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailSuppressionStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class DeleteEmailSuppressionStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailSuppressionStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class DeleteEmailSuppressionStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailSuppressionStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class DeleteEmailSuppressionStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private DeleteEmailSuppressionStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapGetEmailSuppressionError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new GetEmailSuppressionStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new GetEmailSuppressionStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 404 -> new GetEmailSuppressionStatus404Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new GetEmailSuppressionStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 503 -> new GetEmailSuppressionStatus503Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class GetEmailSuppressionStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailSuppressionStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailSuppressionStatus403Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailSuppressionStatus403Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailSuppressionStatus404Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailSuppressionStatus404Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailSuppressionStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailSuppressionStatus422Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class GetEmailSuppressionStatus503Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private GetEmailSuppressionStatus503Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapListEmailTemplatesError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new ListEmailTemplatesStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new ListEmailTemplatesStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class ListEmailTemplatesStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailTemplatesStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class ListEmailTemplatesStatus403Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private ListEmailTemplatesStatus403Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    private RuntimeException mapCreateEmailTemplateError(ApiException error) {
+        return switch (error.statusCode()) {
+            case 401 -> new CreateEmailTemplateStatus401Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 403 -> new CreateEmailTemplateStatus403Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 409 -> new CreateEmailTemplateStatus409Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            case 422 -> new CreateEmailTemplateStatus422Exception(error, decodeDeclaredError(error.responseBody(), ErrorResponse.class));
+            default -> error;
+        };
+    }
+
+    public static final class CreateEmailTemplateStatus401Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailTemplateStatus401Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailTemplateStatus403Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailTemplateStatus403Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailTemplateStatus409Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailTemplateStatus409Exception(ApiException source, ErrorResponse body) {
+    super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
+    this.body = body;
+
+  }
+  
+        public ErrorResponse body() {
+    return body;
+
+  }
+  
+
+}
+
+
+    public static final class CreateEmailTemplateStatus422Exception extends ApiException {
+  private final ErrorResponse body;
+  
+        private CreateEmailTemplateStatus422Exception(ApiException source, ErrorResponse body) {
     super(source.statusCode(), source.responseBody(), source.retryAfter(), source.retryAfterMillis());
     this.body = body;
 

@@ -147,12 +147,12 @@ func decodeDeleteCrmListEntryError(requestError error) error {
 	}
 }
 
-// DeleteCrmListEntry invokes DELETE /v1/crm/lists/{list}/entries/{entry}.
+// DeleteCrmListEntry invokes DELETE /crm/lists/{list}/entries/{entry}.
 func (client *Client) DeleteCrmListEntry(ctx context.Context, input *DeleteCrmListEntryRequest) (*CrmListDeletionResponse, error) {
 	if input == nil {
 		input = &DeleteCrmListEntryRequest{}
 	}
-	path := "/v1/crm/lists/{list}/entries/{entry}"
+	path := "/crm/lists/{list}/entries/{entry}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{list}", url.PathEscape(fmt.Sprint(input.List)))

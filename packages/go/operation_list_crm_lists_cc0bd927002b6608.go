@@ -147,12 +147,12 @@ func decodeListCrmListsError(requestError error) error {
 	}
 }
 
-// ListCrmLists invokes GET /v1/crm/lists.
+// ListCrmLists invokes GET /crm/lists.
 func (client *Client) ListCrmLists(ctx context.Context, input *ListCrmListsRequest) (*CrmListsPage, error) {
 	if input == nil {
 		input = &ListCrmListsRequest{}
 	}
-	path := "/v1/crm/lists"
+	path := "/crm/lists"
 	query := url.Values{}
 	headers := http.Header{}
 	if err := addQuery(query, "limit", input.Limit); err != nil {

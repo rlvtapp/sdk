@@ -147,12 +147,12 @@ func decodeCreateCrmListEntryError(requestError error) error {
 	}
 }
 
-// CreateCrmListEntry invokes POST /v1/crm/lists/{list}/entries.
+// CreateCrmListEntry invokes POST /crm/lists/{list}/entries.
 func (client *Client) CreateCrmListEntry(ctx context.Context, input *CreateCrmListEntryRequest) (*CrmListEntryResponse, error) {
 	if input == nil {
 		input = &CreateCrmListEntryRequest{}
 	}
-	path := "/v1/crm/lists/{list}/entries"
+	path := "/crm/lists/{list}/entries"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{list}", url.PathEscape(fmt.Sprint(input.List)))

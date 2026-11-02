@@ -9,8 +9,8 @@ import (
 // EventsService groups Events operations.
 type EventsService struct { client *Client }
 
-// Track invokes Track through the Events namespace.
-func (service *EventsService) Track(ctx context.Context, input *TrackRequest) (*EventResponse, error) {
-	return service.client.Track(ctx, input)
+// TrackEmail invokes TrackEmailEvent through the Events namespace.
+func (service *EventsService) TrackEmail(ctx context.Context, input *TrackEmailEventRequest) (*EventResponse, error) {
+	return service.client.TrackEmailEvent(ctx, input)
 }
 

@@ -4,14 +4,20 @@
  * Source: text content
  */
 
+import type { AttachmentSummary } from './AttachmentSummary.js'
+
 export type InboundMessage = {
+  attachments: AttachmentSummary[]
   authentication: unknown
+  body_withheld: boolean
   created_at: string
   delivery_id: string
   disposition: string
   envelope_from?: string | null
   envelope_to: string
+  header_cc: string[]
   header_from?: string | null
+  header_reply_to: string[]
   header_to: string[]
   html_body?: string | null
   id: string

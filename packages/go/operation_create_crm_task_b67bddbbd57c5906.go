@@ -147,12 +147,12 @@ func decodeCreateCrmTaskError(requestError error) error {
 	}
 }
 
-// CreateCrmTask invokes POST /v1/crm/records/{record_id}/tasks.
+// CreateCrmTask invokes POST /crm/records/{record_id}/tasks.
 func (client *Client) CreateCrmTask(ctx context.Context, input *CreateCrmTaskRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &CreateCrmTaskRequest{}
 	}
-	path := "/v1/crm/records/{record_id}/tasks"
+	path := "/crm/records/{record_id}/tasks"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{record_id}", url.PathEscape(fmt.Sprint(input.RecordID)))

@@ -1,0 +1,5 @@
+export type * from './ListEmailSuppressions.js'
+export type * from './CreateEmailSuppression.js'
+export type * from './CreateEmailSuppressionBatch.js'
+export type * from './DeleteEmailSuppression.js'
+export type * from './GetEmailSuppression.js'

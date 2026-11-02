@@ -4,11 +4,16 @@
  * Source: text content
  */
 
+import type { SendTag } from './SendTag.js'
+
 export type SendQuery = {
   limit?: number | null
   message_class?: string | null
   offset?: number | null
   reference?: string | null
+  scheduled?: boolean | null
   state?: string | null
+  tags?: SendTag[]
+  topic_id?: string | null
   [key: string]: unknown
 }

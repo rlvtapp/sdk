@@ -15,25 +15,28 @@ public sealed partial class ContactsResource
 
     internal ContactsResource(PoolsterClient client) => _client = client;
 
-    /// <summary>Invokes GET /v1/email/contacts.</summary>
-    public Task<ContactListResponse> ListContactsAsync(long? limit = default, CancellationToken cancellationToken = default) => _client.ListContactsAsync(limit, cancellationToken);
+    /// <summary>Invokes GET /email/contacts.</summary>
+    public Task<ContactListResponse> ListEmailContactsAsync(long? limit = default, CancellationToken cancellationToken = default) => _client.ListEmailContactsAsync(limit, cancellationToken);
 
-    /// <summary>Invokes POST /v1/email/contacts.</summary>
-    public Task<ContactResponse> CreateContactAsync(CreateContact body, CancellationToken cancellationToken = default) => _client.CreateContactAsync(body, cancellationToken);
+    /// <summary>Invokes POST /email/contacts.</summary>
+    public Task<ContactResponse> CreateEmailContactAsync(CreateContact body, CancellationToken cancellationToken = default) => _client.CreateEmailContactAsync(body, cancellationToken);
 
-    /// <summary>Invokes POST /v1/email/contacts/query.</summary>
-    public Task<ContactQueryResponse> QueryContactsAsync(ContactQuery body, CancellationToken cancellationToken = default) => _client.QueryContactsAsync(body, cancellationToken);
+    /// <summary>Invokes POST /email/contacts/query.</summary>
+    public Task<ContactQueryResponse> QueryEmailContactsAsync(ContactQuery body, CancellationToken cancellationToken = default) => _client.QueryEmailContactsAsync(body, cancellationToken);
 
-    /// <summary>Invokes GET /v1/email/contacts/{id}.</summary>
-    public Task<ContactResponse> GetContactAsync(string id, CancellationToken cancellationToken = default) => _client.GetContactAsync(id, cancellationToken);
+    /// <summary>Invokes DELETE /email/contacts/{id}.</summary>
+    public Task DeleteEmailContactAsync(string id, CancellationToken cancellationToken = default) => _client.DeleteEmailContactAsync(id, cancellationToken);
 
-    /// <summary>Invokes PATCH /v1/email/contacts/{id}.</summary>
-    public Task<ContactResponse> UpdateContactAsync(string id, UpdateContact body, CancellationToken cancellationToken = default) => _client.UpdateContactAsync(id, body, cancellationToken);
+    /// <summary>Invokes GET /email/contacts/{id}.</summary>
+    public Task<ContactResponse> GetEmailContactAsync(string id, CancellationToken cancellationToken = default) => _client.GetEmailContactAsync(id, cancellationToken);
 
-    /// <summary>Invokes GET /v1/email/segments.</summary>
-    public Task<SegmentListResponse> ListSegmentsAsync(long? limit = default, CancellationToken cancellationToken = default) => _client.ListSegmentsAsync(limit, cancellationToken);
+    /// <summary>Invokes PATCH /email/contacts/{id}.</summary>
+    public Task<ContactResponse> UpdateEmailContactAsync(string id, UpdateContact body, CancellationToken cancellationToken = default) => _client.UpdateEmailContactAsync(id, body, cancellationToken);
 
-    /// <summary>Invokes GET /v1/email/segments/{id}.</summary>
-    public Task<SegmentResponse> GetSegmentAsync(string id, CancellationToken cancellationToken = default) => _client.GetSegmentAsync(id, cancellationToken);
+    /// <summary>Invokes GET /email/segments.</summary>
+    public Task<SegmentListResponse> ListEmailSegmentsAsync(long? limit = default, CancellationToken cancellationToken = default) => _client.ListEmailSegmentsAsync(limit, cancellationToken);
+
+    /// <summary>Invokes GET /email/segments/{id}.</summary>
+    public Task<SegmentResponse> GetEmailSegmentAsync(string id, CancellationToken cancellationToken = default) => _client.GetEmailSegmentAsync(id, cancellationToken);
 
 }

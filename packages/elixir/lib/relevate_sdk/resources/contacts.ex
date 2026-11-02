@@ -5,11 +5,12 @@ defmodule RelevateSdk.Resources.Contacts do
 
 
   alias RelevateSdk.Resources.Contacts.Chunk0000
-  def list_contacts(client, options \\ []), do: Chunk0000.list_contacts(client, options)
-  def create_contact(client, options \\ []), do: Chunk0000.create_contact(client, options)
-  def query_contacts(client, options \\ []), do: Chunk0000.query_contacts(client, options)
-  def get_contact(client, options \\ []), do: Chunk0000.get_contact(client, options)
-  def update_contact(client, options \\ []), do: Chunk0000.update_contact(client, options)
-  def list_segments(client, options \\ []), do: Chunk0000.list_segments(client, options)
-  def get_segment(client, options \\ []), do: Chunk0000.get_segment(client, options)
+  def list_email_contacts(client, options \\ []), do: Chunk0000.list_email_contacts(client, options)
+  def create_email_contact(client, options \\ []), do: Chunk0000.create_email_contact(client, options)
+  def query_email_contacts(client, options \\ []), do: Chunk0000.query_email_contacts(client, options)
+  def delete_email_contact(client, options \\ []), do: Chunk0000.delete_email_contact(client, options)
+  def get_email_contact(client, options \\ []), do: Chunk0000.get_email_contact(client, options)
+  def update_email_contact(client, options \\ []), do: Chunk0000.update_email_contact(client, options)
+  def list_email_segments(client, options \\ []), do: Chunk0000.list_email_segments(client, options)
+  def get_email_segment(client, options \\ []), do: Chunk0000.get_email_segment(client, options)
 end

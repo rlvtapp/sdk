@@ -17,7 +17,10 @@ final class SendQuery implements JsonSerializable
         public readonly ?string $messageClass = null,
         public readonly ?int $offset = null,
         public readonly ?string $reference = null,
+        public readonly ?bool $scheduled = null,
         public readonly ?string $state = null,
+        public readonly ?array $tags = null,
+        public readonly ?string $topicId = null,
         public readonly array $additionalProperties = [], // array<string, mixed>
     ) {
     }
@@ -30,8 +33,11 @@ final class SendQuery implements JsonSerializable
             messageClass: array_key_exists('message_class', $data) && $data['message_class'] !== null ? ($data['message_class'] === null ? null : (string) $data['message_class']) : null,
             offset: array_key_exists('offset', $data) && $data['offset'] !== null ? ($data['offset'] === null ? null : (int) $data['offset']) : null,
             reference: array_key_exists('reference', $data) && $data['reference'] !== null ? ($data['reference'] === null ? null : (string) $data['reference']) : null,
+            scheduled: array_key_exists('scheduled', $data) && $data['scheduled'] !== null ? ($data['scheduled'] === null ? null : (bool) $data['scheduled']) : null,
             state: array_key_exists('state', $data) && $data['state'] !== null ? ($data['state'] === null ? null : (string) $data['state']) : null,
-            additionalProperties: array_diff_key($data, array_fill_keys(['limit', 'message_class', 'offset', 'reference', 'state'], true)),
+            tags: array_key_exists('tags', $data) && $data['tags'] !== null ? array_map(static fn (mixed $item): mixed => SendTag::fromArray($item), $data['tags']) : null,
+            topicId: array_key_exists('topic_id', $data) && $data['topic_id'] !== null ? ($data['topic_id'] === null ? null : (string) $data['topic_id']) : null,
+            additionalProperties: array_diff_key($data, array_fill_keys(['limit', 'message_class', 'offset', 'reference', 'scheduled', 'state', 'tags', 'topic_id'], true)),
         );
         $instance->poolsterPresentFields = array_keys($data);
         return $instance;
@@ -41,7 +47,7 @@ final class SendQuery implements JsonSerializable
     public function withPresentFields(array $fields): self
     {
         foreach ($fields as $field) {
-            if (!is_string($field) || !in_array($field, ['limit', 'message_class', 'offset', 'reference', 'state'], true)) throw new \InvalidArgumentException('unknown model wire field');
+            if (!is_string($field) || !in_array($field, ['limit', 'message_class', 'offset', 'reference', 'scheduled', 'state', 'tags', 'topic_id'], true)) throw new \InvalidArgumentException('unknown model wire field');
         }
         $copy = clone $this;
         $copy->poolsterPresentFields = array_values(array_unique(array_merge($this->poolsterPresentFields ?? [], $fields)));
@@ -51,12 +57,15 @@ final class SendQuery implements JsonSerializable
     public function jsonSerialize(): object
     {
         $value = [];
-        $value = array_diff_key($this->additionalProperties, array_fill_keys(['limit', 'message_class', 'offset', 'reference', 'state'], true));
+        $value = array_diff_key($this->additionalProperties, array_fill_keys(['limit', 'message_class', 'offset', 'reference', 'scheduled', 'state', 'tags', 'topic_id'], true));
         if ($this->limit !== null || in_array('limit', $this->poolsterPresentFields ?? [], true)) { $value['limit'] = $this->limit; }
         if ($this->messageClass !== null || in_array('message_class', $this->poolsterPresentFields ?? [], true)) { $value['message_class'] = $this->messageClass; }
         if ($this->offset !== null || in_array('offset', $this->poolsterPresentFields ?? [], true)) { $value['offset'] = $this->offset; }
         if ($this->reference !== null || in_array('reference', $this->poolsterPresentFields ?? [], true)) { $value['reference'] = $this->reference; }
+        if ($this->scheduled !== null || in_array('scheduled', $this->poolsterPresentFields ?? [], true)) { $value['scheduled'] = $this->scheduled; }
         if ($this->state !== null || in_array('state', $this->poolsterPresentFields ?? [], true)) { $value['state'] = $this->state; }
+        if ($this->tags !== null || in_array('tags', $this->poolsterPresentFields ?? [], true)) { $value['tags'] = $this->tags; }
+        if ($this->topicId !== null || in_array('topic_id', $this->poolsterPresentFields ?? [], true)) { $value['topic_id'] = $this->topicId; }
         return (object) $value;
     }
 }

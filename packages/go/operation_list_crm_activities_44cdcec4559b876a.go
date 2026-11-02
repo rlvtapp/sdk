@@ -148,12 +148,12 @@ func decodeListCrmActivitiesError(requestError error) error {
 	}
 }
 
-// ListCrmActivities invokes GET /v1/crm/records/{record_id}/activities.
+// ListCrmActivities invokes GET /crm/records/{record_id}/activities.
 func (client *Client) ListCrmActivities(ctx context.Context, input *ListCrmActivitiesRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &ListCrmActivitiesRequest{}
 	}
-	path := "/v1/crm/records/{record_id}/activities"
+	path := "/crm/records/{record_id}/activities"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{record_id}", url.PathEscape(fmt.Sprint(input.RecordID)))

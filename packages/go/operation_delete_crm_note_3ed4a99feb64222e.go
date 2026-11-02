@@ -146,12 +146,12 @@ func decodeDeleteCrmNoteError(requestError error) error {
 	}
 }
 
-// DeleteCrmNote invokes DELETE /v1/crm/notes/{note_id}.
+// DeleteCrmNote invokes DELETE /crm/notes/{note_id}.
 func (client *Client) DeleteCrmNote(ctx context.Context, input *DeleteCrmNoteRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &DeleteCrmNoteRequest{}
 	}
-	path := "/v1/crm/notes/{note_id}"
+	path := "/crm/notes/{note_id}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{note_id}", url.PathEscape(fmt.Sprint(input.NoteID)))

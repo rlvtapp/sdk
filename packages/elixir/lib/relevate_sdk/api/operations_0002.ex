@@ -11,7 +11,7 @@ defmodule RelevateSdk.API.Operations0001 do
     with {:ok, object} <- Client.required(options, :object),
          {:ok, attribute} <- Client.required(options, :attribute),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/objects/{object}/attributes/{attribute}"
+      path = "/crm/objects/{object}/attributes/{attribute}"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       path = String.replace(path, "{attribute}", URI.encode(to_string(attribute), &URI.char_unreserved?/1))
       query = []
@@ -36,7 +36,7 @@ defmodule RelevateSdk.API.Operations0001 do
   @spec preview_crm_object_deletion(Client.t(), [preview_crm_object_deletion_option()]) :: {:ok, RelevateSdk.Models.CrmObjectDeletionPreview.t()} | {:error, term()}
   def preview_crm_object_deletion(client, options \\ []) when is_list(options) do
     with {:ok, object} <- Client.required(options, :object) do
-      path = "/v1/crm/objects/{object}/deletion-preview"
+      path = "/crm/objects/{object}/deletion-preview"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -60,7 +60,7 @@ defmodule RelevateSdk.API.Operations0001 do
   @spec get_crm_object_quality(Client.t(), [get_crm_object_quality_option()]) :: {:ok, RelevateSdk.Models.CrmQualityResponse.t()} | {:error, term()}
   def get_crm_object_quality(client, options \\ []) when is_list(options) do
     with {:ok, object} <- Client.required(options, :object) do
-      path = "/v1/crm/objects/{object}/quality"
+      path = "/crm/objects/{object}/quality"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       query = [{"limit", Keyword.get(options, :limit)}, {"after", Keyword.get(options, :after_)}, {"include_archived", Keyword.get(options, :include_archived)}]
       headers = []
@@ -84,7 +84,7 @@ defmodule RelevateSdk.API.Operations0001 do
   @spec list_crm_records(Client.t(), [list_crm_records_option()]) :: {:ok, map()} | {:error, term()}
   def list_crm_records(client, options \\ []) when is_list(options) do
     with {:ok, object} <- Client.required(options, :object) do
-      path = "/v1/crm/objects/{object}/records"
+      path = "/crm/objects/{object}/records"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       query = [{"limit", Keyword.get(options, :limit)}, {"after", Keyword.get(options, :after_)}, {"external_id", Keyword.get(options, :external_id)}, {"include_archived", Keyword.get(options, :include_archived)}]
       headers = []
@@ -109,7 +109,7 @@ defmodule RelevateSdk.API.Operations0001 do
   def create_crm_record(client, options \\ []) when is_list(options) do
     with {:ok, object} <- Client.required(options, :object),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/objects/{object}/records"
+      path = "/crm/objects/{object}/records"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -134,7 +134,7 @@ defmodule RelevateSdk.API.Operations0001 do
   def upsert_crm_record(client, options \\ []) when is_list(options) do
     with {:ok, object} <- Client.required(options, :object),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/objects/{object}/records/upsert"
+      path = "/crm/objects/{object}/records/upsert"
       path = String.replace(path, "{object}", URI.encode(to_string(object), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -158,7 +158,7 @@ defmodule RelevateSdk.API.Operations0001 do
   @spec archive_crm_record(Client.t(), [archive_crm_record_option()]) :: {:ok, RelevateSdk.Models.CrmRecordResponse.t()} | {:error, term()}
   def archive_crm_record(client, options \\ []) when is_list(options) do
     with {:ok, record_id} <- Client.required(options, :record_id) do
-      path = "/v1/crm/records/{record_id}"
+      path = "/crm/records/{record_id}"
       path = String.replace(path, "{record_id}", URI.encode(to_string(record_id), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -182,7 +182,7 @@ defmodule RelevateSdk.API.Operations0001 do
   @spec get_crm_record(Client.t(), [get_crm_record_option()]) :: {:ok, RelevateSdk.Models.CrmRecordResponse.t()} | {:error, term()}
   def get_crm_record(client, options \\ []) when is_list(options) do
     with {:ok, record_id} <- Client.required(options, :record_id) do
-      path = "/v1/crm/records/{record_id}"
+      path = "/crm/records/{record_id}"
       path = String.replace(path, "{record_id}", URI.encode(to_string(record_id), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -207,7 +207,7 @@ defmodule RelevateSdk.API.Operations0001 do
   def update_crm_record(client, options \\ []) when is_list(options) do
     with {:ok, record_id} <- Client.required(options, :record_id),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/records/{record_id}"
+      path = "/crm/records/{record_id}"
       path = String.replace(path, "{record_id}", URI.encode(to_string(record_id), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -231,7 +231,7 @@ defmodule RelevateSdk.API.Operations0001 do
   @spec list_crm_activities(Client.t(), [list_crm_activities_option()]) :: {:ok, map()} | {:error, term()}
   def list_crm_activities(client, options \\ []) when is_list(options) do
     with {:ok, record_id} <- Client.required(options, :record_id) do
-      path = "/v1/crm/records/{record_id}/activities"
+      path = "/crm/records/{record_id}/activities"
       path = String.replace(path, "{record_id}", URI.encode(to_string(record_id), &URI.char_unreserved?/1))
       query = [{"limit", Keyword.get(options, :limit)}, {"after", Keyword.get(options, :after_)}]
       headers = []
@@ -255,7 +255,7 @@ defmodule RelevateSdk.API.Operations0001 do
   @spec list_crm_notes(Client.t(), [list_crm_notes_option()]) :: {:ok, map()} | {:error, term()}
   def list_crm_notes(client, options \\ []) when is_list(options) do
     with {:ok, record_id} <- Client.required(options, :record_id) do
-      path = "/v1/crm/records/{record_id}/notes"
+      path = "/crm/records/{record_id}/notes"
       path = String.replace(path, "{record_id}", URI.encode(to_string(record_id), &URI.char_unreserved?/1))
       query = [{"limit", Keyword.get(options, :limit)}, {"after", Keyword.get(options, :after_)}]
       headers = []
@@ -280,7 +280,7 @@ defmodule RelevateSdk.API.Operations0001 do
   def create_crm_note(client, options \\ []) when is_list(options) do
     with {:ok, record_id} <- Client.required(options, :record_id),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/records/{record_id}/notes"
+      path = "/crm/records/{record_id}/notes"
       path = String.replace(path, "{record_id}", URI.encode(to_string(record_id), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -304,7 +304,7 @@ defmodule RelevateSdk.API.Operations0001 do
   @spec list_crm_tasks(Client.t(), [list_crm_tasks_option()]) :: {:ok, map()} | {:error, term()}
   def list_crm_tasks(client, options \\ []) when is_list(options) do
     with {:ok, record_id} <- Client.required(options, :record_id) do
-      path = "/v1/crm/records/{record_id}/tasks"
+      path = "/crm/records/{record_id}/tasks"
       path = String.replace(path, "{record_id}", URI.encode(to_string(record_id), &URI.char_unreserved?/1))
       query = [{"limit", Keyword.get(options, :limit)}, {"after", Keyword.get(options, :after_)}]
       headers = []
@@ -329,7 +329,7 @@ defmodule RelevateSdk.API.Operations0001 do
   def create_crm_task(client, options \\ []) when is_list(options) do
     with {:ok, record_id} <- Client.required(options, :record_id),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/records/{record_id}/tasks"
+      path = "/crm/records/{record_id}/tasks"
       path = String.replace(path, "{record_id}", URI.encode(to_string(record_id), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -353,7 +353,7 @@ defmodule RelevateSdk.API.Operations0001 do
   @spec delete_crm_task(Client.t(), [delete_crm_task_option()]) :: {:ok, map()} | {:error, term()}
   def delete_crm_task(client, options \\ []) when is_list(options) do
     with {:ok, task_id} <- Client.required(options, :task_id) do
-      path = "/v1/crm/tasks/{task_id}"
+      path = "/crm/tasks/{task_id}"
       path = String.replace(path, "{task_id}", URI.encode(to_string(task_id), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -377,7 +377,7 @@ defmodule RelevateSdk.API.Operations0001 do
   @spec get_crm_task(Client.t(), [get_crm_task_option()]) :: {:ok, map()} | {:error, term()}
   def get_crm_task(client, options \\ []) when is_list(options) do
     with {:ok, task_id} <- Client.required(options, :task_id) do
-      path = "/v1/crm/tasks/{task_id}"
+      path = "/crm/tasks/{task_id}"
       path = String.replace(path, "{task_id}", URI.encode(to_string(task_id), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -402,7 +402,7 @@ defmodule RelevateSdk.API.Operations0001 do
   def update_crm_task(client, options \\ []) when is_list(options) do
     with {:ok, task_id} <- Client.required(options, :task_id),
          {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/crm/tasks/{task_id}"
+      path = "/crm/tasks/{task_id}"
       path = String.replace(path, "{task_id}", URI.encode(to_string(task_id), &URI.char_unreserved?/1))
       query = []
       headers = []
@@ -422,142 +422,144 @@ defmodule RelevateSdk.API.Operations0001 do
     end
   end
 
-  @type auth_check_option :: term()
-  @spec auth_check(Client.t(), [auth_check_option()]) :: {:ok, RelevateSdk.Models.AuthCheckResponse.t()} | {:error, term()}
-  def auth_check(client, options \\ []) when is_list(options) do
-    path = "/v1/email/auth-check"
+  @type list_email_api_keys_option :: term()
+  @spec list_email_api_keys(Client.t(), [list_email_api_keys_option()]) :: {:ok, nil} | {:error, term()}
+  def list_email_api_keys(client, options \\ []) when is_list(options) do
+    path = "/email/api-keys"
     query = []
     headers = []
     headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
-    case Client.request(client, :get, path, query, headers, nil, :json, :json, %{401 => RelevateSdk.Errors.AuthCheckStatus401Error, 403 => RelevateSdk.Errors.AuthCheckStatus403Error, 503 => RelevateSdk.Errors.AuthCheckStatus503Error}, nil) do
+    case Client.request(client, :get, path, query, headers, nil, :json, :void, %{401 => RelevateSdk.Errors.ListEmailApiKeysStatus401Error, 403 => RelevateSdk.Errors.ListEmailApiKeysStatus403Error, 503 => RelevateSdk.Errors.ListEmailApiKeysStatus503Error}, nil) do
+      {:ok, response} -> {:ok, response}
+      {:error, %RelevateSdk.Errors.ListEmailApiKeysStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+      {:error, %RelevateSdk.Errors.ListEmailApiKeysStatus403Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+      {:error, %RelevateSdk.Errors.ListEmailApiKeysStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+      {:error, reason} -> {:error, reason}
+    end
+  end
+
+  @type create_email_api_key_option :: {:body, RelevateSdk.Models.CreateApiKeyRequest.t()}
+  @spec create_email_api_key(Client.t(), [create_email_api_key_option()]) :: {:ok, nil} | {:error, term()}
+  def create_email_api_key(client, options \\ []) when is_list(options) do
+    with {:ok, body} <- Client.required(options, :body) do
+      path = "/email/api-keys"
+      query = []
+      headers = []
+      headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
+      case Client.request(client, :post, path, query, headers, body, :json, :void, %{401 => RelevateSdk.Errors.CreateEmailApiKeyStatus401Error, 403 => RelevateSdk.Errors.CreateEmailApiKeyStatus403Error, 409 => RelevateSdk.Errors.CreateEmailApiKeyStatus409Error, 422 => RelevateSdk.Errors.CreateEmailApiKeyStatus422Error, 503 => RelevateSdk.Errors.CreateEmailApiKeyStatus503Error}, nil) do
+        {:ok, response} -> {:ok, response}
+        {:error, %RelevateSdk.Errors.CreateEmailApiKeyStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.CreateEmailApiKeyStatus403Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.CreateEmailApiKeyStatus409Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.CreateEmailApiKeyStatus422Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.CreateEmailApiKeyStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, reason} -> {:error, reason}
+      end
+    end
+  end
+
+  @type revoke_email_api_key_option :: {:id, String.t()}
+  @spec revoke_email_api_key(Client.t(), [revoke_email_api_key_option()]) :: {:ok, nil} | {:error, term()}
+  def revoke_email_api_key(client, options \\ []) when is_list(options) do
+    with {:ok, id} <- Client.required(options, :id) do
+      path = "/email/api-keys/{id}"
+      path = String.replace(path, "{id}", URI.encode(to_string(id), &URI.char_unreserved?/1))
+      query = []
+      headers = []
+      headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
+      case Client.request(client, :delete, path, query, headers, nil, :json, :void, %{401 => RelevateSdk.Errors.RevokeEmailApiKeyStatus401Error, 403 => RelevateSdk.Errors.RevokeEmailApiKeyStatus403Error, 404 => RelevateSdk.Errors.RevokeEmailApiKeyStatus404Error, 503 => RelevateSdk.Errors.RevokeEmailApiKeyStatus503Error}, nil) do
+        {:ok, response} -> {:ok, response}
+        {:error, %RelevateSdk.Errors.RevokeEmailApiKeyStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.RevokeEmailApiKeyStatus403Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.RevokeEmailApiKeyStatus404Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.RevokeEmailApiKeyStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, reason} -> {:error, reason}
+      end
+    end
+  end
+
+  @type get_email_attachment_option :: {:attachment_id, String.t()}
+  @spec get_email_attachment(Client.t(), [get_email_attachment_option()]) :: {:ok, RelevateSdk.Models.AttachmentResponse.t()} | {:error, term()}
+  def get_email_attachment(client, options \\ []) when is_list(options) do
+    with {:ok, attachment_id} <- Client.required(options, :attachment_id) do
+      path = "/email/attachments/{attachment_id}"
+      path = String.replace(path, "{attachment_id}", URI.encode(to_string(attachment_id), &URI.char_unreserved?/1))
+      query = []
+      headers = []
+      headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
+      case Client.request(client, :get, path, query, headers, nil, :json, :json, %{401 => RelevateSdk.Errors.GetEmailAttachmentStatus401Error, 404 => RelevateSdk.Errors.GetEmailAttachmentStatus404Error, 409 => RelevateSdk.Errors.GetEmailAttachmentStatus409Error, 503 => RelevateSdk.Errors.GetEmailAttachmentStatus503Error}, nil) do
+        {:ok, response} -> {:ok, case response do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.AttachmentResponse.from_map(map); other -> other end}
+        {:error, %RelevateSdk.Errors.GetEmailAttachmentStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.GetEmailAttachmentStatus404Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.GetEmailAttachmentStatus409Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.GetEmailAttachmentStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, reason} -> {:error, reason}
+      end
+    end
+  end
+
+  @type check_email_auth_option :: term()
+  @spec check_email_auth(Client.t(), [check_email_auth_option()]) :: {:ok, RelevateSdk.Models.AuthCheckResponse.t()} | {:error, term()}
+  def check_email_auth(client, options \\ []) when is_list(options) do
+    path = "/email/auth-check"
+    query = []
+    headers = []
+    headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
+    case Client.request(client, :get, path, query, headers, nil, :json, :json, %{401 => RelevateSdk.Errors.CheckEmailAuthStatus401Error, 403 => RelevateSdk.Errors.CheckEmailAuthStatus403Error, 503 => RelevateSdk.Errors.CheckEmailAuthStatus503Error}, nil) do
       {:ok, response} -> {:ok, case response do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.AuthCheckResponse.from_map(map); other -> other end}
-      {:error, %RelevateSdk.Errors.AuthCheckStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-      {:error, %RelevateSdk.Errors.AuthCheckStatus403Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-      {:error, %RelevateSdk.Errors.AuthCheckStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+      {:error, %RelevateSdk.Errors.CheckEmailAuthStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+      {:error, %RelevateSdk.Errors.CheckEmailAuthStatus403Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+      {:error, %RelevateSdk.Errors.CheckEmailAuthStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
       {:error, reason} -> {:error, reason}
     end
   end
 
-  @type list_contacts_option :: {:limit, integer()}
-  @spec list_contacts(Client.t(), [list_contacts_option()]) :: {:ok, RelevateSdk.Models.ContactListResponse.t()} | {:error, term()}
-  def list_contacts(client, options \\ []) when is_list(options) do
-    path = "/v1/email/contacts"
+  @type list_email_contacts_option :: {:limit, integer()}
+  @spec list_email_contacts(Client.t(), [list_email_contacts_option()]) :: {:ok, RelevateSdk.Models.ContactListResponse.t()} | {:error, term()}
+  def list_email_contacts(client, options \\ []) when is_list(options) do
+    path = "/email/contacts"
     query = [{"limit", Keyword.get(options, :limit)}]
     headers = []
     headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
-    case Client.request(client, :get, path, query, headers, nil, :json, :json, %{401 => RelevateSdk.Errors.ListContactsStatus401Error, 503 => RelevateSdk.Errors.ListContactsStatus503Error}, nil) do
+    case Client.request(client, :get, path, query, headers, nil, :json, :json, %{401 => RelevateSdk.Errors.ListEmailContactsStatus401Error, 503 => RelevateSdk.Errors.ListEmailContactsStatus503Error}, nil) do
       {:ok, response} -> {:ok, case response do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ContactListResponse.from_map(map); other -> other end}
-      {:error, %RelevateSdk.Errors.ListContactsStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-      {:error, %RelevateSdk.Errors.ListContactsStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+      {:error, %RelevateSdk.Errors.ListEmailContactsStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+      {:error, %RelevateSdk.Errors.ListEmailContactsStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
       {:error, reason} -> {:error, reason}
     end
   end
 
-  @type create_contact_option :: {:body, RelevateSdk.Models.CreateContact.t()}
-  @spec create_contact(Client.t(), [create_contact_option()]) :: {:ok, RelevateSdk.Models.ContactResponse.t()} | {:error, term()}
-  def create_contact(client, options \\ []) when is_list(options) do
+  @type create_email_contact_option :: {:body, RelevateSdk.Models.CreateContact.t()}
+  @spec create_email_contact(Client.t(), [create_email_contact_option()]) :: {:ok, RelevateSdk.Models.ContactResponse.t()} | {:error, term()}
+  def create_email_contact(client, options \\ []) when is_list(options) do
     with {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/email/contacts"
+      path = "/email/contacts"
       query = []
       headers = []
       headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
-      case Client.request(client, :post, path, query, headers, body, :json, :json, %{401 => RelevateSdk.Errors.CreateContactStatus401Error, 422 => RelevateSdk.Errors.CreateContactStatus422Error, 503 => RelevateSdk.Errors.CreateContactStatus503Error}, nil) do
+      case Client.request(client, :post, path, query, headers, body, :json, :json, %{401 => RelevateSdk.Errors.CreateEmailContactStatus401Error, 422 => RelevateSdk.Errors.CreateEmailContactStatus422Error, 503 => RelevateSdk.Errors.CreateEmailContactStatus503Error}, nil) do
         {:ok, response} -> {:ok, case response do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ContactResponse.from_map(map); other -> other end}
-        {:error, %RelevateSdk.Errors.CreateContactStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, %RelevateSdk.Errors.CreateContactStatus422Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, %RelevateSdk.Errors.CreateContactStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.CreateEmailContactStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.CreateEmailContactStatus422Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.CreateEmailContactStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
         {:error, reason} -> {:error, reason}
       end
     end
   end
 
-  @type query_contacts_option :: {:body, RelevateSdk.Models.ContactQuery.t()}
-  @spec query_contacts(Client.t(), [query_contacts_option()]) :: {:ok, RelevateSdk.Models.ContactQueryResponse.t()} | {:error, term()}
-  def query_contacts(client, options \\ []) when is_list(options) do
+  @type query_email_contacts_option :: {:body, RelevateSdk.Models.ContactQuery.t()}
+  @spec query_email_contacts(Client.t(), [query_email_contacts_option()]) :: {:ok, RelevateSdk.Models.ContactQueryResponse.t()} | {:error, term()}
+  def query_email_contacts(client, options \\ []) when is_list(options) do
     with {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/email/contacts/query"
+      path = "/email/contacts/query"
       query = []
       headers = []
       headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
-      case Client.request(client, :post, path, query, headers, body, :json, :json, %{401 => RelevateSdk.Errors.QueryContactsStatus401Error, 422 => RelevateSdk.Errors.QueryContactsStatus422Error, 503 => RelevateSdk.Errors.QueryContactsStatus503Error}, nil) do
+      case Client.request(client, :post, path, query, headers, body, :json, :json, %{401 => RelevateSdk.Errors.QueryEmailContactsStatus401Error, 422 => RelevateSdk.Errors.QueryEmailContactsStatus422Error, 503 => RelevateSdk.Errors.QueryEmailContactsStatus503Error}, nil) do
         {:ok, response} -> {:ok, case response do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ContactQueryResponse.from_map(map); other -> other end}
-        {:error, %RelevateSdk.Errors.QueryContactsStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, %RelevateSdk.Errors.QueryContactsStatus422Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, %RelevateSdk.Errors.QueryContactsStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, reason} -> {:error, reason}
-      end
-    end
-  end
-
-  @type get_contact_option :: {:id, String.t()}
-  @spec get_contact(Client.t(), [get_contact_option()]) :: {:ok, RelevateSdk.Models.ContactResponse.t()} | {:error, term()}
-  def get_contact(client, options \\ []) when is_list(options) do
-    with {:ok, id} <- Client.required(options, :id) do
-      path = "/v1/email/contacts/{id}"
-      path = String.replace(path, "{id}", URI.encode(to_string(id), &URI.char_unreserved?/1))
-      query = []
-      headers = []
-      headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
-      case Client.request(client, :get, path, query, headers, nil, :json, :json, %{401 => RelevateSdk.Errors.GetContactStatus401Error, 404 => RelevateSdk.Errors.GetContactStatus404Error, 503 => RelevateSdk.Errors.GetContactStatus503Error}, nil) do
-        {:ok, response} -> {:ok, case response do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ContactResponse.from_map(map); other -> other end}
-        {:error, %RelevateSdk.Errors.GetContactStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, %RelevateSdk.Errors.GetContactStatus404Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, %RelevateSdk.Errors.GetContactStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, reason} -> {:error, reason}
-      end
-    end
-  end
-
-  @type update_contact_option :: {:id, String.t()} | {:body, RelevateSdk.Models.UpdateContact.t()}
-  @spec update_contact(Client.t(), [update_contact_option()]) :: {:ok, RelevateSdk.Models.ContactResponse.t()} | {:error, term()}
-  def update_contact(client, options \\ []) when is_list(options) do
-    with {:ok, id} <- Client.required(options, :id),
-         {:ok, body} <- Client.required(options, :body) do
-      path = "/v1/email/contacts/{id}"
-      path = String.replace(path, "{id}", URI.encode(to_string(id), &URI.char_unreserved?/1))
-      query = []
-      headers = []
-      headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
-      case Client.request(client, :patch, path, query, headers, body, :json, :json, %{401 => RelevateSdk.Errors.UpdateContactStatus401Error, 404 => RelevateSdk.Errors.UpdateContactStatus404Error, 422 => RelevateSdk.Errors.UpdateContactStatus422Error, 503 => RelevateSdk.Errors.UpdateContactStatus503Error}, nil) do
-        {:ok, response} -> {:ok, case response do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ContactResponse.from_map(map); other -> other end}
-        {:error, %RelevateSdk.Errors.UpdateContactStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, %RelevateSdk.Errors.UpdateContactStatus404Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, %RelevateSdk.Errors.UpdateContactStatus422Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, %RelevateSdk.Errors.UpdateContactStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, reason} -> {:error, reason}
-      end
-    end
-  end
-
-  @type list_domains_option :: {:limit, integer()}
-  @spec list_domains(Client.t(), [list_domains_option()]) :: {:ok, RelevateSdk.Models.DomainListResponse.t()} | {:error, term()}
-  def list_domains(client, options \\ []) when is_list(options) do
-    path = "/v1/email/domains"
-    query = [{"limit", Keyword.get(options, :limit)}]
-    headers = []
-    headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
-    case Client.request(client, :get, path, query, headers, nil, :json, :json, %{401 => RelevateSdk.Errors.ListDomainsStatus401Error, 503 => RelevateSdk.Errors.ListDomainsStatus503Error}, nil) do
-      {:ok, response} -> {:ok, case response do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.DomainListResponse.from_map(map); other -> other end}
-      {:error, %RelevateSdk.Errors.ListDomainsStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-      {:error, %RelevateSdk.Errors.ListDomainsStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-      {:error, reason} -> {:error, reason}
-    end
-  end
-
-  @type get_domain_option :: {:id, String.t()}
-  @spec get_domain(Client.t(), [get_domain_option()]) :: {:ok, RelevateSdk.Models.DomainResponse.t()} | {:error, term()}
-  def get_domain(client, options \\ []) when is_list(options) do
-    with {:ok, id} <- Client.required(options, :id) do
-      path = "/v1/email/domains/{id}"
-      path = String.replace(path, "{id}", URI.encode(to_string(id), &URI.char_unreserved?/1))
-      query = []
-      headers = []
-      headers = headers |> Enum.reject(fn {_name, value} -> is_nil(value) end) |> Enum.map(fn {name, value} -> {name, to_string(value)} end)
-      case Client.request(client, :get, path, query, headers, nil, :json, :json, %{401 => RelevateSdk.Errors.GetDomainStatus401Error, 404 => RelevateSdk.Errors.GetDomainStatus404Error, 503 => RelevateSdk.Errors.GetDomainStatus503Error}, nil) do
-        {:ok, response} -> {:ok, case response do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.DomainResponse.from_map(map); other -> other end}
-        {:error, %RelevateSdk.Errors.GetDomainStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, %RelevateSdk.Errors.GetDomainStatus404Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
-        {:error, %RelevateSdk.Errors.GetDomainStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.QueryEmailContactsStatus401Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.QueryEmailContactsStatus422Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
+        {:error, %RelevateSdk.Errors.QueryEmailContactsStatus503Error{} = reason} -> {:error, %{reason | body: case reason.body do nil -> nil; map when is_map(map) or is_list(map) -> RelevateSdk.Models.ErrorResponse.from_map(map); other -> other end}}
         {:error, reason} -> {:error, reason}
       end
     end

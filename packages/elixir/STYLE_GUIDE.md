@@ -17,7 +17,7 @@ Use resource modules to navigate larger APIs. Poolster uses the first OpenAPI ta
 
 ```elixir
 {:ok, client} = RelevateSdk.client(base_url: "https://api.example.com")
-{:ok, result} = RelevateSdk.Resources.CRM.list_crm_lists(client)
+{:ok, result} = RelevateSdk.Resources.APIKeys.list_crm_lists(client)
 ```
 
 Select the layout during generation with `SdkClientStyle::Flat` or `SdkClientStyle::Namespaced`. Namespaced packages keep the direct `RelevateSdk.API` functions too.

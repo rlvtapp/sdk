@@ -148,12 +148,12 @@ func decodeUpdateCrmListEntryError(requestError error) error {
 	}
 }
 
-// UpdateCrmListEntry invokes PATCH /v1/crm/lists/{list}/entries/{entry}.
+// UpdateCrmListEntry invokes PATCH /crm/lists/{list}/entries/{entry}.
 func (client *Client) UpdateCrmListEntry(ctx context.Context, input *UpdateCrmListEntryRequest) (*CrmListEntryResponse, error) {
 	if input == nil {
 		input = &UpdateCrmListEntryRequest{}
 	}
-	path := "/v1/crm/lists/{list}/entries/{entry}"
+	path := "/crm/lists/{list}/entries/{entry}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{list}", url.PathEscape(fmt.Sprint(input.List)))

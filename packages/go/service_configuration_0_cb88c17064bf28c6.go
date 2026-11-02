@@ -9,28 +9,43 @@ import (
 // ConfigurationService groups Configuration operations.
 type ConfigurationService struct { client *Client }
 
-// AuthCheck invokes AuthCheck through the Configuration namespace.
-func (service *ConfigurationService) AuthCheck(ctx context.Context) (*AuthCheckResponse, error) {
-	return service.client.AuthCheck(ctx)
+// CheckEmailAuth invokes CheckEmailAuth through the Configuration namespace.
+func (service *ConfigurationService) CheckEmailAuth(ctx context.Context) (*AuthCheckResponse, error) {
+	return service.client.CheckEmailAuth(ctx)
 }
 
-// ListDomains invokes ListDomains through the Configuration namespace.
-func (service *ConfigurationService) ListDomains(ctx context.Context, input *ListDomainsRequest) (*DomainListResponse, error) {
-	return service.client.ListDomains(ctx, input)
+// ListEmailDomains invokes ListEmailDomains through the Configuration namespace.
+func (service *ConfigurationService) ListEmailDomains(ctx context.Context, input *ListEmailDomainsRequest) (*DomainListResponse, error) {
+	return service.client.ListEmailDomains(ctx, input)
 }
 
-// GetDomain invokes GetDomain through the Configuration namespace.
-func (service *ConfigurationService) GetDomain(ctx context.Context, input *GetDomainRequest) (*DomainResponse, error) {
-	return service.client.GetDomain(ctx, input)
+// CreateEmailDomain invokes CreateEmailDomain through the Configuration namespace.
+func (service *ConfigurationService) CreateEmailDomain(ctx context.Context, input *CreateEmailDomainRequest) (*DomainSetupResponse, error) {
+	return service.client.CreateEmailDomain(ctx, input)
 }
 
-// ListSenderIdentities invokes ListSenderIdentities through the Configuration namespace.
-func (service *ConfigurationService) ListSenderIdentities(ctx context.Context, input *ListSenderIdentitiesRequest) (*SenderIdentityListResponse, error) {
-	return service.client.ListSenderIdentities(ctx, input)
+// DeleteEmailDomain invokes DeleteEmailDomain through the Configuration namespace.
+func (service *ConfigurationService) DeleteEmailDomain(ctx context.Context, input *DeleteEmailDomainRequest) (*DeletedDomainResponse, error) {
+	return service.client.DeleteEmailDomain(ctx, input)
 }
 
-// GetSenderIdentity invokes GetSenderIdentity through the Configuration namespace.
-func (service *ConfigurationService) GetSenderIdentity(ctx context.Context, input *GetSenderIdentityRequest) (*SenderIdentityResponse, error) {
-	return service.client.GetSenderIdentity(ctx, input)
+// GetEmailDomain invokes GetEmailDomain through the Configuration namespace.
+func (service *ConfigurationService) GetEmailDomain(ctx context.Context, input *GetEmailDomainRequest) (*DomainResponse, error) {
+	return service.client.GetEmailDomain(ctx, input)
+}
+
+// VerifyEmailDomain invokes VerifyEmailDomain through the Configuration namespace.
+func (service *ConfigurationService) VerifyEmailDomain(ctx context.Context, input *VerifyEmailDomainRequest) (*DomainSetupResponse, error) {
+	return service.client.VerifyEmailDomain(ctx, input)
+}
+
+// ListEmailSenderIdentities invokes ListEmailSenderIdentities through the Configuration namespace.
+func (service *ConfigurationService) ListEmailSenderIdentities(ctx context.Context, input *ListEmailSenderIdentitiesRequest) (*SenderIdentityListResponse, error) {
+	return service.client.ListEmailSenderIdentities(ctx, input)
+}
+
+// GetEmailSenderIdentity invokes GetEmailSenderIdentity through the Configuration namespace.
+func (service *ConfigurationService) GetEmailSenderIdentity(ctx context.Context, input *GetEmailSenderIdentityRequest) (*SenderIdentityResponse, error) {
+	return service.client.GetEmailSenderIdentity(ctx, input)
 }
 

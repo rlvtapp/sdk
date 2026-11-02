@@ -11,24 +11,27 @@ class ContactsResourcePart000:
 
     def __init__(self, client: Any) -> None:
         self._client = client
-    def list(self, *, limit: int | None = None) -> ContactListResponse:
-        return self._client.list_contacts(limit=limit)
+    def list_email(self, *, limit: int | None = None) -> ContactListResponse:
+        return self._client.list_email_contacts(limit=limit)
 
-    def create(self, *, body: CreateContact) -> ContactResponse:
-        return self._client.create_contact(body=body)
+    def create_email(self, *, body: CreateContact) -> ContactResponse:
+        return self._client.create_email_contact(body=body)
 
-    def query(self, *, body: ContactQuery) -> ContactQueryResponse:
-        return self._client.query_contacts(body=body)
+    def query_email(self, *, body: ContactQuery) -> ContactQueryResponse:
+        return self._client.query_email_contacts(body=body)
 
-    def get(self, *, id: str) -> ContactResponse:
-        return self._client.get_contact(id=id)
+    def delete_email(self, *, id: str) -> None:
+        return self._client.delete_email_contact(id=id)
 
-    def update(self, *, id: str, body: UpdateContact) -> ContactResponse:
-        return self._client.update_contact(id=id, body=body)
+    def get_email(self, *, id: str) -> ContactResponse:
+        return self._client.get_email_contact(id=id)
 
-    def list_segments(self, *, limit: int | None = None) -> SegmentListResponse:
-        return self._client.list_segments(limit=limit)
+    def update_email(self, *, id: str, body: UpdateContact) -> ContactResponse:
+        return self._client.update_email_contact(id=id, body=body)
 
-    def get_segment(self, *, id: str) -> SegmentResponse:
-        return self._client.get_segment(id=id)
+    def list_email_segments(self, *, limit: int | None = None) -> SegmentListResponse:
+        return self._client.list_email_segments(limit=limit)
+
+    def get_email_segment(self, *, id: str) -> SegmentResponse:
+        return self._client.get_email_segment(id=id)
 

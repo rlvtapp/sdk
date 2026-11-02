@@ -5,9 +5,12 @@ defmodule RelevateSdk.Resources.Webhooks do
 
 
   alias RelevateSdk.Resources.Webhooks.Chunk0000
-  def list_webhooks(client, options \\ []), do: Chunk0000.list_webhooks(client, options)
-  def create_webhook(client, options \\ []), do: Chunk0000.create_webhook(client, options)
-  def delete_webhook(client, options \\ []), do: Chunk0000.delete_webhook(client, options)
-  def update_webhook(client, options \\ []), do: Chunk0000.update_webhook(client, options)
-  def list_deliveries(client, options \\ []), do: Chunk0000.list_deliveries(client, options)
+  def list_email_webhooks(client, options \\ []), do: Chunk0000.list_email_webhooks(client, options)
+  def create_email_webhook(client, options \\ []), do: Chunk0000.create_email_webhook(client, options)
+  def delete_email_webhook(client, options \\ []), do: Chunk0000.delete_email_webhook(client, options)
+  def update_email_webhook(client, options \\ []), do: Chunk0000.update_email_webhook(client, options)
+  def list_email_webhook_deliveries(client, options \\ []), do: Chunk0000.list_email_webhook_deliveries(client, options)
+  def replay_email_webhook_delivery(client, options \\ []), do: Chunk0000.replay_email_webhook_delivery(client, options)
+  def replay_email_webhook_range(client, options \\ []), do: Chunk0000.replay_email_webhook_range(client, options)
+  def rotate_email_webhook_secret(client, options \\ []), do: Chunk0000.rotate_email_webhook_secret(client, options)
 end

@@ -4,3 +4,7 @@
 pub(crate) fn poolster_deserialize_optional_nullable<'de, D, T>(deserializer: D) -> Result<Option<Option<T>>, D::Error> where D: serde::Deserializer<'de>, T: serde::Deserialize<'de> { <Option<T> as serde::Deserialize>::deserialize(deserializer).map(Some) }
 mod chunk_0001;
 pub use chunk_0001::*;
+mod chunk_0002;
+pub use chunk_0002::*;
+mod chunk_0003;
+pub use chunk_0003::*;

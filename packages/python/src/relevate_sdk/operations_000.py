@@ -12,7 +12,7 @@ from .models import *
 
 class Operations000:
     def list_crm_lists(self, *, limit: int | None = None, after: str | None = None, object_id: str | None = None) -> CrmListsPage:
-        _poolster_path = "/v1/crm/lists"
+        _poolster_path = "/crm/lists"
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
             _poolster_query["limit"] = limit
@@ -25,14 +25,14 @@ class Operations000:
         return CrmListsPage.from_dict(result) if isinstance(result, dict) else cast(CrmListsPage, result)
 
     def create_crm_list(self, *, body: CrmCreateList) -> CrmListResponse:
-        _poolster_path = "/v1/crm/lists"
+        _poolster_path = "/crm/lists"
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
         result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={400: (CreateCrmListStatus400Error, CrmApiError), 401: (CreateCrmListStatus401Error, CrmApiError), 403: (CreateCrmListStatus403Error, CrmApiError), 404: (CreateCrmListStatus404Error, CrmApiError), 409: (CreateCrmListStatus409Error, CrmApiError), 413: (CreateCrmListStatus413Error, CrmApiError), 415: (CreateCrmListStatus415Error, CrmApiError), 503: (CreateCrmListStatus503Error, CrmApiError)}, retryable=False, response_operation="createCrmList")
         return CrmListResponse.from_dict(result) if isinstance(result, dict) else cast(CrmListResponse, result)
 
     def delete_crm_list(self, *, list: str) -> CrmListDeletionResponse:
-        _poolster_path = "/v1/crm/lists/{list}"
+        _poolster_path = "/crm/lists/{list}"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -40,7 +40,7 @@ class Operations000:
         return CrmListDeletionResponse.from_dict(result) if isinstance(result, dict) else cast(CrmListDeletionResponse, result)
 
     def get_crm_list(self, *, list: str) -> CrmListResponse:
-        _poolster_path = "/v1/crm/lists/{list}"
+        _poolster_path = "/crm/lists/{list}"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -48,7 +48,7 @@ class Operations000:
         return CrmListResponse.from_dict(result) if isinstance(result, dict) else cast(CrmListResponse, result)
 
     def update_crm_list(self, *, list: str, body: CrmUpdateList) -> CrmListResponse:
-        _poolster_path = "/v1/crm/lists/{list}"
+        _poolster_path = "/crm/lists/{list}"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -56,7 +56,7 @@ class Operations000:
         return CrmListResponse.from_dict(result) if isinstance(result, dict) else cast(CrmListResponse, result)
 
     def list_crm_list_attributes(self, *, list: str) -> CrmMetadataAttributesResponse:
-        _poolster_path = "/v1/crm/lists/{list}/attributes"
+        _poolster_path = "/crm/lists/{list}/attributes"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -64,7 +64,7 @@ class Operations000:
         return CrmMetadataAttributesResponse.from_dict(result) if isinstance(result, dict) else cast(CrmMetadataAttributesResponse, result)
 
     def create_crm_list_attribute(self, *, list: str, body: CrmAttributeCreate) -> CrmMetadataAttributeResponse:
-        _poolster_path = "/v1/crm/lists/{list}/attributes"
+        _poolster_path = "/crm/lists/{list}/attributes"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -72,7 +72,7 @@ class Operations000:
         return CrmMetadataAttributeResponse.from_dict(result) if isinstance(result, dict) else cast(CrmMetadataAttributeResponse, result)
 
     def delete_crm_list_attribute(self, *, list: str, attribute: str) -> CrmMetadataDeleted:
-        _poolster_path = "/v1/crm/lists/{list}/attributes/{attribute}"
+        _poolster_path = "/crm/lists/{list}/attributes/{attribute}"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_path = _poolster_path.replace("{attribute}", quote(str(attribute), safe=""))
         _poolster_query: dict[str, Any] | None = None
@@ -81,7 +81,7 @@ class Operations000:
         return CrmMetadataDeleted.from_dict(result) if isinstance(result, dict) else cast(CrmMetadataDeleted, result)
 
     def update_crm_list_attribute(self, *, list: str, attribute: str, body: CrmAttributePatch) -> CrmMetadataAttributeResponse:
-        _poolster_path = "/v1/crm/lists/{list}/attributes/{attribute}"
+        _poolster_path = "/crm/lists/{list}/attributes/{attribute}"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_path = _poolster_path.replace("{attribute}", quote(str(attribute), safe=""))
         _poolster_query: dict[str, Any] | None = None
@@ -90,7 +90,7 @@ class Operations000:
         return CrmMetadataAttributeResponse.from_dict(result) if isinstance(result, dict) else cast(CrmMetadataAttributeResponse, result)
 
     def list_crm_list_entries(self, *, list: str, limit: int | None = None, after: str | None = None) -> CrmListEntriesPage:
-        _poolster_path = "/v1/crm/lists/{list}/entries"
+        _poolster_path = "/crm/lists/{list}/entries"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
@@ -102,7 +102,7 @@ class Operations000:
         return CrmListEntriesPage.from_dict(result) if isinstance(result, dict) else cast(CrmListEntriesPage, result)
 
     def create_crm_list_entry(self, *, list: str, body: CrmCreateListEntry) -> CrmListEntryResponse:
-        _poolster_path = "/v1/crm/lists/{list}/entries"
+        _poolster_path = "/crm/lists/{list}/entries"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -110,7 +110,7 @@ class Operations000:
         return CrmListEntryResponse.from_dict(result) if isinstance(result, dict) else cast(CrmListEntryResponse, result)
 
     def delete_crm_list_entry(self, *, list: str, entry: str) -> CrmListDeletionResponse:
-        _poolster_path = "/v1/crm/lists/{list}/entries/{entry}"
+        _poolster_path = "/crm/lists/{list}/entries/{entry}"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_path = _poolster_path.replace("{entry}", quote(str(entry), safe=""))
         _poolster_query: dict[str, Any] | None = None
@@ -119,7 +119,7 @@ class Operations000:
         return CrmListDeletionResponse.from_dict(result) if isinstance(result, dict) else cast(CrmListDeletionResponse, result)
 
     def get_crm_list_entry(self, *, list: str, entry: str) -> CrmListEntryResponse:
-        _poolster_path = "/v1/crm/lists/{list}/entries/{entry}"
+        _poolster_path = "/crm/lists/{list}/entries/{entry}"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_path = _poolster_path.replace("{entry}", quote(str(entry), safe=""))
         _poolster_query: dict[str, Any] | None = None
@@ -128,7 +128,7 @@ class Operations000:
         return CrmListEntryResponse.from_dict(result) if isinstance(result, dict) else cast(CrmListEntryResponse, result)
 
     def update_crm_list_entry(self, *, list: str, entry: str, body: CrmUpdateListEntry) -> CrmListEntryResponse:
-        _poolster_path = "/v1/crm/lists/{list}/entries/{entry}"
+        _poolster_path = "/crm/lists/{list}/entries/{entry}"
         _poolster_path = _poolster_path.replace("{list}", quote(str(list), safe=""))
         _poolster_path = _poolster_path.replace("{entry}", quote(str(entry), safe=""))
         _poolster_query: dict[str, Any] | None = None
@@ -137,7 +137,7 @@ class Operations000:
         return CrmListEntryResponse.from_dict(result) if isinstance(result, dict) else cast(CrmListEntryResponse, result)
 
     def delete_crm_note(self, *, note_id: str) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/notes/{note_id}"
+        _poolster_path = "/crm/notes/{note_id}"
         _poolster_path = _poolster_path.replace("{note_id}", quote(str(note_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -145,7 +145,7 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def get_crm_note(self, *, note_id: str) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/notes/{note_id}"
+        _poolster_path = "/crm/notes/{note_id}"
         _poolster_path = _poolster_path.replace("{note_id}", quote(str(note_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -153,7 +153,7 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def update_crm_note(self, *, note_id: str, body: CrmNoteWrite) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/notes/{note_id}"
+        _poolster_path = "/crm/notes/{note_id}"
         _poolster_path = _poolster_path.replace("{note_id}", quote(str(note_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -161,7 +161,7 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def list_crm_objects(self, *, limit: int | None = None, after: str | None = None, include_disabled: bool | None = None) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/objects"
+        _poolster_path = "/crm/objects"
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
             _poolster_query["limit"] = limit
@@ -174,14 +174,14 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def create_crm_object(self, *, body: CrmObjectCreate) -> CrmMetadataObjectResponse:
-        _poolster_path = "/v1/crm/objects"
+        _poolster_path = "/crm/objects"
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
         result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={400: (CreateCrmObjectStatus400Error, CrmApiError), 401: (CreateCrmObjectStatus401Error, CrmApiError), 403: (CreateCrmObjectStatus403Error, CrmApiError), 404: (CreateCrmObjectStatus404Error, CrmApiError), 409: (CreateCrmObjectStatus409Error, CrmApiError), 413: (CreateCrmObjectStatus413Error, CrmApiError), 415: (CreateCrmObjectStatus415Error, CrmApiError), 503: (CreateCrmObjectStatus503Error, CrmApiError)}, retryable=False, response_operation="createCrmObject")
         return CrmMetadataObjectResponse.from_dict(result) if isinstance(result, dict) else cast(CrmMetadataObjectResponse, result)
 
     def delete_crm_object(self, *, object: str, body: CrmObjectDelete) -> CrmMetadataDeleted:
-        _poolster_path = "/v1/crm/objects/{object}"
+        _poolster_path = "/crm/objects/{object}"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -189,7 +189,7 @@ class Operations000:
         return CrmMetadataDeleted.from_dict(result) if isinstance(result, dict) else cast(CrmMetadataDeleted, result)
 
     def get_crm_object(self, *, object: str) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/objects/{object}"
+        _poolster_path = "/crm/objects/{object}"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -197,7 +197,7 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def update_crm_object(self, *, object: str, body: CrmObjectPatch) -> CrmMetadataObjectResponse:
-        _poolster_path = "/v1/crm/objects/{object}"
+        _poolster_path = "/crm/objects/{object}"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -205,7 +205,7 @@ class Operations000:
         return CrmMetadataObjectResponse.from_dict(result) if isinstance(result, dict) else cast(CrmMetadataObjectResponse, result)
 
     def list_crm_object_attributes(self, *, object: str) -> CrmMetadataAttributesResponse:
-        _poolster_path = "/v1/crm/objects/{object}/attributes"
+        _poolster_path = "/crm/objects/{object}/attributes"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -213,7 +213,7 @@ class Operations000:
         return CrmMetadataAttributesResponse.from_dict(result) if isinstance(result, dict) else cast(CrmMetadataAttributesResponse, result)
 
     def create_crm_object_attribute(self, *, object: str, body: CrmAttributeCreate) -> CrmMetadataAttributeResponse:
-        _poolster_path = "/v1/crm/objects/{object}/attributes"
+        _poolster_path = "/crm/objects/{object}/attributes"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -221,7 +221,7 @@ class Operations000:
         return CrmMetadataAttributeResponse.from_dict(result) if isinstance(result, dict) else cast(CrmMetadataAttributeResponse, result)
 
     def delete_crm_object_attribute(self, *, object: str, attribute: str) -> CrmMetadataDeleted:
-        _poolster_path = "/v1/crm/objects/{object}/attributes/{attribute}"
+        _poolster_path = "/crm/objects/{object}/attributes/{attribute}"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_path = _poolster_path.replace("{attribute}", quote(str(attribute), safe=""))
         _poolster_query: dict[str, Any] | None = None
@@ -230,7 +230,7 @@ class Operations000:
         return CrmMetadataDeleted.from_dict(result) if isinstance(result, dict) else cast(CrmMetadataDeleted, result)
 
     def update_crm_object_attribute(self, *, object: str, attribute: str, body: CrmAttributePatch) -> CrmMetadataAttributeResponse:
-        _poolster_path = "/v1/crm/objects/{object}/attributes/{attribute}"
+        _poolster_path = "/crm/objects/{object}/attributes/{attribute}"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_path = _poolster_path.replace("{attribute}", quote(str(attribute), safe=""))
         _poolster_query: dict[str, Any] | None = None
@@ -239,7 +239,7 @@ class Operations000:
         return CrmMetadataAttributeResponse.from_dict(result) if isinstance(result, dict) else cast(CrmMetadataAttributeResponse, result)
 
     def preview_crm_object_deletion(self, *, object: str) -> CrmObjectDeletionPreview:
-        _poolster_path = "/v1/crm/objects/{object}/deletion-preview"
+        _poolster_path = "/crm/objects/{object}/deletion-preview"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -247,7 +247,7 @@ class Operations000:
         return CrmObjectDeletionPreview.from_dict(result) if isinstance(result, dict) else cast(CrmObjectDeletionPreview, result)
 
     def get_crm_object_quality(self, *, object: str, limit: int | None = None, after: str | None = None, include_archived: bool | None = None) -> CrmQualityResponse:
-        _poolster_path = "/v1/crm/objects/{object}/quality"
+        _poolster_path = "/crm/objects/{object}/quality"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
@@ -261,7 +261,7 @@ class Operations000:
         return CrmQualityResponse.from_dict(result) if isinstance(result, dict) else cast(CrmQualityResponse, result)
 
     def list_crm_records(self, *, object: str, limit: int | None = None, after: str | None = None, external_id: str | None = None, include_archived: bool | None = None) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/objects/{object}/records"
+        _poolster_path = "/crm/objects/{object}/records"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
@@ -277,7 +277,7 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def create_crm_record(self, *, object: str, body: CrmRecordCreate) -> CrmRecordResponse:
-        _poolster_path = "/v1/crm/objects/{object}/records"
+        _poolster_path = "/crm/objects/{object}/records"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -285,7 +285,7 @@ class Operations000:
         return CrmRecordResponse.from_dict(result) if isinstance(result, dict) else cast(CrmRecordResponse, result)
 
     def upsert_crm_record(self, *, object: str, body: CrmUpsert) -> CrmRecordResponse:
-        _poolster_path = "/v1/crm/objects/{object}/records/upsert"
+        _poolster_path = "/crm/objects/{object}/records/upsert"
         _poolster_path = _poolster_path.replace("{object}", quote(str(object), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -293,7 +293,7 @@ class Operations000:
         return CrmRecordResponse.from_dict(result) if isinstance(result, dict) else cast(CrmRecordResponse, result)
 
     def archive_crm_record(self, *, record_id: str) -> CrmRecordResponse:
-        _poolster_path = "/v1/crm/records/{record_id}"
+        _poolster_path = "/crm/records/{record_id}"
         _poolster_path = _poolster_path.replace("{record_id}", quote(str(record_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -301,7 +301,7 @@ class Operations000:
         return CrmRecordResponse.from_dict(result) if isinstance(result, dict) else cast(CrmRecordResponse, result)
 
     def get_crm_record(self, *, record_id: str) -> CrmRecordResponse:
-        _poolster_path = "/v1/crm/records/{record_id}"
+        _poolster_path = "/crm/records/{record_id}"
         _poolster_path = _poolster_path.replace("{record_id}", quote(str(record_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -309,7 +309,7 @@ class Operations000:
         return CrmRecordResponse.from_dict(result) if isinstance(result, dict) else cast(CrmRecordResponse, result)
 
     def update_crm_record(self, *, record_id: str, body: CrmRecordPatch) -> CrmRecordResponse:
-        _poolster_path = "/v1/crm/records/{record_id}"
+        _poolster_path = "/crm/records/{record_id}"
         _poolster_path = _poolster_path.replace("{record_id}", quote(str(record_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -317,7 +317,7 @@ class Operations000:
         return CrmRecordResponse.from_dict(result) if isinstance(result, dict) else cast(CrmRecordResponse, result)
 
     def list_crm_activities(self, *, record_id: str, limit: int | None = None, after: str | None = None) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/records/{record_id}/activities"
+        _poolster_path = "/crm/records/{record_id}/activities"
         _poolster_path = _poolster_path.replace("{record_id}", quote(str(record_id), safe=""))
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
@@ -329,7 +329,7 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def list_crm_notes(self, *, record_id: str, limit: int | None = None, after: str | None = None) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/records/{record_id}/notes"
+        _poolster_path = "/crm/records/{record_id}/notes"
         _poolster_path = _poolster_path.replace("{record_id}", quote(str(record_id), safe=""))
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
@@ -341,7 +341,7 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def create_crm_note(self, *, record_id: str, body: CrmNoteWrite) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/records/{record_id}/notes"
+        _poolster_path = "/crm/records/{record_id}/notes"
         _poolster_path = _poolster_path.replace("{record_id}", quote(str(record_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -349,7 +349,7 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def list_crm_tasks(self, *, record_id: str, limit: int | None = None, after: str | None = None) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/records/{record_id}/tasks"
+        _poolster_path = "/crm/records/{record_id}/tasks"
         _poolster_path = _poolster_path.replace("{record_id}", quote(str(record_id), safe=""))
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
@@ -361,7 +361,7 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def create_crm_task(self, *, record_id: str, body: CrmTaskCreate) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/records/{record_id}/tasks"
+        _poolster_path = "/crm/records/{record_id}/tasks"
         _poolster_path = _poolster_path.replace("{record_id}", quote(str(record_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -369,7 +369,7 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def delete_crm_task(self, *, task_id: str) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/tasks/{task_id}"
+        _poolster_path = "/crm/tasks/{task_id}"
         _poolster_path = _poolster_path.replace("{task_id}", quote(str(task_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -377,7 +377,7 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def get_crm_task(self, *, task_id: str) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/tasks/{task_id}"
+        _poolster_path = "/crm/tasks/{task_id}"
         _poolster_path = _poolster_path.replace("{task_id}", quote(str(task_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
@@ -385,201 +385,516 @@ class Operations000:
         return cast(dict[str, Any], result)
 
     def update_crm_task(self, *, task_id: str, body: CrmTaskPatch) -> dict[str, Any]:
-        _poolster_path = "/v1/crm/tasks/{task_id}"
+        _poolster_path = "/crm/tasks/{task_id}"
         _poolster_path = _poolster_path.replace("{task_id}", quote(str(task_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
         result = self._request("PATCH", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={400: (UpdateCrmTaskStatus400Error, CrmApiError), 401: (UpdateCrmTaskStatus401Error, CrmApiError), 403: (UpdateCrmTaskStatus403Error, CrmApiError), 404: (UpdateCrmTaskStatus404Error, CrmApiError), 409: (UpdateCrmTaskStatus409Error, CrmApiError), 413: (UpdateCrmTaskStatus413Error, CrmApiError), 415: (UpdateCrmTaskStatus415Error, CrmApiError), 503: (UpdateCrmTaskStatus503Error, CrmApiError)}, retryable=False, response_operation="updateCrmTask")
         return cast(dict[str, Any], result)
 
-    def auth_check(self) -> AuthCheckResponse:
-        _poolster_path = "/v1/email/auth-check"
+    def list_email_api_keys(self) -> None:
+        _poolster_path = "/email/api-keys"
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (AuthCheckStatus401Error, ErrorResponse), 403: (AuthCheckStatus403Error, ErrorResponse), 503: (AuthCheckStatus503Error, ErrorResponse)}, retryable=True, response_operation="auth_check")
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailApiKeysStatus401Error, ErrorResponse), 403: (ListEmailApiKeysStatus403Error, ErrorResponse), 503: (ListEmailApiKeysStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailApiKeys")
+        return cast(None, result)
+
+    def create_email_api_key(self, *, body: CreateApiKeyRequest) -> None:
+        _poolster_path = "/email/api-keys"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (CreateEmailApiKeyStatus401Error, ErrorResponse), 403: (CreateEmailApiKeyStatus403Error, ErrorResponse), 409: (CreateEmailApiKeyStatus409Error, ErrorResponse), 422: (CreateEmailApiKeyStatus422Error, ErrorResponse), 503: (CreateEmailApiKeyStatus503Error, ErrorResponse)}, retryable=False, response_operation="createEmailApiKey")
+        return cast(None, result)
+
+    def revoke_email_api_key(self, *, id: str) -> None:
+        _poolster_path = "/email/api-keys/{id}"
+        _poolster_path = _poolster_path.replace("{id}", quote(str(id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("DELETE", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (RevokeEmailApiKeyStatus401Error, ErrorResponse), 403: (RevokeEmailApiKeyStatus403Error, ErrorResponse), 404: (RevokeEmailApiKeyStatus404Error, ErrorResponse), 503: (RevokeEmailApiKeyStatus503Error, ErrorResponse)}, retryable=True, response_operation="revokeEmailApiKey")
+        return cast(None, result)
+
+    def get_email_attachment(self, *, attachment_id: str) -> AttachmentResponse:
+        _poolster_path = "/email/attachments/{attachment_id}"
+        _poolster_path = _poolster_path.replace("{attachment_id}", quote(str(attachment_id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetEmailAttachmentStatus401Error, ErrorResponse), 404: (GetEmailAttachmentStatus404Error, ErrorResponse), 409: (GetEmailAttachmentStatus409Error, ErrorResponse), 503: (GetEmailAttachmentStatus503Error, ErrorResponse)}, retryable=True, response_operation="getEmailAttachment")
+        return AttachmentResponse.from_dict(result) if isinstance(result, dict) else cast(AttachmentResponse, result)
+
+    def check_email_auth(self) -> AuthCheckResponse:
+        _poolster_path = "/email/auth-check"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (CheckEmailAuthStatus401Error, ErrorResponse), 403: (CheckEmailAuthStatus403Error, ErrorResponse), 503: (CheckEmailAuthStatus503Error, ErrorResponse)}, retryable=True, response_operation="checkEmailAuth")
         return AuthCheckResponse.from_dict(result) if isinstance(result, dict) else cast(AuthCheckResponse, result)
 
-    def list_contacts(self, *, limit: int | None = None) -> ContactListResponse:
-        _poolster_path = "/v1/email/contacts"
+    def list_email_contacts(self, *, limit: int | None = None) -> ContactListResponse:
+        _poolster_path = "/email/contacts"
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
             _poolster_query["limit"] = limit
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListContactsStatus401Error, ErrorResponse), 503: (ListContactsStatus503Error, ErrorResponse)}, retryable=True, response_operation="list_contacts")
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailContactsStatus401Error, ErrorResponse), 503: (ListEmailContactsStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailContacts")
         return ContactListResponse.from_dict(result) if isinstance(result, dict) else cast(ContactListResponse, result)
 
-    def create_contact(self, *, body: CreateContact) -> ContactResponse:
-        _poolster_path = "/v1/email/contacts"
+    def create_email_contact(self, *, body: CreateContact) -> ContactResponse:
+        _poolster_path = "/email/contacts"
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (CreateContactStatus401Error, ErrorResponse), 422: (CreateContactStatus422Error, ErrorResponse), 503: (CreateContactStatus503Error, ErrorResponse)}, retryable=False, response_operation="create_contact")
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (CreateEmailContactStatus401Error, ErrorResponse), 422: (CreateEmailContactStatus422Error, ErrorResponse), 503: (CreateEmailContactStatus503Error, ErrorResponse)}, retryable=False, response_operation="createEmailContact")
         return ContactResponse.from_dict(result) if isinstance(result, dict) else cast(ContactResponse, result)
 
-    def query_contacts(self, *, body: ContactQuery) -> ContactQueryResponse:
-        _poolster_path = "/v1/email/contacts/query"
+    def query_email_contacts(self, *, body: ContactQuery) -> ContactQueryResponse:
+        _poolster_path = "/email/contacts/query"
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (QueryContactsStatus401Error, ErrorResponse), 422: (QueryContactsStatus422Error, ErrorResponse), 503: (QueryContactsStatus503Error, ErrorResponse)}, retryable=False, response_operation="query_contacts")
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (QueryEmailContactsStatus401Error, ErrorResponse), 422: (QueryEmailContactsStatus422Error, ErrorResponse), 503: (QueryEmailContactsStatus503Error, ErrorResponse)}, retryable=False, response_operation="queryEmailContacts")
         return ContactQueryResponse.from_dict(result) if isinstance(result, dict) else cast(ContactQueryResponse, result)
 
-    def get_contact(self, *, id: str) -> ContactResponse:
-        _poolster_path = "/v1/email/contacts/{id}"
+    def delete_email_contact(self, *, id: str) -> None:
+        _poolster_path = "/email/contacts/{id}"
         _poolster_path = _poolster_path.replace("{id}", quote(str(id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetContactStatus401Error, ErrorResponse), 404: (GetContactStatus404Error, ErrorResponse), 503: (GetContactStatus503Error, ErrorResponse)}, retryable=True, response_operation="get_contact")
-        return ContactResponse.from_dict(result) if isinstance(result, dict) else cast(ContactResponse, result)
+        result = self._request("DELETE", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (DeleteEmailContactStatus401Error, ErrorResponse), 404: (DeleteEmailContactStatus404Error, ErrorResponse), 503: (DeleteEmailContactStatus503Error, ErrorResponse)}, retryable=True, response_operation="deleteEmailContact")
+        return cast(None, result)
 
-    def update_contact(self, *, id: str, body: UpdateContact) -> ContactResponse:
-        _poolster_path = "/v1/email/contacts/{id}"
+    def get_email_contact(self, *, id: str) -> ContactResponse:
+        _poolster_path = "/email/contacts/{id}"
         _poolster_path = _poolster_path.replace("{id}", quote(str(id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("PATCH", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (UpdateContactStatus401Error, ErrorResponse), 404: (UpdateContactStatus404Error, ErrorResponse), 422: (UpdateContactStatus422Error, ErrorResponse), 503: (UpdateContactStatus503Error, ErrorResponse)}, retryable=False, response_operation="update_contact")
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetEmailContactStatus401Error, ErrorResponse), 404: (GetEmailContactStatus404Error, ErrorResponse), 503: (GetEmailContactStatus503Error, ErrorResponse)}, retryable=True, response_operation="getEmailContact")
         return ContactResponse.from_dict(result) if isinstance(result, dict) else cast(ContactResponse, result)
 
-    def list_domains(self, *, limit: int | None = None) -> DomainListResponse:
-        _poolster_path = "/v1/email/domains"
+    def update_email_contact(self, *, id: str, body: UpdateContact) -> ContactResponse:
+        _poolster_path = "/email/contacts/{id}"
+        _poolster_path = _poolster_path.replace("{id}", quote(str(id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("PATCH", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (UpdateEmailContactStatus401Error, ErrorResponse), 404: (UpdateEmailContactStatus404Error, ErrorResponse), 422: (UpdateEmailContactStatus422Error, ErrorResponse), 503: (UpdateEmailContactStatus503Error, ErrorResponse)}, retryable=False, response_operation="updateEmailContact")
+        return ContactResponse.from_dict(result) if isinstance(result, dict) else cast(ContactResponse, result)
+
+    def list_email_domains(self, *, limit: int | None = None) -> DomainListResponse:
+        _poolster_path = "/email/domains"
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
             _poolster_query["limit"] = limit
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListDomainsStatus401Error, ErrorResponse), 503: (ListDomainsStatus503Error, ErrorResponse)}, retryable=True, response_operation="list_domains")
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailDomainsStatus401Error, ErrorResponse), 503: (ListEmailDomainsStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailDomains")
         return DomainListResponse.from_dict(result) if isinstance(result, dict) else cast(DomainListResponse, result)
 
-    def get_domain(self, *, id: str) -> DomainResponse:
-        _poolster_path = "/v1/email/domains/{id}"
+    def create_email_domain(self, *, body: CreateDomainRequest) -> DomainSetupResponse:
+        _poolster_path = "/email/domains"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (CreateEmailDomainStatus401Error, ErrorResponse), 403: (CreateEmailDomainStatus403Error, ErrorResponse), 409: (CreateEmailDomainStatus409Error, ErrorResponse), 422: (CreateEmailDomainStatus422Error, ErrorResponse), 503: (CreateEmailDomainStatus503Error, ErrorResponse)}, retryable=False, response_operation="createEmailDomain")
+        return DomainSetupResponse.from_dict(result) if isinstance(result, dict) else cast(DomainSetupResponse, result)
+
+    def delete_email_domain(self, *, id: str) -> DeletedDomainResponse:
+        _poolster_path = "/email/domains/{id}"
         _poolster_path = _poolster_path.replace("{id}", quote(str(id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetDomainStatus401Error, ErrorResponse), 404: (GetDomainStatus404Error, ErrorResponse), 503: (GetDomainStatus503Error, ErrorResponse)}, retryable=True, response_operation="get_domain")
-        return DomainResponse.from_dict(result) if isinstance(result, dict) else cast(DomainResponse, result)
+        result = self._request("DELETE", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (DeleteEmailDomainStatus401Error, ErrorResponse), 403: (DeleteEmailDomainStatus403Error, ErrorResponse), 404: (DeleteEmailDomainStatus404Error, ErrorResponse), 409: (DeleteEmailDomainStatus409Error, ErrorResponse), 503: (DeleteEmailDomainStatus503Error, ErrorResponse)}, retryable=True, response_operation="deleteEmailDomain")
+        return DeletedDomainResponse.from_dict(result) if isinstance(result, dict) else cast(DeletedDomainResponse, result)
 
-    def track(self, *, body: TrackEventRequest) -> EventResponse:
-        _poolster_path = "/v1/email/events"
+    def get_email_domain(self, *, id: str) -> DomainResponse:
+        _poolster_path = "/email/domains/{id}"
+        _poolster_path = _poolster_path.replace("{id}", quote(str(id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (TrackStatus401Error, ErrorResponse), 403: (TrackStatus403Error, ErrorResponse), 409: (TrackStatus409Error, ErrorResponse), 422: (TrackStatus422Error, ErrorResponse), 503: (TrackStatus503Error, ErrorResponse)}, retryable=False, response_operation="track")
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetEmailDomainStatus401Error, ErrorResponse), 404: (GetEmailDomainStatus404Error, ErrorResponse), 503: (GetEmailDomainStatus503Error, ErrorResponse)}, retryable=True, response_operation="getEmailDomain")
+        return DomainResponse.from_dict(result) if isinstance(result, dict) else cast(DomainResponse, result)
+
+    def verify_email_domain(self, *, id: str) -> DomainSetupResponse:
+        _poolster_path = "/email/domains/{id}/verify"
+        _poolster_path = _poolster_path.replace("{id}", quote(str(id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (VerifyEmailDomainStatus401Error, ErrorResponse), 403: (VerifyEmailDomainStatus403Error, ErrorResponse), 404: (VerifyEmailDomainStatus404Error, ErrorResponse), 409: (VerifyEmailDomainStatus409Error, ErrorResponse), 429: (VerifyEmailDomainStatus429Error, ErrorResponse), 503: (VerifyEmailDomainStatus503Error, ErrorResponse)}, retryable=False, response_operation="verifyEmailDomain")
+        return DomainSetupResponse.from_dict(result) if isinstance(result, dict) else cast(DomainSetupResponse, result)
+
+    def send_email(self, *, idempotency_key: str | None | None = None, body: SendEmailRequest) -> SendResponse:
+        _poolster_path = "/email/emails"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = {}
+        if idempotency_key is not None:
+            _poolster_headers["Idempotency-Key"] = str(idempotency_key)
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (SendEmailStatus401Error, ErrorResponse), 403: (SendEmailStatus403Error, ErrorResponse), 409: (SendEmailStatus409Error, ErrorResponse), 422: (SendEmailStatus422Error, ErrorResponse), 429: (SendEmailStatus429Error, ErrorResponse), 503: (SendEmailStatus503Error, ErrorResponse)}, retryable=True, response_operation="sendEmail")
+        return SendResponse.from_dict(result) if isinstance(result, dict) else cast(SendResponse, result)
+
+    def send_email_batch(self, *, idempotency_key: str | None | None = None, body: BatchSendRequest) -> BatchSendResponse:
+        _poolster_path = "/email/emails/batch"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = {}
+        if idempotency_key is not None:
+            _poolster_headers["Idempotency-Key"] = str(idempotency_key)
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (SendEmailBatchStatus401Error, ErrorResponse), 403: (SendEmailBatchStatus403Error, ErrorResponse), 422: (SendEmailBatchStatus422Error, ErrorResponse)}, retryable=True, response_operation="sendEmailBatch")
+        return BatchSendResponse.from_dict(result) if isinstance(result, dict) else cast(BatchSendResponse, result)
+
+    def query_emails(self, *, body: SendQuery) -> None:
+        _poolster_path = "/email/emails/query"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (QueryEmailsStatus401Error, ErrorResponse), 403: (QueryEmailsStatus403Error, ErrorResponse), 422: (QueryEmailsStatus422Error, ErrorResponse), 503: (QueryEmailsStatus503Error, ErrorResponse)}, retryable=False, response_operation="queryEmails")
+        return cast(None, result)
+
+    def cancel_email(self, *, email_id: str) -> SendResponse:
+        _poolster_path = "/email/emails/{email_id}"
+        _poolster_path = _poolster_path.replace("{email_id}", quote(str(email_id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("DELETE", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (CancelEmailStatus401Error, ErrorResponse), 403: (CancelEmailStatus403Error, ErrorResponse), 404: (CancelEmailStatus404Error, ErrorResponse), 409: (CancelEmailStatus409Error, ErrorResponse), 503: (CancelEmailStatus503Error, ErrorResponse)}, retryable=True, response_operation="cancelEmail")
+        return SendResponse.from_dict(result) if isinstance(result, dict) else cast(SendResponse, result)
+
+    def get_email(self, *, email_id: str) -> SendResponse:
+        _poolster_path = "/email/emails/{email_id}"
+        _poolster_path = _poolster_path.replace("{email_id}", quote(str(email_id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetEmailStatus401Error, ErrorResponse), 403: (GetEmailStatus403Error, ErrorResponse), 404: (GetEmailStatus404Error, ErrorResponse), 503: (GetEmailStatus503Error, ErrorResponse)}, retryable=True, response_operation="getEmail")
+        return SendResponse.from_dict(result) if isinstance(result, dict) else cast(SendResponse, result)
+
+    def reschedule_email(self, *, email_id: str, body: RescheduleRequest) -> SendResponse:
+        _poolster_path = "/email/emails/{email_id}"
+        _poolster_path = _poolster_path.replace("{email_id}", quote(str(email_id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("PATCH", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (RescheduleEmailStatus401Error, ErrorResponse), 403: (RescheduleEmailStatus403Error, ErrorResponse), 404: (RescheduleEmailStatus404Error, ErrorResponse), 409: (RescheduleEmailStatus409Error, ErrorResponse), 422: (RescheduleEmailStatus422Error, ErrorResponse)}, retryable=False, response_operation="rescheduleEmail")
+        return SendResponse.from_dict(result) if isinstance(result, dict) else cast(SendResponse, result)
+
+    def list_email_events(self, *, email_id: str, limit: int | None = None, after: str | None = None) -> SendEventsResponse:
+        _poolster_path = "/email/emails/{email_id}/events"
+        _poolster_path = _poolster_path.replace("{email_id}", quote(str(email_id), safe=""))
+        _poolster_query: dict[str, Any] | None = {}
+        if limit is not None:
+            _poolster_query["limit"] = limit
+        if after is not None:
+            _poolster_query["after"] = after
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailEventsStatus401Error, ErrorResponse), 403: (ListEmailEventsStatus403Error, ErrorResponse), 404: (ListEmailEventsStatus404Error, ErrorResponse), 422: (ListEmailEventsStatus422Error, ErrorResponse), 503: (ListEmailEventsStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailEvents")
+        return SendEventsResponse.from_dict(result) if isinstance(result, dict) else cast(SendEventsResponse, result)
+
+    def list_email_recipient_events(self, *, email_id: str, recipient_send_id: str, limit: int | None = None, after: str | None = None) -> SendEventsResponse:
+        _poolster_path = "/email/emails/{email_id}/recipients/{recipient_send_id}/events"
+        _poolster_path = _poolster_path.replace("{email_id}", quote(str(email_id), safe=""))
+        _poolster_path = _poolster_path.replace("{recipient_send_id}", quote(str(recipient_send_id), safe=""))
+        _poolster_query: dict[str, Any] | None = {}
+        if limit is not None:
+            _poolster_query["limit"] = limit
+        if after is not None:
+            _poolster_query["after"] = after
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailRecipientEventsStatus401Error, ErrorResponse), 403: (ListEmailRecipientEventsStatus403Error, ErrorResponse), 404: (ListEmailRecipientEventsStatus404Error, ErrorResponse), 422: (ListEmailRecipientEventsStatus422Error, ErrorResponse), 503: (ListEmailRecipientEventsStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailRecipientEvents")
+        return SendEventsResponse.from_dict(result) if isinstance(result, dict) else cast(SendEventsResponse, result)
+
+    def track_email_event(self, *, body: TrackEventRequest) -> EventResponse:
+        _poolster_path = "/email/events"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (TrackEmailEventStatus401Error, ErrorResponse), 403: (TrackEmailEventStatus403Error, ErrorResponse), 409: (TrackEmailEventStatus409Error, ErrorResponse), 422: (TrackEmailEventStatus422Error, ErrorResponse), 503: (TrackEmailEventStatus503Error, ErrorResponse)}, retryable=False, response_operation="trackEmailEvent")
         return EventResponse.from_dict(result) if isinstance(result, dict) else cast(EventResponse, result)
 
-    def list_inbound(self, *, limit: int | None = None) -> InboundListResponse:
-        _poolster_path = "/v1/email/inbound"
+    def list_email_inbound(self, *, limit: int | None = None) -> InboundListResponse:
+        _poolster_path = "/email/inbound"
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
             _poolster_query["limit"] = limit
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListInboundStatus401Error, ErrorResponse), 422: (ListInboundStatus422Error, ErrorResponse), 503: (ListInboundStatus503Error, ErrorResponse)}, retryable=True, response_operation="list_inbound")
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailInboundStatus401Error, ErrorResponse), 422: (ListEmailInboundStatus422Error, ErrorResponse), 503: (ListEmailInboundStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailInbound")
         return InboundListResponse.from_dict(result) if isinstance(result, dict) else cast(InboundListResponse, result)
 
-    def get_inbound(self, *, message_id: str) -> InboundResponse:
-        _poolster_path = "/v1/email/inbound/{message_id}"
+    def get_email_inbound(self, *, message_id: str) -> InboundResponse:
+        _poolster_path = "/email/inbound/{message_id}"
         _poolster_path = _poolster_path.replace("{message_id}", quote(str(message_id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetInboundStatus401Error, ErrorResponse), 404: (GetInboundStatus404Error, ErrorResponse), 503: (GetInboundStatus503Error, ErrorResponse)}, retryable=True, response_operation="get_inbound")
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetEmailInboundStatus401Error, ErrorResponse), 404: (GetEmailInboundStatus404Error, ErrorResponse), 503: (GetEmailInboundStatus503Error, ErrorResponse)}, retryable=True, response_operation="getEmailInbound")
         return InboundResponse.from_dict(result) if isinstance(result, dict) else cast(InboundResponse, result)
 
-    def list_segments(self, *, limit: int | None = None) -> SegmentListResponse:
-        _poolster_path = "/v1/email/segments"
+    def forward_email_inbound(self, *, message_id: str, body: ForwardRequest) -> None:
+        _poolster_path = "/email/inbound/{message_id}/forward"
+        _poolster_path = _poolster_path.replace("{message_id}", quote(str(message_id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (ForwardEmailInboundStatus401Error, ErrorResponse), 404: (ForwardEmailInboundStatus404Error, ErrorResponse), 409: (ForwardEmailInboundStatus409Error, ErrorResponse), 422: (ForwardEmailInboundStatus422Error, ErrorResponse), 429: (ForwardEmailInboundStatus429Error, ErrorResponse), 503: (ForwardEmailInboundStatus503Error, ErrorResponse)}, retryable=False, response_operation="forwardEmailInbound")
+        return cast(None, result)
+
+    def reply_to_email_inbound(self, *, message_id: str, body: ReplyRequest) -> None:
+        _poolster_path = "/email/inbound/{message_id}/reply"
+        _poolster_path = _poolster_path.replace("{message_id}", quote(str(message_id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (ReplyToEmailInboundStatus401Error, ErrorResponse), 404: (ReplyToEmailInboundStatus404Error, ErrorResponse), 409: (ReplyToEmailInboundStatus409Error, ErrorResponse), 422: (ReplyToEmailInboundStatus422Error, ErrorResponse), 429: (ReplyToEmailInboundStatus429Error, ErrorResponse), 503: (ReplyToEmailInboundStatus503Error, ErrorResponse)}, retryable=False, response_operation="replyToEmailInbound")
+        return cast(None, result)
+
+    def list_email_inboxes(self, *, limit: int | None = None, after: str | None = None, reference: str | None = None) -> InboxListResponse:
+        _poolster_path = "/email/inboxes"
+        _poolster_query: dict[str, Any] | None = {}
+        if limit is not None:
+            _poolster_query["limit"] = limit
+        if after is not None:
+            _poolster_query["after"] = after
+        if reference is not None:
+            _poolster_query["reference"] = reference
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailInboxesStatus401Error, ErrorResponse), 422: (ListEmailInboxesStatus422Error, ErrorResponse), 503: (ListEmailInboxesStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailInboxes")
+        return InboxListResponse.from_dict(result) if isinstance(result, dict) else cast(InboxListResponse, result)
+
+    def create_email_inbox(self, *, body: CreateInbox) -> InboxResponse:
+        _poolster_path = "/email/inboxes"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (CreateEmailInboxStatus401Error, ErrorResponse), 409: (CreateEmailInboxStatus409Error, ErrorResponse), 422: (CreateEmailInboxStatus422Error, ErrorResponse), 429: (CreateEmailInboxStatus429Error, ErrorResponse), 503: (CreateEmailInboxStatus503Error, ErrorResponse)}, retryable=False, response_operation="createEmailInbox")
+        return InboxResponse.from_dict(result) if isinstance(result, dict) else cast(InboxResponse, result)
+
+    def list_provided_email_domains(self) -> None:
+        _poolster_path = "/email/inboxes/provided-domains"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types=None, retryable=True, response_operation="listProvidedEmailDomains")
+        return cast(None, result)
+
+    def disable_email_inbox(self, *, inbox_id: str) -> None:
+        _poolster_path = "/email/inboxes/{inbox_id}"
+        _poolster_path = _poolster_path.replace("{inbox_id}", quote(str(inbox_id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("DELETE", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (DisableEmailInboxStatus401Error, ErrorResponse), 404: (DisableEmailInboxStatus404Error, ErrorResponse), 503: (DisableEmailInboxStatus503Error, ErrorResponse)}, retryable=True, response_operation="disableEmailInbox")
+        return cast(None, result)
+
+    def get_email_inbox(self, *, inbox_id: str) -> InboxResponse:
+        _poolster_path = "/email/inboxes/{inbox_id}"
+        _poolster_path = _poolster_path.replace("{inbox_id}", quote(str(inbox_id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetEmailInboxStatus401Error, ErrorResponse), 404: (GetEmailInboxStatus404Error, ErrorResponse), 503: (GetEmailInboxStatus503Error, ErrorResponse)}, retryable=True, response_operation="getEmailInbox")
+        return InboxResponse.from_dict(result) if isinstance(result, dict) else cast(InboxResponse, result)
+
+    def send_email_inbox_message(self, *, inbox_id: str, body: InboxMessage) -> None:
+        _poolster_path = "/email/inboxes/{inbox_id}/messages"
+        _poolster_path = _poolster_path.replace("{inbox_id}", quote(str(inbox_id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (SendEmailInboxMessageStatus401Error, ErrorResponse), 404: (SendEmailInboxMessageStatus404Error, ErrorResponse), 409: (SendEmailInboxMessageStatus409Error, ErrorResponse), 422: (SendEmailInboxMessageStatus422Error, ErrorResponse), 429: (SendEmailInboxMessageStatus429Error, ErrorResponse), 503: (SendEmailInboxMessageStatus503Error, ErrorResponse)}, retryable=False, response_operation="sendEmailInboxMessage")
+        return cast(None, result)
+
+    def list_email_threads(self, *, inbox_id: str, limit: int | None = None, after: str | None = None, status: str | None = None, label: str | None = None, assigned_agent: str | None = None, assigned_user_id: str | None = None, unassigned: bool | None = None, unread: bool | None = None, q: str | None = None) -> ThreadListResponse:
+        _poolster_path = "/email/inboxes/{inbox_id}/threads"
+        _poolster_path = _poolster_path.replace("{inbox_id}", quote(str(inbox_id), safe=""))
+        _poolster_query: dict[str, Any] | None = {}
+        if limit is not None:
+            _poolster_query["limit"] = limit
+        if after is not None:
+            _poolster_query["after"] = after
+        if status is not None:
+            _poolster_query["status"] = status
+        if label is not None:
+            _poolster_query["label"] = label
+        if assigned_agent is not None:
+            _poolster_query["assigned_agent"] = assigned_agent
+        if assigned_user_id is not None:
+            _poolster_query["assigned_user_id"] = assigned_user_id
+        if unassigned is not None:
+            _poolster_query["unassigned"] = unassigned
+        if unread is not None:
+            _poolster_query["unread"] = unread
+        if q is not None:
+            _poolster_query["q"] = q
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailThreadsStatus401Error, ErrorResponse), 404: (ListEmailThreadsStatus404Error, ErrorResponse), 422: (ListEmailThreadsStatus422Error, ErrorResponse), 503: (ListEmailThreadsStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailThreads")
+        return ThreadListResponse.from_dict(result) if isinstance(result, dict) else cast(ThreadListResponse, result)
+
+    def list_email_labels(self) -> None:
+        _poolster_path = "/email/labels"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailLabelsStatus401Error, ErrorResponse), 503: (ListEmailLabelsStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailLabels")
+        return cast(None, result)
+
+    def create_email_label(self, *, body: LabelInput) -> None:
+        _poolster_path = "/email/labels"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (CreateEmailLabelStatus401Error, ErrorResponse), 409: (CreateEmailLabelStatus409Error, ErrorResponse), 422: (CreateEmailLabelStatus422Error, ErrorResponse), 503: (CreateEmailLabelStatus503Error, ErrorResponse)}, retryable=False, response_operation="createEmailLabel")
+        return cast(None, result)
+
+    def delete_email_label(self, *, label_id: str) -> None:
+        _poolster_path = "/email/labels/{label_id}"
+        _poolster_path = _poolster_path.replace("{label_id}", quote(str(label_id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("DELETE", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (DeleteEmailLabelStatus401Error, ErrorResponse), 404: (DeleteEmailLabelStatus404Error, ErrorResponse), 503: (DeleteEmailLabelStatus503Error, ErrorResponse)}, retryable=True, response_operation="deleteEmailLabel")
+        return cast(None, result)
+
+    def list_email_segments(self, *, limit: int | None = None) -> SegmentListResponse:
+        _poolster_path = "/email/segments"
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
             _poolster_query["limit"] = limit
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListSegmentsStatus401Error, ErrorResponse), 503: (ListSegmentsStatus503Error, ErrorResponse)}, retryable=True, response_operation="list_segments")
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailSegmentsStatus401Error, ErrorResponse), 503: (ListEmailSegmentsStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailSegments")
         return SegmentListResponse.from_dict(result) if isinstance(result, dict) else cast(SegmentListResponse, result)
 
-    def get_segment(self, *, id: str) -> SegmentResponse:
-        _poolster_path = "/v1/email/segments/{id}"
+    def get_email_segment(self, *, id: str) -> SegmentResponse:
+        _poolster_path = "/email/segments/{id}"
         _poolster_path = _poolster_path.replace("{id}", quote(str(id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetSegmentStatus401Error, ErrorResponse), 404: (GetSegmentStatus404Error, ErrorResponse), 503: (GetSegmentStatus503Error, ErrorResponse)}, retryable=True, response_operation="get_segment")
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetEmailSegmentStatus401Error, ErrorResponse), 404: (GetEmailSegmentStatus404Error, ErrorResponse), 503: (GetEmailSegmentStatus503Error, ErrorResponse)}, retryable=True, response_operation="getEmailSegment")
         return SegmentResponse.from_dict(result) if isinstance(result, dict) else cast(SegmentResponse, result)
 
-    def list_sender_identities(self, *, limit: int | None = None) -> SenderIdentityListResponse:
-        _poolster_path = "/v1/email/sender-identities"
+    def list_email_sender_identities(self, *, limit: int | None = None) -> SenderIdentityListResponse:
+        _poolster_path = "/email/sender-identities"
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
             _poolster_query["limit"] = limit
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListSenderIdentitiesStatus401Error, ErrorResponse), 503: (ListSenderIdentitiesStatus503Error, ErrorResponse)}, retryable=True, response_operation="list_sender_identities")
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailSenderIdentitiesStatus401Error, ErrorResponse), 503: (ListEmailSenderIdentitiesStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailSenderIdentities")
         return SenderIdentityListResponse.from_dict(result) if isinstance(result, dict) else cast(SenderIdentityListResponse, result)
 
-    def get_sender_identity(self, *, id: str) -> SenderIdentityResponse:
-        _poolster_path = "/v1/email/sender-identities/{id}"
+    def get_email_sender_identity(self, *, id: str) -> SenderIdentityResponse:
+        _poolster_path = "/email/sender-identities/{id}"
         _poolster_path = _poolster_path.replace("{id}", quote(str(id), safe=""))
         _poolster_query: dict[str, Any] | None = None
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetSenderIdentityStatus401Error, ErrorResponse), 404: (GetSenderIdentityStatus404Error, ErrorResponse), 503: (GetSenderIdentityStatus503Error, ErrorResponse)}, retryable=True, response_operation="get_sender_identity")
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetEmailSenderIdentityStatus401Error, ErrorResponse), 404: (GetEmailSenderIdentityStatus404Error, ErrorResponse), 503: (GetEmailSenderIdentityStatus503Error, ErrorResponse)}, retryable=True, response_operation="getEmailSenderIdentity")
         return SenderIdentityResponse.from_dict(result) if isinstance(result, dict) else cast(SenderIdentityResponse, result)
 
-    def create(self, *, body: SendRequest) -> SendResponse:
-        _poolster_path = "/v1/email/sends"
-        _poolster_query: dict[str, Any] | None = None
-        _poolster_headers: dict[str, str] | None = None
-        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (CreateStatus401Error, ErrorResponse), 403: (CreateStatus403Error, ErrorResponse), 409: (CreateStatus409Error, ErrorResponse), 422: (CreateStatus422Error, ErrorResponse), 429: (CreateStatus429Error, ErrorResponse), 503: (CreateStatus503Error, ErrorResponse)}, retryable=False, response_operation="create")
-        return SendResponse.from_dict(result) if isinstance(result, dict) else cast(SendResponse, result)
-
-    def query(self, *, body: SendQuery) -> None:
-        _poolster_path = "/v1/email/sends/query"
-        _poolster_query: dict[str, Any] | None = None
-        _poolster_headers: dict[str, str] | None = None
-        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (QueryStatus401Error, ErrorResponse), 403: (QueryStatus403Error, ErrorResponse), 422: (QueryStatus422Error, ErrorResponse), 503: (QueryStatus503Error, ErrorResponse)}, retryable=False, response_operation="query")
-        return cast(None, result)
-
-    def cancel(self, *, send_id: str) -> SendResponse:
-        _poolster_path = "/v1/email/sends/{send_id}"
-        _poolster_path = _poolster_path.replace("{send_id}", quote(str(send_id), safe=""))
-        _poolster_query: dict[str, Any] | None = None
-        _poolster_headers: dict[str, str] | None = None
-        result = self._request("DELETE", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (CancelStatus401Error, ErrorResponse), 403: (CancelStatus403Error, ErrorResponse), 404: (CancelStatus404Error, ErrorResponse), 409: (CancelStatus409Error, ErrorResponse), 503: (CancelStatus503Error, ErrorResponse)}, retryable=True, response_operation="cancel")
-        return SendResponse.from_dict(result) if isinstance(result, dict) else cast(SendResponse, result)
-
-    def get(self, *, send_id: str) -> SendResponse:
-        _poolster_path = "/v1/email/sends/{send_id}"
-        _poolster_path = _poolster_path.replace("{send_id}", quote(str(send_id), safe=""))
-        _poolster_query: dict[str, Any] | None = None
-        _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetStatus401Error, ErrorResponse), 403: (GetStatus403Error, ErrorResponse), 404: (GetStatus404Error, ErrorResponse), 503: (GetStatus503Error, ErrorResponse)}, retryable=True, response_operation="get")
-        return SendResponse.from_dict(result) if isinstance(result, dict) else cast(SendResponse, result)
-
-    def list_webhooks(self) -> WebhookListResponse:
-        _poolster_path = "/v1/email/webhooks"
-        _poolster_query: dict[str, Any] | None = None
-        _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListWebhooksStatus401Error, ErrorResponse), 503: (ListWebhooksStatus503Error, ErrorResponse)}, retryable=True, response_operation="list_webhooks")
-        return WebhookListResponse.from_dict(result) if isinstance(result, dict) else cast(WebhookListResponse, result)
-
-    def create_webhook(self, *, body: HookCreate) -> CreateWebhookResponse:
-        _poolster_path = "/v1/email/webhooks"
-        _poolster_query: dict[str, Any] | None = None
-        _poolster_headers: dict[str, str] | None = None
-        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (CreateWebhookStatus401Error, ErrorResponse), 422: (CreateWebhookStatus422Error, ErrorResponse), 503: (CreateWebhookStatus503Error, ErrorResponse)}, retryable=False, response_operation="create_webhook")
-        return CreateWebhookResponse.from_dict(result) if isinstance(result, dict) else cast(CreateWebhookResponse, result)
-
-    def delete_webhook(self, *, webhook_id: str) -> None:
-        _poolster_path = "/v1/email/webhooks/{webhook_id}"
-        _poolster_path = _poolster_path.replace("{webhook_id}", quote(str(webhook_id), safe=""))
-        _poolster_query: dict[str, Any] | None = None
-        _poolster_headers: dict[str, str] | None = None
-        result = self._request("DELETE", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (DeleteWebhookStatus401Error, ErrorResponse), 404: (DeleteWebhookStatus404Error, ErrorResponse), 503: (DeleteWebhookStatus503Error, ErrorResponse)}, retryable=True, response_operation="delete_webhook")
-        return cast(None, result)
-
-    def update_webhook(self, *, webhook_id: str, body: HookUpdate) -> WebhookResponse:
-        _poolster_path = "/v1/email/webhooks/{webhook_id}"
-        _poolster_path = _poolster_path.replace("{webhook_id}", quote(str(webhook_id), safe=""))
-        _poolster_query: dict[str, Any] | None = None
-        _poolster_headers: dict[str, str] | None = None
-        result = self._request("PATCH", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (UpdateWebhookStatus401Error, ErrorResponse), 404: (UpdateWebhookStatus404Error, ErrorResponse), 422: (UpdateWebhookStatus422Error, ErrorResponse), 503: (UpdateWebhookStatus503Error, ErrorResponse)}, retryable=False, response_operation="update_webhook")
-        return WebhookResponse.from_dict(result) if isinstance(result, dict) else cast(WebhookResponse, result)
-
-    def list_deliveries(self, *, webhook_id: str, limit: int | None = None) -> WebhookDeliveryListResponse:
-        _poolster_path = "/v1/email/webhooks/{webhook_id}/deliveries"
-        _poolster_path = _poolster_path.replace("{webhook_id}", quote(str(webhook_id), safe=""))
+    def list_email_suppressions(self, *, limit: int | None = None, offset: int | None = None, reason: str | None = None, scope: str | None = None, address: str | None = None, status: str | None = None) -> SuppressionListResponse:
+        _poolster_path = "/email/suppressions"
         _poolster_query: dict[str, Any] | None = {}
         if limit is not None:
             _poolster_query["limit"] = limit
+        if offset is not None:
+            _poolster_query["offset"] = offset
+        if reason is not None:
+            _poolster_query["reason"] = reason
+        if scope is not None:
+            _poolster_query["scope"] = scope
+        if address is not None:
+            _poolster_query["address"] = address
+        if status is not None:
+            _poolster_query["status"] = status
         _poolster_headers: dict[str, str] | None = None
-        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListDeliveriesStatus401Error, ErrorResponse), 422: (ListDeliveriesStatus422Error, ErrorResponse), 503: (ListDeliveriesStatus503Error, ErrorResponse)}, retryable=True, response_operation="list_deliveries")
-        return WebhookDeliveryListResponse.from_dict(result) if isinstance(result, dict) else cast(WebhookDeliveryListResponse, result)
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailSuppressionsStatus401Error, ErrorResponse), 403: (ListEmailSuppressionsStatus403Error, ErrorResponse), 422: (ListEmailSuppressionsStatus422Error, ErrorResponse), 503: (ListEmailSuppressionsStatus503Error, ErrorResponse)}, retryable=True, response_operation="listEmailSuppressions")
+        return SuppressionListResponse.from_dict(result) if isinstance(result, dict) else cast(SuppressionListResponse, result)
+
+    def create_email_suppression(self, *, body: NewSuppression) -> SuppressionResponse:
+        _poolster_path = "/email/suppressions"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (CreateEmailSuppressionStatus401Error, ErrorResponse), 403: (CreateEmailSuppressionStatus403Error, ErrorResponse), 422: (CreateEmailSuppressionStatus422Error, ErrorResponse), 503: (CreateEmailSuppressionStatus503Error, ErrorResponse)}, retryable=False, response_operation="createEmailSuppression")
+        return SuppressionResponse.from_dict(result) if isinstance(result, dict) else cast(SuppressionResponse, result)
+
+    def create_email_suppression_batch(self, *, body: SuppressionBatchRequest) -> SuppressionBatchResponse:
+        _poolster_path = "/email/suppressions/batch"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (CreateEmailSuppressionBatchStatus401Error, ErrorResponse), 403: (CreateEmailSuppressionBatchStatus403Error, ErrorResponse), 422: (CreateEmailSuppressionBatchStatus422Error, ErrorResponse), 503: (CreateEmailSuppressionBatchStatus503Error, ErrorResponse)}, retryable=False, response_operation="createEmailSuppressionBatch")
+        return SuppressionBatchResponse.from_dict(result) if isinstance(result, dict) else cast(SuppressionBatchResponse, result)
+
+    def delete_email_suppression(self, *, address: str) -> SuppressionRemovalResponse:
+        _poolster_path = "/email/suppressions/{address}"
+        _poolster_path = _poolster_path.replace("{address}", quote(str(address), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("DELETE", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (DeleteEmailSuppressionStatus401Error, ErrorResponse), 403: (DeleteEmailSuppressionStatus403Error, ErrorResponse), 404: (DeleteEmailSuppressionStatus404Error, ErrorResponse), 409: (DeleteEmailSuppressionStatus409Error, ErrorResponse), 422: (DeleteEmailSuppressionStatus422Error, ErrorResponse), 503: (DeleteEmailSuppressionStatus503Error, ErrorResponse)}, retryable=True, response_operation="deleteEmailSuppression")
+        return SuppressionRemovalResponse.from_dict(result) if isinstance(result, dict) else cast(SuppressionRemovalResponse, result)
+
+    def get_email_suppression(self, *, address: str) -> SuppressionResponse:
+        _poolster_path = "/email/suppressions/{address}"
+        _poolster_path = _poolster_path.replace("{address}", quote(str(address), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetEmailSuppressionStatus401Error, ErrorResponse), 403: (GetEmailSuppressionStatus403Error, ErrorResponse), 404: (GetEmailSuppressionStatus404Error, ErrorResponse), 422: (GetEmailSuppressionStatus422Error, ErrorResponse), 503: (GetEmailSuppressionStatus503Error, ErrorResponse)}, retryable=True, response_operation="getEmailSuppression")
+        return SuppressionResponse.from_dict(result) if isinstance(result, dict) else cast(SuppressionResponse, result)
+
+    def list_email_templates(self) -> None:
+        _poolster_path = "/email/templates"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (ListEmailTemplatesStatus401Error, ErrorResponse), 403: (ListEmailTemplatesStatus403Error, ErrorResponse)}, retryable=True, response_operation="listEmailTemplates")
+        return cast(None, result)
+
+    def create_email_template(self, *, body: CreateTemplateRequest) -> None:
+        _poolster_path = "/email/templates"
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (CreateEmailTemplateStatus401Error, ErrorResponse), 403: (CreateEmailTemplateStatus403Error, ErrorResponse), 409: (CreateEmailTemplateStatus409Error, ErrorResponse), 422: (CreateEmailTemplateStatus422Error, ErrorResponse)}, retryable=False, response_operation="createEmailTemplate")
+        return cast(None, result)
+
+    def delete_email_template(self, *, template: str) -> None:
+        _poolster_path = "/email/templates/{template}"
+        _poolster_path = _poolster_path.replace("{template}", quote(str(template), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("DELETE", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={404: (DeleteEmailTemplateStatus404Error, ErrorResponse), 409: (DeleteEmailTemplateStatus409Error, ErrorResponse)}, retryable=True, response_operation="deleteEmailTemplate")
+        return cast(None, result)
+
+    def get_email_template(self, *, template: str, version: int | None = None, draft: bool | None = None) -> None:
+        _poolster_path = "/email/templates/{template}"
+        _poolster_path = _poolster_path.replace("{template}", quote(str(template), safe=""))
+        _poolster_query: dict[str, Any] | None = {}
+        if version is not None:
+            _poolster_query["version"] = version
+        if draft is not None:
+            _poolster_query["draft"] = draft
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={404: (GetEmailTemplateStatus404Error, ErrorResponse), 409: (GetEmailTemplateStatus409Error, ErrorResponse), 422: (GetEmailTemplateStatus422Error, ErrorResponse)}, retryable=True, response_operation="getEmailTemplate")
+        return cast(None, result)
+
+    def update_email_template(self, *, template: str, body: UpdateTemplateRequest) -> None:
+        _poolster_path = "/email/templates/{template}"
+        _poolster_path = _poolster_path.replace("{template}", quote(str(template), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("PATCH", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={404: (UpdateEmailTemplateStatus404Error, ErrorResponse), 409: (UpdateEmailTemplateStatus409Error, ErrorResponse), 422: (UpdateEmailTemplateStatus422Error, ErrorResponse)}, retryable=False, response_operation="updateEmailTemplate")
+        return cast(None, result)
+
+    def duplicate_email_template(self, *, template: str, body: None | DuplicateTemplateRequest | None = None) -> None:
+        _poolster_path = "/email/templates/{template}/duplicate"
+        _poolster_path = _poolster_path.replace("{template}", quote(str(template), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (DuplicateEmailTemplateStatus401Error, ErrorResponse), 403: (DuplicateEmailTemplateStatus403Error, ErrorResponse), 404: (DuplicateEmailTemplateStatus404Error, ErrorResponse), 409: (DuplicateEmailTemplateStatus409Error, ErrorResponse), 422: (DuplicateEmailTemplateStatus422Error, ErrorResponse)}, retryable=False, response_operation="duplicateEmailTemplate")
+        return cast(None, result)
+
+    def publish_email_template(self, *, template: str) -> None:
+        _poolster_path = "/email/templates/{template}/publish"
+        _poolster_path = _poolster_path.replace("{template}", quote(str(template), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={404: (PublishEmailTemplateStatus404Error, ErrorResponse), 422: (PublishEmailTemplateStatus422Error, ErrorResponse)}, retryable=False, response_operation="publishEmailTemplate")
+        return cast(None, result)
+
+    def render_email_template(self, *, template: str, body: RenderRequest) -> None:
+        _poolster_path = "/email/templates/{template}/render"
+        _poolster_path = _poolster_path.replace("{template}", quote(str(template), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("POST", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={404: (RenderEmailTemplateStatus404Error, ErrorResponse), 409: (RenderEmailTemplateStatus409Error, ErrorResponse), 422: (RenderEmailTemplateStatus422Error, ErrorResponse)}, retryable=False, response_operation="renderEmailTemplate")
+        return cast(None, result)
+
+    def get_email_thread(self, *, thread_id: str, limit: int | None = None, before: str | None = None) -> ThreadResponse:
+        _poolster_path = "/email/threads/{thread_id}"
+        _poolster_path = _poolster_path.replace("{thread_id}", quote(str(thread_id), safe=""))
+        _poolster_query: dict[str, Any] | None = {}
+        if limit is not None:
+            _poolster_query["limit"] = limit
+        if before is not None:
+            _poolster_query["before"] = before
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("GET", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=None, body_kind="json", error_types={401: (GetEmailThreadStatus401Error, ErrorResponse), 404: (GetEmailThreadStatus404Error, ErrorResponse), 422: (GetEmailThreadStatus422Error, ErrorResponse), 503: (GetEmailThreadStatus503Error, ErrorResponse)}, retryable=True, response_operation="getEmailThread")
+        return ThreadResponse.from_dict(result) if isinstance(result, dict) else cast(ThreadResponse, result)
+
+    def update_email_thread(self, *, thread_id: str, body: ThreadUpdate) -> None:
+        _poolster_path = "/email/threads/{thread_id}"
+        _poolster_path = _poolster_path.replace("{thread_id}", quote(str(thread_id), safe=""))
+        _poolster_query: dict[str, Any] | None = None
+        _poolster_headers: dict[str, str] | None = None
+        result = self._request("PATCH", _poolster_path, query=_poolster_query, headers=_poolster_headers, body=body, body_kind="json", error_types={401: (UpdateEmailThreadStatus401Error, ErrorResponse), 404: (UpdateEmailThreadStatus404Error, ErrorResponse), 422: (UpdateEmailThreadStatus422Error, ErrorResponse), 503: (UpdateEmailThreadStatus503Error, ErrorResponse)}, retryable=False, response_operation="updateEmailThread")
+        return cast(None, result)
 

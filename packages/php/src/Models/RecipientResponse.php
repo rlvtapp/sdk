@@ -17,7 +17,10 @@ final class RecipientResponse implements JsonSerializable
         public readonly string $reasonCode,
         public readonly string $recipientSendId,
         public readonly string $state,
+        public readonly ?string $copy = null,
         public readonly ?bool $eligibleForProcessing = null,
+        public readonly ?string $provider = null,
+        public readonly ?string $providerMessageId = null,
         public readonly array $additionalProperties = [], // array<string, mixed>
     ) {
     }
@@ -27,11 +30,14 @@ final class RecipientResponse implements JsonSerializable
     {
         $instance = new self(
             address: (string) $data['address'],
+            copy: array_key_exists('copy', $data) && $data['copy'] !== null ? ($data['copy'] === null ? null : (string) $data['copy']) : null,
             eligibleForProcessing: array_key_exists('eligible_for_processing', $data) && $data['eligible_for_processing'] !== null ? ($data['eligible_for_processing'] === null ? null : (bool) $data['eligible_for_processing']) : null,
+            provider: array_key_exists('provider', $data) && $data['provider'] !== null ? ($data['provider'] === null ? null : (string) $data['provider']) : null,
+            providerMessageId: array_key_exists('provider_message_id', $data) && $data['provider_message_id'] !== null ? ($data['provider_message_id'] === null ? null : (string) $data['provider_message_id']) : null,
             reasonCode: (string) $data['reason_code'],
             recipientSendId: (string) $data['recipient_send_id'],
             state: (string) $data['state'],
-            additionalProperties: array_diff_key($data, array_fill_keys(['address', 'eligible_for_processing', 'reason_code', 'recipient_send_id', 'state'], true)),
+            additionalProperties: array_diff_key($data, array_fill_keys(['address', 'copy', 'eligible_for_processing', 'provider', 'provider_message_id', 'reason_code', 'recipient_send_id', 'state'], true)),
         );
         $instance->poolsterPresentFields = array_keys($data);
         return $instance;
@@ -41,7 +47,7 @@ final class RecipientResponse implements JsonSerializable
     public function withPresentFields(array $fields): self
     {
         foreach ($fields as $field) {
-            if (!is_string($field) || !in_array($field, ['address', 'eligible_for_processing', 'reason_code', 'recipient_send_id', 'state'], true)) throw new \InvalidArgumentException('unknown model wire field');
+            if (!is_string($field) || !in_array($field, ['address', 'copy', 'eligible_for_processing', 'provider', 'provider_message_id', 'reason_code', 'recipient_send_id', 'state'], true)) throw new \InvalidArgumentException('unknown model wire field');
         }
         $copy = clone $this;
         $copy->poolsterPresentFields = array_values(array_unique(array_merge($this->poolsterPresentFields ?? [], $fields)));
@@ -51,9 +57,12 @@ final class RecipientResponse implements JsonSerializable
     public function jsonSerialize(): object
     {
         $value = [];
-        $value = array_diff_key($this->additionalProperties, array_fill_keys(['address', 'eligible_for_processing', 'reason_code', 'recipient_send_id', 'state'], true));
+        $value = array_diff_key($this->additionalProperties, array_fill_keys(['address', 'copy', 'eligible_for_processing', 'provider', 'provider_message_id', 'reason_code', 'recipient_send_id', 'state'], true));
         $value['address'] = $this->address;
+        if ($this->copy !== null || in_array('copy', $this->poolsterPresentFields ?? [], true)) { $value['copy'] = $this->copy; }
         if ($this->eligibleForProcessing !== null || in_array('eligible_for_processing', $this->poolsterPresentFields ?? [], true)) { $value['eligible_for_processing'] = $this->eligibleForProcessing; }
+        if ($this->provider !== null || in_array('provider', $this->poolsterPresentFields ?? [], true)) { $value['provider'] = $this->provider; }
+        if ($this->providerMessageId !== null || in_array('provider_message_id', $this->poolsterPresentFields ?? [], true)) { $value['provider_message_id'] = $this->providerMessageId; }
         $value['reason_code'] = $this->reasonCode;
         $value['recipient_send_id'] = $this->recipientSendId;
         $value['state'] = $this->state;

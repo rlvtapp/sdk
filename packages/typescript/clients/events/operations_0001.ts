@@ -1,1 +1,1 @@
-export { track } from './track.js'
+export { trackEmailEvent } from './trackEmailEvent.js'

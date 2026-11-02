@@ -146,12 +146,12 @@ func decodeArchiveCrmRecordError(requestError error) error {
 	}
 }
 
-// ArchiveCrmRecord invokes DELETE /v1/crm/records/{record_id}.
+// ArchiveCrmRecord invokes DELETE /crm/records/{record_id}.
 func (client *Client) ArchiveCrmRecord(ctx context.Context, input *ArchiveCrmRecordRequest) (*CrmRecordResponse, error) {
 	if input == nil {
 		input = &ArchiveCrmRecordRequest{}
 	}
-	path := "/v1/crm/records/{record_id}"
+	path := "/crm/records/{record_id}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{record_id}", url.PathEscape(fmt.Sprint(input.RecordID)))

@@ -147,12 +147,12 @@ func decodeListCrmObjectsError(requestError error) error {
 	}
 }
 
-// ListCrmObjects invokes GET /v1/crm/objects.
+// ListCrmObjects invokes GET /crm/objects.
 func (client *Client) ListCrmObjects(ctx context.Context, input *ListCrmObjectsRequest) (*map[string]any, error) {
 	if input == nil {
 		input = &ListCrmObjectsRequest{}
 	}
-	path := "/v1/crm/objects"
+	path := "/crm/objects"
 	query := url.Values{}
 	headers := http.Header{}
 	if err := addQuery(query, "limit", input.Limit); err != nil {

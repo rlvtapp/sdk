@@ -20,29 +20,44 @@ public class ConfigurationResourcePart000 {
 
     protected ConfigurationResourcePart000(Client client) { this.client = client; }
 
-    public AuthCheckResponse authCheck() {
+    public AuthCheckResponse checkEmailAuth() {
   
-        return client.authCheck();
+        return client.checkEmailAuth();
     }
 
-    public DomainListResponse listDomains(Client.ListDomainsRequest input) {
+    public DomainListResponse listEmailDomains(Client.ListEmailDomainsRequest input) {
   
-        return client.listDomains(input);
+        return client.listEmailDomains(input);
     }
 
-    public DomainResponse getDomain(Client.GetDomainRequest input) {
+    public DomainSetupResponse createEmailDomain(Client.CreateEmailDomainRequest input) {
   
-        return client.getDomain(input);
+        return client.createEmailDomain(input);
     }
 
-    public SenderIdentityListResponse listSenderIdentities(Client.ListSenderIdentitiesRequest input) {
+    public DeletedDomainResponse deleteEmailDomain(Client.DeleteEmailDomainRequest input) {
   
-        return client.listSenderIdentities(input);
+        return client.deleteEmailDomain(input);
     }
 
-    public SenderIdentityResponse getSenderIdentity(Client.GetSenderIdentityRequest input) {
+    public DomainResponse getEmailDomain(Client.GetEmailDomainRequest input) {
   
-        return client.getSenderIdentity(input);
+        return client.getEmailDomain(input);
+    }
+
+    public DomainSetupResponse verifyEmailDomain(Client.VerifyEmailDomainRequest input) {
+  
+        return client.verifyEmailDomain(input);
+    }
+
+    public SenderIdentityListResponse listEmailSenderIdentities(Client.ListEmailSenderIdentitiesRequest input) {
+  
+        return client.listEmailSenderIdentities(input);
+    }
+
+    public SenderIdentityResponse getEmailSenderIdentity(Client.GetEmailSenderIdentityRequest input) {
+  
+        return client.getEmailSenderIdentity(input);
     }
 
 }

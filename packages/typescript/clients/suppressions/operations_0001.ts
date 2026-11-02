@@ -1,0 +1,5 @@
+export { listEmailSuppressions } from './listEmailSuppressions.js'
+export { createEmailSuppression } from './createEmailSuppression.js'
+export { createEmailSuppressionBatch } from './createEmailSuppressionBatch.js'
+export { deleteEmailSuppression } from './deleteEmailSuppression.js'
+export { getEmailSuppression } from './getEmailSuppression.js'

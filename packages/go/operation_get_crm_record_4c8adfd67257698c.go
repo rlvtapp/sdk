@@ -146,12 +146,12 @@ func decodeGetCrmRecordError(requestError error) error {
 	}
 }
 
-// GetCrmRecord invokes GET /v1/crm/records/{record_id}.
+// GetCrmRecord invokes GET /crm/records/{record_id}.
 func (client *Client) GetCrmRecord(ctx context.Context, input *GetCrmRecordRequest) (*CrmRecordResponse, error) {
 	if input == nil {
 		input = &GetCrmRecordRequest{}
 	}
-	path := "/v1/crm/records/{record_id}"
+	path := "/crm/records/{record_id}"
 	query := url.Values{}
 	headers := http.Header{}
 	path = strings.ReplaceAll(path, "{record_id}", url.PathEscape(fmt.Sprint(input.RecordID)))

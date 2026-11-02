@@ -20,9 +20,9 @@ public class EventsResourcePart000 {
 
     protected EventsResourcePart000(Client client) { this.client = client; }
 
-    public EventResponse track(Client.TrackRequest input) {
+    public EventResponse trackEmail(Client.TrackEmailEventRequest input) {
   
-        return client.track(input);
+        return client.trackEmailEvent(input);
     }
 
 }

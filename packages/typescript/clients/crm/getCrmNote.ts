@@ -6,7 +6,7 @@ import type { GetCrmNoteOptions, GetCrmNoteResponses } from '../../models/crm/Ge
 import { client, resolveResponse } from '../../.poolster/client.js'
 
 /**
- * {@link /v1/crm/notes/:note_id}
+ * {@link /crm/notes/:note_id}
  */
 export function getCrmNote<ThrowOnError extends boolean = true>(
   options: Options<GetCrmNoteOptions, ThrowOnError>,
@@ -17,7 +17,7 @@ export function getCrmNote<ThrowOnError extends boolean = true>(
   return resolveResponse(
     request({
       method: 'GET',
-      url: '/v1/crm/notes/{note_id}',
+      url: '/crm/notes/{note_id}',
       security: [[{ id: 'bearerAuth', type: 'http', scheme: 'bearer' }], [{ id: 'xApiKey', type: 'apiKey', name: 'x-api-key', in: 'header' }]],
       jsonPlan: { lossless: false, refs: poolsterJsonRefs, requests: {}, responses: {"200":{"application/json":{"additional":null,"fields":{"api_version":{"kind":"string","nullable":false},"data":{"nullable":false,"ref":"CrmNote"}},"kind":"object","nullable":false,"required":["api_version","data"]}},"400":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"401":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"403":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"404":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"409":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"413":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"415":{"application/json":{"nullable":false,"ref":"CrmApiError"}},"503":{"application/json":{"nullable":false,"ref":"CrmApiError"}}} },
       ...config,

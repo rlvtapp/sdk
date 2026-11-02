@@ -11,18 +11,27 @@ class WebhooksResourcePart000:
 
     def __init__(self, client: Any) -> None:
         self._client = client
-    def list(self) -> WebhookListResponse:
-        return self._client.list_webhooks()
+    def list_email(self) -> WebhookListResponse:
+        return self._client.list_email_webhooks()
 
-    def create(self, *, body: HookCreate) -> CreateWebhookResponse:
-        return self._client.create_webhook(body=body)
+    def create_email(self, *, body: HookCreate) -> CreateWebhookResponse:
+        return self._client.create_email_webhook(body=body)
 
-    def delete(self, *, webhook_id: str) -> None:
-        return self._client.delete_webhook(webhook_id=webhook_id)
+    def delete_email(self, *, webhook_id: str) -> None:
+        return self._client.delete_email_webhook(webhook_id=webhook_id)
 
-    def update(self, *, webhook_id: str, body: HookUpdate) -> WebhookResponse:
-        return self._client.update_webhook(webhook_id=webhook_id, body=body)
+    def update_email(self, *, webhook_id: str, body: HookUpdate) -> WebhookResponse:
+        return self._client.update_email_webhook(webhook_id=webhook_id, body=body)
 
-    def list_deliveries(self, *, webhook_id: str, limit: int | None = None) -> WebhookDeliveryListResponse:
-        return self._client.list_deliveries(webhook_id=webhook_id, limit=limit)
+    def list_email_webhook_deliveries(self, *, webhook_id: str, limit: int | None = None) -> WebhookDeliveryListResponse:
+        return self._client.list_email_webhook_deliveries(webhook_id=webhook_id, limit=limit)
+
+    def replay_email_webhook_delivery(self, *, webhook_id: str, delivery_id: str) -> None:
+        return self._client.replay_email_webhook_delivery(webhook_id=webhook_id, delivery_id=delivery_id)
+
+    def replay_email_webhook_range(self, *, webhook_id: str, body: ReplayRange) -> None:
+        return self._client.replay_email_webhook_range(webhook_id=webhook_id, body=body)
+
+    def rotate_email_webhook_secret(self, *, webhook_id: str) -> None:
+        return self._client.rotate_email_webhook_secret(webhook_id=webhook_id)
 

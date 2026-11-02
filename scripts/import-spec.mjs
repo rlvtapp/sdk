@@ -3,7 +3,7 @@ const source = process.argv[2];
 if (!source) throw new Error('Usage: npm run spec:import -- /path/to/openapi.json');
 const document = JSON.parse(readFileSync(source, 'utf8'));
 for (const product of ['crm', 'email']) {
-  if (!Object.keys(document.paths ?? {}).some(path => path.startsWith(`/v1/${product}/`))) {
+  if (!Object.keys(document.paths ?? {}).some(path => path.startsWith(`/${product}/`))) {
     throw new Error(`Contract has no ${product} paths`);
   }
 }

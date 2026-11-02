@@ -15,16 +15,28 @@ public sealed partial class SendsResource
 
     internal SendsResource(PoolsterClient client) => _client = client;
 
-    /// <summary>Invokes POST /v1/email/sends.</summary>
-    public Task<SendResponse> CreateAsync(SendRequest body, CancellationToken cancellationToken = default) => _client.CreateAsync(body, cancellationToken);
+    /// <summary>Invokes POST /email/emails.</summary>
+    public Task<SendResponse> SendEmailAsync(SendEmailRequest body, string? idempotencyKey = default, CancellationToken cancellationToken = default) => _client.SendEmailAsync(body, idempotencyKey, cancellationToken);
 
-    /// <summary>Invokes POST /v1/email/sends/query.</summary>
-    public Task QueryAsync(SendQuery body, CancellationToken cancellationToken = default) => _client.QueryAsync(body, cancellationToken);
+    /// <summary>Invokes POST /email/emails/batch.</summary>
+    public Task<BatchSendResponse> SendEmailBatchAsync(BatchSendRequest body, string? idempotencyKey = default, CancellationToken cancellationToken = default) => _client.SendEmailBatchAsync(body, idempotencyKey, cancellationToken);
 
-    /// <summary>Invokes DELETE /v1/email/sends/{send_id}.</summary>
-    public Task<SendResponse> CancelAsync(string sendId, CancellationToken cancellationToken = default) => _client.CancelAsync(sendId, cancellationToken);
+    /// <summary>Invokes POST /email/emails/query.</summary>
+    public Task QueryEmailsAsync(SendQuery body, CancellationToken cancellationToken = default) => _client.QueryEmailsAsync(body, cancellationToken);
 
-    /// <summary>Invokes GET /v1/email/sends/{send_id}.</summary>
-    public Task<SendResponse> GetAsync(string sendId, CancellationToken cancellationToken = default) => _client.GetAsync(sendId, cancellationToken);
+    /// <summary>Invokes DELETE /email/emails/{email_id}.</summary>
+    public Task<SendResponse> CancelEmailAsync(string emailId, CancellationToken cancellationToken = default) => _client.CancelEmailAsync(emailId, cancellationToken);
+
+    /// <summary>Invokes GET /email/emails/{email_id}.</summary>
+    public Task<SendResponse> GetEmailAsync(string emailId, CancellationToken cancellationToken = default) => _client.GetEmailAsync(emailId, cancellationToken);
+
+    /// <summary>Invokes PATCH /email/emails/{email_id}.</summary>
+    public Task<SendResponse> RescheduleEmailAsync(string emailId, RescheduleRequest body, CancellationToken cancellationToken = default) => _client.RescheduleEmailAsync(emailId, body, cancellationToken);
+
+    /// <summary>Invokes GET /email/emails/{email_id}/events.</summary>
+    public Task<SendEventsResponse> ListEmailEventsAsync(string emailId, long? limit = default, string? after = default, CancellationToken cancellationToken = default) => _client.ListEmailEventsAsync(emailId, limit, after, cancellationToken);
+
+    /// <summary>Invokes GET /email/emails/{email_id}/recipients/{recipient_send_id}/events.</summary>
+    public Task<SendEventsResponse> ListEmailRecipientEventsAsync(string emailId, string recipientSendId, long? limit = default, string? after = default, CancellationToken cancellationToken = default) => _client.ListEmailRecipientEventsAsync(emailId, recipientSendId, limit, after, cancellationToken);
 
 }

@@ -2,7 +2,7 @@
 # Default happy-path response
 when:
   method: POST
-  path_matches: '^/v1/crm/records/[^/]+/tasks$'
+  path_matches: '^/crm/records/[^/]+/tasks$'
 then:
   status: 201
   header:

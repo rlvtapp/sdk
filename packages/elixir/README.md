@@ -15,7 +15,7 @@ Generated Elixir SDK for Relevate. This release selected the **namespaced** clie
 ## Namespaced client
 
 ```elixir
-{:ok, result} = RelevateSdk.Resources.CRM.list_crm_lists(client)
+{:ok, result} = RelevateSdk.Resources.APIKeys.list_crm_lists(client)
 ```
 
 The namespaced example applies to packages generated with `SdkClientStyle::Namespaced`; direct `RelevateSdk.API` functions remain available in that mode. The client uses Finch, returns `{:ok, value}` on successful HTTP responses, and returns `{:error, reason}` for transport or non-2xx API errors. See [STYLE_GUIDE.md](STYLE_GUIDE.md) for selection guidance.
