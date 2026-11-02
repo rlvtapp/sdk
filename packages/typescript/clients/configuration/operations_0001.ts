@@ -1,0 +1,5 @@
+export { authCheck } from './authCheck.js'
+export { listDomains } from './listDomains.js'
+export { getDomain } from './getDomain.js'
+export { listSenderIdentities } from './listSenderIdentities.js'
+export { getSenderIdentity } from './getSenderIdentity.js'

@@ -1,0 +1,107 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Relevate\Sdk;
+
+/** Explicit buffered multipart parts; repeated names preserve repeated fields. */
+final class MultipartBody
+{
+    private const MAX_BYTES = 67108864;
+    private const MAX_PARTS = 1024;
+    private array $parts = [];
+    private ?array $encoded = null;
+    private array $encoding = [];
+
+    public function withEncoding(array $encoding): self
+    {
+        $copy = clone $this;
+        $copy->encoding = $encoding;
+        $copy->encoded = null;
+        return $copy;
+    }
+
+    public function addText(string $name, string|int|float|bool $value): self
+    {
+        return $this->addPart($name, is_bool($value) ? ($value ? 'true' : 'false') : (string)$value, null, 'text/plain; charset=utf-8');
+    }
+
+    public function addJson(string $name, mixed $value): self
+    {
+        return $this->addPart($name, json_encode($value, JSON_THROW_ON_ERROR), null, 'application/json');
+    }
+
+    public function addFile(string $name, string $bytes, string $filename, string $contentType = 'application/octet-stream'): self
+    {
+        return $this->addPart($name, $bytes, $filename, $contentType);
+    }
+
+    public function addPart(string $name, string|self $bytes, ?string $filename = null, string $contentType = 'application/octet-stream', array $headers = []): self
+    {
+        if (count($this->parts) >= self::MAX_PARTS) throw new \InvalidArgumentException('too many multipart parts');
+        foreach ([$name, $filename, $contentType] as $value) {
+            if ($value !== null && ($value === '' || strlen($value) > 4096 || preg_match('/[\r\n\x00]/', $value))) throw new \InvalidArgumentException('invalid multipart metadata');
+        }
+        if (count($headers) > 64) throw new \InvalidArgumentException('too many multipart headers');
+        foreach ($headers as $key => $value) self::validateHeader($key, $value);
+        if ($bytes instanceof self) $bytes = $bytes->snapshot();
+        $size = $bytes instanceof self ? strlen($bytes->encode()[1]) : strlen($bytes);
+        if ($size + array_sum(array_map(static fn(array $part): int => $part[1] instanceof self ? strlen($part[1]->encode()[1]) : strlen($part[1]), $this->parts)) > self::MAX_BYTES) throw new \InvalidArgumentException('multipart body exceeds buffer limit');
+        $this->parts[] = [$name, $bytes, $filename, $contentType, $headers];
+        $this->encoded = null;
+        return $this;
+    }
+
+    private function snapshot(int $depth = 0): self
+    {
+        if ($depth > 32) throw new \InvalidArgumentException('multipart nesting exceeds 32 levels');
+        $copy = clone $this;
+        $copy->parts = array_map(static function(array $part) use($depth): array {
+            if ($part[1] instanceof self) $part[1] = $part[1]->snapshot($depth + 1);
+            return $part;
+        }, $this->parts);
+        return $copy;
+    }
+
+    private static function validateHeader(mixed $key, mixed $value): void
+    {
+        if (!is_string($key) || $key === '' || strlen($key) > 4096 || !preg_match("/^[!#$%&'*+.^_`|~0-9A-Za-z-]+$/D", $key)) throw new \InvalidArgumentException('invalid multipart header name');
+        if (in_array(strtolower($key), ['content-type', 'content-disposition'], true)) throw new \InvalidArgumentException('reserved multipart header');
+        if (!is_string($value) || strlen($value) > 8192 || preg_match('/[\r\n\x00]/', $value)) throw new \InvalidArgumentException('invalid multipart header value');
+    }
+
+    /** @return array{string,string} content type and matching bytes */
+    public function encode(int $depth = 0): array
+    {
+        if ($depth > 32) throw new \InvalidArgumentException('multipart nesting exceeds 32 levels');
+        if ($this->encoded !== null) return $this->encoded;
+        $boundary = 'poolster-' . bin2hex(random_bytes(24));
+        $encoded = '';
+        $quote = static fn(string $value): string => str_replace(['\\', '"'], ['\\\\', '\\"'], $value);
+        $mediaType = $this->encoding['content_type'] ?? $this->encoding['contentType'] ?? 'multipart/form-data';
+        if (!str_starts_with($mediaType, 'multipart/') || preg_match('/[\r\n\x00]/', $mediaType)) throw new \InvalidArgumentException('invalid multipart content type');
+        foreach ($this->parts as $index => [$name, $bytes, $filename, $contentType, $headers]) {
+            $plan = ($this->encoding['prefix_encoding'] ?? $this->encoding['prefixEncoding'] ?? [])[$index] ?? $this->encoding['item_encoding'] ?? $this->encoding['itemEncoding'] ?? ($this->encoding['encoding'] ?? [])[$name] ?? [];
+            foreach (($plan['headers'] ?? []) as $key => $declaration) {
+                if (in_array(strtolower($key), array_map('strtolower', array_keys($headers)), true)) continue;
+                $value = isset($declaration['example_json']) ? json_decode($declaration['example_json'], true, 512, JSON_THROW_ON_ERROR) : ($declaration['schema_definition']['default'] ?? null);
+                if ($value === null && ($declaration['required'] ?? false)) throw new \InvalidArgumentException('required multipart header is missing');
+                if ($value !== null) $headers[$key] = is_string($value) ? $value : json_encode($value, JSON_THROW_ON_ERROR);
+            }
+            if (count($headers) > 64) throw new \InvalidArgumentException('too many multipart headers');
+            foreach ($headers as $key => $value) self::validateHeader($key, $value);
+            if ($bytes instanceof self) { [$contentType, $bytes] = $bytes->withEncoding($plan)->encode($depth + 1); }
+            else { $contentType = $plan['contentType'] ?? $contentType; }
+            if ($contentType === '' || strlen($contentType) > 4096 || preg_match('/[\r\n\x00]/', $contentType)) throw new \InvalidArgumentException('invalid multipart content type');
+            $encoded .= '--' . $boundary . "\r\nContent-Disposition: form-data; name=\"" . $quote($name) . '"';
+            if ($filename !== null) $encoded .= '; filename="' . $quote($filename) . '"';
+            $encoded .= "\r\nContent-Type: " . $contentType . "\r\n";
+            foreach ($headers as $key => $value) $encoded .= $key . ': ' . $value . "\r\n";
+            $encoded .= "\r\n" . $bytes . "\r\n";
+            if (strlen($encoded) > self::MAX_BYTES) throw new \InvalidArgumentException('multipart body exceeds buffer limit');
+        }
+        $encoded .= '--' . $boundary . "--\r\n";
+        if (strlen($encoded) > self::MAX_BYTES) throw new \InvalidArgumentException('multipart body exceeds buffer limit');
+        return $this->encoded = [$mediaType . '; boundary=' . $boundary, $encoded];
+    }
+}

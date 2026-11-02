@@ -10,5 +10,5 @@ npm run spec:import -- /path/to/openapi.json
 npm run generate
 ```
 
-Generation is reproducible from the committed snapshot, the Kaji recipe,
+Generation is reproducible from the committed snapshot, the Poolster recipe,
 and the locked generator dependency. CI does not fetch a live specification.

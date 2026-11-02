@@ -13,7 +13,7 @@ defmodule RelevateSdk.MixProject do
   end
 
   def application do
-    [extra_applications: [:logger, :inets], mod: {RelevateSdk.Application, []}]
+    [extra_applications: [:logger, :inets, :crypto], mod: {RelevateSdk.Application, []}]
   end
 
   defp deps do

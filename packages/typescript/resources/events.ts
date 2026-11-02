@@ -1,4 +1,4 @@
-import type { ClientInstance } from '../.kaji/client.js'
+import type { ClientInstance } from '../.poolster/client.js'
 import { EventsClientOperations0001 } from './events/operations_0001.js'
 
 export interface EventsClient extends EventsClientOperations0001 {}

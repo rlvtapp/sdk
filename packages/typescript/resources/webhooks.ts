@@ -1,4 +1,4 @@
-import type { ClientInstance } from '../.kaji/client.js'
+import type { ClientInstance } from '../.poolster/client.js'
 import { WebhooksClientOperations0001 } from './webhooks/operations_0001.js'
 
 export interface WebhooksClient extends WebhooksClientOperations0001 {}

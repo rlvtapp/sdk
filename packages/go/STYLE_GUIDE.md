@@ -1,6 +1,6 @@
 # Relevate Go SDK styles
 
-Kaji supports two stable client surfaces:
+Poolster supports two stable client surfaces:
 
 - `SdkClientStyle::Flat`: `client.GetContact(ctx, input)`
 - `SdkClientStyle::Namespaced`: `client.Contacts.Get(ctx, input)`

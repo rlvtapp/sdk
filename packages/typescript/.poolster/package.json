@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "language": "typescript",
+  "name": "@relevate/sdk",
+  "version": "0.1.0",
+  "build": [
+    {
+      "program": "npm",
+      "args": [
+        "run",
+        "build"
+      ]
+    }
+  ],
+  "test": [
+    {
+      "program": "node",
+      "args": [
+        "../../scripts/check-typescript.mjs"
+      ]
+    }
+  ],
+  "publisher": {
+    "registry": "npm",
+    "release_type": "node",
+    "commands": [],
+    "extra_files": []
+  },
+  "capabilities": {}
+}

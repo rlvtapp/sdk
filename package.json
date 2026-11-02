@@ -7,11 +7,14 @@
     "spec:import": "node scripts/import-spec.mjs",
     "build:typescript": "tsc -p packages/typescript/tsconfig.json",
     "check:typescript": "node scripts/check-typescript.mjs",
-    "mock": "kaji mock serve specs/openapi.json --port 4010",
-    "check:mocks": "node scripts/check-mocks.mjs"
+    "mock": "poolster mock serve specs/openapi.json --port 4010",
+    "check:mocks": "node scripts/check-mocks.mjs",
+    "sdk:ci:preview": "poolster sdk init --root packages --config poolster.json --poolster-version 0.5.0-alpha.4 --dry-run --repository rlvtapp/sdk",
+    "sdk:ci:init": "poolster sdk init --root packages --config poolster.json --poolster-version 0.5.0-alpha.4 --repository rlvtapp/sdk",
+    "sdk:ci:sync": "poolster sdk sync --root packages --config poolster.json --poolster-version 0.5.0-alpha.4 --repository rlvtapp/sdk"
   },
   "devDependencies": {
-    "@relevate/kaji": "0.4.0"
+    "poolster": "0.5.0-alpha.4"
   },
   "engines": {
     "node": ">=22"

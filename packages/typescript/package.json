@@ -71,15 +71,15 @@
       "optional": true
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rlvtapp/sdk.git",
-    "directory": "packages/typescript"
-  },
   "scripts": {
     "build": "tsc -p tsconfig.json"
   },
   "sideEffects": false,
   "type": "module",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rlvtapp/sdk.git",
+    "directory": "packages/typescript"
+  }
 }

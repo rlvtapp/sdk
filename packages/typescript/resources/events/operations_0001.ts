@@ -1,4 +1,4 @@
-import type { ClientInstance } from '../../.kaji/client.js'
+import type { ClientInstance } from '../../.poolster/client.js'
 import { track } from '../../clients/events/track.js'
 
 export class EventsClientOperations0001 {
