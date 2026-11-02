@@ -3,8 +3,8 @@ import { readFileSync, existsSync } from 'node:fs';
 const root = new URL('../', import.meta.url);
 const read = path => JSON.parse(readFileSync(new URL(path, root), 'utf8'));
 const spec = read('specs/openapi.json');
-const languages = ['typescript', 'python', 'go', 'rust', 'java', 'dotnet', 'php', 'elixir', 'ruby'];
-const manifests = { typescript: 'package.json', python: 'pyproject.toml', go: 'go.mod', rust: 'Cargo.toml', java: 'pom.xml', php: 'composer.json', elixir: 'mix.exs', ruby: null, dotnet: null };
+const languages = ['typescript', 'python', 'go', 'rust', 'java', 'csharp', 'php', 'elixir', 'ruby'];
+const manifests = { typescript: 'package.json', python: 'pyproject.toml', go: 'go.mod', rust: 'Cargo.toml', java: 'pom.xml', php: 'composer.json', elixir: 'mix.exs', ruby: null, csharp: null };
 const methods = new Set(['get', 'post', 'put', 'patch', 'delete', 'head', 'options', 'trace']);
 const ids = new Set();
 for (const [path, item] of Object.entries(spec.paths)) {
@@ -16,7 +16,7 @@ for (const [path, item] of Object.entries(spec.paths)) {
     ids.add(operation.operationId);
   }
 }
-const recipe = read('kaji.json');
+const recipe = read('poolster.json');
 assert.equal(recipe.output.path, './packages');
 assert.equal(recipe.openapi.input, './specs/openapi.json');
 assert.equal(recipe.openapi.paths, undefined, 'Combined SDK must include the entire contract');
@@ -26,7 +26,7 @@ for (const pkg of recipe.packages) {
   const manifest = manifests[pkg.language];
   if (manifest) assert.ok(existsSync(new URL(`packages/${pkg.path}/${manifest}`, root)), `Missing ${manifest}`);
 }
-const lock = read('packages/.kaji/generation.lock.json');
+const lock = read('packages/.poolster/generation.lock.json');
 const expected = Object.entries(spec.paths).flatMap(([path, item]) => Object.keys(item)
   .filter(method => methods.has(method)).map(method => `${method.toUpperCase()} ${path}`));
 assert.deepEqual([...lock.api.operations].sort(), expected.sort(), 'Combined SDK is missing operations');

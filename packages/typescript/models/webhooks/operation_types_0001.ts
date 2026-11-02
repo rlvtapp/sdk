@@ -1,5 +1,5 @@
 export type * from './ListWebhooks.js'
-export type * from './CreateWebhook.js'
+export type { CreateWebhookStatus200, CreateWebhookStatus401, CreateWebhookStatus422, CreateWebhookStatus503, CreateWebhookBody, CreateWebhookOptions, CreateWebhookResponses, CreateWebhookResponse as CreateWebhookResponseOperation } from './CreateWebhook.js'
 export type * from './DeleteWebhook.js'
 export type * from './UpdateWebhook.js'
 export type * from './ListDeliveries.js'

@@ -1,4 +1,4 @@
-import type { ClientInstance } from '../../.kaji/client.js'
+import type { ClientInstance } from '../../.poolster/client.js'
 import { listWebhooks } from '../../clients/webhooks/listWebhooks.js'
 import { createWebhook } from '../../clients/webhooks/createWebhook.js'
 import { deleteWebhook } from '../../clients/webhooks/deleteWebhook.js'

@@ -2,7 +2,7 @@
 
 Official [Relevate](https://relevate.app) SDKs: one package per language
 containing both CRM and Email, generated with
-[Kaji](https://github.com/rlvtapp/kaji) from the shared Rust API contract.
+[Poolster](https://github.com/rlvtapp/poolster) from the shared Rust API contract.
 
 The nine initial development packages are version 0.1.0. No registry releases
 have been published by this setup.
@@ -19,9 +19,9 @@ npm run build:typescript
 npm run check:typescript
 ```
 
-`kaji.json` generates all nine languages from `specs/openapi.json`, with no
-product filters. Every SDK contains all 66 CRM and Email operations. Kaji
-0.4.0 is pinned in the root lockfile; TypeScript 5.9.3 is pinned in its workspace.
+`poolster.json` generates all nine languages from `specs/openapi.json`, with no
+product filters. Every SDK contains all 66 CRM and Email operations. Poolster
+0.5.0-alpha.4 is pinned in the root lockfile; TypeScript 5.9.3 is pinned in its workspace.
 
 ## Packages
 
@@ -65,13 +65,12 @@ snapshot so generation does not depend on a changing live API.
 
 ## Generated output and validation
 
-Commit generated code for review. Machine-specific `.kaji` metadata is ignored
-because it records absolute source paths. Durable customizations belong in the
-contract, recipe, or generation tooling.
-
-`scripts/generate.mjs` applies packaging corrections for Kaji 0.4.0: valid Go
-module URLs and distinct TypeScript
-operation-union names when they collide with response schemas.
+Commit generated code for review. `scripts/generate.mjs` generates in a clean
+staging directory using Poolster 0.5.0-alpha.4, then applies the maintained npm
+manifest overlay from `scripts/typescript-package.json`. Do not edit generated
+packages directly. Generation bookkeeping under `packages/.poolster` records
+machine-specific paths and is ignored; the runtime and package release metadata
+inside each SDK are tracked.
 
 CI checks deterministic regeneration, coverage of both products, TypeScript
 builds, Go compilation, and Python distribution builds. Other languages need
@@ -79,12 +78,46 @@ ecosystem build and runtime validation before release.
 
 ## Releases
 
-All languages initially share the SDK version in `kaji.json` under
-`openapi.version`. Registry publishing is not configured yet. Before release,
-validate every published target, finalize metadata and licensing, and set up
-registry credentials or trusted publishing.
+The TypeScript SDK publishes to npm as `@relevate/sdk`. Versions are selected
+by `poolster.json` (`openapi.version` and TypeScript `release.version`), then
+regenerated into the native package manifest and delivery metadata. Other
+language packages are generated and validated but their registry publishing is
+not configured by the npm workflow.
 
-Go releases require subdirectory tags such as `packages/go/v0.1.0`. Swift generation is deferred for now.
+After merging a checked version, push `typescript-vVERSION`. The
+`poolster-sdk-release.yml` workflow regenerates and tests that exact tag without
+publishing credentials, retains the checked package, then waits for the protected
+`release` environment before publishing through npm OIDC. A manual dispatch with
+the same existing tag retries a release; existing versions succeed only when the
+packed artifact integrity matches. Stable versions use `latest`, prereleases use
+`next`. The workflow also verifies installation from public npm.
+
+Configure npm trusted publishing for package `@relevate/sdk`, GitHub organization
+`rlvtapp`, repository `sdk`, workflow filename `poolster-sdk-release.yml`, and
+environment `release`. Allow direct publish. A new package requires an initial
+maintainer publication to establish ownership before this trust can be configured.
+No long-lived npm token is required by the workflow.
+
+### Generate CI/CD files
+
+```sh
+npm run sdk:ci:preview             # inspect proposed files without writing
+npm run generate -- --ci          # regenerate SDKs and stage CI/CD setup
+npm run generate -- --ci --dry-run
+npm run sdk:ci:sync               # refresh an existing scaffold
+```
+
+These commands use Poolster's `sdk init`/`sdk sync` with the pinned generator and
+stage destination helpers, SDK checks, Release Please, and publishing workflows
+under `.poolster/sdk-repository-setup/`. They also emit a source generation
+workflow. Review setup before installing it: the repository's maintained npm
+release workflow includes its combined contract and runtime checks. Scaffolding
+refuses to overwrite edited files; merge intentional updates manually. App
+credentials, registry trust, and GitHub environment protection require account
+configuration, rather than generated files.
+
+Go releases require subdirectory tags such as `packages/go/v0.1.0`.
+Swift generation is deferred for now.
 
 ## TypeScript framework integrations
 
@@ -170,7 +203,7 @@ docker compose up --build
 ```
 
 Point any SDK at `http://127.0.0.1:4010`. The native server exposes
-`/_kaji/health` and `/_kaji/requests`. Contract-owned `x-kaji-mock` scenarios
+`/_poolster/health` and `/_poolster/requests`. Contract-owned `x-poolster-mock` scenarios
 can describe conditional responses; the production snapshot currently has no
 custom scenarios. Neither mock implements persistent CRM or delivery behavior.
 Fixtures demonstrate contract shapes and are not guaranteed semantically valid
@@ -181,6 +214,5 @@ and assertions before use. Run it only against a mock or test environment.
 Cypress is a development dependency; its browser binary is not installed in CI.
 
 Run `npm run check:mocks` after building to validate MSW success/error handling,
-Faker object-array fixtures, and native mock requests through the SDK. Generation
-reuses Kaji's HTTP fixtures for MSW and corrects the Faker import path and
-object-array callback syntax in the currently pinned generator.
+Faker object-array fixtures, and native mock requests through the SDK. Poolster emits native MSW handlers and Faker fixtures; the checks cover seeded
+fixture generation, response decoding, errors and the native HTTP mock.

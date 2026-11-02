@@ -9,3 +9,6 @@ node_modules/
 **/_build/
 **/deps/
 **/.kaji/
+
+# Machine-specific generation bookkeeping; package release metadata stays tracked.
+packages/.poolster/

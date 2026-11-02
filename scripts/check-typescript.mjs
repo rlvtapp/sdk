@@ -19,7 +19,7 @@ const integrations = spawnSync(process.execPath, ['--input-type=module', '-e', `
   for (const helpers of [react, vue]) {
     assert.equal(typeof helpers.useListCrmObjects, 'function');
     assert.equal(typeof helpers.useCreate, 'function');
-    assert.deepEqual(helpers.listCrmObjectsQueryKey({}), ['listCrmObjects', {}]);
+    assert.deepEqual(helpers.listCrmObjectsQueryKey({}), ['listCrmObjects', 'default', { path: undefined, query: undefined, querystring: undefined, body: undefined }]);
   }
 `], { cwd: sdk, encoding: 'utf8' });
 assert.equal(integrations.status, 0, integrations.stderr);

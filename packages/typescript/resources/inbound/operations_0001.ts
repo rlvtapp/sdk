@@ -1,4 +1,4 @@
-import type { ClientInstance } from '../../.kaji/client.js'
+import type { ClientInstance } from '../../.poolster/client.js'
 import { listInbound } from '../../clients/inbound/listInbound.js'
 import { getInbound } from '../../clients/inbound/getInbound.js'
 

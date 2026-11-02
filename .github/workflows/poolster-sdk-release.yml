@@ -1,0 +1,96 @@
+name: Publish TypeScript SDK
+on:
+  push:
+    tags: ['typescript-v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing immutable typescript-vVERSION tag to publish or retry
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: npm-relevate-sdk
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+      CYPRESS_INSTALL_BINARY: '0'
+    outputs:
+      npm-tag: ${{ steps.release.outputs.npm-tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_TAG }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Validate tag and package identity
+        id: release
+        run: |
+          test "$(git rev-parse HEAD)" = "$(git rev-parse "refs/tags/$RELEASE_TAG^{commit}")"
+          git merge-base --is-ancestor HEAD origin/main
+          node scripts/release-npm.mjs
+      - run: npm ci --ignore-scripts
+      - run: npm run generate
+      - run: npm run check
+      - run: npm run build:typescript
+      - run: npm run check:typescript
+      - run: npm run check:mocks
+      - run: npm run check:package
+      - name: Verify deterministic sources
+        run: |
+          git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard)"
+      - name: Retain checked package
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-sdk-${{ github.run_id }}-${{ github.run_attempt }}
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            packages/typescript/
+            !packages/typescript/node_modules/**
+  publish:
+    needs: check
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_TAG }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: npm-sdk-${{ github.run_id }}-${{ github.run_attempt }}
+          path: packages/typescript
+      - name: Publish with npm trusted identity and verify registry integrity
+        uses: ./.github/actions/poolster-publish
+        with:
+          registry: npm
+          path: packages/typescript
+          tag: ${{ env.RELEASE_TAG }}
+          npm-tag: ${{ needs.check.outputs.npm-tag }}
+      - name: Verify installation from public npm
+        env:
+          SDK_VERSION: ${{ github.ref_name }}
+        run: |
+          version="${RELEASE_TAG#typescript-v}"
+          mkdir "$RUNNER_TEMP/consumer"
+          cd "$RUNNER_TEMP/consumer"
+          npm init --yes
+          npm install --ignore-scripts --registry=https://registry.npmjs.org "@relevate/sdk@$version"
+          node --input-type=module -e "import { Relevate } from '@relevate/sdk'; const sdk = new Relevate({baseUrl:'https://example.com'}); if (!sdk.crm || !sdk.sends) throw Error('Missing SDK resources');"

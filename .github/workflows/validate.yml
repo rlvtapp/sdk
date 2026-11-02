@@ -11,9 +11,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
-      - run: npm ci
+      - run: npm ci --ignore-scripts
         env:
           CYPRESS_INSTALL_BINARY: 0
       - run: npm run generate
@@ -21,6 +21,7 @@ jobs:
       - run: npm run build:typescript
       - run: npm run check:typescript
       - run: npm run check:mocks
+      - run: npm run check:package
       - name: Check committed generation
         run: |
           git diff --exit-code

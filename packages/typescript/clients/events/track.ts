@@ -1,8 +1,9 @@
+import { poolsterJsonRefs } from '../_poolster_json_refs.js'
 /* eslint-disable no-alert, no-console */
 
-import type { Options, RequestResult, ResponseResult } from '../../.kaji/client.js'
+import type { Options, RequestResult, ResponseResult } from '../../.poolster/client.js'
 import type { TrackOptions, TrackResponses } from '../../models/events/Track.js'
-import { client, resolveResponse } from '../../.kaji/client.js'
+import { client, resolveResponse } from '../../.poolster/client.js'
 
 /**
  * {@link /v1/email/events}
@@ -17,6 +18,7 @@ export function track<ThrowOnError extends boolean = true>(
     request({
       method: 'POST',
       url: '/v1/email/events',
+      jsonPlan: { lossless: false, refs: poolsterJsonRefs, requests: {"application/json":{"nullable":false,"ref":"TrackEventRequest"}}, responses: {"202":{"application/json":{"nullable":false,"ref":"EventResponse"}},"401":{"application/json":{"nullable":false,"ref":"ErrorResponse"}},"403":{"application/json":{"nullable":false,"ref":"ErrorResponse"}},"409":{"application/json":{"nullable":false,"ref":"ErrorResponse"}},"422":{"application/json":{"nullable":false,"ref":"ErrorResponse"}},"503":{"application/json":{"nullable":false,"ref":"ErrorResponse"}}} },
       ...config,
       throwOnError,
     }) as Promise<RequestResult<TrackResponses, ThrowOnError>>,

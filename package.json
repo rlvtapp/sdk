@@ -7,11 +7,24 @@
     "spec:import": "node scripts/import-spec.mjs",
     "build:typescript": "tsc -p packages/typescript/tsconfig.json",
     "check:typescript": "node scripts/check-typescript.mjs",
-    "mock": "kaji mock serve specs/openapi.json --port 4010",
-    "check:mocks": "node scripts/check-mocks.mjs"
+    "mock": "poolster mock serve specs/openapi.json --port 4010",
+    "check:mocks": "node scripts/check-mocks.mjs",
+    "sdk:ci:preview": "poolster sdk init --root packages --config poolster.json --poolster-version 0.5.0-alpha.4 --dry-run --repository rlvtapp/sdk",
+    "sdk:ci:init": "poolster sdk init --root packages --config poolster.json --poolster-version 0.5.0-alpha.4 --repository rlvtapp/sdk",
+    "sdk:ci:sync": "poolster sdk sync --root packages --config poolster.json --poolster-version 0.5.0-alpha.4 --repository rlvtapp/sdk",
+    "check:package": "node scripts/check-package.mjs"
   },
   "devDependencies": {
-    "@relevate/kaji": "0.4.0"
+    "poolster": "0.5.0-alpha.4",
+    "@faker-js/faker": "10.6.0",
+    "@tanstack/react-query": "5.104.1",
+    "@tanstack/vue-query": "5.104.1",
+    "@types/react": "19.3.0",
+    "cypress": "15.21.1",
+    "msw": "3.0.2",
+    "react": "19.3.0",
+    "typescript": "5.9.3",
+    "vue": "3.5.43"
   },
   "engines": {
     "node": ">=22"

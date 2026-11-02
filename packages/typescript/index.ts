@@ -1,4 +1,6 @@
 export * from './custom/index.js'
 export { Relevate } from './client.js'
+export { createClient } from './.poolster/client.js'
+export type { ClientConfig, ClientInstance, RequestOptions, ClientMiddleware, MiddlewareNext, MiddlewareResponse } from './.poolster/client.js'
 export * from './models/index.js'
 export * from './clients/index.js'

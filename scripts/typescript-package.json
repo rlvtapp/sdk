@@ -1,0 +1,64 @@
+{
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./*": {
+      "import": "./dist/*.js",
+      "types": "./dist/*.d.ts"
+    },
+    "./cypress": {
+      "default": "./dist/cypress/api.cy.js"
+    },
+    "./fixtures": {
+      "types": "./dist/fixtures/faker.d.ts",
+      "import": "./dist/fixtures/faker.js"
+    },
+    "./mocks": {
+      "types": "./dist/mocks/msw.d.ts",
+      "import": "./dist/mocks/msw.js"
+    },
+    "./react-query": {
+      "types": "./dist/react-query/index.d.ts",
+      "import": "./dist/react-query/index.js"
+    },
+    "./vue-query": {
+      "types": "./dist/vue-query/index.d.ts",
+      "import": "./dist/vue-query/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.0.0",
+    "@tanstack/vue-query": "^5.0.0",
+    "msw": "^2.0.0 || ^3.0.0",
+    "@faker-js/faker": "^10.6.0"
+  },
+  "peerDependenciesMeta": {
+    "@tanstack/react-query": {
+      "optional": true
+    },
+    "@tanstack/vue-query": {
+      "optional": true
+    },
+    "msw": {
+      "optional": true
+    },
+    "@faker-js/faker": {
+      "optional": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rlvtapp/sdk.git",
+    "directory": "packages/typescript"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "sideEffects": false,
+  "type": "module"
+}

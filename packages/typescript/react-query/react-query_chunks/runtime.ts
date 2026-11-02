@@ -1,0 +1,164 @@
+/** Set an explicit cache scope for tenants/origins whose responses differ. */
+export type PoolsterQueryScope = string | readonly unknown[];
+export const __poolsterInputs = (options: unknown) => {
+  const value = (options ?? {}) as Record<string, unknown>;
+  return { path: value.path, query: value.query, querystring: value.querystring, body: value.body };
+};
+
+export const __poolsterQueryCall = async <T, R>(
+  options: T,
+  signal: AbortSignal,
+  call: (options: T) => Promise<R>,
+): Promise<R> => {
+  const value = (options ?? {}) as Record<string, unknown>;
+  const request = (value.requestOptions ?? {}) as { signal?: AbortSignal };
+  const controller = new AbortController();
+  const signals = [signal, request.signal].filter(
+    (item): item is AbortSignal => item !== undefined,
+  );
+  const listeners = signals.map((item) => {
+    const abort = () => controller.abort(item.reason);
+    if (item.aborted) abort();
+    else item.addEventListener("abort", abort, { once: true });
+    return () => item.removeEventListener("abort", abort);
+  });
+  try {
+    controller.signal.throwIfAborted();
+    return await call({ ...value, requestOptions: { ...request, signal: controller.signal } } as T);
+  } finally {
+    for (const remove of listeners) remove();
+  }
+};
+
+export type PoolsterPageParam = string | number | null;
+export type PoolsterPaginationOptions = { baseUrl?: string; maxPages?: number };
+type __PoolsterPagination = {
+  readonly kind: string;
+  readonly input: { readonly name: string; readonly location: string } | null;
+  readonly limit: { readonly name: string; readonly location: string } | null;
+  readonly results: readonly (string | number)[] | null;
+  readonly continuation: readonly (string | number)[] | null;
+};
+export const __poolsterMaxPages = (options: PoolsterPaginationOptions) => {
+  const n = options.maxPages ?? 10000;
+  if (!Number.isSafeInteger(n) || n < 1)
+    throw new RangeError("maxPages must be a positive safe integer");
+  return n;
+};
+export const __poolsterGet = (value: unknown, path: readonly (string | number)[] | null): unknown => {
+  for (const key of path ?? []) {
+    if (value === null || typeof value !== "object") return undefined;
+    const index =
+      Array.isArray(value) && typeof key === "number" && key < 0 ? value.length + key : key;
+    if (!Object.hasOwn(value, index)) return undefined;
+    value = (value as Record<string | number, unknown>)[index];
+  }
+  return value;
+};
+export const __poolsterInput = (options: unknown, input: __PoolsterPagination["input"]): unknown =>
+  input ? __poolsterGet(options, [input.location, input.name]) : undefined;
+export const __poolsterInitial = (options: unknown, plan: __PoolsterPagination): PoolsterPageParam => {
+  const input = __poolsterInput(options, plan.input);
+  if (plan.kind === "url") return null;
+  if (plan.kind === "cursor") {
+    if (
+      input != null &&
+      typeof input !== "string" &&
+      (typeof input !== "number" || !Number.isSafeInteger(input))
+    )
+      throw new TypeError("invalid pagination cursor");
+    return (input as PoolsterPageParam) ?? null;
+  }
+  const number = input ?? (plan.kind === "page" ? 1 : 0);
+  if (!Number.isSafeInteger(number) || Number(number) < 0)
+    throw new RangeError("pagination value must be a nonnegative safe integer");
+  const limit = __poolsterInput(options, plan.limit);
+  if (limit != null && (!Number.isSafeInteger(limit) || Number(limit) <= 0))
+    throw new RangeError("limit must be a positive safe integer");
+  return number as number;
+};
+export const __poolsterNext = (
+  last: unknown,
+  previous: PoolsterPageParam,
+  options: unknown,
+  plan: __PoolsterPagination,
+): PoolsterPageParam | undefined => {
+  // Preserve the SDK response envelope; pagination selectors inspect its decoded data.
+  const data =
+    last &&
+    typeof last === "object" &&
+    Object.hasOwn(last, "data") &&
+    Object.hasOwn(last, "headers") &&
+    (last as { headers: unknown }).headers instanceof Headers
+      ? (last as { data: unknown }).data
+      : last;
+  if (plan.kind === "cursor" || plan.kind === "url") {
+    const next = __poolsterGet(data, plan.continuation);
+    if (next == null || next === "") return undefined;
+    if (typeof next !== "string" && (typeof next !== "number" || !Number.isSafeInteger(next)))
+      throw new TypeError("invalid pagination continuation");
+    if (plan.kind === "url" && typeof next !== "string")
+      throw new TypeError("pagination URL must be a string");
+    return next;
+  }
+  const items = __poolsterGet(data, plan.results);
+  if (!Array.isArray(items)) throw new TypeError("pagination results must be an array");
+  const limit = __poolsterInput(options, plan.limit);
+  if (!items.length || (typeof limit === "number" && items.length < limit)) return undefined;
+  const next =
+    Number(previous) +
+    (plan.kind === "page" ? 1 : typeof limit === "number" ? limit : items.length);
+  if (!Number.isSafeInteger(next))
+    throw new RangeError("pagination value exceeds safe integer range");
+  return next;
+};
+export const __poolsterPageOptions = (
+  options: unknown,
+  param: PoolsterPageParam,
+  plan: __PoolsterPagination,
+  pagination: PoolsterPaginationOptions,
+): Record<string, unknown> => {
+  const base = (options ?? {}) as Record<string, unknown>;
+  if (plan.kind === "url") {
+    if (param === null) return { ...base };
+    if (typeof param !== "string") throw new TypeError("pagination URL must be a string");
+    let url: string;
+    if (pagination.baseUrl) {
+      const origin = new URL(pagination.baseUrl);
+      const target = new URL(param, origin);
+      if (target.origin !== origin.origin || target.username || target.password || target.hash)
+        throw new TypeError("unsafe pagination URL");
+      url = target.href;
+    } else {
+      if (
+        !param.startsWith("/") ||
+        param.startsWith("//") ||
+        param.includes("\\") ||
+        param.includes("#")
+      )
+        throw new TypeError(
+          "pagination URL requires a configured baseUrl or safe root-relative path",
+        );
+      url = param;
+    }
+    const client = base.client as
+      | ((request: Record<string, unknown>) => Promise<unknown>)
+      | undefined;
+    if (typeof client !== "function")
+      throw new TypeError("URL pagination requires an explicit operation client");
+    return {
+      ...base,
+      query: undefined,
+      client: (request: Record<string, unknown>) => client({ ...request, paginationUrl: url }),
+    };
+  }
+  if (!plan.input) return { ...base };
+  const section = base[plan.input.location];
+  return {
+    ...base,
+    [plan.input.location]: {
+      ...((section as Record<string, unknown>) ?? {}),
+      [plan.input.name]: param === null ? undefined : param,
+    },
+  };
+};

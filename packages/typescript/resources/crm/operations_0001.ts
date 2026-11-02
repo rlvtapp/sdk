@@ -1,4 +1,4 @@
-import type { ClientInstance } from '../../.kaji/client.js'
+import type { ClientInstance } from '../../.poolster/client.js'
 import { listCrmLists } from '../../clients/crm/listCrmLists.js'
 import { createCrmList } from '../../clients/crm/createCrmList.js'
 import { deleteCrmList } from '../../clients/crm/deleteCrmList.js'
